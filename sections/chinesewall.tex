@@ -4,7 +4,26 @@ The first security models that emerged were mainly concerned with military, and 
 In \cite{brewer1989chinese} a model that is relevant for commercial applications is presented.
 This model fits the needs of corporate business services like an analyst that must uphold the confidentiality of his clients, meaning that he cannot advise a corporation if he has insider knowledge of a competitor. \cite{brewer1989chinese}
 
-Model
+\subsection*{The Chinese Wall Model}
+A Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by a user of the system.
+Information is stored in a hierarchy with three levels. 
+This hierarchy is depicted on \cref{hierarchy}
+
+\begin{figure}
+	\includegraphics[width=0.6\textwidth]{chinesewall}
+	\caption{The hierarchy of the Chinese Wall model. (evt ref til \url{https://www.jpo.go.jp/shiryou/s_sonota/hyoujun_gijutsu/info_sec_tech/c-2-2.html})}
+	\label{hierarchy}
+\end{figure}
+
+\begin{itemize}
+	\item The lowest level contains individual items of information, stored in objects.
+	\item The middle level contains company datasets that group all information that concern one company. 
+	\item The highest level contains conflict of interest classes which group companies that are in competition.
+\end{itemize}
+
+\paragraph{Example} A conflict class could be \emph{Oil companies} which contains \emph{Statoil} and \emph{Shell}. \emph{Statoil} contains objects of information that could compromise the company if \emph{Shell} would obtain the information.
+
+
 
 Simple Security
 
