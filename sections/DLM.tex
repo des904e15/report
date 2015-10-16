@@ -49,8 +49,11 @@ We have policy $K$ and label $L$.
 This section contains the rules that need to be followed to avoid information leakage.
 
 \paragraph{Relabeling by Restriction}
-This rule is for when on is doing an assignment of a \value{} into a variable.
+This rule is for when one is doing an assignment of a \xvalue{} into a variable.
+When a \xvalue{} is read its label is relabelled to the variable and forgotten.
+To avoid leakage this relabeling process the label of the varable must be at least as restrictive.
 
+When we have $L_1 \sqsubseteq L_2$ it means that $L_2$ is more restricted than $L_1$.
 
 \subsection{Limitations}
 Timing attacks on timing channels such as cache miss timing.
