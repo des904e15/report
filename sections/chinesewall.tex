@@ -25,12 +25,12 @@ This hierarchy is depicted on \cref{hierarchy}
 
 
 \subsection{The Security Policy}
-The concept of the Chinese wall security policy is that a \principal that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is conflict of interest class C.
+The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is conflict of interest class C.
 This policy is being upheld by two properties, the \emph{simple security} property and the \emph{star property} corresponding to the identical properties defined in Bell Lapadula \stefan{ref til definitionen i Bellapadula}.
 
 \paragraph{Simple Security}
 
-When a subject S requests to read an object O, this can only be permitted if one of the following requirements are fulfilled:
+When a \principal{} S requests to read an object O, this can only be permitted if one of the following requirements are fulfilled:
 
 \begin{itemize}
 \item O is in the same company dataset as an object already accessed by S (the object is within the wall)
@@ -39,10 +39,10 @@ When a subject S requests to read an object O, this can only be permitted if one
 
 \paragraph{*-Property}
 
-When a subject S requests to write to an object O if the following requirements are both fulfilled.
+When a \principal{} S requests to write to an object O if the following requirements are both fulfilled.
 
 \begin{itemize}
-\item access to O is permitted by the simple security rule
+\item Access to O is permitted by the simple security rule
 \item No objects from another object P in another company dataset D, which contains unsanitized information can be read when requesting write access to O
 \end{itemize}
 
