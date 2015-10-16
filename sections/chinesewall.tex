@@ -37,6 +37,13 @@ When a subject S requests to read an object O, this can only be permitted if one
 \item O belongs to a entirely different interest class C than S has previously accessed
 \end{itemize}
 
+\paragraph{*-Property}
 
+When a subject S requests to write to an object O if the following requirements are both fulfilled.
 
-*-Property
+\begin{itemize}
+\item access to O is permitted by the simple security rule
+\item No objects from another object P in another company dataset D, which contains unsanitized information can be read when requesting write access to O
+\end{itemize}
+
+The second requirements ensures that unsanitized information cannot leave the company dataset, but it is still possible to sanitize the data in order to compare companies.
