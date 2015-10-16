@@ -20,12 +20,36 @@ The owner is implicitly allowed to read his own data.
 
 \paragraph{Labels}
 A \xvalue{} is associated with a label and is a set of privacy policies.
-The policies are intersected, so we have one set of owners and readers.
 When the \xvalue{} flows through the system, all the policies need to be obeyed.
+The policies are intersected, so we have one set of owners and readers.
 Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
-If another privacy policy is added it restricts the \xvalue{}.
+If one or several privacy policies are added it restricts the \xvalue{}.
+A label with an empty set of readers means that all readers are allowed.
+If a \principal is not among the owners of a label, it is the same as if it was added as a privacy policy with all posible readers.
+When we have three owners: $o_1, o_2, o_3$ and three readers: $r_1, r_2, r_3$ and the following labels:
+$L_1 = {o_1: r_1,r_2, o_2: r_1, r_3}$ $L_2 = {o_1: r_1,r_2, o_2: r_1, r_3, o_3: r_1, r_2, r_3}$ we have that: $L_1 = L_2$ because when $o_3$ is not among the owners in $L_1$ it is the same as if it was there with all possible readers as in $L_2$.
 
-\paragraph{Relabeling}
+
+If a label contains no policies it is written as an empty set.
+A label can contain one or more privacy policies for th same \principal{}.
+These are enforced just as other policies.
+\bruno{You want more example??}
+
+
+Some further notation:
+We have policy $K$ and label $L$.
+\begin{itemize}
+\item $K \in L$, policy $K$ is a part of label $L$
+\item $o(K)$ or $oK$, the owner of policy $K$
+\item $r(K)$ or $rK$, the set of readers of policy $K$
+\end{itemize}
+\bruno{Kommer lige an på hvad vi ender med at bruge}
+
+\subsection{Rules}
+This section contains the rules that need to be followed to avoid information leakage.
+
+\paragraph{Relabeling by Restriction}
+This rule is for when on is doing an assignment of a \value{} into a variable.
 
 
 \subsection{Limitations}
