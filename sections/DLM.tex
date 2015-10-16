@@ -1,28 +1,29 @@
 \section{Decentralized Label Model}
 \bruno{Skal vi holde os til et term: value, data, information. De bruger det i flæng i litteraturen?}
-\newcommand{\value}{value}
-\newcommand{\values}{values}
+\newcommand{\xvalue}{value}
+\newcommand{\xvalues}{values}
 
 \paragraph{Acts for relation}
 The acts for relation, $\rightarrow$, can be used to model groups and roles.
-To model two \principals, Amy and Bob, to act for a group of programmers: $Amy \rightarrow programmers$ and $Bob \rightarrow programmers$.
+To model two \principals{}, Amy and Bob, to act for a group of programmers: $Amy \rightarrow programmers$ and $Bob \rightarrow programmers$.
 Or if Amy has different roles: $Amy \rightarrow Amy\_programmer$ and $Amy \rightarrow Amy\_admin$.
 
 \paragraph{Value}
-A \value is a piece of data in a program, for instance an integer.
+A \xvalue{} is a piece of data in a program, for instance an integer.
 
 \paragraph{Privacy policy}
-A privacy policy is represented as an owner of some \value and a set of readers.
+A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
 The syntax is: <owner>: <readers>.
-The owner is the \principal who owns the \value that was used for constructing the \value.
-The readers are the \principals allowed by the owner.
+The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
+The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 
-
 \paragraph{Labels}
-A \value is associated with a label and is a set of privacy policies.
-When this \value flows through the system, all the policies need to be obeyed.
-Labeled \values
+A \xvalue{} is associated with a label and is a set of privacy policies.
+The policies are intersected, so we have one set of owners and readers.
+When the \xvalue{} flows through the system, all the policies need to be obeyed.
+Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
+If another privacy policy is added it restricts the \xvalue{}.
 
 \paragraph{Relabeling}
 
