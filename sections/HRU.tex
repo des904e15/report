@@ -1,1 +1,37 @@
 \section{Protection in Operating Systems}
+As most protection systems have different approaches to how they manage right and chains of trust they are hard to compare on equal terms.
+Additionally it is often not easy to express which rights are leaked under certain conditions, or to whom they are leaked.
+Oftentimes such leaks are only described informally by examining key features of a given system.
+
+The model described in \cite{HRU} can be used to solve these problems.
+By formally describing protection systems using a unified model, they can be compared in terms of the rights that they leak.
+Using this approach two possible solutions (protection systems) to a problem can be compared on even terms.
+
+In the following the model proposed by \cite{HRU} is presented.
+
+\subsection{A Protection System}
+A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
+Note that both these sets are finite and static for a given system.
+Because of this a system cannot dynamically add or remove rights or commands, under this model.
+Dynamic creation and removal of commands can however be simulated.
+\mikkel{The last part about dynamics is not part of the original article, should we expand on it?}
+
+The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of subjects in the configuration, $O$ is the set of objects in the configuration and $P$ is an access matrix describing the rights each subject has to each object.
+Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the subject $s$ has to the object $o$.
+If no such rights exists we have that $P[s,o] = \emptyset$.
+
+Defining a configuration system is the task of defining $R$ and $C$.
+Rights have no inherent semantics except for those implied by their use in commands.
+A command is defined as in \cref{protection:command}.
+
+\begin{algorithm}
+ \DontPrintSemicolon
+ \SetKwFunction{cmda}{$\alpha$}
+ \SetKw{cmd}{command}
+ \SetKwBlock{block}{}{end}
+ \cmd \cmda{$X_1, X_2, \cdots, X_k$} \block{
+  \If{$r_1 \in (X_{s_1}, X_{o_1}) \wedge r_2 \in (X_{s_2}, X_{o_2}) \wedge \dots r_m \in (X_{s_m}, X_{o_m})$}
+  {$operation_1$\;$operation_2$\;\dots\;$operation_n$\;}
+ }
+ \caption{Command form in \cite{HRU}\label{protection:command}}
+\end{algorithm}
