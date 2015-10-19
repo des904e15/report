@@ -20,22 +20,33 @@ The state, or configuration, of a protection system is a triple $Q = (S, O, P)$,
 Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the subject $s$ has to the object $o$.
 If no such rights exists we have that $P[s,o] = \emptyset$.
 
-Defining a configuration system is the task of defining $R$ and $C$.
+We can represent a configuration $Q$ by annotating the access matrix with the associated subjects and objects.
+Below is an example of this approach in which there is a row for each subject and a column for each object.
+
+\begin{center}
+\begin{tabular}{l|c|c|c|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
+Sam & $\emptyset$ & $\emptyset$ & $\{\textbf{own}, \textbf{read}, \textbf{write}\}$ \\\cline{2-4}
+Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}\}$ \\\cline{2-4}
+\end{tabular}
+\end{center}
+
+Defining a protection system is the task of defining $R$ and $C$.
 Rights have no inherent semantics except for those implied by their use in commands.
 A command is defined as in \cref{protection:command}.
 The arguments for a command are subjects and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
 These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
 
 \begin{algorithm}
- \DontPrintSemicolon
- \SetKwFunction{cmda}{$\alpha$}
- \SetKw{cmd}{command}
- \SetKwBlock{block}{}{end}
- \cmd \cmda{$X_1, X_2, \cdots, X_k$} \block{
-  \If{$r_1 \in P[X_{s_1}, X_{o_1}] \wedge r_2 \in P[X_{s_2}, X_{o_2}] \wedge \dots r_m \in P[X_{s_m}, X_{o_m}]$}
-  {$operation_1$\;$operation_2$\;\dots\;$operation_n$\;}
- }
- \caption{Command form in \cite{HRU}\label{protection:command}}
+  \DontPrintSemicolon
+  \SetKwFunction{cmda}{$\alpha$}
+  \SetKw{cmd}{command}
+  \SetKwBlock{block}{}{end}
+  \cmd \cmda{$X_1, X_2, \cdots, X_k$} \block{
+    \If{$r_1 \in P[X_{s_1}, X_{o_1}] \wedge r_2 \in P[X_{s_2}, X_{o_2}] \wedge \dots r_m \in P[X_{s_m}, X_{o_m}]$}
+    {$operation_1$\;$operation_2$\;\dots\;$operation_n$\;}
+  }
+  \caption{Command form in \cite{HRU}\label{protection:command}}
 \end{algorithm}
 
 \subsubsection{Operations}
@@ -57,3 +68,17 @@ $\begin{array}{l l}
  \caption{The six primitive operations described by \cite{HRU}}
  \label{protection:operations}
 \end{figure}
+
+The application of an operation is written as $Q \Rightarrow_{op} Q'$ and thus $Q \Rightarrow_{op^*} Q'$ represents a sequence of operations.
+An operation is executed by applying its changes to an access matrix resulting in a new access matrix.
+If for instance we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described above we would have a new configuration reflecting the entered right.
+The result of that operation can be seen below:
+
+\begin{center}
+\begin{tabular}{l|c|c|c|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
+Sam & $\emptyset$ & $\emptyset$ & $\{\textbf{own}, \textbf{read}, \textbf{write}\}$ \\\cline{2-4}
+Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}, {\color{blue}\textbf{write}}\}$ \\\cline{2-4}
+\end{tabular}
+\end{center}
+
