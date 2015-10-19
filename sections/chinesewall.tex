@@ -22,11 +22,28 @@ This hierarchy is depicted on \cref{hierarchy}
 	\item The highest level contains conflict of interest classes which group companies that are in competition.
 \end{itemize}
 
-\paragraph{Example} A conflict class could be \emph{Oil companies} which contains \emph{Statoil} and \emph{Shell}. \emph{Statoil} contains objects of information that could compromise the company if \emph{Shell} would obtain the information.
-
+\paragraph{Example} A conflict of interest class could be \emph{Oil companies} which contains \emph{Statoil} and \emph{Shell}. \emph{Statoil} contains objects of information that could compromise the company if \emph{Shell} would obtain the information.
 
 \subsection{The Security Policy}
-The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is conflict of interest class C.
+The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is also in conflict of interest class C.
+
+In \cref{conflict} two companies are in the same conflict of interest class and a subject will not be able to access both of them at the same time.
+Initially the subject will be able to choose freely from the two possibilities, but after choosing one of the companies the other will be unaccessible.
+
+In \cref{conflict2} two companies are added to the system which results in the creation of a new conflict of interest class.
+A subject will be able to access one from each conflict of interest class.
+After choosing a company in conflict of interest class C, the subject still has a free choice from the two companies in conflict of interest class D.
+\begin{figure}
+  \input{./figures/conflict}
+  \caption{Two companies in the same conflict of interest class}
+  \label{conflict}
+\end{figure}
+
+\begin{figure}
+  \input{./figures/conflict2}
+  \caption{Introducing a conflict of interest class}
+  \label{conflict2}
+\end{figure}
 This policy is being upheld by two properties, the \emph{simple security} property and the \emph{star property} corresponding to the identical properties defined in Bell Lapadula \stefan{ref til definitionen i Bellapadula}.
 
 \paragraph{Simple Security}
