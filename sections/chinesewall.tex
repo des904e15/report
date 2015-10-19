@@ -1,0 +1,75 @@
+\section{The Chinese Wall Security Policy}
+
+The first security models that emerged were mainly concerned with military, and were thus tailored to fit the needs of the military. 
+In \cite{brewer1989chinese} a model that is relevant for commercial applications is presented.
+This model fits the needs of corporate business services like an analyst that must uphold the confidentiality of his clients, meaning that he cannot advise a corporation if he has insider knowledge of a competitor.
+The following description is based on \citet{brewer1989chinese}.
+
+\subsection*{The Chinese Wall Model}
+A Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by a user of the system.
+Information is stored in a hierarchy with three levels. 
+This hierarchy is depicted on \cref{hierarchy}.
+
+\begin{itemize}
+	\item The lowest level contains individual items of information, stored in objects.
+	\item The middle level contains company datasets that group all information that concern one company. 
+	\item The highest level contains conflict of interest classes which group companies that are in competition.
+\end{itemize}
+
+\begin{figure}[h]
+  \resizebox{\textwidth}{!}{
+	\input{./figures/chinesestructure}}
+	\caption{The hierarchy of the Chinese Wall model.}
+	\label{hierarchy}
+\end{figure}
+
+\paragraph{Example} A conflict of interest class could be \emph{Oil companies} which contains \emph{Statoil} and \emph{Shell}. \emph{Statoil} contains objects of information that could compromise the company if \emph{Shell} would obtain the information.
+
+\subsection{The Security Policy}
+The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is also in conflict of interest class C.
+
+In \cref{conflict} two companies are in the same conflict of interest class and a subject will not be able to access both of them at the same time.
+Initially the subject will be able to choose freely from the two possibilities, but after choosing one of the companies the other will be unaccessible.
+
+\begin{figure}[h]
+  \centering
+\resizebox{0.3\textwidth}{!}{  
+  \input{./figures/conflict}
+  }
+  \caption{Two companies in the same conflict of interest class}
+  \label{conflict}
+\end{figure}
+
+In \cref{conflict2} two companies are added to the system which results in the creation of a new conflict of interest class.
+A subject will be able to access one from each conflict of interest class.
+After choosing a company in conflict of interest class C, the subject still has a free choice from the two companies in conflict of interest class D.
+
+\begin{figure}[h]
+  \centering
+  \resizebox{0.8\textwidth}{!}{
+    \input{./figures/conflict2}
+    }
+  \caption{Introducing a conflict of interest class}
+  \label{conflict2}
+\end{figure}
+This policy is being upheld by two properties, the \emph{simple security} property and the \emph{star property} corresponding to the identical properties defined in Bell Lapadula \stefan{ref til definitionen i Bellapadula}.
+
+\paragraph{Simple Security}
+
+When a \principal{} S requests to read an object O, this can only be permitted if one of the following requirements are fulfilled:
+
+\begin{itemize}
+\item O is in the same company dataset as an object already accessed by S (the object is within the wall)
+\item O belongs to a entirely different interest class C than S has previously accessed
+\end{itemize}
+
+\paragraph{*-Property}
+
+When a \principal{} S requests to write to an object O if the following requirements are both fulfilled.
+
+\begin{itemize}
+\item Access to O is permitted by the simple security rule
+\item No objects from another object P in another company dataset D, which contains unsanitized information can be read when requesting write access to O
+\end{itemize}
+
+The second requirements ensures that unsanitized information cannot leave the company dataset, but it is still possible to sanitize the data in order to compare companies.
