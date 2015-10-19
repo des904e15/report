@@ -16,13 +16,15 @@ Because of this a system cannot dynamically add or remove rights or commands, un
 Dynamic creation and removal of commands can however be simulated.
 \mikkel{The last part about dynamics is not part of the original article, should we expand on it?}
 
-The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of subjects in the configuration, $O$ is the set of objects in the configuration and $P$ is an access matrix describing the rights each subject has to each object.
+The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of subjects in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each subject has to each object.
 Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the subject $s$ has to the object $o$.
 If no such rights exists we have that $P[s,o] = \emptyset$.
 
 Defining a configuration system is the task of defining $R$ and $C$.
 Rights have no inherent semantics except for those implied by their use in commands.
 A command is defined as in \cref{protection:command}.
+The arguments for a command are subjects and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
+These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
 
 \begin{algorithm}
  \DontPrintSemicolon
@@ -30,8 +32,28 @@ A command is defined as in \cref{protection:command}.
  \SetKw{cmd}{command}
  \SetKwBlock{block}{}{end}
  \cmd \cmda{$X_1, X_2, \cdots, X_k$} \block{
-  \If{$r_1 \in (X_{s_1}, X_{o_1}) \wedge r_2 \in (X_{s_2}, X_{o_2}) \wedge \dots r_m \in (X_{s_m}, X_{o_m})$}
+  \If{$r_1 \in P[X_{s_1}, X_{o_1}] \wedge r_2 \in P[X_{s_2}, X_{o_2}] \wedge \dots r_m \in P[X_{s_m}, X_{o_m}]$}
   {$operation_1$\;$operation_2$\;\dots\;$operation_n$\;}
  }
  \caption{Command form in \cite{HRU}\label{protection:command}}
 \end{algorithm}
+
+\subsubsection{Operations}
+The model described by \cite{HRU} is set to be as simple as conceivably possible.
+Because of this only the list of operations in \cref{protection:operations} are allowed in commands.
+No general purpose computation is directly possible using the proposed model as it does not reflect the protection aspect of the commands semantics.
+
+The semantics of the available operations are formally specified in \cite[p. 463]{HRU}.
+The operations and their associated semantics are quite self explanatory, performing simple updates of the access matrix.
+Because of this they are not included here.
+
+\begin{figure}
+\centering
+$\begin{array}{l l}
+  \textbf{enter } r \textbf{ into } P[X_s, X_o]\quad & \textbf{delete } r \textbf{ from } P[X_s, X_o]\\
+  \textbf{create subject } X_s & \textbf{create object } X_o\\
+  \textbf{destroy subject } X_s & \textbf{destroy object } X_o
+ \end{array}$
+ \caption{The six primitive operations described by \cite{HRU}}
+ \label{protection:operations}
+\end{figure}
