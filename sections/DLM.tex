@@ -85,6 +85,12 @@ The authority is a label $L_A$ of the form ${p:}$ for every \principal in the cu
 \end{center}
 \bruno{math mode font size!?}
 
+\subsection{Channels}
+The model contains two channels, an input and an output channel.
+Information can be leaked through these channels, therefore they have a label associated to them.
+When a value enters the sytem through an input channel, the value gets the label of the input channel.
+If a value is written to an output channel it can only be done if the label of the output channel is more or as restrictive as the label of the value.
+\bruno{Example?}
 
 \subsection{Limitations}
 Timing attacks on timing channels such as cache miss timing.
