@@ -51,9 +51,19 @@ This section contains the rules that need to be followed to avoid information le
 \paragraph{Relabeling by Restriction}
 This rule is for when one is doing an assignment of a \xvalue{} into a variable.
 When a \xvalue{} is read its label is relabelled to the variable and forgotten.
-To avoid leakage this relabeling process the label of the varable must be at least as restrictive.
+To avoid leakage the label of the variable must be at least as restrictive.
+For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
 
-When we have $L_1 \sqsubseteq L_2$ it means that $L_2$ is more restricted than $L_1$.
+So a restriction is when the new label guarantees to enforce all of the policies form the old label.
+If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $rK$ is a subset of $rJ$.
+\begin{center}
+$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(oK = oJ \ \wedge \ rK \subseteq rJ)}{L_1 \sqsubseteq L_2}$
+\end{center}
+\bruno{definition of the relabeling rule - skal den være her?}
+
+\paragraph{Label join}
+When computing two \xvalues a value is derived.
+The derived \xvalues label must reflect its sources, so it has to be at least as restrictive.
 
 \subsection{Limitations}
 Timing attacks on timing channels such as cache miss timing.
