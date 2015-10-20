@@ -23,6 +23,7 @@ The syntax is: <owner>: <readers>.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
+If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $p: \ $.
 
 \paragraph{Labels}\bruno{Add how there is a flow 'inside' a label from owners to readers and add reader constraints and owner constraint rules}
 A \xvalue{} is associated with a label and is a set of privacy policies.
