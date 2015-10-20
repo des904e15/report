@@ -45,6 +45,9 @@ This means that $A$ allows its \xvalue{} to be read by $B$, $B$ allows every rea
 Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
 
 
+To take the \principal{} hierarchy into account when interpreting a label an interpretation function $\textbf{X}$ is introduced.
+For now $\textbf{X}$ takes a label as argument and the set of \principals{} $P$ as an implicit argument.
+Informally this function makes sure that if a reader or owner that acts for some \principal{} $p$ - that $p$ is included in the label interpretation.
 
 
 
