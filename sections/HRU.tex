@@ -23,13 +23,16 @@ If no such rights exists we have that $P[s,o] = \emptyset$.
 We can represent a configuration $Q$ by annotating the access matrix with the associated subjects and objects.
 Below is an example of this approach in which there is a row for each subject and a column for each object.
 
-\begin{center}
+\begin{figure}
+\centering
 \begin{tabular}{l|c|c|c|}
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
 Sam & $\emptyset$ & $\emptyset$ & $\{\textbf{own}, \textbf{read}, \textbf{write}\}$ \\\cline{2-4}
 Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}\}$ \\\cline{2-4}
 \end{tabular}
-\end{center}
+\caption{A representation of a protection system configuration}
+\label{protection:matrixsmall}
+\end{figure}
 
 Defining a protection system is the task of defining $R$ and $C$.
 Rights have no inherent semantics except for those implied by their use in commands.
@@ -74,11 +77,13 @@ An operation is executed by applying its changes to an access matrix resulting i
 If for instance we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described above we would have a new configuration reflecting the entered right.
 The result of that operation can be seen below:
 
-\begin{center}
+\begin{figure}
+\centering
 \begin{tabular}{l|c|c|c|}
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
 Sam & $\emptyset$ & $\emptyset$ & $\{\textbf{own}, \textbf{read}, \textbf{write}\}$ \\\cline{2-4}
 Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}, {\color{blue}\textbf{write}}\}$ \\\cline{2-4}
 \end{tabular}
-\end{center}
-
+\caption{The configuration from \cref{protection:matrixsmall} with an added write right}
+\label{protection:matrixwithwrite}
+\end{figure}
