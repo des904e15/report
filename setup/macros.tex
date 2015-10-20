@@ -101,7 +101,13 @@
 \theorembodyfont{\normalfont}
 \theoremstyle{break}
 \def\theoremframecommand{{\color{gray!50}\vrule width 5pt \hspace{5pt}}}
-\newshadedtheorem{exa}{Example}[chapter]
+\newshadedtheorem{defini}{Definition}[chapter]
+\newenvironment{definition}[0]{%
+    \begin{defini}
+}{%
+    \end{defini}
+}
+\newshadedtheorem{exa}{Example}
 \newenvironment{example}[1]{%
 		\begin{exa}[#1]
 }{%
