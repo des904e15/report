@@ -16,12 +16,12 @@ Because of this a system cannot dynamically add or remove rights or commands, un
 Dynamic creation and removal of commands can however be simulated.
 \mikkel{The last part about dynamics is not part of the original article, should we expand on it?}
 
-The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of subjects in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each subject has to each object.
-Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the subject $s$ has to the object $o$.
+The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
+Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$.
 If no such rights exists we have that $P[s,o] = \emptyset$.
 
-We can represent a configuration $Q$ by annotating the access matrix with the associated subjects and objects.
-Below is an example of this approach in which there is a row for each subject and a column for each object.
+We can represent a configuration $Q$ by annotating the access matrix with the associated \subjects{} and objects.
+Below is an example of this approach in which there is a row for each \subject{} and a column for each object.
 
 \begin{figure}
 \centering
@@ -37,7 +37,7 @@ Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}\}$ \\\cline{2-4}
 Defining a protection system is the task of defining $R$ and $C$.
 Rights have no inherent semantics except for those implied by their use in commands.
 A command is defined as in \cref{protection:command}.
-The arguments for a command are subjects and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
+The arguments for a command are \subjects{} and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
 These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
 
 \begin{algorithm}
@@ -65,8 +65,8 @@ Because of this they are not included here.
 \centering
 $\begin{array}{l l}
   \textbf{enter } r \textbf{ into } P[X_s, X_o]\quad & \textbf{delete } r \textbf{ from } P[X_s, X_o]\\
-  \textbf{create subject } X_s & \textbf{create object } X_o\\
-  \textbf{destroy subject } X_s & \textbf{destroy object } X_o
+  \textbf{create \subject{} } X_s & \textbf{create object } X_o\\
+  \textbf{destroy \subject{} } X_s & \textbf{destroy object } X_o
  \end{array}$
  \caption{The six primitive operations described by \cite{HRU}}
  \label{protection:operations}
@@ -93,7 +93,7 @@ The invocation of a command (with a set of arguments) is described as $Q \vdash_
 
 Should we want to give \textit{Joe} write access (as above) we might do this through a command that will only allow the owner of the data to provide write access.
 An example of such a command is presented in \cref{protection:conferexample}.
-With such a command the \textit{write} right to an object can only be given to a subject by the owner of the object.
+With such a command the \textit{write} right to an object can only be given to a \subject{} by the owner of the object.
 
 \begin{algorithm}
   \DontPrintSemicolon
@@ -106,5 +106,5 @@ With such a command the \textit{write} right to an object can only be given to a
     \If{$own \in P[owner, content]$}
     {\enter{$write$ \into{$P[user, content]$}}\;}
   }
-  \caption{Conferring write rights to another subject \cite{HRU}\label{protection:conferexample}}
+  \caption{Conferring write rights to another \subject{} \cite{HRU}\label{protection:conferexample}}
 \end{algorithm}
