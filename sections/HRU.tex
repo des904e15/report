@@ -87,3 +87,24 @@ Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}, {\color{blue}\textbf{write}}
 \caption{The configuration from \cref{protection:matrixsmall} with an added write right}
 \label{protection:matrixwithwrite}
 \end{figure}
+
+Executing a command is then a matter of applying all of its operations in sequence or doing nothing, depending on the result of the conditional expression associated with the command.
+The invocation of a command (with a set of arguments) is described as $Q \vdash_{\alpha(x_1, x_2, \cdots, x_k)} Q'$ and implies the description given above.
+
+Should we want to give \textit{Joe} write access (as above) we might do this through a command that will only allow the owner of the data to provide write access.
+An example of such a command is presented in \cref{protection:conferexample}.
+With such a command the \textit{write} right to an object can only be given to a subject by the owner of the object.
+
+\begin{algorithm}
+  \DontPrintSemicolon
+  \SetKwFunction{cmda}{confer_{write}}
+  \SetKw{cmd}{command}
+  \SetKw{enter}{enter}
+  \SetKw{into}{into}
+  \SetKwBlock{block}{}{end}
+  \cmd \cmda{owner, user, content} \block{
+    \If{$own \in P[owner, content]$}
+    {\enter{$write$ \into{$P[user, content]$}}\;}
+  }
+  \caption{Conferring write rights to another subject \cite{HRU}\label{protection:conferexample}}
+\end{algorithm}
