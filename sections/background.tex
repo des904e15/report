@@ -48,12 +48,26 @@ However, some shared problems still exist, such as privacy, conflict of interest
 % DK - Centralized through 60 government-regulated distributors, datahub contains/controls all power usage data
 \mikael{I am far from certain of the details here. What is important to mention?}
 
-\paragraph{Privacy}
-% Smart meters will lead to higher granularity power consumption measurements (now: only on-site reporting)
-% Higher granularity can be used commercially in several ways: offer tailored pricing (thus limiting competition), sell to electronics vendors, if lost can compromise residents/similar)
-% Who owns/can use the data?
+\subsubsection{Privacy}
+With the adaptation of smart meters it will be viable to collect power usage data more often.
+This is possible as it can be done remotely, whereas earlier a display would have to be read on the physical electrical meter.
+It also makes sense to have more readings, as tariffs will vary more, and therefore more measurements are needed to match prices during tariff-determined periods.
 
-\paragraph{Conflict of interest}
+This possibility of higher granularity meter readings can be exploited in several ways and by different actors.
+The supplier would like this information in order to better tailor prices for a certain customer, thus limiting competition as their competitors do not possess this information.
+If the power usage data was obtained by an electronics vendor, they could use it to target certain advertisements, based on what devices they detect (or don't) through the power usage.
+Anyone with malicious intent could use the power data to determine who, if anyone, is home (e.g. burglars).
+Finally, the government could use this data to surveil the public.
+
+Some important issues with smart meters and their measurements are therefore:
+\begin{itemize}
+	\item Who owns the data?
+	\item Who should be able to access the data?
+	\item With what granularity should supplier/government/user be able to access the data?
+	\item How do we ensure that only the correct people have access to the smart meter and its data?
+\end{itemize}
+
+\subsubsection{Conflict of interest}
 % Suppliers (to some degree) and governments want use down in peak hours (when renewable supply is lower than demand)
 % Consumers want to use, especially in peak
 % Suppliers also want more profit (they want a better match between market prices and consumer billing)
