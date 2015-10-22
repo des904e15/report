@@ -1,0 +1,50 @@
+\section{Bell Lapadula}
+
+Bell and LaPadula have devised a mathematical model intended for use in  military and governmental computer systems.
+The model formalizes users accessing data and how to handle this in a secure way so confidential information cannot be leaked to a lower classification level.
+The following description is based on \citet{lapadula1996secure}.
+
+\subsection{Access attributes}
+The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
+In addition \emph{control access} is used for giving out attributes to other users.
+
+\paragraph{Read-only}
+This attribute makes it possible to read the object but not alter it.
+The classical example is a file that contains information that should not be changed.
+An example of this could be a list containing the \principals{} in the system with their clearance levels.
+A user of low clearance should be able to read this list but not change it.
+
+\paragraph{Append}
+Append describes a pure write operation.
+This means that it is possible to append information to the end of a file without being able to extract information about the rest of the file.
+
+This can also be used with a printer which appends information what is being printed.
+By doing this it is sufficient that the classification of a piece of information is matching the classification of the printer in order to prevent unauthorized personnel from reading the information.
+
+\paragraph{Execute}
+The exection attribute makes it possible to execute an executable file.
+If the \principal{} does not have permission to read or write the file he will only be able to execute it.
+Similarly the executable file can produce output that is of a higher classification level than the clearance level of the \principal{} executing it.
+
+\paragraph{Read/write}
+This attribute is an interactive read and write access and is what is traditionally used when editing files.
+
+\paragraph{Control access}
+The control access attribute models the notion of a \principal{} having control over a file.
+Having this attribute a principal{} can give out the four attributes just described to other \principals{} in the system.
+
+\subsection{Requests and decisions}
+In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
+In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
+\stefan{to expand or not to expand? Det handler om hvordan hvordan de 5 access attributes skal handteres i en matrice. Er det nodvendigt for os?}
+
+\subsection{Preventing security compromise}
+In order to ensure that data cannot be compromized the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
+
+\paragraph{Security condition}
+The security condition states that a \principal{} with a given clearance level is prevented from having read access to any object which is or can be a source of information with a classification level that is higher than the clearance level of the \principal{}.
+
+\paragraph{*-property}
+The *-property states that if a \principal{} has write or append access to and objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
+This property ensures that it is impossible to leak information to a lower classification level.
+
