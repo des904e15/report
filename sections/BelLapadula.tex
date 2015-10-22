@@ -1,8 +1,8 @@
 \section{Bell Lapadula}
 
-Bell and LaPadula have devised a mathematical model that targets military and governmental computer systems.
-The model formalizes users accessing data and how to handle this in a secure way so a confidential file cannot be leaked to a lower classification level.
-The following is based on \citet{lapadula1996secure}.
+Bell and LaPadula have devised a mathematical model intended for use in  military and governmental computer systems.
+The model formalizes users accessing data and how to handle this in a secure way so confidential information cannot be leaked to a lower classification level.
+The following description is based on \citet{lapadula1996secure}.
 
 \subsection{Access attributes}
 The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
@@ -13,9 +13,6 @@ This attribute makes it possible to read the object but not alter it.
 The classical example is a file that contains information that should not be changed.
 An example of this could be a list containing the \principals{} in the system with their clearance levels.
 A user of low clearance should be able to read this list but not change it.
-
-Another case is input devices.
-A card reader does not have content in iteself, so it could be modeled as a read-only object.
 
 \paragraph{Append}
 Append describes a pure write operation.
