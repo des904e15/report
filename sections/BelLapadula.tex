@@ -41,11 +41,13 @@ In a computer system the \principals{} are not directly accessing objects in the
 In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
 \stefan{to expand or not to expand? Det handler om hvordan hvordan de 5 access attributes skal håndteres mht. en matrice. Er det nødvendigt for os?}
 
-\subsection{The mathematical model}
+\subsection{Preventing security compromise}
+In order to ensure that data cannot be compromized the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
 
-Security condition
+\paragraph{Security condition}
+The security condition states that a \principal{} with a given clearance level is prevented from having read access to any object which is or can be a source of information with a classification level that is higher than the clearance level of the \principal{}.
 
-*-property
-
-Proofs and rules?
+\paragraph{*-property}
+The *-property states that if a \principal{} has write or append access to and objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
+This property ensures that it is impossible to leak information to a lower classification level.
 
