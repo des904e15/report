@@ -75,9 +75,9 @@ This section contains the rules that need to be followed when manipulating label
 When computing two \xvalues{} a value is derived.
 The derived \xvalues{} label must reflect its sources, so it has to be at least as restrictive.
 To ensure this the two labels are joined, this gives us the following join rule:
-\begin{center}
+\begin{definition}
   $L_1 \sqcup L_2 = L_1 \cup L_2$
-\end{center}
+\end{definition}
 
 \paragraph{Relabeling by declassification}
 The owners of the labels control their data, but sometimes the policies are overly restrictive and one wants to relax them.
@@ -93,6 +93,9 @@ The authority is a label $L_A$ of the form ${p: \ }$ for every \principal{} in t
 \begin{center}
   $\frac{L_A = \sqcup_{(p \  \mbox{in current authority})}\{p: \ \}}{L_1 \ \mbox{may be declassified to} \ L_2}$
 \end{center}
+\begin{definition}
+    $\frac{L_1 \sqsubseteq L_2 \sqcup L_A}{L_1 \ \mbox{may be declassified to} \ L_2}$
+\end{definition}
 \bruno{math mode font size!?}
 
 \paragraph{Relabeling by Restriction}
@@ -103,9 +106,9 @@ For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means
 
 So a restriction is when the new label guarantees to enforce all of the policies form the old label.
 If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $rK$ is a subset of $rJ$.
-\begin{center}
+\begin{definition}
 $\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(oK = oJ \ \wedge \ rK \subseteq rJ)}{L_1 \sqsubseteq L_2}$
-\end{center}
+\end{definition}
 \bruno{definition of the relabeling rule - skal den være her?}
 
 \subsection{Limitations}
