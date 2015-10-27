@@ -114,3 +114,38 @@ With such a command the \textit{write} right to an object can only be given to a
   }
   \caption{Conferring write rights to another \subject{} \cite{HRU}\label{protection:conferexample}}
 \end{algorithm}
+
+\subsection{Analysis of Protection Systems}
+Given the formal definition of a protection system we are able to ask specific questions about a given protection system.
+By defining a set of requirements we can ask the same questions about several protection systems in an attempt to determine which system meets most or all of these requirements.
+These questions could be any of the below:
+\begin{itemize}
+\item Does the system leak the right $r$?
+\item Does the system leak the right $r$ to the \subject{} $s$?
+\item Does the system leak the right $r$ to anyone other than \subject{} $s_1$, $s_2$ or $s_3$?
+\end{itemize}
+It should be noted that all these questions are answered on the basis of an initial configuration $Q$.
+In other words; we are not interested in whether or not a right is leaked from an unattainable configuration.
+Additionally we might be interested in determining if a right can be leaked given a specific configuration, effectively deciding what effects a specific right will introduce in the system.
+
+It should be noted that a leak (given in the definition below) is not necessarily a negative.
+Certain rights we will want the system to leak in a specific way.
+We are both interested in ensuring that certain rights are not leaked and that certain other rights are.
+
+\begin{definition}
+A command $\alpha$ leaks the right $r$ from configuration $Q$ if, after running $\alpha$ on $Q$, $r$ is entered into a cell in the access matrix where it did not exist before running $\alpha$.
+A protection system leaks the right $r$ given an initial configuration $Q$ if there exists a command in the system that leaks $r$ from $Q$, or there exists a configuration $Q'$ which is reachable from the initial configuration such that there exists a command in the system that leaks $r$ from $Q'$.
+\end{definition}
+
+\subsubsection{Determine if a System Leaks}
+We can translate the latter two types of questions presented above into the first one.
+Because of this it is sufficient to provide an algorithm that will answer this type of questions.
+In \cite{HRU} they provide proof that there is no generic algorithm which will answer this question.
+
+This is the major result in the article.
+It is also described how such an algorithm exists for a very simple class of protection systems called mono-operational (a system with commands with only a single operation each).
+Thus an algorithm exists for very simple system and not for complex systems.
+
+In order to answer questions about specific protection systems, such as the ones above, custom algorithms must be defined.
+These algorithms must be built such that they can be applied to the protection systems being tested.
+The article does however not describe how to built such an algorithm.
