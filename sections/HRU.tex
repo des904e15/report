@@ -1,1 +1,151 @@
 \section{Protection in Operating Systems}
+As most protection systems have different approaches to how they manage right and chains of trust they are hard to compare on equal terms.
+Additionally it is often not easy to express which rights are leaked under certain conditions, or to whom they are leaked.
+Oftentimes such leaks are only described informally by examining key features of a given system.
+
+The model described in \cite{HRU} can be used to solve these problems.
+By formally describing protection systems using a unified model, they can be compared in terms of the rights that they leak.
+Using this approach two possible solutions (protection systems) to a problem can be compared on even terms.
+
+In the following the model proposed by \cite{HRU} is presented.
+
+\subsection{A Protection System}
+A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
+Note that both these sets are finite and static for a given system.
+Because of this a system cannot dynamically add or remove rights or commands, under this model.
+Dynamic creation and removal of commands can however be simulated.
+\mikkel{The last part about dynamics is not part of the original article, should we expand on it?}
+
+\begin{definition}
+The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
+Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$.
+If no such rights exists we have that $P[s,o] = \emptyset$.
+\end{definition}
+
+We can represent a configuration $Q$ by annotating the access matrix with the associated \subjects{} and objects.
+Below is an example of this approach in which there is a row for each \subject{} and a column for each object.
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{l|c|c|c|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
+Sam & $\emptyset$ & $\emptyset$ & $\{\textbf{own}, \textbf{read}, \textbf{write}\}$ \\\cline{2-4}
+Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}\}$ \\\cline{2-4}
+\end{tabular}
+\caption{A representation of a protection system configuration}
+\label{protection:matrixsmall}
+\end{figure}
+
+Defining a protection system is the task of defining $R$ and $C$.
+Rights have no inherent semantics except for those implied by their use in commands.
+
+\begin{definition}
+A protection system is a finite set of rights $R$ and a finite set of commands $C$.
+A command is defined as in \cref{protection:command}.
+The arguments for a command are \subjects{} and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
+These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
+\end{definition}
+
+\begin{algorithm}
+  \DontPrintSemicolon
+  \SetKwFunction{cmda}{$\alpha$}
+  \SetKw{cmd}{command}
+  \SetKwBlock{block}{}{end}
+  \cmd \cmda{$X_1, X_2, \cdots, X_k$} \block{
+    \If{$r_1 \in P[X_{s_1}, X_{o_1}] \wedge r_2 \in P[X_{s_2}, X_{o_2}] \wedge \dots r_m \in P[X_{s_m}, X_{o_m}]$}
+    {$operation_1$\;$operation_2$\;\dots\;$operation_n$\;}
+  }
+  \caption{Command form in \cite{HRU}\label{protection:command}}
+\end{algorithm}
+
+\subsubsection{Operations}
+The model described by \cite{HRU} is set to be as simple as conceivably possible.
+Because of this only the list of operations in \cref{protection:operations} are allowed in commands.
+No general purpose computation is directly possible using the proposed model as it does not reflect the protection aspect of the commands semantics.
+
+The semantics of the available operations are formally specified in \cite[p. 463]{HRU}.
+The operations and their associated semantics are quite self explanatory, performing simple updates of the access matrix.
+Because of this they are not included here.
+
+\begin{figure}
+\centering
+$\begin{array}{l l}
+  \textbf{enter } r \textbf{ into } P[X_s, X_o]\quad & \textbf{delete } r \textbf{ from } P[X_s, X_o]\\
+  \textbf{create \subject{} } X_s & \textbf{create object } X_o\\
+  \textbf{destroy \subject{} } X_s & \textbf{destroy object } X_o
+ \end{array}$
+ \caption{The six primitive operations described by \cite{HRU}}
+ \label{protection:operations}
+\end{figure}
+
+The application of an operation is written as $Q \Rightarrow_{op} Q'$ and thus $Q \Rightarrow_{op^*} Q'$ represents a sequence of operations.
+An operation is executed by applying its changes to an access matrix resulting in a new access matrix.
+If for instance we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described above we would have a new configuration reflecting the entered right.
+The result of that operation can be seen below:
+
+\begin{figure}
+\centering
+\begin{tabular}{l|c|c|c|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
+Sam & $\emptyset$ & $\emptyset$ & $\{\textbf{own}, \textbf{read}, \textbf{write}\}$ \\\cline{2-4}
+Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}, {\color{blue}\textbf{write}}\}$ \\\cline{2-4}
+\end{tabular}
+\caption{The configuration from \cref{protection:matrixsmall} with an added write right}
+\label{protection:matrixwithwrite}
+\end{figure}
+
+Executing a command is then a matter of applying all of its operations in sequence or doing nothing, depending on the result of the conditional expression associated with the command.
+The invocation of a command (with a set of arguments) is described as $Q \vdash_{\alpha(x_1, x_2, \cdots, x_k)} Q'$ and implies the description given above.
+
+Should we want to give \textit{Joe} write access (as above) we might do this through a command that will only allow the owner of the data to provide write access.
+An example of such a command is presented in \cref{protection:conferexample}.
+With such a command the \textit{write} right to an object can only be given to a \subject{} by the owner of the object.
+
+\begin{algorithm}
+  \DontPrintSemicolon
+  \SetKwFunction{cmda}{confer_{write}}
+  \SetKw{cmd}{command}
+  \SetKw{enter}{enter}
+  \SetKw{into}{into}
+  \SetKwBlock{block}{}{end}
+  \cmd \cmda{owner, user, content} \block{
+    \If{$own \in P[owner, content]$}
+    {\enter{$write$ \into{$P[user, content]$}}\;}
+  }
+  \caption{Conferring write rights to another \subject{} \cite{HRU}\label{protection:conferexample}}
+\end{algorithm}
+
+\subsection{Analysis of Protection Systems}
+Given the formal definition of a protection system we are able to ask specific questions about a given protection system.
+By defining a set of requirements we can ask the same questions about several protection systems in an attempt to determine which system meets most or all of these requirements.
+These questions could be any of the below:
+\begin{itemize}
+\item Does the system leak the right $r$?
+\item Does the system leak the right $r$ to the \subject{} $s$?
+\item Does the system leak the right $r$ to anyone other than \subject{} $s_1$, $s_2$ or $s_3$?
+\end{itemize}
+It should be noted that all these questions are answered on the basis of an initial configuration $Q$.
+In other words; we are not interested in whether or not a right is leaked from an unattainable configuration.
+Additionally we might be interested in determining if a right can be leaked given a specific configuration, effectively deciding what effects a specific right will introduce in the system.
+
+It should be noted that a leak (given in the definition below) is not necessarily a negative.
+Certain rights we will want the system to leak in a specific way.
+We are both interested in ensuring that certain rights are not leaked and that certain other rights are.
+
+\begin{definition}
+A command $\alpha$ leaks the right $r$ from configuration $Q$ if, after running $\alpha$ on $Q$, $r$ is entered into a cell in the access matrix where it did not exist before running $\alpha$.
+A protection system leaks the right $r$ given an initial configuration $Q$ if there exists a command in the system that leaks $r$ from $Q$, or there exists a configuration $Q'$ which is reachable from the initial configuration such that there exists a command in the system that leaks $r$ from $Q'$.
+\end{definition}
+
+\subsubsection{Determine if a System Leaks}
+We can translate the latter two types of questions presented above into the first one.
+Because of this it is sufficient to provide an algorithm that will answer this type of questions.
+In \cite{HRU} they provide proof that there is no generic algorithm which will answer this question.
+
+This is the major result in the article.
+It is also described how such an algorithm exists for a very simple class of protection systems called mono-operational (a system with commands with only a single operation each).
+Thus an algorithm exists for very simple system and not for complex systems.
+
+In order to answer questions about specific protection systems, such as the ones above, custom algorithms must be defined.
+These algorithms must be built such that they can be applied to the protection systems being tested.
+The article does however not describe how to built such an algorithm.
