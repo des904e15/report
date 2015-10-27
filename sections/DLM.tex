@@ -30,8 +30,9 @@ The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $p: <space> $\bruno{Synes det var mere klart end $p: \ $.}.
 
-\subsection{Labels}
-A \xvalue{} is associated with a label and is a set of privacy policies.
+\subsection{Labels}\bruno{Måske lidt roddet afsnit?}
+A \xvalue{} is associated with a label.
+The label is a set of privacy policies.
 When the \xvalue{} flows through the system, all the policies need to be obeyed.
 The policies are intersected, so we have one set of owners and readers.
 Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
