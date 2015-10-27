@@ -50,12 +50,35 @@ For now $\textbf{X}$ takes a label as argument and the set of \principals{} $P$ 
 Informally this function makes sure that if a reader or owner that acts for some \principal{} $p$ - that $p$ is included in the label interpretation.
 
 
+The set of flows for a label need to satisfy two constraints for the given principal hierarchy.
+One for readers and one for owners.
+The following is the shows the reader constraint:
+If we have $(o,r)$ and $r' \succeq r$ then $o,r'$ must also be in the set of flows.
+Formally($\rightarrow$ used for implication):
+\begin{center}
+  $r' \succeq r \ \wedge \ (o,r) \in \textbf{X}L \rightarrow (o,r') \in \textbf{X}L$
+\end{center}
+And the owner constraint:
+If we have $(o,r)$ and $o' \succeq o$ and relabel to $(o',r)$, so a owner gets replaced by an owner that acts for it.
+\begin{center}
+  $o' \succeq o \ \wedge \ (o',r) \notin \textbf{X}L \rightarrow (o,r) \notin \textbf{X}L$
+\end{center}
+
+The function \textbf{R} is essentially adds all readers that can be found by looking at the acts for relations.
+The \textbf{O} function converts a label into a set of flows and removes the once that are not allowed.
+Definition of the interpretation function $\textbf{X}$:
+\begin{center}
+  $\textbf{X}L \ = \ \textbf{OR}L \ = \ \{(o,r)|\forall (I \in L) \textbf{o}I \succeq o \rightarrow [r \succeq \textbf{o}I \vee \exists (r' \in \textbf{r}I) r \succeq r'] \}$
+\end{center}
+
+By using \textbf{X} we can verify a relabeling by applying the following correctness check.
+\begin{center}
+  $\frac{\textbf{X}(L_1, P)\subseteq \textbf{X}(L_2,P)}{\mbox{Relabeling from} \ L_1 \ \mbox{to} \ L_2 \ \mbox{is safe in} \ P }$
+\end{center}
 
 If a label contains no policies it is written as an empty set.
 A label can contain one or more privacy policies for the same \principal{}.
 These are enforced just as other policies.
-\bruno{You want more example??}
-
 
 Some further notation:
 We have policy $K$ and label $L$.
