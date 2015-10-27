@@ -16,14 +16,16 @@ Because of this a system cannot dynamically add or remove rights or commands, un
 Dynamic creation and removal of commands can however be simulated.
 \mikkel{The last part about dynamics is not part of the original article, should we expand on it?}
 
+\begin{definition}
 The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
 Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$.
 If no such rights exists we have that $P[s,o] = \emptyset$.
+\end{definition}
 
 We can represent a configuration $Q$ by annotating the access matrix with the associated \subjects{} and objects.
 Below is an example of this approach in which there is a row for each \subject{} and a column for each object.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tabular}{l|c|c|c|}
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{Sam} & \multicolumn{1}{c}{Joe} & \multicolumn{1}{c}{Data} \\\cline{2-4}
@@ -36,9 +38,13 @@ Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}\}$ \\\cline{2-4}
 
 Defining a protection system is the task of defining $R$ and $C$.
 Rights have no inherent semantics except for those implied by their use in commands.
+
+\begin{definition}
+A protection system is a finite set of rights $R$ and a finite set of commands $C$.
 A command is defined as in \cref{protection:command}.
 The arguments for a command are \subjects{} and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
 These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
+\end{definition}
 
 \begin{algorithm}
   \DontPrintSemicolon
