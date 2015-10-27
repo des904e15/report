@@ -106,6 +106,17 @@ The authority is a label $L_A$ of the form ${p: \ }$ for every \principal{} in t
 \end{center}
 \bruno{math mode font size!?}
 
+\subsection{Limitations}
+The rule for declassification is too strict as it is only possible to remove readers and add policies and therefore prevents valid relabelings.
+There are three possible valid relabelings which are not possible at the moment:
+\begin{itemize}
+\item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
+\item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
+\item Self-authorization - every \principal{} that acts for an owner of a policy should be possible to add as a reader.
+\end{itemize}
+
+\paragraph{Extending the relabeling by restriciton rule}
+
 \subsection{Channels}
 The model contains two channels, an input and an output channel.
 Information can be leaked through these channels, therefore they have a label associated to them.
