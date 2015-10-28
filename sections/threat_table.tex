@@ -1,0 +1,125 @@
+%!TEX root = ../table.tex
+\newcommand{\noattack}{N/A}
+\newenvironment{attacktable}[2]
+{
+  \begin{tabular}{|p{2.2cm}*{#1}{|p{#2}}|}\hline
+ & \multicolumn{#1}{|c|}{Attacks made against} \\ \hline
+}
+{
+  \\\hline
+  \end{tabular}
+}
+\newenvironment{attacklist}
+{
+  \begin{itemize}
+  \setlength{\itemsep}{0em}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}
+{
+  \end{itemize}
+}
+\newcommand{\header}[1]{\multicolumn{1}{|c|}{#1}}
+
+\begin{attacktable}{1}{10cm}
+& \header{Distributor} \\ \hline
+Consumer &
+\begin{attacklist}
+\item Rapporter lavt forbrug
+\item Upload own firmware (login som distribution)
+\item Crack SM op og sæt ekstra HW i
+\item Intercept pakker og forfalsk dem
+\item Side channel (nøgler)
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{2}{5cm}
+& \header{Consumer} & \header{Appliance} \\ \hline
+Distributor
+&
+\begin{attacklist}
+\item Manipulere det målte data på SM, på en måde så brugeren ikke kan se det og han ikke fatter mistanke når han ser regningen.
+\begin{attacklist}
+\item Marginal ændring i det data når det bliver målt
+\item Ændring i det loggede data
+\end{attacklist}
+\item Opkræver forkert pris fra brugeren
+\item Opsnappe  og sælge information omkring hvilke elapparater en forbruger har
+\item Tænde for elapparater når det er favorabelt for distributøren
+\end{attacklist}
+&
+\begin{attacklist}
+\item Præference for forskellige produkter mod betaling
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{2}{5cm}
+& \header{Consumer} & \header{Appliance} \\ \hline
+Developers of\newline 3rd party apps
+&
+\begin{attacklist}
+\item Udvikle app der ser god ud, men som uploader til dev
+\item Udvikle app der ser god ud, rapporter forkert forbrug
+\begin{attacklist}
+\item Fx Elselskab mod elselskab hvor det ene elselskab udvikler en app der rapporterer forkert forbrug så forbrugeren får lyst til at skifte elselskab
+\end{attacklist}
+\item Sluk efter behag - for sjov/had
+\end{attacklist}
+&
+\begin{attacklist}
+\item Forkert information omkring forbrug som tilgodeser nogle elapparat producenter
+\item Få bestemte elapparater til at se defekte ud
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{1}{10cm}
+& \header{Consumer} \\ \hline
+Neighbors
+&
+\begin{attacklist}
+\item Sluk for el apparater fordi de fx larmer
+\item Tilslutte el apparat til nabos SM
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{1}{10cm}
+& \header{Consumer} \\ \hline
+Burglar
+&
+\begin{attacklist}
+\item Se om lejer er hjemme
+\item Hvor mange og hvilke el apparater har forbruger
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{1}{10cm}
+& \header{Consumer} \\ \hline
+Girlfriend
+&
+\begin{attacklist}
+\item Er der nogen hjemme
+\item Hvilke apparater er tændt
+\item Slet forbruger som bruger på SM
+\item Slukke for forbrugerens apparater
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{3}{3.3cm}
+& \header{Consumer} & \header{Distribution} & \header{Appliance company} \\ \hline
+Appliance \newline company
+&
+\begin{attacklist}
+\item Apparater sender information til producent
+\item Få SM til at vise at et apparat bruger mindre end det gør
+\end{attacklist}
+&
+\begin{attacklist}
+\item Få SM til at vise at et apparat bruger mindre end det gør
+\end{attacklist}
+&
+\begin{attacklist}
+\item Få SM til at vise at et apparat bruger mindre end det gør så det klarer sig bedre i sammenligninger med konkurrenter
+\end{attacklist}
+\end{attacktable}
+
+\end{tabular}
