@@ -25,11 +25,11 @@
 & \header{Distributor} \\ \hline
 Consumer &
 \begin{attacklist}
-\item Rapporter lavt forbrug
-\item Upload own firmware (login som distribution)
-\item Crack SM op og sæt ekstra HW i
-\item Intercept pakker og forfalsk dem
-\item Side channel (nøgler)
+\item Report a lower consumption.
+\item Upload own firmware / login as distributor.
+\item Crack SM open and connect external hardware.
+\item Intercept packages and falsify them.
+\item Side channels (nøgler)
 \end{attacklist}
 \end{attacktable}
 
@@ -38,18 +38,18 @@ Consumer &
 Distributor
 &
 \begin{attacklist}
-\item Manipulere det målte data på SM, på en måde så brugeren ikke kan se det og han ikke fatter mistanke når han ser regningen.
+\item Manipulate the measured data stored by the SM in a way that the user cannot detect. A marginal change in the data can be marginal as to not arouse suspicion.
 \begin{attacklist}
-\item Marginal ændring i det data når det bliver målt
-\item Ændring i det loggede data
+\item Change in the way data is stored.
+\item Change in the stored data.
 \end{attacklist}
-\item Opkræver forkert pris fra brugeren
-\item Opsnappe  og sælge information omkring hvilke elapparater en forbruger har
-\item Tænde for elapparater når det er favorabelt for distributøren
+\item Bill the user incorrectly.
+\item Extract and sell information about the type of appliances the consumer has.
+\item Turn on appliances when favorable to the distributor.
 \end{attacklist}
 &
 \begin{attacklist}
-\item Præference for forskellige produkter mod betaling
+\item Preference to specific products in return for payment.
 \end{attacklist}
 \end{attacktable}
 
@@ -58,17 +58,17 @@ Distributor
 Developers of\newline 3rd party apps
 &
 \begin{attacklist}
-\item Udvikle app der ser god ud, men som uploader til dev
-\item Udvikle app der ser god ud, rapporter forkert forbrug
+\item Develop app that looks \textit{right}, but uploads private information to the developer.
+\item Develop app that looks \textit{right}, but reports incorrect consumption.
 \begin{attacklist}
-\item Fx Elselskab mod elselskab hvor det ene elselskab udvikler en app der rapporterer forkert forbrug så forbrugeren får lyst til at skifte elselskab
+\item E.g. An electrical company that reports incorrect values when the user uses a different electrical company.
 \end{attacklist}
-\item Sluk efter behag - for sjov/had
+\item Turn off appliances (trolling)
 \end{attacklist}
 &
 \begin{attacklist}
-\item Forkert information omkring forbrug som tilgodeser nogle elapparat producenter
-\item Få bestemte elapparater til at se defekte ud
+\item Incorrect information about useage that favors specific appliances or specific appliance producers.
+\item Have specific appliances appear to be defect.
 \end{attacklist}
 \end{attacktable}
 
@@ -77,8 +77,8 @@ Developers of\newline 3rd party apps
 Neighbors
 &
 \begin{attacklist}
-\item Sluk for el apparater fordi de fx larmer
-\item Tilslutte el apparat til nabos SM
+\item Turn off appliances because they are noisy.
+\item Connect appliances to the neighbors SM.
 \end{attacklist}
 \end{attacktable}
 
@@ -87,8 +87,8 @@ Neighbors
 Burglar
 &
 \begin{attacklist}
-\item Se om lejer er hjemme
-\item Hvor mange og hvilke el apparater har forbruger
+\item Check to see if the consumer is at home.
+\item Attempt to determine how many (and which) appliances the consumer has.
 \end{attacklist}
 \end{attacktable}
 
@@ -97,10 +97,10 @@ Burglar
 Girlfriend
 &
 \begin{attacklist}
-\item Er der nogen hjemme
-\item Hvilke apparater er tændt
-\item Slet forbruger som bruger på SM
-\item Slukke for forbrugerens apparater
+\item Check if there is anyone at home.
+\item Check which appliances are on.
+\item Erase consumer as user from the SM.
+\item Turn off the consumers appliances.
 \end{attacklist}
 \end{attacktable}
 
@@ -109,16 +109,16 @@ Girlfriend
 Appliance \newline company
 &
 \begin{attacklist}
-\item Apparater sender information til producent
-\item Få SM til at vise at et apparat bruger mindre end det gør
+\item Appliances sending information about usage to the producer of the appliances.
+\item Have SM display a lower consumption for an appliance than the actual consumption.
 \end{attacklist}
 &
 \begin{attacklist}
-\item Få SM til at vise at et apparat bruger mindre end det gør
+\item Have SM display a lower consumption for an appliance than the actual consumption.
 \end{attacklist}
 &
 \begin{attacklist}
-\item Få SM til at vise at et apparat bruger mindre end det gør så det klarer sig bedre i sammenligninger med konkurrenter
+\item Have SM display a lower consumption for an appliance than the actual consumption, such that it will look better when compared to competitors.
 \end{attacklist}
 \end{attacktable}
 
