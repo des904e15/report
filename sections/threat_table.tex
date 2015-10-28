@@ -1,0 +1,125 @@
+%!TEX root = ../table.tex
+\newcommand{\noattack}{N/A}
+\newenvironment{attacktable}[2]
+{
+  \begin{tabular}{|p{2.2cm}*{#1}{|p{#2}}|}\hline
+ & \multicolumn{#1}{|c|}{Attacks made against} \\ \hline
+}
+{
+  \\\hline
+  \end{tabular}
+}
+\newenvironment{attacklist}
+{
+  \begin{itemize}
+  \setlength{\itemsep}{0em}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}
+{
+  \end{itemize}
+}
+\newcommand{\header}[1]{\multicolumn{1}{|c|}{#1}}
+
+\begin{attacktable}{1}{10cm}
+& \header{Distributor} \\ \hline
+Consumer &
+\begin{attacklist}
+\item Report a lower consumption.
+\item Upload own firmware / login as distributor.
+\item Crack SM open and connect external hardware.
+\item Intercept packages and falsify them.
+\item Side channels (nøgler)
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{2}{5cm}
+& \header{Consumer} & \header{Appliance} \\ \hline
+Distributor
+&
+\begin{attacklist}
+\item Manipulate the measured data stored by the SM in a way that the user cannot detect. A marginal change in the data can be marginal as to not arouse suspicion.
+\begin{attacklist}
+\item Change in the way data is stored.
+\item Change in the stored data.
+\end{attacklist}
+\item Bill the user incorrectly.
+\item Extract and sell information about the type of appliances the consumer has.
+\item Turn on appliances when favorable to the distributor.
+\end{attacklist}
+&
+\begin{attacklist}
+\item Preference to specific products in return for payment.
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{2}{5cm}
+& \header{Consumer} & \header{Appliance} \\ \hline
+Developers of\newline 3rd party apps
+&
+\begin{attacklist}
+\item Develop app that looks \textit{right}, but uploads private information to the developer.
+\item Develop app that looks \textit{right}, but reports incorrect consumption.
+\begin{attacklist}
+\item E.g. An electrical company that reports incorrect values when the user uses a different electrical company.
+\end{attacklist}
+\item Turn off appliances (trolling)
+\end{attacklist}
+&
+\begin{attacklist}
+\item Incorrect information about useage that favors specific appliances or specific appliance producers.
+\item Have specific appliances appear to be defect.
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{1}{10cm}
+& \header{Consumer} \\ \hline
+Neighbors
+&
+\begin{attacklist}
+\item Turn off appliances because they are noisy.
+\item Connect appliances to the neighbors SM.
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{1}{10cm}
+& \header{Consumer} \\ \hline
+Burglar
+&
+\begin{attacklist}
+\item Check to see if the consumer is at home.
+\item Attempt to determine how many (and which) appliances the consumer has.
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{1}{10cm}
+& \header{Consumer} \\ \hline
+Girlfriend
+&
+\begin{attacklist}
+\item Check if there is anyone at home.
+\item Check which appliances are on.
+\item Erase consumer as user from the SM.
+\item Turn off the consumers appliances.
+\end{attacklist}
+\end{attacktable}
+
+\begin{attacktable}{3}{3.3cm}
+& \header{Consumer} & \header{Distribution} & \header{Appliance company} \\ \hline
+Appliance \newline company
+&
+\begin{attacklist}
+\item Appliances sending information about usage to the producer of the appliances.
+\item Have SM display a lower consumption for an appliance than the actual consumption.
+\end{attacklist}
+&
+\begin{attacklist}
+\item Have SM display a lower consumption for an appliance than the actual consumption.
+\end{attacklist}
+&
+\begin{attacklist}
+\item Have SM display a lower consumption for an appliance than the actual consumption, such that it will look better when compared to competitors.
+\end{attacklist}
+\end{attacktable}
+
+\end{tabular}
