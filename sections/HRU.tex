@@ -1,13 +1,13 @@
 \section{Protection in Operating Systems}
-As most protection systems have different approaches to how they manage right and chains of trust they are hard to compare on equal terms.
+As most protection systems have different approaches to how they manage rights and chains of trust they are hard to compare on equal terms.
 Additionally it is often not easy to express which rights are leaked under certain conditions, or to whom they are leaked.
 Oftentimes such leaks are only described informally by examining key features of a given system.
 
-The model described in \cite{HRU} can be used to solve these problems.
+The model described in \citet{HRU} can be used to solve these problems.
 By formally describing protection systems using a unified model, they can be compared in terms of the rights that they leak.
 Using this approach two possible solutions (protection systems) to a problem can be compared on even terms.
 
-In the following the model proposed by \cite{HRU} is presented.
+In the following the model proposed by \citet{HRU} is presented.
 
 \subsection{A Protection System}
 A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
@@ -18,12 +18,12 @@ Dynamic creation and removal of commands can however be simulated.
 
 \begin{definition}
 The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
-Thus $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$.
+Finally $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$ (with $P[s, o] \subseteq R$).
 If no such rights exists we have that $P[s,o] = \emptyset$.
 \end{definition}
 
 We can represent a configuration $Q$ by annotating the access matrix with the associated \subjects{} and objects.
-Below is an example of this approach in which there is a row for each \subject{} and a column for each object.
+\Cref{protection:matrixsmall} shows an example of this approach in which there is a row for each \subject{} and a column for each object.
 
 \begin{figure}[h]
 \centering
@@ -41,7 +41,7 @@ Rights have no inherent semantics except for those implied by their use in comma
 
 \begin{definition}
 A protection system is a finite set of rights $R$ and a finite set of commands $C$.
-A command is defined as in \cref{protection:command}.
+A command is defined as in \cref{protection:command}. \stefan{jeg savner en kort uddybning af en kommando}
 The arguments for a command are \subjects{} and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
 These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
 \end{definition}
@@ -59,11 +59,11 @@ These restrictions are a direct result of the definition of $P$ and are that $X_
 \end{algorithm}
 
 \subsubsection{Operations}
-The model described by \cite{HRU} is set to be as simple as conceivably possible.
+The model described by \citet{HRU} is set to be as simple as conceivably possible.
 Because of this only the list of operations in \cref{protection:operations} are allowed in commands.
 No general purpose computation is directly possible using the proposed model as it does not reflect the protection aspect of the commands semantics.
 
-The semantics of the available operations are formally specified in \cite[p. 463]{HRU}.
+The semantics of the available operations are formally specified in \citet[p. 463]{HRU}.
 The operations and their associated semantics are quite self explanatory, performing simple updates of the access matrix.
 Because of this they are not included here.
 
@@ -77,11 +77,12 @@ $\begin{array}{l l}
  \caption{The six primitive operations described by \cite{HRU}}
  \label{protection:operations}
 \end{figure}
+\stefan{jeg synes ikke det er en fordel at det er i to kolonner}
 
 The application of an operation is written as $Q \Rightarrow_{op} Q'$ and thus $Q \Rightarrow_{op^*} Q'$ represents a sequence of operations.
 An operation is executed by applying its changes to an access matrix resulting in a new access matrix.
-If for instance we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described above we would have a new configuration reflecting the entered right.
-The result of that operation can be seen below:
+If for instance we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described in \cref{protection:matrixsmall} we would have a new configuration reflecting the entered right.
+The result of that operation can be seen in \cref{protection:matrixwithwrite}.
 
 \begin{figure}
 \centering
@@ -140,7 +141,7 @@ A protection system leaks the right $r$ given an initial configuration $Q$ if th
 \subsubsection{Determine if a System Leaks}
 We can translate the latter two types of questions presented above into the first one.
 Because of this it is sufficient to provide an algorithm that will answer this type of questions.
-In \cite{HRU} they provide proof that there is no generic algorithm which will answer this question.
+\Citet{HRU} provides proof that there is no generic algorithm which will answer this question.
 
 This is the major result in the article.
 It is also described how such an algorithm exists for a very simple class of protection systems called mono-operational (a system with commands with only a single operation each).
