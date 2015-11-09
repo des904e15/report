@@ -1,19 +1,30 @@
 \section{Decentralized Label Model}
 \bruno{Skal vi holde os til en term: value, data, information. De bruger det i flæng i litteraturen?}
 \stefan{jeg synes vi skal holde os til én term}
+\mikkelin{Jeg synes de forskellige termer kan dække over forskellige ting og giver mening i forskellig kontekst.
+Så nej, jeg synes ikke vi skal holde os til en af dem.}
 \bruno{Er det her denretning vi vil i? Hvis ja - så vil jeg godt tilføje nogle figurer til de små eksempler.}
 \newcommand{\xvalue}{value}
 \newcommand{\xvalues}{values}
 This section describes the Decentralized Label Model(DLM) both formally and informally with small examples.
 \stefan{der mangler noget blødere introduktion der forklarer hvad DLM er og hvad det skal bruges til}
+\mikkelin{Enig - det bør umiddelbart være den uformelle beskrivelse der kommer her.
+Jeg har i øvrigt svært ved at finde den uformelle beskrivelse i teksten.}
 
 \subsection{Definition of terms}
+\mikkelin{Jeg synes det her afsnit er lidt underligt.
+Hvorfor er acts for og privacy policy kun \emph{terms}?
+Burde de ikke bare have deres egen subsection?}
 This section defines and explains some of the terms used to explain the DLM.
+\mikkelin{Samme kommentar som Stefans ovenfor.
+Det er svært at følge teksten når vi som det første hopper direkte til \textbf{acts for} uden nogen motivation for hvorfor eller har en overordnet forståelse af modellen.}
 
 \paragraph{Acts for relation}
 The acts for relation, $\rightarrow$, can be used to model groups and roles.
 To model two \principals{}, Amy and Bob, that act for a group of programmers: $Amy \rightarrow programmers$ and $Bob \rightarrow programmers$.
 Or if Amy has different roles: $Amy \rightarrow Amy\_programmer$ and $Amy \rightarrow Amy\_admin$.
+\mikkel{Som jeg læser det er der to forskellige eksempler her.
+Men vi mangler en beskrivelse af hvad formålet med acts for er og hvad det betyder i DLM.}
 
 \stefan{brug $\succeq$ i stedet for $\rightarrow$ }
 
@@ -25,6 +36,7 @@ So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
 
 \paragraph{Value}
 A \xvalue{} is a piece of data in a program, for instance an integer.
+\mikkel{Jeg ville slette det her, men jeg vil gerne lige vende det med gruppen. Er det nødvendigt at forklare hvad ``value'' betyder?}
 
 \paragraph{Privacy policy}
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
@@ -32,7 +44,8 @@ The syntax is: <owner>: <readers>.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data. \stefan{som jeg læser det er dette ikke korrekt, en owener kan ikke nødvendigvis læse sin egen data, fx {o1: r1,r2 ; o2 : o2,r1}, kan læses af o2 og r1}
-If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $p: <space> $\bruno{Synes det var mere klart end $p: \ $.}.
+If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $p: <space> $.
+\bruno{Synes det var mere klart end $p: \ $.}
 
 \subsection{Labels}\bruno{Måske lidt roddet afsnit?}
 A \xvalue{} is associated with a label.
@@ -79,7 +92,7 @@ We have policy $K$ and label $L$.
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
 
 \paragraph{Label join}
-When computing two \xvalues{} a value is derived.
+When computing two \xvalues{} a \xvalue{} is derived.
 The derived \xvalues{} label must reflect its sources, so it has to be at least as restrictive.
 To ensure this the two labels are joined by calculating the union of the two labels, this gives us the following join rule:
 \begin{definition}
