@@ -62,8 +62,8 @@ If a \principal{} is not among the owners of a label, it is the same as if it wa
 
 
 For example when we have three owners: $o_1, o_2, o_3$ and three readers: $r_1, r_2, r_3$ and the following labels:
-$L_1 = {o_1: r_1,r_2; o_2: r_2, r_3}$
-$L_2 = {o_1: r_1,r_2; o_2: r_2, r_3; o_3: r_1, r_2, r_3}$
+$L_1 = \{o_1: r_1,r_2; o_2: r_2, r_3\}$
+$L_2 = \{o_1: r_1,r_2; o_2: r_2, r_3; o_3: r_1, r_2, r_3\}$
 we have that: $L_1 = L_2$ because when $o_3$ is not among the owners in $L_1$ it is the same as if it was there with all possible readers as in $L_2$ - the resulting effective set of readers is the same.
 
 When a label interprets its privacy policies it understands it as a set of flows.
@@ -110,7 +110,7 @@ This means that if a \principal{} is in the authority set this can be declassifi
 
 \stefan{der mangler forklaring af hvad  $\sqsubseteq$ er }
 A label $L_1$ can be relabeled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ where $L_A$ is the authority.
-The authority is a label $L_A$ of the form ${p: \ }$ for every \principal{} in the current authority.
+The authority is a label $L_A$ of the form $\{p: \ \}$ for every \principal{} in the current authority.
 Given:
 \begin{center}
   $L_A = \bigsqcup_{(p \  \mbox{in current authority})}\{p: <space> \}$
