@@ -22,7 +22,7 @@ This can also be used with a printer which appends information what is being pri
 By doing this it is sufficient that the classification of a piece of information is matching the classification of the printer in order to prevent unauthorized personnel from reading the information.
 
 \paragraph{Execute}
-The exection attribute makes it possible to execute an executable file.
+The execution attribute makes it possible to execute an executable file.
 If the \principal{} does not have permission to read or write the file he will only be able to execute it.
 Similarly the executable file can produce output that is of a higher classification level than the clearance level of the \principal{} executing it.
 
@@ -37,6 +37,7 @@ Having this attribute a principal{} can give out the four attributes just descri
 In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
 In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
 \stefan{to expand or not to expand? Det handler om hvordan hvordan de 5 access attributes skal handteres i en matrice. Er det nodvendigt for os?}
+\bruno{Good question - would be nice to have as it is simplier to compare to the others that have access matrices - so depends on if we want that imo.}
 
 \subsection{Preventing security compromise}
 In order to ensure that data cannot be compromized the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
