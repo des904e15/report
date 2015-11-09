@@ -1,3 +1,5 @@
+\newcommand{\policy}[2]{\ensuremath{#1\!:\;#2}}
+
 \section{Decentralized Label Model}
 \bruno{Skal vi holde os til en term: value, data, information. De bruger det i flæng i litteraturen?}
 \stefan{jeg synes vi skal holde os til én term}
@@ -40,11 +42,11 @@ A \xvalue{} is a piece of data in a program, for instance an integer.
 
 \paragraph{Privacy policy}
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
-The syntax is: <owner>: <readers>.
+The syntax is: $\policy{<owner>}{<readers>}$.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
-If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $p: <space> $.
+If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $\policy{p}{<space>}$.
 \bruno{Synes det var mere klart end $p: \ $.}
 
 \subsection{Labels}\bruno{Måske lidt roddet afsnit?}
@@ -62,14 +64,14 @@ If a \principal{} is not among the owners of a label, it is the same as if it wa
 
 
 For example when we have three owners: $o_1, o_2, o_3$ and three readers: $r_1, r_2, r_3$ and the following labels:
-$L_1 = \{o_1: r_1,r_2; o_2: r_2, r_3\}$
-$L_2 = \{o_1: r_1,r_2; o_2: r_2, r_3; o_3: r_1, r_2, r_3\}$
+$L_1 = \{\policy{o_1}{r_1,r_2}; \policy{o_2}{r_2, r_3}\}$
+$L_2 = \{\policy{o_1}{r_1,r_2}; \policy{o_2}{r_2, r_3}; \policy{o_3}{r_1, r_2, r_3}\}$
 we have that: $L_1 = L_2$ because when $o_3$ is not among the owners in $L_1$ it is the same as if it was there with all possible readers as in $L_2$ - the resulting effective set of readers is the same.
 
 When a label interprets its privacy policies it understands it as a set of flows.
 A flow $(o,r)$ is a flow of information from owner $o$ to reader $r$.
 If a label contains this flow it means that the owner allows the reader to read the \xvalue{}.
-If we have three \principals{} $A,\ B,\ C$ and a label: $\{A: B; \ C: <space> \}$.
+If we have three \principals{} $A$, $B$, $C$ and a label: $\{\policy{A}{B}; \ \policy{C}{<space>}\}$.
 This means that $A$ allows its \xvalue{} to be read by $B$, $B$ allows every reader and $C$ allows no readers.
 Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
 \stefan{jeg savner en forklaring af hvad vi skal bruges flows til, hvad betyder flow mængden?}
