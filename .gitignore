@@ -11,6 +11,11 @@ master.pdf
 *.toc
 *.tex~
 
+##emacs temp files
+\#*#
+.\#*
+
+
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
