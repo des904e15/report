@@ -48,16 +48,19 @@ The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any readers we use the following syntax: $\policy{p}{<space>}$.
 \bruno{Synes det var mere klart end $p: \ $.}
+\mikkelin{Jeg synes $<space>$ ser lidt underligt ud.
+Så er jeg mere fan af $\policy{p}{}$.
+Det kan måske se lidt underligt når det står alene, men så snart det er i en label giver det fint mening: $\{\policy{p}{}\}$.}
 
 \subsection{Labels}\bruno{Måske lidt roddet afsnit?}
 A \xvalue{} is associated with a label.
 The label is a set of privacy policies.
 When the \xvalue{} flows through the system, all the policies need to be obeyed.
-That means that the effective set of \principals{} able to read the \xvalue{} is the intersection of all policies in a label.
+Thit means that the effective set of \principals{} able to read the \xvalue{} is the intersection of all policies in a label.
 
 
 Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
-If one or several privacy policies are added it to a label restricts the \xvalue{}.
+If one or several privacy policies are added to a label it restricts the access to the \xvalue{}.
 A label with no policies  means that all readers are allowed.
 
 If a \principal{} is not among the owners of a label, it is the same as if it was added as a privacy policy with all posible readers, implicitly indicating that this owner has no preference of who reads the \xvalue{}.
@@ -75,9 +78,9 @@ If we have three \principals{} $A$, $B$, $C$ and a label: $\{\policy{A}{B}; \ \p
 This means that $A$ allows its \xvalue{} to be read by $B$, $B$ allows every reader and $C$ allows no readers.
 Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
 \stefan{jeg savner en forklaring af hvad vi skal bruges flows til, hvad betyder flow mængden?}
+\mikkelin{Jeg synes det refererer tilbage til at vi mangler en mere forklarende introduktion der kunne motivere for labels - så burde behovet for at beskrive flow følge naturligt.}
 
-If a label contains no policies it is written as an empty set.
-A label can contain one or more privacy policies for the same \principal{}.
+A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
 
 Some further notation:
