@@ -101,17 +101,16 @@ We have policy $K$ and label $L$.
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
 
 \paragraph{Label join}
-When computing two \xvalues{} a \xvalue{} is derived.
-The derived \xvalues{} label must reflect its sources, so it has to be at least as restrictive.
-To ensure this the two labels are joined by calculating the union of the two labels, this gives us the following join rule:
+When deriving a \xvalue{} from two \xvalues{}, the derived \xvalue{}s label must reflect its sources, so it has to be at least as restrictive.
+Thus the label assigned to the derived \xvalue{} is the union of the two source labels.
+This gives us the following join rule:
 \begin{definition}
   $L_1 \sqcup L_2 = L_1 \cup L_2$
 \end{definition}
 
 
 \paragraph{Relabeling by declassification}
-The owners of the labels control their data, but sometimes the policies are overly restrictive and one wants to relax them.
-This leads up to the next rule, the declassificaiton rule, which provides a way to declassify a label in the right setting.
+The owners of the labels control their data, but sometimes policies are overly restrictive and one wants to relax them.
 
 The authority is a set of \principals{} which is the authority of the process of declassification.
 If a process has the authority of a \principal{}, the actions of the process are permitted.
@@ -189,7 +188,7 @@ By using \textbf{X} we can verify a relabeling by applying the following correct
 The model contains two channels, an input and an output channel.
 Information can be leaked through these channels, therefore they have a label associated to them.
 When a \xvalue{} enters the system through an input channel, the \xvalue{} gets the label of the input channel.
-If a \xvalue{} is written to an output channel it can only be done if the label of the output channel is more or as restrictive as the label of the \xvalue{}.
+If a \xvalue{} is written to an output channel it can only be done if the label of the output channel is at least as restrictive as the label of the \xvalue{}.
 \bruno{Example?}
 
 \subsection{Static checking}
