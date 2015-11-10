@@ -6,24 +6,24 @@ The following description is based on \citet{lapadula1996secure}.
 
 \subsection{Access attributes}
 The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
-In addition \emph{control access} is used for giving out attributes to other users.
+In addition \emph{control access} is used to give attributes to other users.
 
 \paragraph{Read-only}
 This attribute makes it possible to read the object but not alter it.
 The classical example is a file that contains information that should not be changed.
-An example of this could be a list containing the \principals{} in the system with their clearance levels.
-A user of low clearance should be able to read this list but not change it.
+Alternatively it could be a list containing the \principals{} in the system with their clearance levels.
+A \pricipal{} of low clearance should be able to read this list but not change it.
 
 \paragraph{Append}
 Append describes a pure write operation.
 This means that it is possible to append information to the end of a file without being able to extract information about the rest of the file.
 
-This can also be used with a printer which appends information what is being printed.
+This can also be used with a printer which appends information about what is being printed.
 By doing this it is sufficient that the classification of a piece of information is matching the classification of the printer in order to prevent unauthorized personnel from reading the information.
 
 \paragraph{Execute}
 The execution attribute makes it possible to execute an executable file.
-If the \principal{} does not have permission to read or write the file he will only be able to execute it.
+If the \principal{} does not have permission to read from or write to the file he will only be able to execute it.
 Similarly the executable file can produce output that is of a higher classification level than the clearance level of the \principal{} executing it.
 
 \paragraph{Read/write}
@@ -31,7 +31,7 @@ This attribute is an interactive read and write access and is what is traditiona
 
 \paragraph{Control access}
 The control access attribute models the notion of a \principal{} having control over a file.
-Having this attribute a principal{} can give out the four attributes just described to other \principals{} in the system.
+Having this attribute a \principal{} can give the four attributes above to other \principals{} in the system.
 
 \subsection{Requests and decisions}
 In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
