@@ -70,17 +70,17 @@ The operations and their associated semantics are quite self explanatory, perfor
 Because of this they are not included here.
 
 \begin{figure}
-\centering
-$\begin{array}{l l}
-  \textbf{enter } r \textbf{ into } P[X_s, X_o]\quad & \textbf{delete } r \textbf{ from } P[X_s, X_o]\\
+ \centering
+ \[\arraycolsep=14pt%\def\arraystretch{2.2}
+ \begin{array}{l|l}
+  \textbf{enter } r \textbf{ into } P[X_s, X_o] & \textbf{delete } r \textbf{ from } P[X_s, X_o]\\
   \textbf{create \subject{} } X_s & \textbf{create object } X_o\\
   \textbf{destroy \subject{} } X_s & \textbf{destroy object } X_o
- \end{array}$
+ \end{array}
+ \]
  \caption{The six primitive operations described by \cite{HRU}}
  \label{protection:operations}
 \end{figure}
-\stefan{jeg synes ikke det er en fordel at det er i to kolonner}
-\mikael{Synes det er fint, måske bare noget mere hspace?}
 
 The application of an operation is written as $Q \Rightarrow_{op} Q'$ and thus $Q \Rightarrow_{op^*} Q'$ represents a sequence of operations.
 An operation is executed by applying its changes to an access matrix resulting in a new access matrix.
