@@ -3,41 +3,46 @@
 Bell and LaPadula have devised a mathematical model intended for use in  military and governmental computer systems.
 The model formalizes users accessing data and how to handle this in a secure way so confidential information cannot be leaked to a lower classification level.
 The following description is based on \citet{lapadula1996secure}.
+\mikkelin{I think we are missing a visualization of the level hierarchy.}
 
 \subsection{Access attributes}
 The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
-In addition \emph{control access} is used for giving out attributes to other users.
+In addition \emph{control access} is used to give attributes to other users.
 
 \paragraph{Read-only}
 This attribute makes it possible to read the object but not alter it.
 The classical example is a file that contains information that should not be changed.
-An example of this could be a list containing the \principals{} in the system with their clearance levels.
-A user of low clearance should be able to read this list but not change it.
+Alternatively it could be a list containing the \principals{} in the system with their clearance levels.
+A \pricipal{} of low clearance should be able to read this list but not change it.
 
 \paragraph{Append}
 Append describes a pure write operation.
 This means that it is possible to append information to the end of a file without being able to extract information about the rest of the file.
 
-This can also be used with a printer which appends information what is being printed.
+This can also be used with a printer which appends information about what is being printed.\mikkel{What is the information appended to?}
 By doing this it is sufficient that the classification of a piece of information is matching the classification of the printer in order to prevent unauthorized personnel from reading the information.
+\mikkel{Der mangler noget info om hvad det er der kan klassificeres, i starten af afsnittet.}
 
 \paragraph{Execute}
 The execution attribute makes it possible to execute an executable file.
-If the \principal{} does not have permission to read or write the file he will only be able to execute it.
+If the \principal{} does not have permission to read from or write to the file he will only be able to execute it.
 Similarly the executable file can produce output that is of a higher classification level than the clearance level of the \principal{} executing it.
+\mikkel{Where is this information then redirected to?}
 
 \paragraph{Read/write}
 This attribute is an interactive read and write access and is what is traditionally used when editing files.
+\mikkel{What is meant by interactive?}
 
 \paragraph{Control access}
 The control access attribute models the notion of a \principal{} having control over a file.
-Having this attribute a principal{} can give out the four attributes just described to other \principals{} in the system.
+Having this attribute a \principal{} can give the four attributes above to other \principals{} in the system.
 
 \subsection{Requests and decisions}
 In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
 In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
 \stefan{to expand or not to expand? Det handler om hvordan hvordan de 5 access attributes skal handteres i en matrice. Er det nodvendigt for os?}
 \bruno{Good question - would be nice to have as it is simplier to compare to the others that have access matrices - so depends on if we want that imo.}
+\mikkelin{I am not sure that it is easier to compare, but I would like it because it adds something more concrete to the section.}
 
 \subsection{Preventing security compromise}
 In order to ensure that data cannot be compromized the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
@@ -48,5 +53,6 @@ The security condition states that a \principal{} with a given clearance level i
 \paragraph{*-property}
 The *-property states that if a \principal{} has write or append access to and objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
 This property ensures that it is impossible to leak information to a lower classification level.
+\mikkel{Missing an example.}
 
 \mikael{Savner vi ikke noget om security labels? Det med classification/clearance og category(ies).}
