@@ -76,13 +76,17 @@ Jeg synes ikke jeg kan finde noget sted i kilden hvor de siger at de to labels e
 \end{example}
 
 When a label interprets its privacy policies it understands it as a set of flows.
+\mikkel{Jeg synes vi skal omskrive det her til hvordan man skal forstå labels/flows, fremfor hvordan en label selv fortolker sine policies.
+Jeg er ikke fan af at skrive \emph{hvad en label ``gør''}.}
 A flow $(o,r)$ is a flow of information from owner $o$ to reader $r$.
 If a label contains this flow it means that the owner allows the reader to read the \xvalue{}.
 If we have three \principals{} $A$, $B$, $C$ and a label: $\{\policy{A}{B}; \ \policy{C}{<space>}\}$.
 This means that $A$ allows its \xvalue{} to be read by $B$, $B$ allows every reader and $C$ allows no readers.
 Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
 \stefan{jeg savner en forklaring af hvad vi skal bruges flows til, hvad betyder flow mængden?}
-\mikkelin{Jeg synes det refererer tilbage til at vi mangler en mere forklarende introduktion der kunne motivere for labels - så burde behovet for at beskrive flow følge naturligt.}
+\mikkelin[mere forklaring]{Jeg synes det refererer tilbage til at vi mangler en mere forklarende introduktion der kunne motivere for labels - så burde behovet for at beskrive flow følge naturligt.
+
+Men jeg er enig i at der mangler en beskrivelse af hvad flow mængden er.}
 
 A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
@@ -96,6 +100,8 @@ We have policy $K$ and label $L$.
 \end{itemize}
 \bruno{Kommer lige an på hvad vi ender med at bruge:  $\textbf{o}(K)$ or $\textbf{o}K$}
 \stefan{synes bedst om dem med paranteser, det andet ser underligt ud}
+\mikkelin{Jeg synes vi skal flytte de har notationer til starten og så bruge dem i hele teksten.
+Det er umiddelbart et lidt sent tidspunkt at introducere dem.}
 
 \subsection{Rules}
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
@@ -106,6 +112,7 @@ Thus the label assigned to the derived \xvalue{} is the union of the two source 
 This gives us the following join rule:
 \begin{definition}
   $L_1 \sqcup L_2 = L_1 \cup L_2$
+  \mikkelin{Der mangler forklaring af $\sqcup$ - det er ikke umiddelbart nemt at sammenholde teksten med definitionen.}
 \end{definition}
 
 
@@ -115,14 +122,17 @@ The owners of the labels control their data, but sometimes policies are overly r
 The authority is a set of \principals{} which is the authority of the process of declassification.
 If a process has the authority of a \principal{}, the actions of the process are permitted.
 This means that if a \principal{} is in the authority set this can be declassified.
+\mikkel{Jeg har ikke forstået hvad der står i den her paragraf...}
 
 \stefan{der mangler forklaring af hvad  $\sqsubseteq$ er }
 A label $L_1$ can be relabeled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ where $L_A$ is the authority.
+\mikkel{Hvad er præcedens for $sqsubseteq$ og $\sqcup$?}
 The authority is a label $L_A$ of the form $\{p: \ \}$ for every \principal{} in the current authority.
 Given:
 \begin{center}
   $L_A = \bigsqcup_{(p \text{ in current authority})}\{p: <space> \}$
 \end{center}
+\mikkelin{Så vidt jeg kan se er det lige blevet gentaget tre gange hvad $L_A$ er. Eller har jeg misforstået noget?}
 $L_1$ can be relabelled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ is true.
 \begin{definition}
     $\frac{L_1 \sqsubseteq L_2 \sqcup L_A}{L_1 \text{ may be declassified to } L_2}$
@@ -131,6 +141,7 @@ $L_1$ can be relabelled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ is true.
 \paragraph{Relabeling by Restriction}
 This rule is for when one is doing an assignment of a \xvalue{} into a variable.
 When a \xvalue{} is read its label is relabelled to the variable and forgotten.
+\mikkel{Hvad betyder det at en label er relabelled til en variabel?}
 To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
 
@@ -144,6 +155,7 @@ $\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(oK = oJ \ \wedge \ rK \su
 \subsection{Limitations}
 The rule of restriction is too strict as it is only possible to remove readers and add policies \stefan{hvorfor er dette tilfældet?} and therefore prevents valid relabelings.
 There are three possible valid relabelings which are not possible at the moment:
+\mikkel{Acts for burde blive forklaret heromkring sådan at det passer med det emne det relaterer sig til.}
 \begin{itemize}
 \item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
 \item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
@@ -154,9 +166,9 @@ There are three possible valid relabelings which are not possible at the moment:
 We need to extend the rule in order to be able to do the things discussed above.
 
 To take the \principal{} hierarchy into account when interpreting a label an interpretation function $\textbf{X}$ is introduced.
-For now $\textbf{X}$ takes a label as argument and the set of \principals{} $P$ as an implicit argument.
+For now\mikkel{Ændres det senere?} $\textbf{X}$ takes a label as argument and the set of \principals{} $P$ as an implicit argument.\mikkel{Hvad er et implicit argument?}
 Informally this function makes sure that if a reader or owner that acts for some \principal{} $p$ - that $p$ is included in the label interpretation.
-
+\mikkel{Jeg forstår ikke den her sidste sætning. Det er som om der mangler noget.}
 
 The set of flows for a label need to satisfy two constraints for the given principal hierarchy.
 One for readers and one for owners.
@@ -183,6 +195,8 @@ By using \textbf{X} we can verify a relabeling by applying the following correct
 \begin{definition}
   $\frac{\textbf{X}(L_1, P)\subseteq \textbf{X}(L_2,P)}{\text{Relabeling from } L_1 \text{ to } L_2 \text{ is safe in } P }$
 \end{definition}
+\mikkelin{Jeg synes alle definitionerne i ovenstående er for lidt forklarende.
+Det er for lidt information man får når der kun er en ligning/et udtryk.}
 
 \subsection{Channels}
 The model contains two channels, an input and an output channel.
@@ -190,6 +204,7 @@ Information can be leaked through these channels, therefore they have a label as
 When a \xvalue{} enters the system through an input channel, the \xvalue{} gets the label of the input channel.
 If a \xvalue{} is written to an output channel it can only be done if the label of the output channel is at least as restrictive as the label of the \xvalue{}.
 \bruno{Example?}
+\mikkelin{Jeg synes vi skal lave et eksempel (fx noget pseudo kode) og så bruge det fra start til slut.}
 
 \subsection{Static checking}
 \bruno{Udvider correctnes check'et så det kan bruges til statisk check}
