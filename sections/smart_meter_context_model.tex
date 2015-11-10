@@ -1,4 +1,46 @@
 \section{Smart meter context model}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{system}
+  \caption{The system}
+  \label{system}
+\end{figure}
+Legend:
+
+\begin{tabular}{l | l}
+  S  & State \\
+  L & Power Deliverance company\\
+  P & Power production company\\
+  D & Power distribution company\\
+  DH & Datahub \\
+  SM & Smart meter\\
+  F & Consumer\\
+  SA & Smart appliance\\
+  HP & Home production\\
+\end{tabular}
+
+
+\paragraph{} The system is pictured in \cref{system}.
+Inside the house of the consumer the smart meter is placed.
+
+\paragraph{Data connections}
+The green lines indicate information flow between actors in the system.
+The consumer can interact with the smart meter in order to control smart appliances and monitor the production of his home production devices.
+
+The Datahub stores the comsumption data of the consumer.
+This data is available for the consumer, the power distribution company and the power deliverance company.
+These three actors have permission to see the consumption data in different granularities.
+
+The consumer can see the data in the finest granularity, whereas the power distribution and the power deliverance company has accesss to a coarser granularity that makes it possible for them to calculate the bill etc.
+
+The distribution company sends price information to the datahub which the consumer then downloads to his smart meter.
+
+\paragraph{Power connections}
+The red lines indicate how the power is tranferred from the power production company to the appliances of the consumer.
+Unless the consumer has not paid his bills the distribution company distributes power to the house of the consumer.
+The smart meter then distributes the power to the installations of the house, including smart appliances controlled by the consumer.
+If the consumer has a home production device like a windmill the smart meter will control the usage of the generated power.
+
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/situation.jpg}
   \caption{Smart meter context model.}
@@ -31,3 +73,4 @@ The girlfriend has access to the SM by having a password from the consumer or ha
 The distribution has the ability to update software, check the consumption and switch off the SM.
 The home appliance company can update the firmware of their appliances through the SM.
 The burglar and the Neighbour can try to access the SM through the API or physically at the household.
+
