@@ -3,7 +3,7 @@
 \begin{figure}
   \includegraphics[width=\textwidth]{system}
   \caption{The system}
-  \label{system}
+  \label{contextual:system}
 \end{figure}
 Legend:
 
@@ -20,7 +20,7 @@ Legend:
 \end{tabular}
 
 
-\paragraph{} The system is pictured in \cref{system}.
+\paragraph{} The system is pictured in \cref{contextual:system}.
 Inside the house of the consumer the smart meter is placed.
 
 \paragraph{Data connections}
@@ -41,28 +41,62 @@ Unless the consumer has not paid his bills the distribution company distributes 
 The smart meter then distributes the power to the installations of the house, including smart appliances controlled by the consumer.
 If the consumer has a home production device like a windmill the smart meter will control the usage of the generated power.
 
+\subsection{Actors and threats}
+Placing a smart meter in a consumers home and simultaneously requiring external access to its data is a complicated task with many potential risks.
+\Cref{contextual:sm_model} represents this context and the actors therein.
+This will be used as an offset for a brainstorm that maps the potential attacks on the system.\mikkel{Ref til tables eller lign.}
+
+The actors represented in \cref{contextual:sm_model} are not representative of the complete set of actors having some interaction with the system.
+However these other actors communicate with the system through the smart meter and to not clutter the visual representation they have not been included.
+They will still be listed as actors below and possible threats to/from them will be considered.
+
 \begin{figure}
-  \includegraphics[width=\textwidth]{figures/situation.jpg}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/situation}
   \caption{Smart meter context model.}
-  \label{sm_model}
+  \label{contextual:sm_model}
 \end{figure}
 
-\subsection{Actors}
-List of actors in the model.
+\paragraph{Actors}
+Below is the listing of the actors represented in the full system and context.
+As noted above, some of these actors are not represented visually in \cref{contextual:sm_model} but are part of the information flow of the entire system (see \cref{contextual:system}).
+The listings below will not describe the potential threats in the system, but only list the possible actors involved in such threats.
 \begin{itemize}
-\item Consumer - is the one that has the SM installed at their household.
-\item Distribution - the provider of the electricity network and the SM, both hardware and software.
-\item Developers of third party apps - the developer of apps that the consumer will use for seeing his electrical consumption. Can be both mobile, desktop and web applications
-\item Appliance company - the provider of home appliances that can collaborate with the SM.
-\item Burglar - wants to find out when the consumer is home in order to break in, what products the consumer own in order to assess him as a target
-\item Girlfriend - wants to spy on the husband, take revenge on her ex-boyfriend.
-\item Neighbour - wants to payback his annoying neighbour.
+\item \textbf{Consumer}\\
+The resident of the depicted home and the one which power consumption is monitored.
+The smart meter is installed in the consumers home.
+
+\item \textbf{Neighbor}\\
+The next door neighbor to the consumer.
+This person can also be viewed as a consumer and be expected to have a situation similar to the consumers.
+However the neighbor is viewed only in the context of living near the consumer.
+\item \textbf{Girlfriend}\\
+The consumers girlfriend.
+It is assumed that this is not a person that is living with the consumer.
+\mikkel{Should we also have an actor that lives with the consumer? There might not be a treat in that but it is part of the model.}
+\item \textbf{Burglar}\\ wants to find out when the consumer is home in order to break in, what products the consumer own in order to assess him as a target
+
+\item \textbf{Power deliverance company}\\
+The company billing the consumer for his power consumption.
+\item \textbf{Power production company}\\
+Produces the power and supplies it to the power grid.
+This power production can be in the form of power plants or renewable energy.
+\item \textbf{Power distribution company}\\
+Manages the part of the grid closest to the consumer and provides him with electricity.
+Installs the smart meters in the costumers home.
+\item \textbf{Government}\\
+The government officials (including counties and municipalities).
+
+\item \textbf{Developers of third party apps}\\
+the developer of apps that the consumer will use for seeing his electrical consumption. Can be both mobile, desktop and web applications
+\item \textbf{Smart meter manufacturer}\\
+\item \textbf{Appliance company}\\ the provider of home appliances that can collaborate with the SM.
 \end{itemize}
 
-\subsection{Objects}\bruno{Better name!?}
+\paragraph{Objects}\bruno{Better name!?}
 \begin{itemize}
-\item Smart meter(SM) - controls home appliances and also records consumption for each.
-\item Appliance - has an option to be controlled from the smart meter. For instance a washing machine can be started and stopped when scheduled.
+\item \textbf{Smart meter}\\ controls home appliances and also records consumption for each.
+\item \textbf{Appliance}\\ has an option to be controlled from the smart meter. For instance a washing machine can be started and stopped when scheduled.
 \end{itemize}
 
 The smart meter is installed in the household of the consumer, in this case a house.
