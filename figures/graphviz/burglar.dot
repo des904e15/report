@@ -1,0 +1,20 @@
+digraph G {
+root -> goodstuff;
+goodstuff->connectedDevices;
+connectedDevices->installedDevices
+connectedDevices->networkPackages
+goodstuff->detectSignature;
+goodstuff->lookWindow;
+
+root -> atHome;
+atHome -> deviceStatus;
+atHome-> neighborhoodSignals;
+atHome -> turnOnOffDevices;
+atHome -> deviceSchedule;
+atHome -> lookWindow;
+
+root ->	breakIn;
+breakIn -> securityDeviceStatus;
+breakIn -> stealItems;
+breakIn -> turnOnOffDevices;
+}
