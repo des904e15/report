@@ -13,6 +13,8 @@ The TED energy monitor is connected to the two incoming electricty phases.
 The SheevaPlug is connected to the router and the TED energy monitor and is used to access the data remotely.
 The TED energy monitor returns a tuple $(t,p)$ where $t$ is the time and $p$ is the powerusage used since the last measurement.
 The power is measured every second, so we have a tuple for every second with the time and the power used the past second.
+At last the three households are supposed to make a power activity journal for a minimum of three days.
+Which means to write down when they turn on and off any electric devices.
 
 When the data is collected the data is analysed in four steps:
 \begin{itemize}
