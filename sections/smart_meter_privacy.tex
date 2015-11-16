@@ -27,3 +27,21 @@ When the data is collected the data is analysed in four steps:
 The data is pre-processed by using DBSCAN which is a density based clustering algorithm.
 This helps group up power tuples into power segments, where a power segment is a collection of power tuples with a pattern adjacent in time.
 Each power segment gets then tagged with a label, start time, average power, duration, beginning power step and a shape label.
+
+
+In \cref{consumption_one_day} we are able to see the consumption data for one househole after two steps of analysis.
+On the x-axis we have time in hours, midnight to midnight, on the y-axis we have power usage in kWh.
+Already after two steps of analysis we are able to say something about when there is activity in the household.
+We can also see how there are some automated appliances that are on all the time or at certain intervals.
+We can determine this by assuming that there probably is almost no activity in te night and by collecting data over several days.
+
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\textheight, angle=90]{consumption_one_day.png}
+  \end{center}
+  \caption{A day of consumption data after two steps of analysis and with labels from real life events taken from the power activity journal.}
+  \label{consumption_one_day}
+\end{figure}
+
+
