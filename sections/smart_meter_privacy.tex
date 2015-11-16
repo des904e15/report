@@ -13,3 +13,15 @@ The TED energy monitor is connected to the two incoming electricty phases.
 The SheevaPlug is connected to the router and the TED energy monitor and is used to access the data remotely.
 The TED energy monitor returns a tuple $(t,p)$ where $t$ is the time and $p$ is the powerusage used since the last measurement.
 The power is measured every second, so we have a tuple for every second with the time and the power used the past second.
+
+When the data is collected the data is analysed in four steps:
+\begin{itemize}
+\item Pre-process data
+\item Tag power events
+\item Filter out automated appliances
+\item Map events to real life events
+\end{itemize}
+
+The data is pre-processed by using DBSCAN which is a density based clustering algorithm.
+This helps group up power tuples into power segments, where a power segment is a collection of power tuples with a pattern adjacent in time.
+Each power segment gets then tagged with a label, start time, average power, duration, beginning power step and a shape label.
