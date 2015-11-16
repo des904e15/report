@@ -1,4 +1,17 @@
 digraph G {
+
+root [label="Break in and steal", shape=OR];
+goodstuff [label="Expensive goods?"];
+atHome [label="Is consumer home?"];
+breakIn [label="Break in"];
+connectedDevices [label=""]
+
+
+root -> access;
+access -> compromiseSM;
+access -> compromiseTablet;
+access -> installECM
+
 root -> goodstuff;
 goodstuff->connectedDevices;
 connectedDevices->installedDevices
