@@ -2,3 +2,14 @@
 The consumption data collected by a smart meter is fine-grained.
 This fine-grained data means that it is easy to obtain knowledge about the consumer.
 The following describes how one can obtain this knowledge and is based on \citet{privacy_memoir}.
+
+
+An example setting which collected sixty days of power consumption from three homes consists of the following components:
+\begin{itemize}
+\item TED energy monitor
+\item SheevaPlug
+\end{itemize}
+The TED energy monitor is connected to the two incoming electricty phases.
+The SheevaPlug is connected to the router and the TED energy monitor and is used to access the data remotely.
+The TED energy monitor returns a tuple $(t,p)$ where $t$ is the time and $p$ is the powerusage used since the last measurement.
+The power is measured every second, so we have a tuple for every second with the time and the power used the past second.
