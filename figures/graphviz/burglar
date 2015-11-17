@@ -1,6 +1,10 @@
 digraph G {
 
-root [label="Break in and steal", shape=OR];
+ graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+ node[ shape=rectangle]
+ edge[arrowsize=0.6, arrowhead=vee]
+
+root [label="Break in and steal"];
 access [label="Gain access to SM"];
 goodstuff [label="Expensive goods?"];
 atHome [label="Is consumer home?"];
