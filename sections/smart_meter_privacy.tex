@@ -26,7 +26,7 @@ When the data is collected it is analysed in four steps:
 \end{itemize}
 
 \paragraph{Pre-process data}
-The data is pre-processed using DBSCAN, which is a density based clustering algorithm.
+The data is pre-processed using DBSCAN, which is a density-based clustering algorithm.
 This helps group power tuples into power segments, where a power segment is a collection of power tuples with a pattern adjacent in time.
 Each power segment then gets tagged with a label, start time, average power usage, duration, beginning power step, and a shape label.
 
@@ -36,7 +36,6 @@ On the x-axis we have time in hours, for an entire 24-hour period, and on the y-
 Already at this stage of the analysis we are able to say something about when there is activity in the household.
 We can also see how there are some automated appliances that are on all the time or at certain intervals.
 We can determine this by assuming there is almost no activity in the night, and by collecting data over several days.
-
 
 \begin{figure}
   \begin{center}
@@ -49,39 +48,39 @@ We can determine this by assuming there is almost no activity in the night, and 
 \paragraph{Filter out automated appliances}
 The third step is to filter out automated appliances, such as the refrigerator (see \cref{consumption_one_day}).
 This is done by looking at the consumption data and reason about whether the power usage is from a human interaction or not.
-If not for instance at night this is probably an automated appliance and by looking a lot of data one can be rather certain.
-At last the power segments are label to real time events by looking at the power activity journals.
+If, for instance, the distinct usage also occurs at night, it is probably an automated appliance and by looking at a lot of data one can be rather certain.
+At last the power segments are labelled corresponding to real time events, by looking at the power activity journals.
 
 \paragraph{Map consumption events to real life events}
-In \cref{detailed_consumption} we can see how the consumption for a small time period looks like after four steps of analysis.
+In \cref{detailed_consumption} we can see how the consumption for a small time period looks like after all four steps of the analysis.
 At this point it is pretty easy to say something about what kind of activities are going on.
-The time period is for a typical morning where we can see the household uses the stove, the coffee maker, the toaster and some computer screens.
+The time period is for a typical morning where we can see the household uses the stove, coffee maker, toaster, and some computer screens.
 
 \begin{figure}
   \begin{center}
     \includegraphics[width=\textwidth, angle=90]{detailed.png}
   \end{center}
-  \caption{Power consumption data after four steps of anĺysis for a small time period some morning when the household is getting breakfeast etc..}
+  \caption{Power consumption data after all four steps of the anaysis for a small time period -- a morning when the household is getting breakfeast, etc.}
   \label{detailed_consumption}
 \end{figure}
 
+As we can see by this example, when collecting only a small amount of consumption data and doing trivial analysis, it is possible to say a lot about a household.
+Utilities companies or similar, that have access to much more data, can learn even more by using their combined knowledge.
 
-As we can see by this example of collecting a small amount of consumption data and doing trivial analysis it is already possible to say alot about a household.
-Utilities or alike that have access to much more data can learn even more by combining their knowledge.
-
-\subsection{Privacy concerns}\label{privacy_concerns}
-This leads to privacy concerns, where some of them are listed below:
+\subsection{Privacy issues}\label{privacy_concerns}
+As it can be seen in the previous section, it is possible to determine a lot about a household, simply based on power consumption.
+This can lead to privacy issues, where some of these issues are listed below:
 \begin{itemize}
   \item Amount of people home
   \item Household activities
-  \item Information about apppliances
+  \item Information about appliances
 \end{itemize}
 
-When having a lot of consumption data one can reason about the amount of people home and can begin to see patterns in the power usage and map that to people.
-This means over time it is possible who is home, where who is a power usage pattern for a person in the household.
+When having a lot of consumption data one can determine the amount of people who are home and begin to see patterns in the power usage and map that to people.
+This means that over time it is possible to determine \textit{who} is home, where \textit{who} can be seen as a power usage pattern for a person in the household.
 
-It is also possible to say a lot about houseohld activities even with a small amount of consumption data.
-For instance we can begin to reason about if one got a good nights sleep or if one was eating hot or cold breakfast.
+It is also possible to say a lot about household activities, even with a small amount of consumption data.
+For instance, we can begin to reason about if a household had a good nights sleep, or if the household was eating hot or cold breakfast.
 And even if the household was watching a specific sport event last night.
 
-By extending the analysis one could add to look for specific appliance signatures in the power trace and by that say some more about the household.\cite{NILM}
+By extending the analysis one could look for specific appliance signatures in the power trace and from this say some more about the household \cite{NILM}.
