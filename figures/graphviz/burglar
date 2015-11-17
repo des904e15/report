@@ -1,10 +1,11 @@
 digraph G {
 
 root [label="Break in and steal", shape=OR];
+access [label="Gain access to SM"];
 goodstuff [label="Expensive goods?"];
 atHome [label="Is consumer home?"];
 breakIn [label="Break in"];
-connectedDevices [label=""]
+//connectedDevices [label="Devices connected to the SM"]
 
 
 root -> access;
