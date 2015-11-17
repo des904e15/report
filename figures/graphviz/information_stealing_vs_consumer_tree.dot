@@ -1,0 +1,20 @@
+digraph G{
+	node [style=filled fillcolor=white]
+
+	root[label="Profile consumer"];
+	
+	compromise_sm[label="Compromise SM"];
+	home[fontcolor=red label="When is the consumer home?"];
+	activity[fontcolor=blue label="When is there activity in the household?"];
+	residents[fontcolor=forestgreen label="Number of residents"];
+
+	total[label="Total power consumption"];
+	when_appl[label="When are appliances used?"];
+	how_appl[label="How much are appliances used?"];
+	what_appl[label="What kind of appliances are used?"];
+
+	root -> compromise_sm, home, activity, residents;
+	home -> total, when_appl, how_appl [fillcolor = red];
+	activity -> total, when_appl, how_appl, what_appl [fillcolor = blue];
+	residents -> total, when_appl, how_appl, what_appl [fillcolor = forestgreen];
+	}
