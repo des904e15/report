@@ -1,57 +1,59 @@
 \section{Smart meter privacy concerns}\label{smart_meter_privacy}
-The consumption data collected by a smart meter is fine-grained.
-This fine-grained data means that it is easy to obtain knowledge about the consumer.
-The following describes how one can obtain this knowledge and is based on \citet{privacy_memoir}.
+The consumption data collected by a smart meter can be fine-grained.
+This fine-grained data means that sensitive knowledge about the consumer can be obtained.
+The following describes how one can obtain and use this knowledge, which is based on \citet{privacy_memoir}.
+\mikael{I think there should be something about how this knowledge about the consumer could be exploited.}
 
-
-An example setting which collected sixty days of power consumption from three homes consists of the following components:
+\subsection{Experiment}
+The setting, in which is collected sixty days of power consumption data from three households, consists of the following physical components:
 \begin{itemize}
 \item TED energy monitor
 \item SheevaPlug
 \end{itemize}
-The TED energy monitor is connected to the two incoming electricty phases, A and B.\cite{TED_installation_guide}
-The SheevaPlug is connected to the router and the TED energy monitor and is used to access the data remotely.
-The TED energy monitor returns a tuple $(t,p)$ where $t$ is the time and $p$ is the powerusage used since the last measurement.
-The power is measured every second, so we have a tuple for every second with the time and the power used the past second.
-At last the three households are supposed to make a power activity journal for a minimum of three days.
-Which means to write down when they turn on and off any electric devices.
+The energy monitor is connected to the two incoming electricity phases, A and B.\cite{TED_installation_guide}
+The SheevaPlug is connected to the router, and the energy monitor, and is used to access the data remotely.
+The energy monitor returns a tuple $(t,p)$ where $t$ is the time and $p$ is the power-usage since last measurement.
+The power is measured every second, so we have a tuple for every second with the power used the past second.
+Finally, the three households are to make a "power activity"-journal for a minimum of three days.
+In this journal they write down when they turn on and off any electric devices.
 
-When the data is collected the data is analysed in four steps:
+When the data is collected it is analysed in four steps:
 \begin{itemize}
 \item Pre-process data
 \item Tag power events
 \item Filter out automated appliances
-\item Map events to real life events
+\item Map consumption events to real life events
 \end{itemize}
 
-The data is pre-processed by using DBSCAN which is a density based clustering algorithm.
-This helps group up power tuples into power segments, where a power segment is a collection of power tuples with a pattern adjacent in time.
-Each power segment gets then tagged with a label, start time, average power, duration, beginning power step and a shape label.
+\paragraph{Pre-process data}
+The data is pre-processed using DBSCAN, which is a density based clustering algorithm.
+This helps group power tuples into power segments, where a power segment is a collection of power tuples with a pattern adjacent in time.
+Each power segment then gets tagged with a label, start time, average power usage, duration, beginning power step, and a shape label.
 
-
-On \cref{consumption_one_day} we are able to see the consumption data for one househole after two steps of analysis.
-On the x-axis we have time in hours, midnight to midnight, on the y-axis we have power usage in kWh.
-Already after two steps of analysis we are able to say something about when there is activity in the household.
+\paragraph{Tag power events}
+In \cref{consumption_one_day} we are able to see the consumption data for one household after the second step of the analysis.
+On the x-axis we have time in hours, for an entire 24-hour period, and on the y-axis we have power usage in kWh.
+Already at this stage of the analysis we are able to say something about when there is activity in the household.
 We can also see how there are some automated appliances that are on all the time or at certain intervals.
-We can determine this by assuming that there probably is almost no activity in te night and by collecting data over several days.
+We can determine this by assuming there is almost no activity in the night, and by collecting data over several days.
 
 
 \begin{figure}
   \begin{center}
     \includegraphics[width=\textheight, angle=90]{consumption_one_day.png}
   \end{center}
-  \caption{A day of consumption data after two steps of analysis and with labels from real life events taken from the power activity journal.}
+  \caption{A day of consumption data after the second step of analysis, labelled with real life events -- taken from the power activity journal.}
   \label{consumption_one_day}
 \end{figure}
 
-
-The third step is to filter out automated appliances such as the refrigerator on \cref{consumption_one_day}.
+\paragraph{Filter out automated appliances}
+The third step is to filter out automated appliances, such as the refrigerator (see \cref{consumption_one_day}).
 This is done by looking at the consumption data and reason about whether the power usage is from a human interaction or not.
 If not for instance at night this is probably an automated appliance and by looking a lot of data one can be rather certain.
 At last the power segments are label to real time events by looking at the power activity journals.
 
-
-On \cref{detailed_consumption} we can see how the consumption for a small time period looks like after four steps of analysis.
+\paragraph{Map consumption events to real life events}
+In \cref{detailed_consumption} we can see how the consumption for a small time period looks like after four steps of analysis.
 At this point it is pretty easy to say something about what kind of activities are going on.
 The time period is for a typical morning where we can see the household uses the stove, the coffee maker, the toaster and some computer screens.
 
