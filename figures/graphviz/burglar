@@ -1,0 +1,33 @@
+digraph G {
+
+root [label="Break in and steal", shape=OR];
+goodstuff [label="Expensive goods?"];
+atHome [label="Is consumer home?"];
+breakIn [label="Break in"];
+connectedDevices [label=""]
+
+
+root -> access;
+access -> compromiseSM;
+access -> compromiseTablet;
+access -> installECM
+
+root -> goodstuff;
+goodstuff->connectedDevices;
+connectedDevices->installedDevices
+connectedDevices->networkPackages
+goodstuff->detectSignature;
+goodstuff->lookWindow;
+
+root -> atHome;
+atHome -> deviceStatus;
+atHome-> neighborhoodSignals;
+atHome -> turnOnOffDevices;
+atHome -> deviceSchedule;
+atHome -> lookWindow;
+
+root ->	breakIn;
+breakIn -> securityDeviceStatus;
+breakIn -> stealItems;
+breakIn -> turnOnOffDevices;
+}
