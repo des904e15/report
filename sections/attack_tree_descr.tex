@@ -40,7 +40,8 @@ The process of developing firmware will require the attacker to do either of the
   This process might require a great deal of trial-and-error if the attacker has litte knowledge of the smart meters instruction set.
   Some of this information might be obtained by eavesdropping on the running smart meter.
   \item Obtain a version of the existing firmware\footnote{Either as machine instructions or as some higher-level language.}.
-  This firmware could then be modified as required by the attacker.
+    This firmware could then be modified as required by the attacker.
+    But cryptography in the firmware could cause problems because even if modification of the firmware is possible keys used for communication will not be revealed.
 \end{itemize}
 
 \subsection{Software}
