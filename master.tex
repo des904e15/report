@@ -40,19 +40,25 @@
 %mainmatter
 \pagenumbering{arabic} %use arabic page numbering in the mainmatter
 \input{sections/background.tex}
-\input{sections/smart_meter_context_model.tex}
+
+\chapter{Related Work}
+\input{sections/smart_meter_privacy.tex}
+
+\chapter{Theory}
 \input{sections/HRU.tex}
 \input{sections/DLM.tex}
 \input{sections/chinesewall.tex}
 \input{sections/BelLapadula.tex}
+
+\chapter{Analysis}
+\input{sections/smart_meter_context_model.tex}
+\input{sections/threat_table}
 \input{sections/attack_tree_descr.tex}
-\input{sections/smart_meter_privacy.tex}
-\input{sections/girlfriend_attack_tree.tex}
 \input{sections/burglar-consumer-tree.tex}
+\input{sections/girlfriend_attack_tree.tex}
 \input{sections/informations_stealing_vs_consumer_description.tex}
 
 \clearpage
-\input{sections/threat_table}
 
 \printbibliography[heading=bibintoc]
 \label{bib:mybiblio}
