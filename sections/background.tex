@@ -52,12 +52,15 @@ Additionally they differ in which parts of their electrical grids are privately 
 However, some shared problems still exist, such as privacy, conflicts of interest, and attack vulnerabilities \cite{offswitch, smart_meter_survey, security_economics}.
 
 \subsubsection{Different architectures}
-\bruno{\#2}
+Even though the implementation of smart grid and smart meters is a EU project, they are not that specific when it comes to where responsibilities should lie.
+It is up to each nation, depending on their current system and infrastructure, who should distribute smart meters and who will own the data.
+
+Here are a few examples of different architectures \cite{smart_meter_survey}:
 \begin{itemize}
-	\item Italy - regulated monopoly (supplier and distibutor is the same?)
-	\item Germany - Free market for both distributor (people buy smart meter device/maintenance) and supplier
-	\item UK - Centralized government-licensed monopoly
-	\item DK - Centralized through 60 government-regulated distributors, datahub contains/controls all power usage data
+	\item \textbf{Italy} - Regulated monopoly (supplier and distibutor is the same).
+	\item \textbf{Germany} - Free market for both distributor and supplier, households will have free choice in both.
+	\item \textbf{UK} - Centralized government-licensed monopoly, which will have a datahub from which data will be distributed to suppliers, customers, etc.
+	\item \textbf{Denmark} - Centralized through 60 government-regulated distributors, a government-owned datahub contains all data \cite{dk_marked,LOV_nr_575_af_18-06-2012}.
 \end{itemize}
 
 \subsubsection{Privacy}
