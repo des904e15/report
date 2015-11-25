@@ -134,3 +134,4 @@ sympy-plots-for-*.tex/
 *.bak
 *.sav
 clean.sh
+local.*
