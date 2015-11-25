@@ -133,3 +133,4 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+clean.sh
