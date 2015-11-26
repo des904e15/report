@@ -9,6 +9,21 @@ complaint [label="File complaint against distributor"];
 falsify [label="Falsify sent consumption"];
 
 
+
+//COMPLAINT SUBTREE
+root -> complaint;
+
+app[label="Develop app that shows wrong lower power consumption"];
+complaint ->  app;
+
+falsifyReceived[label="Falsify received price info"];
+complaint -> falsifyReceived;
+interceptReceived[label="Incercept received packages with price data"];
+falsifyReceived -> interceptReceived;
+falsifyReceived -> modifyPrices;
+falsifyReceived -> resendToSM;
+
+
 root -> falsify;
 
 falsify ->	package;
