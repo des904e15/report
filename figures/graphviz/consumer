@@ -34,6 +34,7 @@ package -> intercept;
 package -> modify;
 package -> resend;
 
+DPA[label="Differential Power \nAnalysis"]
 falsify -> DPA;
 DPA -> obtainKey;
 whenSend[label="Investigate when SM \nsends consumption data"];
