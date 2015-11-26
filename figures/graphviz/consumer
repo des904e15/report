@@ -13,12 +13,12 @@ falsify [label="Falsify sent consumption"];
 //COMPLAINT SUBTREE
 root -> complaint;
 
-app[label="Develop app that shows wrong lower power consumption"];
+app[label="Develop app that shows \nlower power consumption"];
 complaint ->  app;
 
 falsifyReceived[label="Falsify received price info"];
 complaint -> falsifyReceived;
-interceptReceived[label="Incercept received packages with price data"];
+interceptReceived[label="Incercept received packages \nwith price data"];
 falsifyReceived -> interceptReceived;
 falsifyReceived -> modifyPrices;
 falsifyReceived -> resendToSM;
@@ -27,27 +27,27 @@ falsifyReceived -> resendToSM;
 //FALSIFY SUBTREE
 root -> falsify;
 
-package[label="Falsify consumption packages sent from SM"]
+package[label="Falsify consumption \npackages sent from SM"]
 falsify ->	package;
-intercept[label="Incercept sent packages with consumption data"];
+intercept[label="Incercept sent packages \nwith consumption data"];
 package -> intercept;
 package -> modify;
 package -> resend;
 
 falsify -> DPA;
 DPA -> obtainKey;
-whenSend[label="Investigate when SM sends consumption data"];
+whenSend[label="Investigate when SM \nsends consumption data"];
 obtainKey -> whenSend;
 obtainKey -> performDPA;
 obtainKey -> findKeyInDPA;
 DPA -> createFalseConsumptionData;
 DPA -> sendFalseData;
 
-ModifyFWstore[label="Modify how firmware stores consumption"];
+ModifyFWstore[label="Modify how firmware \nstores consumption"];
 falsify -> ModifyFWstore;
 
 
-ModifyFWsend[label="Modify how firmware sends consumption"];
+ModifyFWsend[label="Modify how firmware \nsends consumption"];
 falsify -> ModifyFWsend;
 
 
