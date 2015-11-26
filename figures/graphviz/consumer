@@ -24,8 +24,10 @@ falsifyReceived -> modifyPrices;
 falsifyReceived -> resendToSM;
 
 
+//FALSIFY SUBTREE
 root -> falsify;
 
+package[label="Falsify consumption packages sent from SM"]
 falsify ->	package;
 intercept[label="Incercept sent packages with consumption data"];
 package -> intercept;
@@ -47,7 +49,6 @@ falsify -> ModifyFWstore;
 
 ModifyFWsend[label="Modify how firmware sends consumption"];
 falsify -> ModifyFWsend;
-
 
 
 
