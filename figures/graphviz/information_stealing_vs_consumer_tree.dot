@@ -2,19 +2,37 @@ digraph G{
 	node [style=filled fillcolor=white]
 
 	root[label="Profile consumer"];
-	
-	compromise_sm[label="Compromise SM"];
-	home[fontcolor=red label="When is the consumer home?"];
-	activity[fontcolor=blue label="When is there activity in the household?"];
-	residents[fontcolor=forestgreen label="Number of residents"];
 
+	obtain_information[label="Obtain power consumption"]
+	analyse_power_consumption[label="Analyse power consumption"]
+
+	compromise_sm[label="Compromise SM(On hold)"];
+	buy_information[label="Buy information"]
+	hack_client[label="Hack client"];
+	residents[label="Number of residents"];
+	home[label="Residents home schedule"];
+	activity_residents[label="Residents activity schedule"];
 	total[label="Total power consumption"];
-	when_appl[label="When are appliances used?"];
-	how_appl[label="How much are appliances used?"];
-	what_appl[label="What kind of appliances are used?"];
+	when_appl[label="Appliances usage"];
+	what_appl[label="Appliance brands"];
 
-	root -> compromise_sm, home, activity, residents;
-	home -> total, when_appl, how_appl [fillcolor = red];
-	activity -> total, when_appl, how_appl, what_appl [fillcolor = blue];
-	residents -> total, when_appl, how_appl, what_appl [fillcolor = forestgreen];
+	buy_distributor[label="Buy from distributor"];
+	buy_third_party[label="Buy from 3rd party"];
+	pc[label="PC"];
+	smartphone[label="Smartphone"];
+	tablet[label="Label"];
+
+	spyware[label="Spyware"];
+	questionmark[label="?"];
+	
+
+	root -> obtain_information, analyse_power_consumption;
+	obtain_information -> compromise_sm, buy_information, hack_client;
+	analyse_power_consumption -> total, residents, activity_residents, home, when_appl, what_appl;
+	buy_information -> buy_distributor, buy_third_party;
+	hack_client -> smartphone, pc, tablet;
+
+	pc -> spyware;
+	smartphone -> questionmark;
+	tablet -> questionmark;	
 	}
