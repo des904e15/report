@@ -1,0 +1,39 @@
+digraph finite_state_machine {
+  //rankdir=LR;
+  node [shape = rectangle];
+  graph [splines=ortho];
+
+//  root [ label = "Report low\npower\nconsumption" ];
+
+  root [label = "Catch cheating\nbastard!!!",shape=AND];
+  access [label="wat",shape=OR];
+  deviceschedule;// [label = "Schedule on SM"];
+
+  root->access;
+  access->installECM;
+  access->compromisePhablet;
+  access->compromiseSM;
+
+  root-> surveil;
+  surveil->athome;
+  surveil->doing;
+  athome->devicestatus;
+  athome->lookwindow;
+  doing->devicestatus;
+  doing->deviceschedule;
+  devicestatus->detectsignature;
+  //doing->installECM;//External Consumption Monitor
+  //athome->installECM;
+
+  root->revenge;
+  revenge->shutOnOff;
+  revenge->modSchedule;
+  revenge->destroyitall;
+
+  //createKey [ label = "Create key", shape = doublecircle, style=filled, fillcolor="#339933cc" ];
+  //recurse [ label = "Recurse", shape = doublecircle, style=filled, fillcolor="#999933cc" ];
+  //hasNN [ label = "Has\nNoName" ];
+
+  //append [ label = "Append", shape = doublecircle, style=filled, fillcolor="#336699cc" ];
+  //parseErr2 [ label = "Named\nParser\nError", shape = doublecircle, style=filled, fillcolor="#993333cc" ];
+}
