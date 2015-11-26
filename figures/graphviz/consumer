@@ -1,0 +1,41 @@
+digraph G {
+
+// graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+node[ shape=rectangle]
+// edge[arrowsize=0.6, arrowhead=vee]
+
+root [label="Report low power consumption"];
+falsify [label="Falsify sent consumption"];
+complaint [label="File complaint against distributor"];
+
+
+root -> falsify;
+
+falsify ->	package;
+intercept[label="Incercept sent packages with consumption data"];
+package -> intercept;
+package -> modify;
+package -> resend;
+
+falsify -> DPA;
+DPA -> obtainKey;
+whenSend[label="Investigate when SM sends consumption data"];
+obtainKey -> whenSend;
+obtainKey -> performDPA;
+obtainKey -> findKeyInDPA;
+DPA -> createFalseConsumptionData;
+DPA -> sendFalseData;
+
+ModifyFWstore[label="Modify how firmware stores consumption"];
+falsify -> ModifyFWstore;
+
+
+ModifyFWsend[label="Modify how firmware sends consumption"];
+falsify -> ModifyFWsend;
+
+
+
+
+
+
+}
