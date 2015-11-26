@@ -5,8 +5,8 @@ node[ shape=rectangle]
 // edge[arrowsize=0.6, arrowhead=vee]
 
 root [label="Report low power consumption"];
-falsify [label="Falsify sent consumption"];
 complaint [label="File complaint against distributor"];
+falsify [label="Falsify sent consumption"];
 
 
 root -> falsify;
