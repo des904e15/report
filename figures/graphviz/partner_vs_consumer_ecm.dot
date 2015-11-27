@@ -2,11 +2,11 @@ digraph finite_state_machine {
   node [shape = rectangle];
   graph [splines=ortho];
 
-  attack[label="Expose Partner Adultery"];
-  sm_access[label = "Install ECM",shape=AND];
+  attack[label="Install ECM"];
+  root[label = "Expose partner adultery",shape=AND];
 
   obtain_info[label="Obtain information",shape=AND];
-  sm_access->obtain_info;
+  root->obtain_info;
 
     install_ecm[label="Install ECM"];
     obtain_info->install_ecm;
@@ -15,7 +15,7 @@ digraph finite_state_machine {
     obtain_info->record_usage;
 
   surveil[label="Surveil",shape=OR];
-  sm_access->surveil;
+  root->surveil;
 
     at_home[label="At home?"];
     surveil->at_home
