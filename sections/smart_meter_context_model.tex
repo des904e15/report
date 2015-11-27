@@ -1,46 +1,25 @@
 %!TEX root = ../master.tex
 \section{Smart meter context model}
 
-\begin{figure}
-  \includegraphics[width=\textwidth]{System}
-  \caption{The system}
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{system}
+  \caption{The smart meter system\cite{tdlm}}
   \label{contextual:system}
 \end{figure}
-Legend:
 
-\begin{tabular}{l | l}
-  S  & State \\
-  L & Power Deliverance company\\
-  P & Power production company\\
-  D & Power distribution company\\
-  DH & Datahub \\
-  SM & Smart meter\\
-  F & Consumer\\
-  SA & Smart appliance\\
-  HP & Home production\\
-\end{tabular}
-
-
-\paragraph{} The system is pictured in \cref{contextual:system}.
-Inside the house of the consumer the smart meter is placed.
+The system is pictured in \cref{contextual:system}.
 
 \paragraph{Data connections}
-The green lines indicate information flow between actors in the system.
-The consumer can interact with the smart meter in order to control smart appliances and monitor the production of his home production devices.
+The lines indicate information flow between actors in the system.
+The consumer (\textit{Household Owner/Residents}) can interact with the smart meter in order to control smart appliances and monitor the production of his home production devices.
 
-The Datahub stores the comsumption data of the consumer.
-This data is available for the consumer, the power distribution company and the power deliverance company.
+The \textit{Data Hub} stores the comsumption data of the consumer.
+This data is available for the consumer, the \textit{Distribution Companies} and the \textit{Electrical Company}.
 These three actors have permission to see the consumption data in different granularities.
 
-The consumer can see the data in the finest granularity, whereas the power distribution and the power deliverance company has accesss to a coarser granularity that makes it possible for them to calculate the bill etc.
+The consumer can see the data in the finest granularity, whereas the distribution companies and the electrical companies has accesss to a coarser granularity that makes it possible for them to calculate the bill.
 
-The distribution company sends price information to the datahub which the consumer then downloads to his smart meter.
-
-\paragraph{Power connections}
-The red lines indicate how the power is tranferred from the power production company to the appliances of the consumer.
-Unless the consumer has not paid his bills the distribution company distributes power to the house of the consumer.
-The smart meter then distributes the power to the installations of the house, including smart appliances controlled by the consumer.
-If the consumer has a home production device like a windmill the smart meter will control the usage of the generated power.
+\textbf{Note:} The distribution companies send price information to the data hub (not pictured), which the consumer then downloads to his smart meter.
 
 \subsection{Actors and threats}
 Placing a smart meter in a consumers home and simultaneously requiring external access to its data is a complicated task with many potential risks.
@@ -53,8 +32,8 @@ They will still be listed as actors below and possible threats to/from them will
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/situation}
-  \caption{Smart meter context model.}
+  \includegraphics[width=1\textwidth]{situation}
+  \caption{The smart meter context model}
   \label{contextual:sm_model}
 \end{figure}
 
@@ -79,12 +58,13 @@ It is assumed that this is not a person that is living with the consumer.
 The partner would like to surveil or get revenge over the consumer in case of misdoings on the consumer's part, such as adultery.
 \item \textbf{Burglar}\\ wants to find out when the consumer is home in order to break in, what products the consumer own in order to assess him as a target
 
-\item \textbf{Power deliverance company}\\
+\item \textbf{Electrical Company}\\
 The company billing the consumer for his power consumption.
 \item \textbf{Power production company}\\
 Produces the power and supplies it to the power grid.
 This power production can be in the form of power plants or renewable energy.
-\item \textbf{Power distribution company}\\
+\mikael{Is this guy important?}
+\item \textbf{Distribution Company}\\
 Manages the part of the grid closest to the consumer and provides him with electricity.
 Installs the smart meters in the costumers home.
 \item \textbf{Government}\\
@@ -102,6 +82,7 @@ the developer of apps that the consumer will use for seeing his electrical consu
 \item \textbf{Appliance}\\ has an option to be controlled from the smart meter. For instance a washing machine can be started and stopped when scheduled.
 \end{itemize}
 
+\subparagraph{Smart Meter}
 The smart meter is installed in the household of the consumer, in this case a house.
 Home appliances are connected to the SM through their power cable, which provides electricty and information exchange.
 The SM can be accessed through an API with different levels of rights, depending on the actor.
@@ -110,4 +91,3 @@ The partner has access to the SM by having a password from the consumer or havin
 The distribution has the ability to update software, check the consumption and switch off the SM.
 The home appliance company can update the firmware of their appliances through the SM.
 The burglar and the Neighbour can try to access the SM through the API or physically at the household.
-
