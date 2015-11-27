@@ -1,3 +1,4 @@
+%!TEX root = ../master.tex
 \section{Smart meter context model}
 
 \begin{figure}
@@ -66,13 +67,16 @@ The listings below will not describe the potential threats in the system, but on
 The resident of the depicted home and the one which power consumption is monitored.
 The smart meter is installed in the consumers home.
 
-\item \textbf{Neighbor}\\
-The next door neighbor to the consumer.
+\item \textbf{Neighbour}\\
+The next door neighbour to the consumer.
 This person can also be viewed as a consumer and be expected to have a situation similar to the consumers.
-However the neighbor is viewed only in the context of living near the consumer.
-\item \textbf{Girlfriend}\\
-The consumers girlfriend.
+However the neighbour is viewed only in the context of living near the consumer.
+Typically the neighbour will perform attacks on the consumer in order to remove annoyances, such as loud appliances or music.
+In case of neighbourly disputes, messing with the SM and connected appliances could also be viable strikes.
+\item \textbf{Partner}\\
+The consumer's partner (or significant other).
 It is assumed that this is not a person that is living with the consumer.
+The partner would like to surveil or get revenge over the consumer in case of misdoings on the consumer's part, such as adultery.
 \item \textbf{Burglar}\\ wants to find out when the consumer is home in order to break in, what products the consumer own in order to assess him as a target
 
 \item \textbf{Power deliverance company}\\
@@ -102,7 +106,7 @@ The smart meter is installed in the household of the consumer, in this case a ho
 Home appliances are connected to the SM through their power cable, which provides electricty and information exchange.
 The SM can be accessed through an API with different levels of rights, depending on the actor.
 The consumer can access and manage his home appliances connected to the smart meter through some sort of program for instance an app, developed by a third party.
-The girlfriend has access to the SM by having a password from the consumer or having her own account.
+The partner has access to the SM by having a password from the consumer or having her own account.
 The distribution has the ability to update software, check the consumption and switch off the SM.
 The home appliance company can update the firmware of their appliances through the SM.
 The burglar and the Neighbour can try to access the SM through the API or physically at the household.
