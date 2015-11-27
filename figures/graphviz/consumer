@@ -4,9 +4,9 @@ digraph G {
 node[ shape=rectangle]
 // edge[arrowsize=0.6, arrowhead=vee]
 
-root [label="Report low power consumption"];
-complaint [label="File complaint against distributor"];
-falsify [label="Falsify sent consumption"];
+root [label="Report low power consumption", shape=OR];
+complaint [label="File complaint against distributor",shape=OR];
+falsify [label="Falsify sent consumption",shape=OR];
 
 
 
@@ -16,7 +16,7 @@ root -> complaint;
 app[label="Develop app that shows \nlower power consumption"];
 complaint ->  app;
 
-falsifyReceived[label="Falsify received price info"];
+falsifyReceived[label="Falsify received price info",shape=AND];
 complaint -> falsifyReceived;
 interceptReceived[label="Incercept received packages \nwith price data"];
 falsifyReceived -> interceptReceived;
@@ -27,17 +27,18 @@ falsifyReceived -> resendToSM;
 //FALSIFY SUBTREE
 root -> falsify;
 
-package[label="Falsify consumption \npackages sent from SM"]
+package[label="Falsify consumption \npackages sent from SM",shape=AND];
 falsify ->	package;
 intercept[label="Incercept sent packages \nwith consumption data"];
 package -> intercept;
 package -> modify;
 package -> resend;
 
-DPA[label="Differential Power \nAnalysis"]
+DPA[label="Differential Power \nAnalysis",shape=AND]
 falsify -> DPA;
 DPA -> obtainKey;
 whenSend[label="Investigate when SM \nsends consumption data"];
+obtainKey[label="Obtain key used by \nSM for communication",shape=AND]
 obtainKey -> whenSend;
 obtainKey -> performDPA;
 obtainKey -> findKeyInDPA;
