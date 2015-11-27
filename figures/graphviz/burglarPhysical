@@ -1,0 +1,22 @@
+digraph G {
+
+graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+node[ shape=rectangle]
+
+root [label="Break in and steal (physical access)", shape=AND];
+goodstuff [label="Expensive goods?"];
+atHome [label="Is consumer home?",shape=OR];
+breakIn [label="Break in"];
+
+root -> goodstuff;
+goodstuff->lookWindow;
+
+root -> atHome;
+atHome -> neighborhoodSignals;
+lookWindow2[label="lookWijhiindow"];
+atHome -> lookWindow2;
+
+breakIn;
+root ->	breakIn;
+breakIn -> stealItems;
+}

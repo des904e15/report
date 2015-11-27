@@ -1,0 +1,25 @@
+digraph G {
+
+ graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+ node[ shape=rectangle]
+
+root [label="Break in and steal (ECM access)", shape=AND];
+
+attachECM;
+goodstuff [label="Expensive goods?",shape=OR];
+atHome [label="Is consumer home?",shape=OR];
+breakIn [label="Break in"];
+
+root -> attachECM;
+
+root -> goodstuff;
+goodstuff->detectSignature;
+
+root -> atHome;
+atHome -> deviceStatus;
+
+breakIn[shape=OR, label="Assist breakin"]
+root ->	breakIn;
+breakIn -> securityDeviceStatus;
+root -> stealItems;
+}

@@ -1,0 +1,32 @@
+digraph G {
+
+ graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+ node[ shape=rectangle]
+
+root [label="Break in and steal (Client access)", shape=AND];
+
+compromiseClient;
+goodstuff [label="Expensive goods?",shape=OR];
+atHome [label="Is consumer home?",shape=OR];
+breakIn [label="Break in"];
+
+root -> compromiseClient;
+
+root -> goodstuff;
+connectedDevices;
+goodstuff->connectedDevices;
+connectedDevices->installedDevices;
+goodstuff->detectSignature;
+
+root -> atHome;
+atHome -> deviceStatus;
+atHome -> turnOnOffDevices;
+atHome -> deviceSchedule;
+
+breakIn[shape=OR, label="Assist breakin"]
+root ->	breakIn;
+breakIn -> securityDeviceStatus;
+root -> stealItems;
+turnOnOffDevices2[label=turnOnOffDevices]
+breakIn -> turnOnOffDevices2;
+}
