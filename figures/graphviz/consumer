@@ -1,8 +1,7 @@
 digraph G {
 
-// graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
-node[ shape=rectangle]
-// edge[arrowsize=0.6, arrowhead=vee]
+// graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3];
+node[ shape=rectangle];
 
 root [label="Report low power consumption", shape=OR];
 complaint [label="File complaint against distributor",shape=OR];
@@ -34,11 +33,11 @@ package -> intercept;
 package -> modify;
 package -> resend;
 
-DPA[label="Differential Power \nAnalysis",shape=AND]
+DPA[label="Differential Power \nAnalysis",shape=AND];
 falsify -> DPA;
 DPA -> obtainKey;
 whenSend[label="Investigate when SM \nsends consumption data"];
-obtainKey[label="Obtain key used by \nSM for communication",shape=AND]
+obtainKey[label="Obtain key used by \nSM for communication",shape=AND];
 obtainKey -> whenSend;
 obtainKey -> performDPA;
 obtainKey -> findKeyInDPA;
