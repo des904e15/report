@@ -3,10 +3,19 @@
 This section will briefly introduce concepts from cryptography relevant to the project, and will be based on \cite{cryptoenginering}.
 
 \subsection{Terms}
-Alice
-Bob 
-Eve
+Alice and Bob are used to present two parties, this is so it is easier to understand.
+Generally Alice wants to send Bob a secret message.
+Eve is used as a third party which is eavesdropping on the communication between Alice and Bob.
+This typical setup can be seen on \cref{alice_bob_eve}.
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=.7\textwidth]{alice_bob_eve}
+  \end{center}
+  \caption[wat]{Alice, Bob and Eve.\footnotemark}
+  \label{alice_bob_eve}
+\end{figure}
+\footnotetext{\url{https://image.slidesharecdn.com/quantumcryptography-130913005611-phpapp01/95/quantum-cryptography-13-638.jpg?cb=1379033822}}
 
 \subsection{Encryption}
 
@@ -14,7 +23,7 @@ Eve
 When Alice sends messages to Bob over some insecure channel it can be possible for Eve to change how Bob receives the messages.
 Eve can alter the sent message \emph{m} to \emph{m'} and send \emph{m'} to Bob without Bob knowing.
 Eve can also change the order of messages so a message comes much later than intended.
-If Eve delete a message Bob will never know that this message existed.
+If Eve deletes a message Bob will never know that this message existed.
 Eve can even create her own message and send it without Bob can know that this message was not created by Alice.
 
 \begin{figure}[H]
