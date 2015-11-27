@@ -1,0 +1,39 @@
+digraph finite_state_machine {
+  node [shape = rectangle];
+  graph [splines=ortho];
+
+  attack[label="Expose Partner Adultery"];
+  sm_access[label = "SM Access",shape=AND];
+
+  obtain_info[label="Obtain information"];
+  sm_access->obtain_info;
+
+    compromise_sm[label="Compromise SM"];
+    obtain_info->compromise_sm;
+
+  surveil[label="Surveil",shape=OR];
+  sm_access->surveil;
+
+    at_home[label="At home?"];
+    surveil->at_home
+
+      running_devices[label="Running devices"];
+      at_home->running_devices;
+
+    doing_what[label="Doing what?",shape=OR];
+    surveil->doing_what;
+
+      doing_what->running_devices;
+
+      scheduled_devices[label="Scheduled devices"];
+      doing_what->scheduled_devices;
+
+  revenge[label="Get revenge",shape=OR];
+  sm_access->revenge;
+
+    turn_onoff[label="Turn devices on/off"];
+    revenge->turn_onoff;
+
+    modify_schedules[label="Modify schedules"];
+    revenge->modify_schedules;
+}

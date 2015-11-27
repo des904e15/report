@@ -1,0 +1,30 @@
+digraph finite_state_machine {
+  node [shape = rectangle];
+  graph [splines=ortho];
+
+  attack[label="Expose Partner Adultery"];
+  sm_access[label = "Install ECM",shape=AND];
+
+  obtain_info[label="Obtain information",shape=AND];
+  sm_access->obtain_info;
+
+    install_ecm[label="Install ECM"];
+    obtain_info->install_ecm;
+
+    record_usage[label="Record power usage"];
+    obtain_info->record_usage;
+
+  surveil[label="Surveil",shape=OR];
+  sm_access->surveil;
+
+    at_home[label="At home?"];
+    surveil->at_home
+
+      running_devices[label="Running devices"];
+      at_home->running_devices;
+
+    doing_what[label="Doing what?"];
+    surveil->doing_what;
+
+      doing_what->running_devices;
+}

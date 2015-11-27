@@ -1,0 +1,30 @@
+digraph finite_state_machine {
+  node [shape = rectangle];
+  graph [splines=ortho];
+
+  attack[label="Expose Partner Adultery"];
+  physical_access[label = "Physical Access",shape=AND];
+
+  surveil[label="Surveil",shape=OR];
+  physical_access->surveil;
+
+    at_home[label="At home?",shape=OR];
+    surveil->at_home
+
+      check_driveway[label="Check driveway"];
+      at_home->check_driveway;
+
+      look_window[label="Look through window"];
+      at_home->look_window;
+
+    doing_what[label="Doing what?"];
+    surveil->doing_what;
+
+      doing_what->look_window;
+
+  revenge[label="Get revenge"];
+  physical_access->revenge;
+
+    destroy_things[label="Destroy things"];
+    revenge->destroy_things;
+}
