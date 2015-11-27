@@ -2,14 +2,11 @@ digraph finite_state_machine {
   node [shape = rectangle];
   graph [splines=ortho];
 
-  attack[label="Client Access"];
-  root[label = "Expose partner adultery",shape=AND];
+  root[label = "Expose partner adultery (Client access)",shape=AND];
 
-  obtain_info[label="Obtain information"];
-  root->obtain_info;
 
     compromise_client[label="Compromise client"];
-    obtain_info->compromise_client;
+    root->compromise_client;
 
   surveil[label="Surveil",shape=OR];
   root->surveil;
@@ -23,7 +20,8 @@ digraph finite_state_machine {
     doing_what[label="Doing what?",shape=OR];
     surveil->doing_what;
 
-      doing_what->running_devices;
+      running_devices2[label="Running devices"];
+      doing_what->running_devices2;
 
       scheduled_devices[label="Scheduled devices"];
       doing_what->scheduled_devices;

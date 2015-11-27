@@ -11,11 +11,23 @@ breakIn [label="Break in"];
 
 root -> compromiseSM;
 
+obtainPassword[shape=OR];
+compromiseSM[shape=OR];
+compromiseSM -> obtainPassword;
+obtainPassword -> phishing;
+obtainPassword -> malware;
+obtainPassword -> shoulderSurfing;
+obtainPassword -> crackPassword;
+
+exploitVulnerability[shape=AND];
+compromiseSM -> exploitVulnerability;
+exploitVulnerability -> findVuln;
+exploitVulnerability -> exploitVuln;
+
+
 root -> goodstuff;
-connectedDevices[shape=OR];
+connectedDevices;
 goodstuff->connectedDevices;
-connectedDevices->installedDevices
-connectedDevices->networkPackages
 goodstuff->detectSignature;
 
 root -> atHome;

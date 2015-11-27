@@ -5,12 +5,15 @@ digraph G {
 
 root [label="Break in and steal (ECM access)", shape=AND];
 
-attachECM;
-goodstuff [label="Expensive goods?",shape=OR];
-atHome [label="Is consumer home?",shape=OR];
+installECM;
+goodstuff [label="Expensive goods?"];
+atHome [label="Is consumer home?"];
 breakIn [label="Break in"];
 
-root -> attachECM;
+installECM[shape=AND];
+root -> installECM;
+installECM -> GainAccessToPowerCables;
+installECM -> install;
 
 root -> goodstuff;
 goodstuff->detectSignature;
@@ -18,7 +21,7 @@ goodstuff->detectSignature;
 root -> atHome;
 atHome -> deviceStatus;
 
-breakIn[shape=OR, label="Assist breakin"]
+breakIn[label="Assist breakin"]
 root ->	breakIn;
 breakIn -> securityDeviceStatus;
 root -> stealItems;

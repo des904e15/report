@@ -2,14 +2,10 @@ digraph finite_state_machine {
   node [shape = rectangle];
   graph [splines=ortho];
 
-  attack[label="SM Access"];
-  sm_access[label = "Expose partner adultery",shape=AND];
+  sm_access[label = "Expose partner adultery (smart meter access)",shape=AND];
 
-  obtain_info[label="Obtain information"];
-  sm_access->obtain_info;
-
+    sm_access -> compromise_sm;
     compromise_sm[label="Compromise SM"];
-    obtain_info->compromise_sm;
 
   surveil[label="Surveil",shape=OR];
   sm_access->surveil;
@@ -23,7 +19,8 @@ digraph finite_state_machine {
     doing_what[label="Doing what?",shape=OR];
     surveil->doing_what;
 
-      doing_what->running_devices;
+      running_devices2[label="Running devices"];
+      doing_what->running_devices2;
 
       scheduled_devices[label="Scheduled devices"];
       doing_what->scheduled_devices;

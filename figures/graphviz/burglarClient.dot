@@ -10,12 +10,15 @@ goodstuff [label="Expensive goods?",shape=OR];
 atHome [label="Is consumer home?",shape=OR];
 breakIn [label="Break in"];
 
+compromiseClient[shape=OR]
 root -> compromiseClient;
+compromiseClient -> stealClient;
+compromiseClient -> gainRemoteAccessToClient;
+
 
 root -> goodstuff;
 connectedDevices;
 goodstuff->connectedDevices;
-connectedDevices->installedDevices;
 goodstuff->detectSignature;
 
 root -> atHome;

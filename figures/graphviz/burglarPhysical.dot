@@ -13,7 +13,7 @@ goodstuff->lookWindow;
 
 root -> atHome;
 atHome -> neighborhoodSignals;
-lookWindow2[label="lookWijhiindow"];
+lookWindow2[label="lookWindow"];
 atHome -> lookWindow2;
 
 breakIn;
