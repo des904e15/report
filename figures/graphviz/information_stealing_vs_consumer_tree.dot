@@ -18,21 +18,18 @@ digraph G{
 
 	buy_distributor[label="Buy from distributor"];
 	buy_third_party[label="Buy from 3rd party"];
-	pc[label="PC"];
-	smartphone[label="Smartphone"];
-	tablet[label="Label"];
-
-	spyware[label="Spyware"];
-	questionmark[label="?"];
+	
+	malware[label="Malware"];
+	backdoor[label="Backdoor"];
+	power_signatures[label="Power signatures"]
 	
 
 	root -> obtain_information, analyse_power_consumption;
 	obtain_information -> compromise_sm, buy_information, hack_client;
 	analyse_power_consumption -> total, residents, activity_residents, home, when_appl, what_appl;
 	buy_information -> buy_distributor, buy_third_party;
-	hack_client -> smartphone, pc, tablet;
+	hack_client -> malware, backdoor;
 
-	pc -> spyware;
-	smartphone -> questionmark;
-	tablet -> questionmark;	
+	what_appl -> power_signatures;
+	
 	}
