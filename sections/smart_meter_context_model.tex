@@ -7,19 +7,25 @@
   \label{contextual:system}
 \end{figure}
 
-The system is pictured in \cref{contextual:system}.
+As no fully implemented smart meter systems currently exist, a lot of assumptions will have to be made before it is possible to imagine how such a system could be attacked.
+We do this in two steps.
 
-\paragraph{Data connections}
+The first step taken is to outline the system as closely as possible.
+Since there is no single correct system architecture, we have chosen the one opted by our native country: Denmark.
+This system outline is based on the sources and information gained in \cref{background}.
+
+The second step is to choose a segment of this system, which will function as our context model, on which our attack trees will ``carry out attacks''.
+
+\subsection{The Smart Meter System}
+The system is pictured in \cref{contextual:system}.
 The lines indicate information flow between actors in the system.
 The consumer (\textit{Household Owner/Residents}) can interact with the smart meter in order to control smart appliances and monitor the production of his home production devices.
-
-The \textit{Data Hub} stores the comsumption data of the consumer.
+The \textit{Data Hub} stores the consumption data of the consumer.
 This data is available for the consumer, the \textit{Distribution Companies} and the \textit{Electrical Company}.
 These three actors have permission to see the consumption data in different granularities.
+The consumer can see the data in the finest granularity, whereas the distribution companies and the electrical companies has access to a coarser granularity that makes it possible for them to calculate the bill.
 
-The consumer can see the data in the finest granularity, whereas the distribution companies and the electrical companies has accesss to a coarser granularity that makes it possible for them to calculate the bill.
-
-\textbf{Note:} The distribution companies send price information to the data hub (not pictured), which the consumer then downloads to his smart meter.
+\textbf{Note:} The electrical companies send price information to the data hub (not pictured), which the consumer can see through the smart meter.
 
 \subsection{Actors and threats}
 Placing a smart meter in a consumers home and simultaneously requiring external access to its data is a complicated task with many potential risks.
@@ -84,7 +90,7 @@ the developer of apps that the consumer will use for seeing his electrical consu
 
 \subparagraph{Smart Meter}
 The smart meter is installed in the household of the consumer, in this case a house.
-Home appliances are connected to the SM through their power cable, which provides electricty and information exchange.
+Home appliances are connected to the SM through their power cable, which provides electricity and information exchange.
 The SM can be accessed through an API with different levels of rights, depending on the actor.
 The consumer can access and manage his home appliances connected to the smart meter through some sort of program for instance an app, developed by a third party.
 The partner has access to the SM by having a password from the consumer or having her own account.
