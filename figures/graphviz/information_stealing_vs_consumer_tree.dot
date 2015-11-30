@@ -1,35 +1,57 @@
 digraph G{
 	node [style=filled fillcolor=white]
 
-	root[label="Profile consumer",shape=AND];
+	root[label="Obtain consumer profile",shape=OR];	
+
+	root -> profile;
+	buyProfile[label="Buy Profile"];
+	root -> buyProfile;
+
+	buy_third_party2[label="Buy from 3rd party"];
+	buyProfile ->  buy_third_party2;
+
+	profile[label="Profile consumer",shape=AND];
 
 	obtain_information[label="Obtain power consumption",shape=OR];
 	analyse_power_consumption[label="Analyse power consumption",shape=OR];
 
-	compromise_sm[label="Compromise SM(On hold)"];
-	buy_information[label="Buy information",shape=OR]
+	compromise_sm[label="Compromise SM",shape=OR];
+		compromise_sm -> obtainPassword;
+		compromise_sm -> exploitVulnerability;
+
+		obtainPassword[shape=OR];
+		obtainPassword -> phishing;
+		malware2[label="malware"];
+		obtainPassword -> malware2;
+		obtainPassword -> crackPassword;
+
+		exploitVulnerability[shape=AND];
+		exploitVulnerability -> findVuln;
+		exploitVulnerability -> exploitVuln;
+
+	buy_information[label="Buy power consumption",shape=OR]
 	hack_client[label="Hack client",shape=OR];
 	residents[label="Number of residents"];
 	home[label="Residents home schedule"];
 	activity_residents[label="Residents activity schedule"];
-	total[label="Total power consumption"];
 	when_appl[label="Appliances usage"];
-	what_appl[label="Appliance brands"];
+	what_appl[label="Appliance brands",shape=AND];
 
-	buy_distributor[label="Buy from distributor"];
 	buy_third_party[label="Buy from 3rd party"];
+	buy_from_consumer[label="Buy from consumer"];
 	
 	malware[label="Malware"];
 	backdoor[label="Backdoor"];
-	power_signatures[label="Power signatures"]
+	power_signatures[label="Obtain power signatures"];
+	power_compare[label="Compare with \nsignature database"]
 	
 
-	root -> obtain_information, analyse_power_consumption;
+	profile -> obtain_information, analyse_power_consumption;
 	obtain_information -> compromise_sm, buy_information, hack_client;
-	analyse_power_consumption -> total, residents, activity_residents, home, when_appl, what_appl;
-	buy_information -> buy_distributor, buy_third_party;
+	analyse_power_consumption ->  residents, activity_residents, home, when_appl, what_appl;
+	buy_information -> buy_third_party, buy_from_consumer;
 	hack_client -> malware, backdoor;
 
-	what_appl -> power_signatures;
+	what_appl -> power_signatures, power_compare;
 	
 	}

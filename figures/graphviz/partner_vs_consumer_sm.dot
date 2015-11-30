@@ -7,6 +7,19 @@ digraph finite_state_machine {
     sm_access -> compromise_sm;
     compromise_sm[label="Compromise SM"];
 
+    obtainPassword[shape=OR];
+    compromise_sm[shape=OR];
+    compromise_sm -> obtainPassword;
+    obtainPassword -> phishing;
+    obtainPassword -> malware;
+    obtainPassword -> shoulderSurfing;
+    obtainPassword -> crackPassword;
+
+    exploitVulnerability[shape=AND];
+    compromise_sm -> exploitVulnerability;
+    exploitVulnerability -> findVuln;
+    exploitVulnerability -> exploitVuln;
+
   surveil[label="Surveil",shape=OR];
   sm_access->surveil;
 

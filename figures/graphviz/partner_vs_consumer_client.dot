@@ -5,8 +5,9 @@ digraph finite_state_machine {
   root[label = "Expose partner adultery (Client access)",shape=AND];
 
 
-    compromise_client[label="Compromise client"];
+    compromise_client[label="Compromise client", shape=OR];
     root->compromise_client;
+    compromise_client -> extractDataFromClient, gainRemoteAccessToClient;
 
   surveil[label="Surveil",shape=OR];
   root->surveil;
