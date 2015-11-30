@@ -1,3 +1,4 @@
+%!TEX root = ../master.tex
 \subsection{Attacks} \stefan{skal nok have et mere sigende navn afhængig af hvad det kommer til at indeholder}
 
 \stefan{intro til attakcs}
@@ -18,3 +19,18 @@ Now Bob can receive both a replay from Eve and a retry from Alice.
 Bob needs to deal with this properly so Eve cannot abuse replays to her advantage.
 Abusing replays is known as a replay attack.
 \stefan{Noget om løsninger og hvad de indebærer?}
+
+\subsction{Side channel attacks}
+This description of side channel attacks is based on \citet[p.~132]{cryptoenginering}.
+
+Side channel attacks is the class of attacks that take advantage of a alternate channels of information.
+This could be how much time an operation takes, the power consumption during the operation or magnetic fields.
+
+There are means for protecting against this type of attacks, but it is hard to eliminate information leakage from all possible channels.
+
+\subsubsection{Differential Power Analysis}
+One particular side channel attack is differential power analysis described in \citet{DPA}.
+The article attacks a device encrypted with DES by recording power traces of the device performing encryption operations.
+Because of the way semiconductors work, different operations will have a discernible signature on the power trace.
+By recording enough traces information about the key can be derived from properties of the trace, and with enough traces the key can be derived.
+\stefan{nok om DPA?}
