@@ -2,10 +2,30 @@
 
 \section{Partner vs Consumer}
 
-\begin{figure}
-	\includegraphics[angle=90,height=\textheight]{girlfriend_cheater_attack_tree}
-	\caption{The Partner vs Consumer -- ``Expose Partner Adultery'' attack tree.}
-	\label{fig:attack_trees:partner:cheater}
+\begin{figure}[h]
+  \centering
+	\includegraphics[width=.75\textwidth]{figures/graphviz/partner_vs_consumer_physical.pdf}
+	\caption{The Partner vs Consumer -- ``Expose Partner Adultery (Physical access)'' attack tree.}
+	\label{fig:attack_trees:partner:cheater_physical}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.5\textwidth]{figures/graphviz/partner_vs_consumer_ecm.pdf}
+  \caption{The Partner vs Consumer -- ``Expose Partner Adultery (ECM access)'' attack tree.}
+  \label{fig:attack_trees:partner:cheater_ecm}
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[angle=90,height=\textheight]{figures/graphviz/partner_vs_consumer_sm.pdf}
+  \caption{The Partner vs Consumer -- ``Expose Partner Adultery (Smart Meter access)'' attack tree.}
+  \label{fig:attack_trees:partner:cheater_sm}
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[angle=90,height=\textheight]{figures/graphviz/partner_vs_consumer_client.pdf}
+  \caption{The Partner vs Consumer -- ``Expose Partner Adultery (Client access)'' attack tree.}
+  \label{fig:attack_trees:partner:cheater_client}
 \end{figure}
 
 The partner (or significant other) is an actor with relation to the consumer, but unlike the other actors partners usually can get away with more misdoings inside the consumer's property or house.
@@ -15,7 +35,7 @@ The partner (or significant other) is an actor with relation to the consumer, bu
 With this attack the partner wishes to monitor the consumer, possibly with following revenge, if monitoring leads to the conclusion that the consumer was cheating on the partner.
 What distinguishes the partner's attacks from the burglar or neighbour's is that the partner has increased access to the consumer's property, including the smart meter and related objects.
 
-The attack tree can be seen in \cref{fig:attack_trees:partner:cheater}.
+The attack tree can be seen in \cref{fig:attack_trees:partner:cheater_physical,fig:attack_trees:partner:cheater_ecm,fig:attack_trees:partner:cheater_sm,fig:attack_trees:partner:cheater_client}.
 There are three overall steps to the partner's attack plan, these correspond to the direct descendants of the root node.
 
 \subsubsection{Access}
