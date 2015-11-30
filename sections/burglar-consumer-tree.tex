@@ -1,34 +1,42 @@
 %!TEX root = ../master.tex
 \section{Burglar}
 This section provides an analysis of an attack in which a burglar wants to break in to the house of the consumer and steal his valuables.
+Several options to achieve this goal are explored.
+These are listed below:
+\begin{itemize}
+  \item \Cref{attacktree:burglar:sm}: Compromising the security on the smart meter.
+  \item \Cref{attacktree:burglar:client}: Compromising the device (the client) the consumer is using to communicate with the smart meter.
+  \item \Cref{attacktree:burglar:ecm}: Installing an ECM (see \cref{ecm}) and monitoring the consumer.
+  \item \Cref{attacktree:burglar:physical}: Performing a \emph{``physical''} attack, involving no technology.
+\end{itemize}
 The attack tree presented in \cref{attacktree:burglar} contains means that attempt to exploit the smart meter, as well as physical means.
 Both alternatives are presented in order to be able to annotate the tree with weights, in order to determine whether the smart meter attacks are actually valid as an entry-point.
 
 \begin{figure}
 \center
 \includegraphics[width=\textheight, angle=90]{graphviz/burglarSM.pdf}
-\caption{Attack-tree of a burglar attacking the consumer}
+\caption{Attack-tree of a burglar attacking the consumer using the smart meter.}
 \label{attacktree:burglar:sm}
 \end{figure}
 
 \begin{figure}
 \center
 \includegraphics[width=\textheight, angle=90]{graphviz/burglarClient.pdf}
-\caption{Attack-tree of a burglar attacking the consumer}
+\caption{Attack-tree of a burglar attacking the consumer using the consumers client.}
 \label{attacktree:burglar:client}
 \end{figure}
 
 \begin{figure}
 \center
 \includegraphics[width=\textheight, angle=90]{graphviz/burglarECM.pdf}
-\caption{Attack-tree of a burglar attacking the consumer}
+\caption{Attack-tree of a burglar attacking the consumer using an ECM.}
 \label{attacktree:burglar:ecm}
 \end{figure}
 
 \begin{figure}
 \center
 \includegraphics[width=\textheight, angle=90]{graphviz/burglarPhysical.pdf}
-\caption{Attack-tree of a burglar attacking the consumer}
+\caption{Attack-tree of a burglar attacking the consumer through physical means.}
 \label{attacktree:burglar:physical}
 \end{figure}
 
