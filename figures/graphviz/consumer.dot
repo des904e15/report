@@ -4,7 +4,7 @@ digraph G {
 node[ shape=rectangle];
 
 root [label="Report low power consumption", shape=OR];
-complaint [label="File complaint against distributor",shape=OR];
+complaint [label="File false complaint against distributor",shape=AND];
 falsify [label="Falsify sent consumption",shape=OR];
 
 
@@ -12,11 +12,15 @@ falsify [label="Falsify sent consumption",shape=OR];
 //COMPLAINT SUBTREE
 root -> complaint;
 
+forgeConsumptionData[shape=OR];
+complaint -> forgeConsumptionData
+complaint -> fileComplaint
+
 app[label="Develop app that shows \nlower power consumption"];
-complaint ->  app;
+forgeConsumptionData ->  app;
 
 falsifyReceived[label="Falsify received price info",shape=AND];
-complaint -> falsifyReceived;
+forgeConsumptionData -> falsifyReceived;
 interceptReceived[label="Incercept received packages \nwith price data"];
 falsifyReceived -> interceptReceived;
 falsifyReceived -> modifyPrices;

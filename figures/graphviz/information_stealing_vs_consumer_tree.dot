@@ -1,14 +1,14 @@
 digraph G{
 	node [style=filled fillcolor=white]
 
-	root[label="Profile consumer"];
+	root[label="Profile consumer",shape=AND];
 
-	obtain_information[label="Obtain power consumption"]
-	analyse_power_consumption[label="Analyse power consumption"]
+	obtain_information[label="Obtain power consumption",shape=OR];
+	analyse_power_consumption[label="Analyse power consumption",shape=OR];
 
 	compromise_sm[label="Compromise SM(On hold)"];
-	buy_information[label="Buy information"]
-	hack_client[label="Hack client"];
+	buy_information[label="Buy information",shape=OR]
+	hack_client[label="Hack client",shape=OR];
 	residents[label="Number of residents"];
 	home[label="Residents home schedule"];
 	activity_residents[label="Residents activity schedule"];
