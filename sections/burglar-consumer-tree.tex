@@ -9,8 +9,17 @@ These are listed below:
   \item \Cref{attacktree:burglar:ecm}: Installing an ECM (see \cref{ecm}) and monitoring the consumer.
   \item \Cref{attacktree:burglar:physical}: Performing a \emph{``physical''} attack, involving no technology.
 \end{itemize}
-The attack tree presented in \cref{attacktree:burglar} contains means that attempt to exploit the smart meter, as well as physical means.
-Both alternatives are presented in order to be able to annotate the tree with weights, in order to determine whether the smart meter attacks are actually valid as an entry-point.
+
+Representing the attacks as four separate attacks might be somewhat misleading.
+For instance the burglar might choose a physical means of determining if the consumer is at home even though he initially compromised the smart meter.
+Thus the four attack trees might be combined to properly describe the full spectrum of the burglars attack strategies.
+
+The trees are represented as four trees here to show the correlation between how the burglar gains access to the system and the possible attacks this makes available.
+The separated trees provide a clear visualization of this relation.
+
+This representation is to used to build a model of the possible threat to the consumer.
+As this representation fails to fully represent attacks that employ multiple strategies, special care should be taken when modeling the trees.
+Using a model that joins the four trees will allow for a comparison of the validity of the each device as an entry point for an attack.
 
 \begin{figure}
 \center
