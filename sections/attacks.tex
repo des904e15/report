@@ -39,3 +39,12 @@ By recording enough traces information about the key can be derived from propert
 
 \subsection{Buffer Overflow}
 \stefan{what to write?!}
+
+\subsection{Packet injection}
+This description is inspired by \cite{packetinjection}.
+If Eve can intercept communication between Alice and Bob she can inject packages into the stream of messages without either party knowing.
+A packet is injected by constructing a packet with the source address as one of the endpoints, Alice or Bob.
+In this way it looks like Alice or Bob originated the packet, and it seems like part of the communication.
+Abusing this it can be possible to affect the communication of Alice and Bob.
+Sending packets with the special \emph{RST} flag or packets that simulate a protocol error Eve can disrupt the communication between Alice and Bob.
+Injection new packets can alter the course of the communication which can be dangerous if the communication involves sensitive information.
