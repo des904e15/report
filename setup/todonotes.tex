@@ -1,5 +1,16 @@
+\newcounter{todofull}
+\newcounter{todomikkel}
+\newcounter{todomikael}
+\newcounter{todostefan}
+\newcounter{todobruno}
+
+%\newcommand*\rfrac[2]{\ensuremath{{}^{#1}\!/_{#2}}}
+%\newcommand*\rfrac[2]{\fbox{\ensuremath{\frac{#1}{#2}}}}
+\newcommand*\rfrac[2]{{\scriptsize #1|#2}\space}
+
 \newcommand{\namedtodo}[5]
 {
+  \stepcounter{todofull}
   \ifthenelse{\equal{#1}{}}
   {
     \todo[backgroundcolor=#4,linecolor=#4,caption=
@@ -14,6 +25,7 @@
 }
 \newcommand{\namedtodoinline}[5]
 {
+  \stepcounter{todofull}
   \ifthenelse{\equal{#1}{}}
   {
     \todo[backgroundcolor=#4,caption=
@@ -28,10 +40,40 @@
     {\normalsize\color{#5}\textbf{#3: }#2}
   }
 }
-\newcommand{\mikkel}[2][]{\namedtodo{#1}{#2}{Mikkel}{blue!80}{white}}
-\newcommand{\mikkelin}[2][]{\namedtodoinline{#1}{#2}{Mikkel}{blue!80}{white}}
-\newcommand{\stefan}[2][]{\namedtodoinline{#1}{#2}{Stefan M}{orange}{black}}
-\newcommand{\mikael}[2][]{\namedtodoinline{#1}{#2}{Mikael}{green}{black}}
-\newcommand{\bruno}[2][]{\namedtodoinline{#1}{#2}{Bruno}{black!10!red!90}{white}}
+\newcommand{\mikkel}[2][]
+{
+  \stepcounter{todomikkel}
+  \namedtodo{#1}{#2}
+  {
+    \rfrac{\arabic{todomikkel}}{\arabic{todofull}} Mikkel}{blue!80}{white}
+}
+\newcommand{\mikkelin}[2][]
+{
+  \stepcounter{todomikkel}
+  \namedtodoinline{#1}{#2}
+  {
+    \rfrac{\arabic{todomikkel}}{\arabic{todofull}} Mikkel}{blue!80}{white}
+}
+\newcommand{\stefan}[2][]
+{
+  \stepcounter{todostefan}
+  \namedtodoinline{#1}{#2}
+  {
+    \rfrac{\arabic{todostefan}}{\arabic{todofull}} Stefan}{orange}{black}
+}
+\newcommand{\mikael}[2][]
+{
+  \stepcounter{todomikael}
+  \namedtodoinline{#1}{#2}
+  {
+    \rfrac{\arabic{todomikael}}{\arabic{todofull}} Mikael}{green}{black}
+}
+\newcommand{\bruno}[2][]
+{
+  \stepcounter{todobruno}
+  \namedtodoinline{#1}{#2}
+  {
+    \rfrac{\arabic{todobruno}}{\arabic{todofull}} Bruno}{black!10!red!90}{white}
+}
 
 \makeatletter \renewcommand \listoftodos{\section*{List of Todos} \@starttoc{tdo}}
