@@ -3,6 +3,8 @@
 \newcounter{todomikael}
 \newcounter{todostefan}
 \newcounter{todobruno}
+\newcounter{todorene}
+\newcounter{todomads}
 
 %\newcommand*\rfrac[2]{\ensuremath{{}^{#1}\!/_{#2}}}
 %\newcommand*\rfrac[2]{\fbox{\ensuremath{\frac{#1}{#2}}}}
@@ -74,6 +76,22 @@
   \namedtodoinline{#1}{#2}
   {
     \rfrac{\arabic{todobruno}}{\arabic{todofull}} Bruno}{black!10!red!90}{white}
+}
+
+\newcommand{\rene}[2][]
+{
+  \stepcounter{todorene}
+  \namedtodoinline{#1}{#2}
+  {
+    \rfrac{\arabic{todorene}}{\arabic{todofull}} René}{purple}{white}
+}
+
+\newcommand{\mads}[2][]
+{
+  \stepcounter{todomads}
+  \namedtodoinline{#1}{#2}
+  {
+    \rfrac{\arabic{todomads}}{\arabic{todofull}} Mads}{yellow}{red}
 }
 
 \makeatletter \renewcommand \listoftodos{\section*{List of Todos} \@starttoc{tdo}}
