@@ -3,8 +3,7 @@
 Bell and LaPadula have devised a mathematical model intended for use in  military and governmental computer systems.
 The model formalizes users accessing data and how to handle this in a secure way so confidential information cannot be leaked to a lower classification level.
 The following description is based on \citet{lapadula1996secure}.
-\mikkelin{I think we are missing a visualization of the level hierarchy.}
-\mads{Tilføj eksempel + flueben}
+\mikkelin{\issue{55} brug lattice model til at visualisere}
 
 \subsection{Access attributes}
 The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
@@ -20,19 +19,17 @@ A \principal{} of low clearance should be able to read this list but not change 
 Append describes a pure write operation.
 This means that it is possible to append information to the end of a file without being able to extract information about the rest of the file.
 
-This can also be used with a printer which appends information about what is being printed.\mikkel{What is the information appended to?}
+This can also be used with a printer which appends information about what is being printed.
 By doing this it is sufficient that the classification of a piece of information is matching the classification of the printer in order to prevent unauthorized personnel from reading the information.
-\mikkel{Der mangler noget info om hvad det er der kan klassificeres, i starten af afsnittet.}
 
 \paragraph{Execute}
 The execution attribute makes it possible to execute an executable file.
 If the \principal{} does not have permission to read from or write to the file he will only be able to execute it.
 Similarly the executable file can produce output that is of a higher classification level than the clearance level of the \principal{} executing it.
-\mikkel{Where is this information then redirected to?}
 
 \paragraph{Read/write}
-This attribute is an interactive read and write access and is what is traditionally used when editing files.
-\mikkel{What is meant by interactive?}
+This attribute signifies that read and write access are both allowed.
+This attribute is what is traditionally used when editing text files.
 
 \paragraph{Control access}
 The control access attribute models the notion of a \principal{} having control over a file.
@@ -46,7 +43,7 @@ In the following a user requesting access to a file will be written as a \princi
 \mikkelin{I am not sure that it is easier to compare, but I would like it because it adds something more concrete to the section.}
 \mads{flueben}
 
-\subsection{Preventing security compromise}
+\subsection{Preventing security compromise}\label{bellap:properties}
 In order to ensure that data cannot be compromized the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
 
 \paragraph{Security condition}
@@ -57,4 +54,4 @@ The *-property states that if a \principal{} has write or append access to objec
 This property ensures that it is impossible to leak information to a lower classification level.
 \mikkel{Missing an example.}
 
-\mikael{Savner vi ikke noget om security labels? Det med classification/clearance og category(ies).}
+\mikael{\#56 Skriv beskrivelse af security labels? Det med classification/clearance og category(ies). (skal være i starten)}

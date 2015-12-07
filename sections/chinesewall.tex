@@ -1,5 +1,5 @@
 \section{The Chinese Wall Security Policy}
-\mikkel{We are missing a ``definition'' of what the wall itself is. Maybe illustrate it in the figures?}
+\mikkel{\issue{52} Brug figurer til at illustrere hvorfor det er en ``mur''}
 The first security models that emerged were mainly concerned with military, and were thus tailored to fit the needs of the military. 
 In \citet{brewer1989chinese} a model that is relevant for commercial applications is presented.
 This model fits the needs of corporate business services like an analyst that must uphold the confidentiality of his clients, meaning that he cannot advise a corporation if he has insider knowledge of a competitor.
@@ -24,11 +24,10 @@ This hierarchy is depicted on \cref{china:hierarchy}.
 \end{figure}
 
 \paragraph{Example} A conflict of interest class could be \emph{Oil companies} which contains \emph{Statoil} and \emph{Shell}. \emph{Statoil} contains objects of information that could compromise the company if \emph{Shell} would obtain the information.
-\mikkel{I suggest that we present this example as a figure instead of \cref{china:hierarchy}.}
-\bruno{+1}
+\mikkel{\issue{53} Omdan eksemplet til at være indeholdt i figuren \ref{china:hierarchy}, tilpas beskrivelse}
 
 \subsection{The Security Policy}
-\mikkel{I think we should use the concrete examples from above instead of ABC for the various classes/companies}
+\mikkel{\issue{54} Use the concrete examples from above instead of ABC for the various classes/companies}
 The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is also in conflict of interest class C.
 
 In \cref{china:conflict} two companies are in the same conflict of interest class and a \subject{} will not be able to access both of them at the same time.
@@ -57,10 +56,7 @@ After choosing a company in class C, the \subject{} still has a free choice from
 \end{figure}
 
 This policy is being upheld by two properties.
-These correspond to the two identical properties defined in Bell Lapadula. 
-\stefan{ref til definitionen i Bellapadula} 
-\mads{flueben}
-\mikael{Prøvede lige at finde det i kilden, men det kunne jeg ikke, i hvert fald slet ikke i så simpel form som den er præsenteret i Chinese Wall artiklen.}
+These correspond to the two identical properties defined in Bell Lapadula described in \cref{bellap:properties}.
 
 \paragraph{Simple Security}
 

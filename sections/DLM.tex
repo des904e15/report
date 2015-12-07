@@ -3,45 +3,30 @@
 \section{Decentralized Label Model}
 
 \mads{\issue{41} Mere info, historie, brug, etc }
-\bruno{Skal vi holde os til en term: value, data, information. De bruger det i flæng i litteraturen?}
-\stefan{jeg synes vi skal holde os til én term}
-\mikkelin{Jeg synes de forskellige termer kan dække over forskellige ting og giver mening i forskellig kontekst.
-Så nej, jeg synes ikke vi skal holde os til en af dem.}
-\bruno{Er det her denretning vi vil i? Hvis ja - så vil jeg godt tilføje nogle figurer til de små eksempler.}
+
 \newcommand{\xvalue}{value}
 \newcommand{\xvalues}{values}
 This section describes the Decentralized Label Model(DLM) both formally and informally with small examples.
-\stefan{der mangler noget blødere introduktion der forklarer hvad DLM er og hvad det skal bruges til}
-\mikkelin{Enig - det bør umiddelbart være den uformelle beskrivelse der kommer her.
-Jeg har i øvrigt svært ved at finde den uformelle beskrivelse i teksten.}
+\mikkelin{Jeg har svært ved at finde den uformelle beskrivelse i teksten.}
 
 \subsection{Definition of terms}
-\mikkelin{Jeg synes det her afsnit er lidt underligt.
-Hvorfor er acts for og privacy policy kun \emph{terms}?
-Burde de ikke bare have deres egen subsection?}
+\mikkelin{\#44 Acts-for skal flyttes til der hvor det bruges første gang (Limitations som det er nu)}
+\mikkelin{\#44 Privacy policy skal flyttes til Labels}
 This section defines and explains some of the terms used to explain the DLM.
-\mikkelin{Samme kommentar som Stefans ovenfor.
-Det er svært at følge teksten når vi som det første hopper direkte til \textbf{acts for} uden nogen motivation for hvorfor eller har en overordnet forståelse af modellen.}
-\mads{flueben}
 
 \paragraph{Acts for relation}
 The acts for relation, $\rightarrow$, can be used to model groups and roles.
 To model two \principals{}, Amy and Bob, that act for a group of programmers: $Amy \rightarrow programmers$ and $Bob \rightarrow programmers$.
 Or if Amy has different roles: $Amy \rightarrow Amy\_programmer$ and $Amy \rightarrow Amy\_admin$.
-\mikkel{Som jeg læser det er der to forskellige eksempler her.
-Men vi mangler en beskrivelse af hvad formålet med acts for er og hvad det betyder i DLM.}
+\mikkel{\#45 Vi mangler en beskrivelse af hvad formålet med acts for er (også bedre forklaring af eksemplerne) og hvad det betyder i DLM.}
 
-\stefan{brug $\succeq$ i stedet for $\rightarrow$ }
+\stefan{\#46 brug $\succeq$ i stedet for $\rightarrow$ }
 
 This is also called a \principal{} hierarchy.
 Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric}
 For instance $x \succeq y$ means $x$ acts for $y$.
 A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
 So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
-
-\paragraph{Value}
-A \xvalue{} is a piece of data in a program, for instance an integer.
-\mikkel{Jeg ville slette det her, men jeg vil gerne lige vende det med gruppen. Er det nødvendigt at forklare hvad ``value'' betyder?}
 
 \paragraph{Privacy policy}
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
@@ -69,23 +54,18 @@ In a system with owners $o_1, o_2, o_3$ and readers $r_1, r_2, r_3$, the followi
 $$L_1 = \{\policy{o_1}{r_1,r_2};\; \policy{o_2}{r_2, r_3}\}$$
 $$L_2 = \{\policy{o_1}{r_1,r_2};\; \policy{o_2}{r_2, r_3};\; \policy{o_3}{r_1, r_2, r_3}\}$$
 Since the policy of $o_3$ is to allow everyone to read it introduces no restriction to the label.
-Therefore we say that $L_1 = L_2$.
-\mikkelin{Jeg har skrevet eksemplet lidt om og smidt det i et example environment.
-Jeg synes ikke jeg kan finde noget sted i kilden hvor de siger at de to labels er ``$=$''.}
+Therefore we say that the effective reader set of the two labels are equal.
 \end{example}
 
 When a label interprets its privacy policies it understands it as a set of flows.
-\mikkel{Jeg synes vi skal omskrive det her til hvordan man skal forstå labels/flows, fremfor hvordan en label selv fortolker sine policies.
-Jeg er ikke fan af at skrive \emph{hvad en label ``gør''}.}
 A flow $(o,r)$ is a flow of information from owner $o$ to reader $r$.
 If a label contains this flow it means that the owner allows the reader to read the \xvalue{}.
 If we have three \principals{} $A$, $B$, $C$ and a label: $\{\policy{A}{B}; \ \policy{C}{}\}$.
 This means that $A$ allows its \xvalue{} to be read by $B$, $B$ allows every reader and $C$ allows no readers.
 Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
-\stefan{jeg savner en forklaring af hvad vi skal bruges flows til, hvad betyder flow mængden?}
-\mikkelin[mere forklaring]{Jeg synes det refererer tilbage til at vi mangler en mere forklarende introduktion der kunne motivere for labels - så burde behovet for at beskrive flow følge naturligt.
+\stefan{\#47 Skal omskrives så det forklarer hvordan MAN skal fortolke en label, i stedet for hvordan en laber fortolker sig selv}
+\stefan{\#47 Beskrivelse af hvad man skal bruges flows til}
 
-Men jeg er enig i at der mangler en beskrivelse af hvad flow mængden er.}
 
 A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
@@ -97,10 +77,8 @@ We have policy $K$ and label $L$.
 \item $\textbf{o}(K)$ or $\textbf{o}K$, the owner of policy $K$
 \item $\textbf{r}(K)$ or $\textbf{r}K$, the set of readers of policy $K$
 \end{itemize}
-\bruno{Kommer lige an på hvad vi ender med at bruge:  $\textbf{o}(K)$ or $\textbf{o}K$}
-\stefan{synes bedst om dem med paranteser, det andet ser underligt ud}
-\mikkelin{Jeg synes vi skal flytte de har notationer til starten og så bruge dem i hele teksten.
-Det er umiddelbart et lidt sent tidspunkt at introducere dem.}
+\stefan{\#48 Omskriv til o(k) notation i hele afsnittet}
+\mikkelin{\#49 Skal flyttes til starten af Labels (der hvor policies introduceres)}
 
 \subsection{Rules}
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
@@ -111,27 +89,21 @@ Thus the label assigned to the derived \xvalue{} is the union of the two source 
 This gives us the following join rule:
 \begin{definition}
   $L_1 \sqcup L_2 = L_1 \cup L_2$
-  \mikkelin{Der mangler forklaring af $\sqcup$ - det er ikke umiddelbart nemt at sammenholde teksten med definitionen.}
+  \mikkelin{\#50 Beskrivelse af $\sqcup$ / join}
 \end{definition}
 
 
 \paragraph{Relabeling by declassification}
+\stefan{\issue{51} Intro og forklaring af hvad det skal bruges til}
 The owners of the labels control their data, but sometimes policies are overly restrictive and one wants to relax them.
 
 The authority is a set of \principals{} which is the authority of the process of declassification.
 If a process has the authority of a \principal{}, the actions of the process are permitted.
 This means that if a \principal{} is in the authority set this can be declassified.
-\mikkel{Jeg har ikke forstået hvad der står i den her paragraf...}
 
-\stefan{der mangler forklaring af hvad  $\sqsubseteq$ er }
 A label $L_1$ can be relabeled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ where $L_A$ is the authority.
-\mikkel{Hvad er præcedens for $sqsubseteq$ og $\sqcup$?}
 The authority is a label $L_A$ of the form $\{p: \ \}$ for every \principal{} in the current authority.
-Given:
-\begin{center}
-  $L_A = \bigsqcup_{(p \text{ in current authority})}\{p: \}$
-\end{center}
-\mikkelin{Så vidt jeg kan se er det lige blevet gentaget tre gange hvad $L_A$ er. Eller har jeg misforstået noget?}
+
 $L_1$ can be relabelled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ is true.
 \begin{definition}
     $$\frac{L_1 \sqsubseteq L_2 \sqcup L_A}{L_1 \text{ may be declassified to } L_2}$$
@@ -154,7 +126,7 @@ $$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(oK = oJ \ \wedge \ rK \s
 \subsection{Limitations}
 The rule of restriction is too strict as it is only possible to remove readers and add policies \stefan{hvorfor er dette tilfældet?} and therefore prevents valid relabelings.
 There are three possible valid relabelings which are not possible at the moment:
-\mikkel{Acts for burde blive forklaret heromkring sådan at det passer med det emne det relaterer sig til.}
+\mikkel{\#44 Acts for burde blive forklaret heromkring sådan at det passer med det emne det relaterer sig til.}
 \begin{itemize}
 \item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
 \item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
