@@ -124,11 +124,16 @@ There are three possible valid relabelings which are not possible at the moment:
 \item Self-authorization - every \principal{} that \textit{acts for} (see below) an owner of a policy should be possible to add as a reader.
 \end{itemize}
 
-\paragraph{Acts for relation}
-The acts for relation, $\succeq$, can be used to model groups and roles.
-To model two \principals{}, Amy and Bob, that act for a group of programmers: $Amy \succeq programmers$ and $Bob \succeq programmers$.
-Or if Amy has different roles: $Amy \succeq Amy\_programmer$ and $Amy \succeq Amy\_admin$.
-\mikkel{\#45 Vi mangler en beskrivelse af hvad formålet med acts for er (også bedre forklaring af eksemplerne) og hvad det betyder i DLM.}
+\paragraph{Acts-for relation}
+A \principal{} in DLM can represent a user in the system, a group of users or roles.
+As labels on slots are immutable, in order to have more dynamic security policies we have that \principals{} are able to \textit{act for} other \principals{}.
+This means that a given \principal{} in effect has every right that the \principal{} that it acts for has.
+
+Given the acts-for relation, $\succeq$, and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
+Any security policies that apply to Bob will in effect also apply to Amy.
+Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group.
+
+Acts-for relations are reflexive and transitive, so that hierarchies can be formed.
 
 \subsubsection{Extending the relabeling by restriciton rule}
 We need to extend the rule in order to be able to do the things discussed above.
