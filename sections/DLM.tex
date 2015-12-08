@@ -28,6 +28,13 @@ The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any other readers we use the following syntax: $\policy{p}{}$.
 
+If we have policy $K$ and label $L$, we have following notation:
+\begin{itemize}
+\item $K \in L$, policy $K$ is a part of label $L$
+\item $\textbf{o}(K)$, the owner of policy $K$
+\item $\textbf{r}(K)$, the set of readers of policy $K$
+\end{itemize}
+
 Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
 If one or several privacy policies are added to a label it restricts the access to the \xvalue{}.
 A label with no policies  means that all readers are allowed.
@@ -51,18 +58,8 @@ Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
 \stefan{\#47 Skal omskrives så det forklarer hvordan MAN skal fortolke en label, i stedet for hvordan en laber fortolker sig selv}
 \stefan{\#47 Beskrivelse af hvad man skal bruges flows til}
 
-
 A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
-
-Some further notation:
-We have policy $K$ and label $L$.
-\begin{itemize}
-\item $K \in L$, policy $K$ is a part of label $L$
-\item $\textbf{o}(K)$, the owner of policy $K$
-\item $\textbf{r}(K)$, the set of readers of policy $K$
-\end{itemize}
-\mikkelin{\#49 Skal flyttes til starten af Labels (der hvor policies introduceres)}
 
 \subsection{Rules}
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
