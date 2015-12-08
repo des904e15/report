@@ -15,12 +15,6 @@ The final major point of DLM is that it is formalized and even though no impleme
 This section describes DLM both formally and informally with small examples.
 \mikkelin{Jeg har svært ved at finde den uformelle beskrivelse i teksten.}
 
-This is also called a \principal{} hierarchy.
-Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric}
-For instance $x \succeq y$ means $x$ acts for $y$.
-A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
-So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
-
 \subsection{Labels}\bruno{Måske lidt roddet afsnit?}
 A \xvalue{} is associated with a label.
 The label is a set of privacy policies.
@@ -129,11 +123,15 @@ A \principal{} in DLM can represent a user in the system, a group of users or ro
 As labels on slots are immutable, in order to have more dynamic security policies we have that \principals{} are able to \textit{act for} other \principals{}.
 This means that a given \principal{} in effect has every right that the \principal{} that it acts for has.
 
-Given the acts-for relation, $\succeq$, and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
+This is also called a \principal{} hierarchy.
+Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.}
+For instance $x \succeq y$ means $x$ acts for $y$.
+A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
+So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
+
+Given the acts-for relation and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
 Any security policies that apply to Bob will in effect also apply to Amy.
 Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group.
-
-Acts-for relations are reflexive and transitive, so that hierarchies can be formed.
 
 \subsubsection{Extending the relabeling by restriciton rule}
 We need to extend the rule in order to be able to do the things discussed above.
