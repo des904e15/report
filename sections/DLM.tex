@@ -59,10 +59,9 @@ Some further notation:
 We have policy $K$ and label $L$.
 \begin{itemize}
 \item $K \in L$, policy $K$ is a part of label $L$
-\item $\textbf{o}(K)$ or $\textbf{o}K$, the owner of policy $K$
-\item $\textbf{r}(K)$ or $\textbf{r}K$, the set of readers of policy $K$
+\item $\textbf{o}(K)$, the owner of policy $K$
+\item $\textbf{r}(K)$, the set of readers of policy $K$
 \end{itemize}
-\stefan{\#48 Omskriv til o(k) notation i hele afsnittet}
 \mikkelin{\#49 Skal flyttes til starten af Labels (der hvor policies introduceres)}
 
 \subsection{Rules}
@@ -104,7 +103,7 @@ For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means
 So a restriction is when the new label guarantees to enforce all of the policies from the old label.
 If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $rK$ is a subset of $rJ$.
 \begin{definition}
-$$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(oK = oJ \ \wedge \ rK \subseteq rJ)}{L_1 \sqsubseteq L_2}$$
+$$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(o(K) = o(J) \ \wedge \ r(K) \subseteq r(J))}{L_1 \sqsubseteq L_2}$$
 \end{definition}
 \bruno{definition of the relabeling rule - skal den være her?}
 
