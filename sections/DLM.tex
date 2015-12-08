@@ -1,3 +1,12 @@
+%!TEX root=../master.tex
+
+%INTRO
+% Information flow control
+% Attached to code
+% Formal
+% Possible to do both static and run-time checking
+% Uses labels and relabelling to control flow, subjects own objects and allow other subjects to access their objects
+
 \newcommand{\policy}[2]{\ensuremath{#1\!:\;#2}}
 
 \section{Decentralized Label Model}
@@ -25,7 +34,7 @@ Or if Amy has different roles: $Amy \rightarrow Amy\_programmer$ and $Amy \right
 This is also called a \principal{} hierarchy.
 Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric}
 For instance $x \succeq y$ means $x$ acts for $y$.
-A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
+A \principal{} hierarchy $P$ is a set of ordered pairs of \principvals{}.
 So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
 
 \paragraph{Privacy policy}
