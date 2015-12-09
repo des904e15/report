@@ -1,0 +1,27 @@
+digraph G{
+	node [style=filled fillcolor=white]
+
+	root[label="Obtain consumer profile",shape=AND];	
+
+	obtain_data[label="Obtain data through app"];
+	analyse_power_consumption[label="Analyze power consumption",shape=OR];
+	sell_data[label="Sell the data"];
+
+	root -> obtain_data;
+	root -> sell_data;	
+
+	
+
+	residents[label="Number of residents"];
+	home[label="Residents home schedule"];
+	activity_residents[label="Residents activity schedule"];
+	when_appl[label="Appliances usage"];
+	what_appl[label="Appliance brands",shape=AND];
+
+	
+	root -> analyse_power_consumption;
+	analyse_power_consumption ->  residents, activity_residents, home, when_appl, what_appl;
+
+	what_appl -> power_signatures, power_compare;
+	
+	}
