@@ -1,0 +1,17 @@
+%!TEX root = ../master.tex
+
+\section{Appliance company attacking the consumer}
+A manufacturer of appliances can have similar objectives as the \cref{3rdpartyattacktree}.
+The attack tree is also very similar as seen on \cref{applianceCompanyTree} and thus the description will not be repeated.
+The difference is how the data is obtained.
+The third party app develop has direct access to the data and the potential of sending the data through the platform that the application is installed on.
+An appliance company needs to obtain the data through the firmware on the appliance and send it through either a network connection on the appliance or through the smart meter.
+Although possible these means are less likely than those described in \cref{3rdpartyattacktree}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[angle=90, height=\textheight]{graphviz/appliancecompany_vs_consumer.pdf}
+  \end{center}
+  \caption{Information stealing through appliance}
+  \label{applianceCompanyTree}
+\end{figure}
