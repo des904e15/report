@@ -3,9 +3,9 @@ digraph G {
 // graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3];
 node[ shape=rectangle];
 
-root [label="Report low power consumption", shape=OR];
-complaint [label="File false complaint against distributor",shape=AND];
-falsify [label="Falsify sent consumption",shape=OR];
+root [label="Report a lower \npower consumption", shape=OR];
+complaint [label="File false complaint \nagainst distributor",shape=AND];
+falsify [label="Falsify sent \nconsumption",shape=OR];
 
 
 
@@ -13,15 +13,19 @@ falsify [label="Falsify sent consumption",shape=OR];
 root -> complaint;
 
 forgeConsumptionData[shape=OR];
+forgeConsumptionData[label="Change the \nconsumption data"];
 complaint -> forgeConsumptionData
+fileComplaint[label="File complaint \nagainst distributor"]
 complaint -> fileComplaint
 
 app[label="Develop app that shows \nlower power consumption"];
 forgeConsumptionData ->  app;
 
-falsifyReceived[label="Falsify received price info",shape=AND];
+falsifyReceived[label="Falsify received \nprice info",shape=AND];
 forgeConsumptionData -> falsifyReceived;
 interceptReceived[label="Incercept received packages \nwith price data"];
+modifyPrices[label="Modify prices"];
+resendToSM[label="Send altered \npackages to SM"];
 falsifyReceived -> interceptReceived;
 falsifyReceived -> modifyPrices;
 falsifyReceived -> resendToSM;
@@ -33,19 +37,25 @@ root -> falsify;
 package[label="Falsify consumption \npackages sent from SM",shape=AND];
 falsify ->	package;
 intercept[label="Incercept sent packages \nwith consumption data"];
+modify[label="Modify \nconsumption data"];
+resend[label="Send altered \npackages to distributor"]
 package -> intercept;
 package -> modify;
 package -> resend;
 
-DPA[label="Differential Power \nAnalysis",shape=AND];
+DPA[label="Differential Power \nAnalysis(DPA)",shape=AND];
 falsify -> DPA;
 DPA -> obtainKey;
 whenSend[label="Investigate when SM \nsends consumption data"];
 obtainKey[label="Obtain key used by \nSM for communication",shape=AND];
 obtainKey -> whenSend;
+performDPA[label="Run DPA"]
 obtainKey -> performDPA;
+findKeyInDPA[label="Find key in DPA"];
 obtainKey -> findKeyInDPA;
+createFalseConsumptionData[label="Create false \nconsumption data"];
 DPA -> createFalseConsumptionData;
+sendFalseData[label="Send false \ndata to distributor"]
 DPA -> sendFalseData;
 
 ModifyFWstore[label="Modify how firmware \nstores consumption"];
