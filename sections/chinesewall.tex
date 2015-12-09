@@ -66,12 +66,12 @@ This hierarchy is depicted in \cref{china:hierarchy}.
 \end{figure}
 
 \subsection{The Security Policy}
-The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is also in conflict of interest class C.
+The concept of the Chinese wall security policy is that a \principal{} that has access to information about company $A$ which resides in a conflict of interest class $C$ cannot access information about company $B$ if $B$ is also in conflict of interest class $C$.
 
 In \cref{china:hierarchy} one conflict of interest class is \emph{Oil companies}.
 This conflict class contains \emph{Statoil} and \emph{Shell}. 
 \emph{Shell} contains objects of information that could compromise the company if \emph{Statoil} would obtain the information.
-An analyst concerned with \emph{Shell} should not be able to read any information about \emph{Statoil} in order to uphold confidentiality, as was also described in the introduction.
+An analyst concerned with \emph{Shell} should not be able to read any information about \emph{Statoil} in order to uphold confidentiality, as was also described in the \cref{chinese:example}.
 
 \subsection{Chinese wall properties}
 This policy is being upheld by two properties.
@@ -79,20 +79,20 @@ These correspond to the two identical properties defined in Bell Lapadula descri
 
 \paragraph{Simple Security}
 
-When a \principal{} S requests to read an object O, this can only be permitted if one of the following requirements are fulfilled:
+When a \principal{} $S$ requests to read an object $O$, this can only be permitted if one of the following requirements are fulfilled:
 
 \begin{itemize}
-\item O is in the same company dataset as an object already accessed by S (the object is within the wall).
-\item O belongs to a different interest class than any of those S has previously accessed.
+\item $O$ is in the same company dataset as an object already accessed by $S$ (the object is within the wall).
+\item $O$ belongs to a different interest class than any of those $S$ has previously accessed.
 \end{itemize}
 
 \paragraph{*-Property}
 
-When a \principal{} S requests to write to an object O if the following requirements are both fulfilled.
+When a \principal{} $S$ requests to write to an object $O$ it is only permitted if the following requirements are both fulfilled.
 
 \begin{itemize}
-\item Access to O is permitted by the simple security rule.
-\item No objects from another object P in another company dataset D, which contains unsanitized information can be read when requesting write access to O.
+\item Access to $O$ is permitted by the simple security rule.
+\item No objects from another object $P$ in another company dataset $D$, which contains unsanitized information can be read when requesting write access to $O$.
 \end{itemize}
 
 The second requirements ensures that unsanitized information cannot leave the company dataset, but it is still possible to sanitize the data in order to compare companies.
