@@ -6,26 +6,29 @@ A security policy capable of representing corporate business services was needed
 For instance an analyst that must uphold the confidentiality of his clients.
 This means that he cannot advise a corporation if he has insider knowledge of a competitor.
 In \citet{brewer1989chinese} such a model, \emph{The Chinese Wall}, is presented.
+The concept of the Chinese Wall security policy is illustrated in \cref{chinese:illu}.
 To demonstrate the purpose of the model an example of its use is given in \cref{chinese:example}.
-The rest of this section provides a description of the model.
 
 \begin{example}{Conflict classes}\label{chinese:example}
-The concept of the Chinese Wall security policy is illustrated in \cref{chinese:illu}.
-Some firm has information about several companies - two oil companies and two banks.
-In \cref{chinese:illu:situation} this is illustrated as two groups of two companies.
-These groups are in the Chinese Wall security policy known as a conflict of interest class.
-When an analyst chooses to work with information about a company, he should not be able to access information about other companies in the same conflict of interest class.
-When an analyst chooses to work with Shell there is therefore placed a conceptual wall around the other company in the same conflict of interest class as depicted in \cref{chinese:illu:choice1}.
-Likewise the wall is extended when the same analyst chooses to work with information about Spar Nord.
-Now the wall shields the analyst from the rest of the Bank conflict of interest class as well.
-This can be seen in \cref{chinese:illu:choice2}.
+Some firm has information about several companies; two oil companies and two banks.
+In \cref{chinese:illu} this is illustrated as two groups of two companies.
+These groups are in the Chinese Wall security policy known as conflict of interest classes.
+When an analyst chooses to work with information about a company, he is not able to access information about other companies in the same conflict of interest class.
+
+\begin{enumerate}
+    \item The analyst chooses Shell from the leftmost conflict of interest class.
+    Because of this a conceptual wall is placed around the other company in the same conflict of interest class as depicted in \cref{chinese:illu:choice1}.
+    \item The analyst chooses Spar Nord from the remaining conflict of interest class.
+    Now the wall shields the analyst from the rest of the Bank conflict of interest class as well.
+    This can be seen in \cref{chinese:illu:choice2}.
+\end{enumerate}
 \end{example}
 
 \begin{figure}
 \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \resizebox{\linewidth}{!}{\input{figures/chineseSituation.tikz}}
-        \caption{Four competing companies}
+        \caption{Four companies}
         \label{chinese:illu:situation}
     \end{subfigure}
     ~
@@ -45,7 +48,7 @@ This can be seen in \cref{chinese:illu:choice2}.
 
 
 \subsection*{The Chinese Wall Model}
-A Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by a user of the system.
+As exemplified in \cref{chinese:example} a Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by the a user of the system.
 Information is stored in a hierarchy with three levels. 
 This hierarchy is depicted in \cref{china:hierarchy}.
 
