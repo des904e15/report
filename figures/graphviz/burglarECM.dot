@@ -6,23 +6,25 @@ digraph G {
 root [label="Break in and steal (ECM access)", shape=AND];
 
 installECM;
-goodstuff [label="Expensive goods?"];
-atHome [label="Is consumer home?"];
+goodstuff [label="Find possible goods"];
+atHome [label="When is the consumer home?"];
 breakIn [label="Break in"];
 
-installECM[shape=AND];
+installECM[shape=AND, label="Install ECM"];
 root -> installECM;
+GainAccessToPowerCables[label="Gain access to power cables \noutside the household"]
 installECM -> GainAccessToPowerCables;
-installECM -> install;
 
 root -> goodstuff;
+detectSignature[label="Detect devices in the power trace \nby using signatures"];
 goodstuff->detectSignature;
 
 root -> atHome;
+deviceStatus[label="Look at the \nstatus of the devices"];
 atHome -> deviceStatus;
 
 breakIn[label="Assist breakin"]
 root ->	breakIn;
+securityDeviceStatus[label="Identify possible \nsecurity devices"]
 breakIn -> securityDeviceStatus;
-root -> stealItems;
 }
