@@ -1,9 +1,35 @@
+%!TEX root=..\master.tex
 \section{Bell Lapadula}
 
 Bell and LaPadula have devised a mathematical model intended for use in  military and governmental computer systems.
 The model formalizes users accessing data and how to handle this in a secure way so confidential information cannot be leaked to a lower classification level.
 The following description is based on \citet{lapadula1996secure}.
-\mikkelin{\issue{55} brug lattice model til at visualisere}
+
+\subsection{Security}
+Before we go into details about how the Bell-LaPadula (BLP) security model is applied to computer systems, we will first discuss some important concepts.
+
+In any system we will have \textit{objects} and \textit{subjects}, where objects are entities that can somehow be manipulated by the system's users (subjects).
+Subjects can be users themselves, but can also be seen as representatives of a user or even groups of users.
+
+\paragraph{Classification and Clearance}
+Attached to any object or subject will be a classification or clearance respectively.
+This means that for any object $o$ with classification $x$, any subject $s$ will need clearance $x$ or higher in order to access $o$.
+This will also work in a hierarchical security system, where we can have a classification $y$ as a child of $x$, then given clearance $x$ we will also have access to any objects with classification $y$.
+
+\paragraph{Category and Need-to-know}
+In addition to classification, objects can belong to zero, one or more category, which can be seen as security groupings of certain objects (e.g. ``Cold War'').
+Similarly, subjects can have zero, one or more need-to-know, which are the security groupings for subjects.
+
+\paragraph{Visualization}
+This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
+Each node represents an object, with a classification and possibly a category.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/blp_lattice}
+\label{blp:lattice}
+\caption{A BLP lattice \cite{anderson2008security}}
+\end{figure}
 
 \subsection{Access attributes}
 The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
@@ -54,5 +80,3 @@ The *-property states that if a \principal{} has write or append access to objec
 This property ensures that it is impossible to leak information to a lower classification level.
 
 \mikkel{\issue{57} Gennemgående eksempel til BLP afsnittet}
-
-\mikael{\#56 Skriv beskrivelse af security labels? Det med classification/clearance og category(ies). (skal være i starten)}
