@@ -6,30 +6,37 @@ digraph G {
 root [label="Break in and steal (Client access)", shape=AND];
 
 compromiseClient;
-goodstuff [label="Expensive goods?",shape=OR];
-atHome [label="Is consumer home?",shape=OR];
+goodstuff [label="Find possible goods",shape=OR];
+atHome [label="When is the consumer home?",shape=OR];
 breakIn [label="Break in"];
 
 compromiseClient[shape=OR]
+compromiseClient[label="Compromise client"];
 root -> compromiseClient;
+stealClient[label="Steal client"]
 compromiseClient -> stealClient;
+gainRemoteAccessToClient[label="Gain remote \naccess to client"]
 compromiseClient -> gainRemoteAccessToClient;
 
 
 root -> goodstuff;
-connectedDevices;
+connectedDevices[label="Get connected \ndevices"];
 goodstuff->connectedDevices;
+detectSignature[label="Detect devices in the power trace \nby using signatures"];
 goodstuff->detectSignature;
 
 root -> atHome;
+deviceStatus[label="Look at the \nstatus of the devices"];
 atHome -> deviceStatus;
+turnOnOffDevices[label="Toggle devices to see \nif consumer is home"];
 atHome -> turnOnOffDevices;
+deviceSchedule[label="Look at the \ndevice schedule"];
 atHome -> deviceSchedule;
 
-breakIn[shape=OR, label="Assist breakin"]
+breakIn[shape=OR]
 root ->	breakIn;
+securityDeviceStatus[label="See if there are \nany security devices"];
 breakIn -> securityDeviceStatus;
-root -> stealItems;
-turnOnOffDevices2[label=turnOnOffDevices]
+turnOnOffDevices2[label="Disable security devices and \nmaybe others for easier break in"];
 breakIn -> turnOnOffDevices2;
 }
