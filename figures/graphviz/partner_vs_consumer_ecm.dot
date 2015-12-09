@@ -8,16 +8,16 @@ digraph finite_state_machine {
   root->Install_ecm;
    
 
-  surveil[label="Surveil",shape=OR];
+  surveil[label="Surveil partner",shape=OR];
   root->surveil;
 
-    at_home[label="At home?"];
+    at_home[label="When is the partner home?"];
     surveil->at_home
 
       running_devices[label="Running devices"];
       at_home->running_devices;
 
-    doing_what[label="Doing what?"];
+    doing_what[label="What is the partner doing?"];
     surveil->doing_what;
 
       running_devices2[label="Running devices"];

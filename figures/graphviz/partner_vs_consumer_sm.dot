@@ -7,29 +7,35 @@ digraph finite_state_machine {
     sm_access -> compromise_sm;
     compromise_sm[label="Compromise SM"];
 
-    obtainPassword[shape=OR];
+    obtainPassword[label="Obtain password", shape=OR];
     compromise_sm[shape=OR];
     compromise_sm -> obtainPassword;
+    phishing[label="Phishing"];
+    malware[label="Malware"];
+    shoulderSurfing[label="Shoulder surfing"];
+    crackPassword[label="Crack password"];
     obtainPassword -> phishing;
     obtainPassword -> malware;
     obtainPassword -> shoulderSurfing;
     obtainPassword -> crackPassword;
 
-    exploitVulnerability[shape=AND];
+    exploitVulnerability[label="Vulnerabilities", shape=AND];
     compromise_sm -> exploitVulnerability;
+    findVuln[label="Find vulnerability"];
+    exploitVuln[label="Exploit vulnerability"];
     exploitVulnerability -> findVuln;
     exploitVulnerability -> exploitVuln;
 
-  surveil[label="Surveil",shape=OR];
+  surveil[label="Surveil partner",shape=OR];
   sm_access->surveil;
 
-    at_home[label="At home?"];
+    at_home[label="When is the partner home?"];
     surveil->at_home
 
       running_devices[label="Running devices"];
       at_home->running_devices;
 
-    doing_what[label="Doing what?",shape=OR];
+    doing_what[label="What is the partner doing?",shape=OR];
     surveil->doing_what;
 
       running_devices2[label="Running devices"];

@@ -4,10 +4,10 @@ digraph finite_state_machine {
 
   root[label = "Expose partner adultery (Physical access)",shape=AND];
 
-  surveil[label="Surveil",shape=OR];
+  surveil[label="Surveil partner",shape=OR];
   root->surveil;
 
-    at_home[label="At home?",shape=OR];
+    at_home[label="When is the partner home?",shape=OR];
     surveil->at_home
 
       check_driveway[label="Check driveway"];
@@ -16,7 +16,7 @@ digraph finite_state_machine {
       look_window[label="Look through window"];
       at_home->look_window;
 
-    doing_what[label="Doing what?"];
+    doing_what[label="What is the partner doing?"];
     surveil->doing_what;
 
 look_window2[label="Look through window"];
@@ -25,6 +25,6 @@ look_window2[label="Look through window"];
   revenge[label="Get revenge"];
   root->revenge;
 
-    destroy_things[label="Destroy things"];
+    destroy_things[label="Damage or destroy things"];
     revenge->destroy_things;
 }
