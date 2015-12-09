@@ -1,9 +1,42 @@
 \section{The Chinese Wall Security Policy}
-\mikkel{\issue{52} Brug figurer til at illustrere hvorfor det er en ``mur''}
 The first security models that emerged were mainly concerned with military, and were thus tailored to fit the needs of the military. 
 In \citet{brewer1989chinese} a model that is relevant for commercial applications is presented.
 This model fits the needs of corporate business services like an analyst that must uphold the confidentiality of his clients, meaning that he cannot advise a corporation if he has insider knowledge of a competitor.
-The following description is based on \citet{brewer1989chinese}.
+
+The concept is illustrated on \cref{chinese:illu}.
+Some firm has information about several companies - two oil companies and two banks.
+In \cref{chinese:situation} this is illustrated as two groups of two companies.
+These groups are in the Chinese Wall security policy known as a conflict of interest class.
+When an analyst chooses to work with information about a company, he should not be able to access information about other companies in the same conflict of interest class.
+When an analyst chooses to work with Shell there is therefore placed a conceptual wall around the other company in the same conflict of interest class as depicted on \cref{chinese:choice1}.
+Likewise the wall is extended when the same analyst chooses to work with information about Spar Nord.
+Now the wall shields the analyst from the rest of the Bank conflict of interest class as well.
+This can be seen on \cref{chinese:choice2}.
+
+The following description of the Chinese Wall security policy is based on \citet{brewer1989chinese}.
+
+\begin{figure}
+\centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \resizebox{\linewidth}{!}{\input{figures/chineseSituation.tikz}}
+        \caption{Four competing companies}
+        \label{chinese:situation}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.3\textwidth}
+        \resizebox{\linewidth}{!}{\input{figures/chineseChoice1.tikz}}
+        \caption{First choice}
+        \label{chinese:choice1}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.3\textwidth}
+        \resizebox{\linewidth}{!}{\input{figures/chineseChoice2.tikz}}
+        \caption{Second choice}
+        \label{chinese:choice2}
+    \end{subfigure}
+    \caption{The Chinese Wall security policy}\label{chinese:illu}
+\end{figure}
+
 
 \subsection*{The Chinese Wall Model}
 A Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by a user of the system.
@@ -23,38 +56,15 @@ This hierarchy is depicted on \cref{china:hierarchy}.
 	\label{china:hierarchy}
 \end{figure}
 
-\paragraph{Example} A conflict of interest class could be \emph{Oil companies} which contains \emph{Statoil} and \emph{Shell}. \emph{Statoil} contains objects of information that could compromise the company if \emph{Shell} would obtain the information.
-\mikkel{\issue{53} Omdan eksemplet til at være indeholdt i figuren \ref{china:hierarchy}, tilpas beskrivelse}
-
 \subsection{The Security Policy}
-\mikkel{\issue{54} Use the concrete examples from above instead of ABC for the various classes/companies}
 The concept of the Chinese wall security policy is that a \principal{} that has access to information about company A which resides in a conflict of interest class C cannot access information about company B if B is also in conflict of interest class C.
 
-In \cref{china:conflict} two companies are in the same conflict of interest class and a \subject{} will not be able to access both of them at the same time.
-Initially the \subject{} will be able to choose freely from the two possibilities, but after choosing one of the companies the other will be unaccessible due to the conflict of interest.
+In \cref{china:hierarchy} one conflict of interest class is \emph{Oil companies}.
+This conflict class contains \emph{Statoil} and \emph{Shell}. 
+\emph{Shell} contains objects of information that could compromise the company if \emph{Statoil} would obtain the information.
+An analyst concerned with \emph{Shell} should not be able to read any information about \emph{Statoil} in order to uphold confidentiality, as was also described in the introduction.
 
-\begin{figure}[h]
-  \centering
-\resizebox{0.3\textwidth}{!}{  
-  \input{./figures/conflict}
-  }
-  \caption{Two companies in the same conflict of interest class}
-  \label{china:conflict}
-\end{figure}
-
-In \cref{china:conflict2} two companies are added to the system in a new conflict of interest class.
-A \subject{} will be able to access one company from each class.
-After choosing a company in class C, the \subject{} still has a free choice from the two companies in class D.
-
-\begin{figure}[h]
-  \centering
-  \resizebox{0.8\textwidth}{!}{
-    \input{./figures/conflict2}
-    }
-  \caption{Introducing a conflict of interest class}
-  \label{china:conflict2}
-\end{figure}
-
+\subsection{Chinese wall properties}
 This policy is being upheld by two properties.
 These correspond to the two identical properties defined in Bell Lapadula described in \cref{bellap:properties}.
 
