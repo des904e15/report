@@ -15,26 +15,12 @@ The final major point of DLM is that it is formalized and even though no impleme
 This section describes DLM both formally and informally with small examples.
 \mikkelin{Jeg har svært ved at finde den uformelle beskrivelse i teksten.}
 
-\subsection{Definition of terms}
-\mikkelin{\#44 Acts-for skal flyttes til der hvor det bruges første gang (Limitations som det er nu)}
-\mikkelin{\#44 Privacy policy skal flyttes til Labels}
-This section defines and explains some of the terms used to explain the DLM.
+\subsection{Labels}\bruno{Måske lidt roddet afsnit?}
+A \xvalue{} is associated with a label.
+The label is a set of privacy policies.
+When the \xvalue{} flows through the system, all the policies need to be obeyed.
+This means that the effective set of \principals{} able to read the \xvalue{} is the intersection of all policies in a label.
 
-\paragraph{Acts for relation}
-The acts for relation, $\rightarrow$, can be used to model groups and roles.
-To model two \principals{}, Amy and Bob, that act for a group of programmers: $Amy \rightarrow programmers$ and $Bob \rightarrow programmers$.
-Or if Amy has different roles: $Amy \rightarrow Amy\_programmer$ and $Amy \rightarrow Amy\_admin$.
-\mikkel{\#45 Vi mangler en beskrivelse af hvad formålet med acts for er (også bedre forklaring af eksemplerne) og hvad det betyder i DLM.}
-
-\stefan{\#46 brug $\succeq$ i stedet for $\rightarrow$ }
-
-This is also called a \principal{} hierarchy.
-Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric}
-For instance $x \succeq y$ means $x$ acts for $y$.
-A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
-So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
-
-\paragraph{Privacy policy}
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
 The syntax is: $\policy{\text{<\emph{owner}>}}{\text{<\emph{reader}>}}$.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
@@ -42,12 +28,12 @@ The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any other readers we use the following syntax: $\policy{p}{}$.
 
-\subsection{Labels}\bruno{Måske lidt roddet afsnit?}
-A \xvalue{} is associated with a label.
-The label is a set of privacy policies.
-When the \xvalue{} flows through the system, all the policies need to be obeyed.
-This means that the effective set of \principals{} able to read the \xvalue{} is the intersection of all policies in a label.
-
+If we have policy $K$ and label $L$, we have following notation:
+\begin{itemize}
+\item $K \in L$, policy $K$ is a part of label $L$
+\item $\textbf{o}(K)$, the owner of policy $K$
+\item $\textbf{r}(K)$, the set of readers of policy $K$
+\end{itemize}
 
 Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
 If one or several privacy policies are added to a label it restricts the access to the \xvalue{}.
@@ -72,19 +58,8 @@ Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
 \stefan{\#47 Skal omskrives så det forklarer hvordan MAN skal fortolke en label, i stedet for hvordan en laber fortolker sig selv}
 \stefan{\#47 Beskrivelse af hvad man skal bruges flows til}
 
-
 A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
-
-Some further notation:
-We have policy $K$ and label $L$.
-\begin{itemize}
-\item $K \in L$, policy $K$ is a part of label $L$
-\item $\textbf{o}(K)$ or $\textbf{o}K$, the owner of policy $K$
-\item $\textbf{r}(K)$ or $\textbf{r}K$, the set of readers of policy $K$
-\end{itemize}
-\stefan{\#48 Omskriv til o(k) notation i hele afsnittet}
-\mikkelin{\#49 Skal flyttes til starten af Labels (der hvor policies introduceres)}
 
 \subsection{Rules}
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
@@ -125,19 +100,34 @@ For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means
 So a restriction is when the new label guarantees to enforce all of the policies from the old label.
 If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $rK$ is a subset of $rJ$.
 \begin{definition}
-$$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(oK = oJ \ \wedge \ rK \subseteq rJ)}{L_1 \sqsubseteq L_2}$$
+$$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(o(K) = o(J) \ \wedge \ r(K) \subseteq r(J))}{L_1 \sqsubseteq L_2}$$
 \end{definition}
 \bruno{definition of the relabeling rule - skal den være her?}
 
 \subsection{Limitations}
 The rule of restriction is too strict as it is only possible to remove readers and add policies \stefan{hvorfor er dette tilfældet?} and therefore prevents valid relabelings.
 There are three possible valid relabelings which are not possible at the moment:
-\mikkel{\#44 Acts for burde blive forklaret heromkring sådan at det passer med det emne det relaterer sig til.}
+
 \begin{itemize}
 \item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
 \item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
-\item Self-authorization - every \principal{} that acts for an owner of a policy should be possible to add as a reader.
+\item Self-authorization - every \principal{} that \textit{acts for} (see below) an owner of a policy should be possible to add as a reader.
 \end{itemize}
+
+\paragraph{Acts-for relation}
+A \principal{} in DLM can represent a user in the system, a group of users or roles.
+As labels on slots are immutable, in order to have more dynamic security policies we have that \principals{} are able to \textit{act for} other \principals{}.
+This means that a given \principal{} in effect has every right that the \principal{} that it acts for has.
+
+This is also called a \principal{} hierarchy.
+Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.}
+For instance $x \succeq y$ means $x$ acts for $y$.
+A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
+So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
+
+Given the acts-for relation and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
+Any security policies that apply to Bob will in effect also apply to Amy.
+Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group.
 
 \subsubsection{Extending the relabeling by restriciton rule}
 We need to extend the rule in order to be able to do the things discussed above.
