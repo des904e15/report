@@ -16,7 +16,8 @@ digraph G{
 	analyse_power_consumption[label="Analyze power consumption",shape=OR];
 
 	compromise_sm[label="Compromise SM",shape=OR];
-		compromise_sm -> obtainPassword;
+	compromise_sm -> obtainPassword;
+	exploitVulnerability[label="Vulnerabilities"];
 		compromise_sm -> exploitVulnerability;
 
 		obtainPassword[shape=OR];
@@ -26,7 +27,9 @@ digraph G{
 		obtainPassword -> crackPassword;
 
 		exploitVulnerability[shape=AND];
+		findVuln[label="Find Vulnerability"];
 		exploitVulnerability -> findVuln;
+		exploitVuln[label="Exploit Vulnerability"];
 		exploitVulnerability -> exploitVuln;
 
 	buy_information[label="Buy power consumption",shape=OR]
@@ -40,8 +43,8 @@ digraph G{
 	buy_third_party[label="Buy from 3rd party"];
 	buy_from_consumer[label="Buy from consumer"];
 	
-	malware[label="Malware"];
-	backdoor[label="Backdoor"];
+	malware[label="Use Malware"];
+	backdoor[label="Use Backdoor"];
 	power_signatures[label="Obtain power signatures"];
 	power_compare[label="Compare with \nsignature database"]
 	
