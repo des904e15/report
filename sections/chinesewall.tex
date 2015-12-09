@@ -88,12 +88,13 @@ When a \principal{} $S$ requests to read an object $O$, this can only be permitt
 
 \paragraph{*-Property}
 
-When a \principal{} $S$ requests to write to an object $O$ it is only permitted if the following requirements are both fulfilled.
+When a \principal{} $S$ requests to write to an object $O$ in dataset $D$ it is only permitted if the following requirements are both fulfilled.
 
 \begin{itemize}
 \item Access to $O$ is permitted by the simple security rule.
-\item No objects from another object $P$ in another company dataset $D$, which contains unsanitized information can be read when requesting write access to $O$.
+\item No objects from another object $O'$ in another company dataset $D'$, which contains unsanitized information, can be read when requesting write access to $O$.
 \end{itemize}
 
-The second requirements ensures that unsanitized information cannot leave the company dataset, but it is still possible to sanitize the data in order to compare companies.
-\mads{\#42 Bedre forklaring af BLP *prop}
+This is similar to the BLP *-property.
+However, here we are trying to prevent \principal{} $S$ from sharing $D$'s \textit{unsanitized information}\footnote{Unsanitized information is any data that could cause a breach of privacy.} with \principal{} $S'$, who could possibly be unable to access $D$'s company dataset directly, as per the simple security rule -- i.e. $S'$ is already handling another company $D'$ within the same conflict of interest class.
+Even though unsanitized information cannot leave the company dataset, it is still possible to sanitize the data in order to compare companies.
