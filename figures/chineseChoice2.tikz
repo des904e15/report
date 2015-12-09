@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+
+\draw[fill=green!60]  (-2,1) node{Shell} ellipse (1.5 and 1);
+\draw[fill=green!60]  (4,1) node{Spar Nord} ellipse (1.5 and 1);
+\draw  (-2,-3) node{Statoil} ellipse (1.5 and 1);
+\draw  (4,-3) node{Danske Bank} ellipse (1.5 and 1);
+\draw[thick, dashed]  (-2,-1) node{Oil Companies} ellipse (2.5 and 4.5);
+\draw[thick, dashed]  (4,-1) node{Banks} ellipse (2.5 and 4.5);
+
+
+\draw [line width=2mm](-5,-1.5) -- (1,-1.5) -- (7,-1.5);
+\node at (1,-6) {};
+\node at (1,4) {};
+\end{tikzpicture}
