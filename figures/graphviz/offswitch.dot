@@ -1,0 +1,13 @@
+digraph G{
+	node [style=filled fillcolor=white]
+
+	root[label="Power, political influence or money",shape=AND];	
+
+	access[label="Compromise SM"]
+	off_switch[label="Turn off power"];
+	power[label="Abuse influence"]
+
+	root -> access;
+	root -> off_switch;
+	root -> power;		
+	}
