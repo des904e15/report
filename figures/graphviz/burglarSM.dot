@@ -4,23 +4,28 @@ digraph G {
  node[ shape=rectangle]
 
 root [label="Break in and steal (Smart meter access)", shape=AND];
-compromiseSM;
-goodstuff [label="Expensive goods?",shape=OR];
-atHome [label="Is consumer home?",shape=OR];
+compromiseSM[label="Compromise SM"];
+goodstuff [label="Find possible goods", shape=OR];
+atHome [label="When is the consumer home?", shape=OR];
 breakIn [label="Break in"];
 
 root -> compromiseSM;
 
-obtainPassword[shape=OR];
+obtainPassword[label="Obtain SM password", shape=OR];
 compromiseSM[shape=OR];
 compromiseSM -> obtainPassword;
 obtainPassword -> phishing;
 obtainPassword -> malware;
+shoulderSurfing[label="Shoulder surfing"];
 obtainPassword -> shoulderSurfing;
+crackPassword[label="Crack password"];
 obtainPassword -> crackPassword;
 
 exploitVulnerability[shape=AND];
+exploitVulnerability[label="Vulnerabilities"];
 compromiseSM -> exploitVulnerability;
+findVuln[label="Find Vulnerability"];
+exploitVuln[label="Exploit Vulnerability"];
 exploitVulnerability -> findVuln;
 exploitVulnerability -> exploitVuln;
 
