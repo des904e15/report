@@ -1,3 +1,4 @@
+\Large
 \begin{tikzpicture}
 
 \draw[fill=green!60]  (-2,1) node{Shell} ellipse (1.5 and 1);

@@ -1,3 +1,4 @@
+\Large
 \begin{tikzpicture}
 \draw  (-2,1) node{Shell} ellipse (1.5 and 1);
 \draw  (4,1) node{Spar Nord} ellipse (1.5 and 1);
