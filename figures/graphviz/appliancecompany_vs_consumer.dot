@@ -22,6 +22,8 @@ digraph G{
 	root -> analyse_power_consumption;
 	analyse_power_consumption ->  residents, activity_residents, home, when_appl, what_appl;
 
+	power_signatures[label="Detect power signatures"];
+	power_compare[label="Compare power signatures"];
 	what_appl -> power_signatures, power_compare;
 	
 	}
