@@ -2,11 +2,22 @@
 
 \section{Partner attacking the Consumer}
 \stefan{fix størrelser af træer}
+
+The partner is an actor with relation to the consumer, but unlike the other actors partners usually can get away with more misdoings inside the consumer's property or house.
+
+With this attack the partner wishes to monitor the consumer, possibly with following revenge, if monitoring leads to the conclusion that the consumer was cheating on the partner.
+What distinguishes the partner's attacks from the burglar or neighbour's is that the partner has increased access to the consumer's property, including the smart meter and related objects.
+
+The attack tree(s) can be seen in \cref{fig:attack_trees:partner:cheater_physical,fig:attack_trees:partner:cheater_ecm,fig:attack_trees:partner:cheater_sm,fig:attack_trees:partner:cheater_client}.
+Each tree represents the possible attacks and gains, depending on the kind of access acquired.
+There are two or three overall steps to the partner's attack plan: \textit{Gain access, Surveil, Get revenge}, which are repeated in the attack trees.
+For any other attack than physical, some kind of access to gain information is required.
+
 \begin{figure}[h]
   \centering
-	\includegraphics[width=.75\textwidth]{figures/graphviz/partner_vs_consumer_physical.pdf}
-	\caption{The Partner attacking the Consumer by physical means.}
-	\label{fig:attack_trees:partner:cheater_physical}
+  \includegraphics[width=.75\textwidth]{figures/graphviz/partner_vs_consumer_physical.pdf}
+  \caption{The Partner attacking the Consumer by physical means.}
+  \label{fig:attack_trees:partner:cheater_physical}
 \end{figure}
 
 \begin{figure}[h]
@@ -29,19 +40,8 @@
   \label{fig:attack_trees:partner:cheater_client}
 \end{figure}
 
-The partner is an actor with relation to the consumer, but unlike the other actors partners usually can get away with more misdoings inside the consumer's property or house.
 
-\subsection{Expose Partner Adultery}
-
-With this attack the partner wishes to monitor the consumer, possibly with following revenge, if monitoring leads to the conclusion that the consumer was cheating on the partner.
-What distinguishes the partner's attacks from the burglar or neighbour's is that the partner has increased access to the consumer's property, including the smart meter and related objects.
-
-The attack tree(s) can be seen in \cref{fig:attack_trees:partner:cheater_physical,fig:attack_trees:partner:cheater_ecm,fig:attack_trees:partner:cheater_sm,fig:attack_trees:partner:cheater_client}.
-Each tree represents the possible attacks and gains, depending on the kind of access acquired.
-There are two or three overall steps to the partner's attack plan: \textit{Gain access, Surveil, Get revenge}, which are repeated in the attack trees.
-For any other attack than physical, some kind of access to gain information is required.
-
-\subsubsection{Access}
+\subsection{Access}
 First of all the partner needs to gain access which can give the partner valuable insight into the doings of the consumer.
 In relation to power consumption, the partner has three ways of accessing the consumer's data, which could give the partner the details the partner need to determine whether the consumer is home or not.
 
@@ -49,7 +49,7 @@ The partner could install an external consumption monitor\footnote{E.g. a TED (T
 Assuming that the consumer is using a client, in the form of a tablet or other smart device, to monitor the power consumption, the partner could gain access to one of these devices.
 Finally, the partner could tamper directly with the smart meter, similar to the neighbour's or burglar's smart meter attacks.
 
-\subsubsection{Surveillance}
+\subsection{Surveillance}
 The main goal of this attack is to surveil and through this surveillance expose the consumer's misdeeds.
 The nodes regarding devices are dependant on gained access through the \textit{Gain access} sub-tree as is represented with individual attack trees based on acquired access.
 
@@ -61,7 +61,7 @@ This can be done by looking at which devices are scheduled for tasks or from loo
 The same method can be used to determine what the consumer is doing if the consumer is home, such as brewing more coffee than usual or taking unusually long showers.
 See \cref{smart_meter_privacy} to see how to obtain this information from consumption data.
 
-\subsubsection{Revenge}
+\subsection{Revenge}
 The final step of the attack plan is an optional cold dish of revenge.
 
 The partner could of course destroy stuff by applying physical manipulation in one way or another.
