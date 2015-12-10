@@ -7,26 +7,26 @@ digraph finite_state_machine {
 
     compromise_client[label="Compromise client", shape=OR];
     root->compromise_client;
-    extractDataFromClient[label="Withdraw consumption and device data"];
-    gainRemoteAccessToClient[label="Gain remote access to client"]
+    extractDataFromClient[label="Withdraw consumption\nand device data"];
+    gainRemoteAccessToClient[label="Gain remote access\nto client"]
     compromise_client -> extractDataFromClient, gainRemoteAccessToClient;
 
   surveil[label="Surveil partner",shape=OR];
   root->surveil;
 
-    at_home[label="When is the partner at home?"];
+    at_home[label="When is the\npartner at home?"];
     surveil->at_home
 
       running_devices[label="Monitor devices"];
       at_home->running_devices;
 
-    doing_what[label="What is the partner doing?",shape=OR];
+    doing_what[label="What is the\npartner doing?",shape=OR];
     surveil->doing_what;
 
-      running_devices2[label="Look at what devices are currently being used"];
+      running_devices2[label="Look at what devices\nare currently being used"];
       doing_what->running_devices2;
 
-      scheduled_devices[label="Look at what devices are scheduled"];
+      scheduled_devices[label="Look at what devices\nare scheduled"];
       doing_what->scheduled_devices;
 
   revenge[label="Get revenge",shape=OR];
