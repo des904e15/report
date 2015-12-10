@@ -1,11 +1,5 @@
 %!TEX root=../master.tex
 
-\begin{figure}
-  \includegraphics[width=\textheight, angle=90]{graphviz/consumer.pdf}
-  \caption{An attack tree where the costumer tries to report a low power consumption.}
-  \label{report_power_attack_tree}
-\end{figure}
-
 \section{Consumer attacking the electrical company}
 This section will contain of the attack where the consumer wants to deceive the electrical company into billing for a lower amount than actually consumed.
 To facilitate the reader in understanding the details of the attack tree in \cref{report_power_attack_tree} its nodes and sub-\emph{``trees''} will be described below.
@@ -14,6 +8,12 @@ In order for an electrical company to bill the consumer, he must first receive i
 The goal of the consumer is to report at lower power consumption than what is actually measured by the smart meter.
 The attack tree describes two different possible attacks that could achieve this goal.
 These attacks will be described below, for more technical descriptions of the specific attacks see \cref{attacks}.
+
+\begin{figure}[H]
+  \includegraphics[width=\textheight, angle=90]{graphviz/consumer.pdf}
+  \caption{The consumer attacking the electrical company by reporting a lower consumption than measured by the smart meter.}
+  \label{report_power_attack_tree}
+\end{figure}
 
 \subsection{File false complaint against distributor}
 This attack involves the attacker attempting to prove that the electrical company is billing him for a too large power consumption.
