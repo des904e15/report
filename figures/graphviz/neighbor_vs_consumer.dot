@@ -1,0 +1,36 @@
+digraph G {
+
+ graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+ node[ shape=rectangle]
+
+root [label="Remove annoyances", shape=AND];
+compromiseSM[label="Compromise SM"];
+remove[label="Control connected devices",shape=OR];
+
+root -> compromiseSM;
+root -> remove;
+
+obtainPassword[label="Obtain SM password", shape=OR];
+compromiseSM[shape=OR];
+compromiseSM -> obtainPassword;
+obtainPassword -> phishing;
+obtainPassword -> malware;
+shoulderSurfing[label="Shoulder surfing"];
+obtainPassword -> shoulderSurfing;
+crackPassword[label="Crack password"];
+obtainPassword -> crackPassword;
+
+exploitVulnerability[shape=AND];
+exploitVulnerability[label="Vulnerabilities"];
+compromiseSM -> exploitVulnerability;
+findVuln[label="Find Vulnerability"];
+exploitVuln[label="Exploit Vulnerability"];
+exploitVulnerability -> findVuln;
+exploitVulnerability -> exploitVuln;
+
+
+turnoff[label="Turn off devices"];
+control[label="Control devices"];
+
+remove -> turnoff, control;
+}
