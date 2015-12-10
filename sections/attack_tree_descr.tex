@@ -1,5 +1,23 @@
 \section{Attack Trees}
 Based on the model of the system describing the relations between actors and devices, a brainstorming session in the project group has led to a set of possible attacks on the system.
+In the figure below (\cref{contextual:sm_model_attack}), which is an update of \cref{contextual:sm_model}, the result of this brainstorming session is visualized.
+An arrow pointing from actor $A$ to actor $B$ indicates a possible attack by $A$ on $B$.
+
+\begin{figure}[H]
+  \centering
+  \input{figures/smart_meter_context_model_attack.tikz}
+  \caption{The routes of attacks in the context model}
+  \label{contextual:sm_model_attack}
+\end{figure}
+
+From this representation of the attacks it is evident that the consumer is threated by the largest number of attackers.
+Meanwhile he only has a single actor to perform an attack on.
+This attack is described in \cref{attacks:consumer_vs_electrical}.
+
+The consumer is not found to have an attack on the power distributor (or vice-versa) as the price of transporting electricity is governmentally regulated.
+\mikkel{Skal vi have det med?}
+Additionally it is worth mentioning that there are no attacks that do not involve the consumer.
+
 One of these attacks has been detailed in an attack tree, describing the steps an attacker would take to carry out this attack.
 \mikkel{Ordlyden af den her sætningen bliver at vi kun beskriver \'et angreb.
 Er det meningen at de andre skal ud af rapporten eller skal sætningen bare omformuleres?}
@@ -7,6 +25,8 @@ Er det meningen at de andre skal ud af rapporten eller skal sætningen bare omfo
 The attack in question is one where the consumer will attempt to have the smart meter report a lower power consumption than the actual consumption.
 Doing this the user will expect a smaller bill from his electrical company.
 The attack tree is presented in \cref{report_power_attack_tree}.
+\mikkel{Mangler vi en ref til \cref{attacks:consumer_vs_electrical} her?
+Det virker som om det er en intro dertil.}
 
 \paragraph{Definition of an attack tree}
 Attack trees consist of a set of nodes representing steps in a possible attack.
