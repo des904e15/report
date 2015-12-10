@@ -64,14 +64,16 @@ These are enforced just as other policies.
 This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
 
 \paragraph{Label join}
-When deriving a \xvalue{} from two \xvalues{}, the derived \xvalue{}s label must reflect its sources, so it has to be at least as restrictive.
-Thus the label assigned to the derived \xvalue{} is the union of the two source labels.
+When deriving a \xvalue{} from two \xvalues{}, the derived \xvalue{}s' label must reflect its sources, so it has to be at least as restrictive.
+The relation $\sqsubseteq$ determines that a label is \textit{at least as restrictive}.
+For two labels $L_1$ and $L_2$, if we have $L_1 \sqsubseteq L_2$, $L_1$ is at least as restrictive as $L_2$.
+Then, in order to keep the restrictiveness of a combination of two labels, the resulting label for a derived \xvalue{} is the union of the two source labels.
 This gives us the following join rule:
 \begin{definition}
   $L_1 \sqcup L_2 = L_1 \cup L_2$
-  \mikkelin{\#50 Beskrivelse af $\sqcup$ / join}
 \end{definition}
 
+The join rule will ensure that any joining of values will also result in a joining of labels, so that any combination of rules will be upheld.
 
 \paragraph{Relabeling by declassification}
 \stefan{\issue{51} Intro og forklaring af hvad det skal bruges til}
