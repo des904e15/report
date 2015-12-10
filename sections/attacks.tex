@@ -24,10 +24,9 @@ This description is inspired by \cite{packetinjection}.
 If Eve can intercept communication between Alice and Bob she can inject packages into the stream of messages without either party knowing.
 A packet is injected by constructing a packet with the source address as one of the endpoints, Alice or Bob.
 In this way it looks like Alice or Bob originated the packet, and it seems like part of the communication.
-Abusing this it can be possible to affect the communication of Alice and Bob.
-Sending packets with the special \emph{RST} flag or packets that simulate a protocol error Eve can disrupt the communication between Alice and Bob.
-Injection new packets can alter the course of the communication which can be dangerous if the communication involves sensitive information.
-
+By abusing this it can be possible to affect the communication of Alice and Bob.
+Eve could be sending packets that simulate a protocol error, in order to disrupt the communication between Alice and Bob.
+Or, by injecting new packets, Eve can alter the course of the communication, which can be dangerous if the communication involves sensitive information.
 
 \section{Side channel attacks}
 This description of side channel attacks is based on \citet[p.~132]{cryptoenginering}.
@@ -52,6 +51,7 @@ By recording enough traces information about the key can be derived from propert
 \section{Social engineering}
 \bruno{intro \#64}
 \subsection{Phishing}
+
 The following is based on \citet{security_engineering_ross_anderson} and \citet{dhamija2006phishing}.
 Phishing is the process of tricking a user to use a malicious website and by that to extract some sensitive information.
 This typically happens by inserting a link in an email and send it to the user.
