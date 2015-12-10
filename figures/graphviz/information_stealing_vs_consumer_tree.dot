@@ -20,31 +20,33 @@ digraph G{
 	exploitVulnerability[label="Vulnerabilities"];
 		compromise_sm -> exploitVulnerability;
 
-		obtainPassword[shape=OR];
+		obtainPassword[label="Obtain password",shape=OR];
+		phishing[label="Use\nphishing"];
 		obtainPassword -> phishing;
-		malware2[label="malware"];
+		malware2[label="Use\nmalware"];
 		obtainPassword -> malware2;
+		crackPassword[label="Crack\npassword"];
 		obtainPassword -> crackPassword;
 
 		exploitVulnerability[shape=AND];
-		findVuln[label="Find Vulnerability"];
+		findVuln[label="Find\nVulnerability"];
 		exploitVulnerability -> findVuln;
-		exploitVuln[label="Exploit Vulnerability"];
+		exploitVuln[label="Exploit\nVulnerability"];
 		exploitVulnerability -> exploitVuln;
 
 		hack_client[label="Compromise client",shape=OR];
 		buy_information[label="Buy power consumption",shape=OR];
-	residents[label="Number of residents"];
-	home[label="Residents home schedule"];
-	activity_residents[label="Residents activity schedule"];
-	when_appl[label="Appliances usage"];
-	what_appl[label="Appliance brands",shape=AND];
+	residents[label="Number\nof\nresidents"];
+	home[label="Residents\nhome\nschedule"];
+	activity_residents[label="Residents\nactivity\nschedule"];
+	when_appl[label="Appliances\nusage"];
+	what_appl[label="Appliance\nbrands",shape=AND];
 
-	buy_third_party[label="Buy from 3rd party"];
-	buy_from_consumer[label="Buy from consumer"];
+	buy_third_party[label="Buy\nfrom\n3rd party"];
+	buy_from_consumer[label="Buy\nfrom\nconsumer"];
 	
-	malware[label="Use Malware"];
-	physical[label="Steal client"];
+	malware[label="Use\nMalware"];
+	physical[label="Steal\nclient"];
 	power_signatures[label="Obtain power signatures"];
 	power_compare[label="Compare with \nsignature database"];
 	
