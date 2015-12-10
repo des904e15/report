@@ -1,0 +1,41 @@
+\tikzstyle{man}=[font={\Gentsroom}, scale=5]
+\tikzstyle{woman}=[font={\Ladiesroom}, scale=5]
+
+\begin{tikzpicture}[every node/.style={inner sep=0,outer sep=0}, arrows={[round]}]
+
+\draw (-5.5,6) rectangle (2,-0.5);
+\node at (-1,5.5) {Household};
+
+\draw  (-6.5,7) [fill=white] rectangle (-4,5.5) node[pos=.5,align=center] {Home\\Production};
+\draw  (-5,1.5) [fill=white] rectangle (-3.5,0) node[pos=.5,align=center] {Smart\\Meter};
+\draw  (-3,4.5) [fill=white] rectangle (-1,3) node[pos=.5,align=center] {Smart\\Appliance};
+\draw  (-0.5,2) [fill=white] rectangle (0.5,1) node[pos=.5,align=center] {Client};
+\draw  (-9,2.5) [fill=white] rectangle (-6.5,1) node[pos=.5,align=center] {Data Hub};
+
+\node[man] (consumer) at (1,1) {};
+\node [below=0.2 of consumer] {Consumer};
+
+\node[man] (burglar) at (-6.5,0) {};
+\node [below=0.2 of burglar] {Burglar};
+
+\node[man] (external) at (3.5,5) {};
+\node [below=0.2 of external] {External};
+
+\node[man] (power) at (-7.5,6.5) {};
+\node [below=0.2 of power,align=center] {Electrical\\Company};
+
+\node[man] (distribution) at (-7.5,4) {};
+\node [below=0.2 of distribution] {Distribution};
+
+\node[woman] (partner) at (1,4) {};
+\node [below=0.2 of partner] {Partner};
+
+\node[man] (neighbour) at (3.5,0.5) {};
+\node [below=0.2 of neighbour] {Neighbour};
+
+\draw[dashed] (-4.5,5.5) -- (-4.5,1.5);
+\draw[dashed] (-6.5,1.5) -- (-6,1.5) -- (-6,1) -- (-5,1);
+\draw[dashed] (-3.5,1) -- (-2.5,1) -- (-2.5,1.5) -- (-0.5,1.5);
+\draw[dashed] (-2.5,3) -- (-2.5,2.25) -- (-4,2.25) -- (-4,1.5);
+
+\end{tikzpicture}
