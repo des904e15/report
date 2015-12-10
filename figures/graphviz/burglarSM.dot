@@ -14,36 +14,42 @@ root -> compromiseSM;
 obtainPassword[label="Obtain SM password", shape=OR];
 compromiseSM[shape=OR];
 compromiseSM -> obtainPassword;
+phishing[label="Use\nphishing"];
+malware[label="Use\nmalware"];
 obtainPassword -> phishing;
 obtainPassword -> malware;
-shoulderSurfing[label="Shoulder surfing"];
+shoulderSurfing[label="Shoulder\nsurfing"];
 obtainPassword -> shoulderSurfing;
-crackPassword[label="Crack password"];
+crackPassword[label="Crack\npassword"];
 obtainPassword -> crackPassword;
 
 exploitVulnerability[shape=AND];
 exploitVulnerability[label="Vulnerabilities"];
 compromiseSM -> exploitVulnerability;
-findVuln[label="Find Vulnerability"];
-exploitVuln[label="Exploit Vulnerability"];
+findVuln[label="Find\nVulnerability"];
+exploitVuln[label="Exploit\nVulnerability"];
 exploitVulnerability -> findVuln;
 exploitVulnerability -> exploitVuln;
 
 
 root -> goodstuff;
-connectedDevices;
+connectedDevices[label="See\nconnected SM devices"];
+detectSignature[label="Detect\npower signatures"];
 goodstuff->connectedDevices;
 goodstuff->detectSignature;
 
 root -> atHome;
+deviceStatus[label="See\ndevice status"];
+turnOnOffDevices[label="Turn\ndevices on/off"];
+deviceSchedule[label="See\ndevice schedule"];
 atHome -> deviceStatus;
 atHome -> turnOnOffDevices;
 atHome -> deviceSchedule;
 
 breakIn[shape=OR, label="Assist breakin"]
 root ->	breakIn;
+securityDeviceStatus[label="See\nsecurity devices' status"];
 breakIn -> securityDeviceStatus;
-root -> stealItems;
-turnOnOffDevices2[label="turnOnOffDevices"];
+turnOnOffDevices2[label="Turn\ndevices on/off"];
 breakIn -> turnOnOffDevices2;
 }
