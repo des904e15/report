@@ -49,14 +49,13 @@ Since the policy of $o_3$ is to allow everyone to read it introduces no restrict
 Therefore we say that the effective reader set of the two labels are equal.
 \end{example}
 
-When a label interprets its privacy policies it understands it as a set of flows.
+When we want to perform relabelling, we need to ensure that the information flow remains unchanged, as a relabelling is only allowed if this is the case.
+In order to ensure this we first need a way to interpret each label as a set of flows, so that we can determine whether a relabelling would change the information flow.
 A flow $(o,r)$ is a flow of information from owner $o$ to reader $r$.
 If a label contains this flow it means that the owner allows the reader to read the \xvalue{}.
 If we have three \principals{} $A$, $B$, $C$ and a label: $\{\policy{A}{B}; \ \policy{C}{}\}$.
 This means that $A$ allows its \xvalue{} to be read by $B$, $B$ allows every reader and $C$ allows no readers.
 Therefore the flow set of the label is: $\{(A,B), (B,A), (B,B), (B,C) \}$.
-\stefan{\#47 Skal omskrives så det forklarer hvordan MAN skal fortolke en label, i stedet for hvordan en laber fortolker sig selv}
-\stefan{\#47 Beskrivelse af hvad man skal bruges flows til}
 
 A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
