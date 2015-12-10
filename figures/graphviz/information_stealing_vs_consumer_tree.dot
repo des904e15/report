@@ -32,8 +32,8 @@ digraph G{
 		exploitVuln[label="Exploit Vulnerability"];
 		exploitVulnerability -> exploitVuln;
 
-	buy_information[label="Buy power consumption",shape=OR]
-	hack_client[label="Hack client",shape=OR];
+		hack_client[label="Compromise client",shape=OR];
+		buy_information[label="Buy power consumption",shape=OR];
 	residents[label="Number of residents"];
 	home[label="Residents home schedule"];
 	activity_residents[label="Residents activity schedule"];
@@ -44,16 +44,16 @@ digraph G{
 	buy_from_consumer[label="Buy from consumer"];
 	
 	malware[label="Use Malware"];
-	backdoor[label="Use Backdoor"];
+	physical[label="Steal client"];
 	power_signatures[label="Obtain power signatures"];
-	power_compare[label="Compare with \nsignature database"]
+	power_compare[label="Compare with \nsignature database"];
 	
 
 	profile -> obtain_information, analyse_power_consumption;
-	obtain_information -> compromise_sm, buy_information, hack_client;
+	obtain_information -> compromise_sm, hack_client, buy_information;
 	analyse_power_consumption ->  residents, activity_residents, home, when_appl, what_appl;
 	buy_information -> buy_third_party, buy_from_consumer;
-	hack_client -> malware, backdoor;
+	hack_client -> malware, physical;
 
 	what_appl -> power_signatures, power_compare;
 	
