@@ -14,7 +14,7 @@ In any system we will have \textit{objects} and \textit{\subjects{}}, where obje
 \paragraph{Classification and Clearance}
 Attached to any object or \subject{} will be a classification or clearance respectively.
 This means that for any object $o$ with classification $x$, any \subject{} $s$ will need clearance $x$ or higher in order to access $o$.
-This will also work in a hierarchical security system, where we can have a classification $y$ as a child of $x$, then given clearance $x$ we will also have access to any objects with classification $y$.
+In a hierarchical security system, where classification $y$ is a child of $x$, then an object given clearance $x$ will also have access to any objects with classification $y$.
 
 \paragraph{Category and Need-to-know}
 In addition to classification, objects can belong to zero, one or more category, which can be seen as security groupings of certain objects (e.g. ``Cold War'').
@@ -23,12 +23,14 @@ Similarly, \subjects{} can have zero, one or more need-to-know, which are the se
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
 Each node represents an object, with a classification and possibly a category.
+In the figure a \subject{} with the clearance \emph{Top secret} is able to read all nodes with the classification \emph{Top Secret} as well as all lower classifications (\emph{Secret} and \emph{Unclassified}).
+On the contrary a \subject{} with the clearance \emph{Unclassified} can only read the one node with the \emph{Unclassified} label.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/blp_lattice}
-\label{blp:lattice}
 \caption{A BLP lattice \cite{security_engineering_ross_anderson}}
+\label{blp:lattice}
 \end{figure}
 
 \subsection{Access attributes}
