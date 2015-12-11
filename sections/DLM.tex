@@ -94,10 +94,11 @@ $L_1$ can be relabelled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ is true.
 \paragraph{Relabeling by Restriction}
 When a \xvalue{} is read from a variable it has the same label as the variable.
 When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
-When doing assignment for instance if we have $a = 4$ and we want to assign variable $b$ to $a$.
-First we read the \xvalue{} from $a$, this means the \xvalue{}, $4$, has the same label as $a$.
-Now we assign the \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$ and its own label, the label it got from $a$, is forgotten.
-This process is what we call relabeling and more specific this kind of relabeling is called restriction.
+When doing assignment, e.g. if we have $a = 4$, and we want to assign the value of another variable, $b$, to $a$.
+First we read the \xvalue{} from $a$, this means the \xvalue{} of $a$, $4$, has the same label as $a$.
+Now we assign the copied \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$, replacing its own label.
+This means that the label that the \xvalue{} got from $a$ is forgotten.
+This process is what we call relabeling, and more specifically this kind of relabeling is called restriction.
 
 To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
