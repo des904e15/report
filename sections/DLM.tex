@@ -104,23 +104,12 @@ To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
 
 So a restriction is when the new label guarantees to enforce all of the policies from the old label.
-If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $rK$ is a subset of $rJ$.
+If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $r(K)$ is a subset of $r(J)$.
 \begin{definition}
 $$\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(o(K) = o(J) \ \wedge \ r(K) \subseteq r(J))}{L_1 \sqsubseteq L_2}$$
 \end{definition}
-\bruno{definition of the relabeling rule - skal den være her?}
 
-\subsection{Limitations}
-The rule of restriction is too strict as it is only possible to remove readers and add policies \stefan{hvorfor er dette tilfældet?} and therefore prevents valid relabelings.
-There are three possible valid relabelings which are not possible at the moment:
-
-\begin{itemize}
-\item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
-\item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
-\item Self-authorization - every \principal{} that \textit{acts for} (see below) an owner of a policy should be possible to add as a reader.
-\end{itemize}
-
-\paragraph{Acts-for relation}
+\subsection{Acts-for relation}
 A \principal{} in DLM can represent a user in the system, a group of users or roles.
 As labels on slots are immutable, in order to have more dynamic security policies we have that \principals{} are able to \textit{act for} other \principals{}.
 This means that a given \principal{} in effect has every right that the \principal{} that it acts for has.
@@ -135,13 +124,21 @@ Given the acts-for relation and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$
 Any security policies that apply to Bob will in effect also apply to Amy.
 Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group.
 
+\subsection{Limitations}
+The rule of restriction is too strict as it is only possible to remove readers and add policies \stefan{hvorfor er dette tilfældet?} and therefore prevents valid relabelings.
+There are three possible valid relabelings which are not possible at the moment:
+
+\begin{itemize}
+\item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
+\item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
+\item Self-authorization - every \principal{} that \textit{acts for} (see below) an owner of a policy should be possible to add as a reader.
+\end{itemize}
+
 \subsubsection{Extending the relabeling by restriciton rule}
 We need to extend the rule in order to be able to do the things discussed above.
 
 To take the \principal{} hierarchy into account when interpreting a label an interpretation function $\textbf{X}$ is introduced.
-For now\mikkel{Ændres det senere?} $\textbf{X}$ takes a label as argument and the set of \principals{} $P$ as an implicit argument.\mikkel{Hvad er et implicit argument?}
-Informally this function makes sure that if a reader or owner that acts for some \principal{} $p$ - that $p$ is included in the label interpretation.
-\mikkel{Jeg forstår ikke den her sidste sætning. Det er som om der mangler noget.}
+This function takes a label as argument.
 
 The set of flows for a label need to satisfy two constraints for the given principal hierarchy.
 One for readers and one for owners.
