@@ -13,10 +13,6 @@ In the following the model proposed by \citet{HRU} is presented.
 A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
 Note that both these sets are finite and static for a given system.
 Because of this a system cannot dynamically add or remove rights or commands, under this model.
-Dynamic creation and removal of commands can however be simulated.
-\mikkelin{The last part about dynamics is not part of the original article, should we expand on it?}
-\bruno{Maybe we can add it later if we think it is important - for now i think it is fine if we just leave it like it is and put a citation on the later paper.}
-\mikkelin{Okay. Which citation do you mean by ``the later paper?''}
 
 \begin{definition}
 The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
@@ -153,6 +149,6 @@ Thus an algorithm exists for very simple system and not for complex systems.
 In order to answer questions about specific protection systems, such as the ones above, custom algorithms must be defined.
 These algorithms must be built such that they can be applied to the protection systems being tested.
 The article does however not describe how to built such an algorithm.
-\mikael{En meget lang beskrivelse af artiklen, men det er selvfølgelig svært at vide hvad det præcist skal bruges til endnu.
-Mads siger: Formulate as Theorem \#40}
+\mikael{En meget lang beskrivelse af artiklen, men det er selvfølgelig svært at vide hvad det præcist skal bruges til endnu.}
+\mads{Formulate as Theorem \#40}
 
