@@ -48,7 +48,7 @@ Since the policy of $o_3$ is to allow everyone to read it introduces no restrict
 Therefore we say that the effective reader set of the two labels are equal.
 \end{example}
 
-When we want to perform relabelling, we need to ensure that the information flow remains unchanged, as a relabelling is only allowed if this is the case.
+When we want to perform relabelling (see later in this section), we need to ensure that the information flow remains unchanged, as a relabelling is only allowed if this is the case.
 In order to ensure this we first need a way to interpret each label as a set of flows, so that we can determine whether a relabelling would change the information flow.
 A flow $(o,r)$ is a flow of information from owner $o$ to reader $r$.
 If a label contains this flow it means that the owner allows the reader to read the \xvalue{}.
@@ -75,8 +75,9 @@ This gives us the following join rule:
 The join rule will ensure that any joining of values will also result in a joining of labels, so that any combination of rules will be upheld.
 
 \paragraph{Relabeling by declassification}
-\stefan{\issue{51} Intro og forklaring af hvad det skal bruges til}
 The owners of the labels control their data, but sometimes policies are overly restrictive and one wants to relax them.
+This can be used to sanitize \xvalues{} whose security policies, in respect to one ore more owners, have changed throughout the run of a program.
+This works in opposition to restricting rules, which is used to ensure information is not leaked, whereas this is enabling intended leaking (of sanitized information).
 
 The authority is a set of \principals{} which is the authority of the process of declassification.
 If a process has the authority of a \principal{}, the actions of the process are permitted.
