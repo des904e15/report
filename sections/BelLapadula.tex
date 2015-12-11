@@ -8,17 +8,17 @@ The following description is based on \citet{lapadula1996secure}.
 \subsection{Security}
 Before we go into details about how the Bell-LaPadula (BLP) security model is applied to computer systems, we will first discuss some important concepts.
 
-In any system we will have \textit{objects} and \textit{subjects}, where objects are entities that can somehow be manipulated by the system's users (subjects).
-Subjects can be users themselves, but can also be seen as representatives of a user or even groups of users.
+In any system we will have \textit{objects} and \textit{\subjects{}}, where objects are entities that can somehow be manipulated by the system's users (\subjects{}).
+\Subjects{} can be users themselves, but can also be seen as representatives of a user or even groups of users.
 
 \paragraph{Classification and Clearance}
-Attached to any object or subject will be a classification or clearance respectively.
-This means that for any object $o$ with classification $x$, any subject $s$ will need clearance $x$ or higher in order to access $o$.
+Attached to any object or \subject{} will be a classification or clearance respectively.
+This means that for any object $o$ with classification $x$, any \subject{} $s$ will need clearance $x$ or higher in order to access $o$.
 This will also work in a hierarchical security system, where we can have a classification $y$ as a child of $x$, then given clearance $x$ we will also have access to any objects with classification $y$.
 
 \paragraph{Category and Need-to-know}
 In addition to classification, objects can belong to zero, one or more category, which can be seen as security groupings of certain objects (e.g. ``Cold War'').
-Similarly, subjects can have zero, one or more need-to-know, which are the security groupings for subjects.
+Similarly, \subjects{} can have zero, one or more need-to-know, which are the security groupings for \subjects{}.
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
