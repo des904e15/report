@@ -12,8 +12,7 @@ The final major point of DLM is that it is formalized and even though no impleme
 
 \newcommand{\xvalue}{value}
 \newcommand{\xvalues}{values}
-This section describes DLM both formally and informally with small examples.
-\mikkelin{Jeg har svært ved at finde den uformelle beskrivelse i teksten.}
+This section describes DLM with small examples.
 
 \subsection{Labels}
 A \xvalue{} is associated with a label.
@@ -92,9 +91,13 @@ $L_1$ can be relabelled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ is true.
 \end{definition}
 
 \paragraph{Relabeling by Restriction}
-This rule is for when one is doing an assignment of a \xvalue{} into a variable.
-When a \xvalue{} is read its label is relabelled to the variable and forgotten.
-\mikkel{Hvad betyder det at en label er relabelled til en variabel?}
+When a \xvalue{} is read from a variable it has the same label as the variable.
+When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
+When doing assignment for instance if we have $a = 4$ and we want to assign variable $b$ to $a$.
+First we read the \xvalue{} from $a$, this means the \xvalue{}, $4$, has the same label as $a$.
+Now we assign the \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$ and its own label, the label it got from $a$, is forgotten.
+This process is what we call relabeling and more specific this kind of relabeling is called restriction.
+
 To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
 
