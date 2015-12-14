@@ -1,0 +1,12 @@
+digraph G {
+
+	graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+	node[ shape=rectangle]
+
+	compromiseClient[label="Compromise client",shape=OR];
+	gainRemoteAccessToClient[label="Use \nmalware"];
+	stealClient[label="Steal client"];
+	compromiseClient -> stealClient;
+
+	compromiseClient -> gainRemoteAccessToClient;
+}

@@ -1,0 +1,28 @@
+digraph G {
+
+ graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+ node[ shape=rectangle]
+
+
+compromiseSM[label="Compromise SM"];
+
+
+obtainPassword[label="Obtain SM password", shape=OR];
+compromiseSM[shape=OR];
+compromiseSM -> obtainPassword;
+obtainPassword -> phishing;
+obtainPassword -> malware;
+shoulderSurfing[label="Shoulder surfing"];
+obtainPassword -> shoulderSurfing;
+crackPassword[label="Crack password"];
+obtainPassword -> crackPassword;
+
+exploitVulnerability[shape=AND];
+exploitVulnerability[label="Vulnerabilities"];
+compromiseSM -> exploitVulnerability;
+findVuln[label="Find Vulnerability"];
+exploitVuln[label="Exploit Vulnerability"];
+exploitVulnerability -> findVuln;
+exploitVulnerability -> exploitVuln;
+
+}

@@ -57,7 +57,54 @@ The burglars final step in the attack is stealing the consumers valuables.
 
 \subsection{Gaining access}
 In order to access information about the power consumption of the consumer, the burglar needs to gain access to either the smart meter, a consumer device that controls the smart meter or install an ECM unit (see \cref{ecm}).
-In the physical attack (\cref{attacktree:burglar:physical}) there is no initial step, as no information can be retrieve that provide access to the system.
+The following will discuss the subtrees concerning these access methods.
+
+\subsubsection{Compromising the smart meter}\label{compromiseSM}
+There are two general ways of compromising the smart meter.
+The subtree can be seen on \cref{attacktree:compromiseSM}
+First of all, if you have the password for logging it is possible to access the same information as the consumer is.
+There are a couple of methods for achieving this. 
+\begin{description}
+	\item[Phishing] The burglar can attempt to get the password directly from the consumer by posing as the electrical company or similar. Phishing will be discussed in \cref{attack:phishing}
+	\item [Shoulder surfing] If the burglar has the possibility of watching the consumer in a context where he enters his password, he can retrieve the password or hints about the password by shoulder surfing. 
+	Shoulder surfing can also lead to information about the consumer or the smart meter that will help the consumer carrying out one of the other option, such as finding the brand of smart meter for constructing a phishing email.
+	Shoulder surfing will be discussed in \cref{attack:shoulder}
+	\item [Malware] It is also possible to get the password by infecting a client device of the consumer with some malware. This piece of malware can either send the password back to the burglar og provide access to the system. Malware will be discussed in \cref{attack:malware}
+	\item [Crack password] If the other options do not amount to anything, the burglar can resort to cracking the password.
+	Password cracking will be discussed in \stefan{ref}
+\end{description}
+
+Another option is to find some vulnerability in the smart meter firmware.
+Depending on the vulnerability the burglar can possibly perform actions that was not intended from the manufacturer.
+Other vulnerabilities will make it possible to access the same information as available to the consumer
+
+\begin{figure}
+\center
+\includegraphics[width=0.75\textwidth]{graphviz/CompromiseSM.pdf}
+\caption{Subtree for compromising the smart meter.}
+\label{attacktree:compromiseSM}
+\end{figure}
+
+
+\subsubsection{Compromising the client}
+An alternative point of attack is the client that the consumer uses to control the smart meter.
+The subtree for this case can be found on \cref{attacktree:compromiseClient}.
+The obvious possibility is to steal the client that the consumer uses.
+If the consumer uses a tablet for controlling the smart meter this can be done when the consumer is at out of the house or at work by ``conventional'' mischievous methods.
+Assuming the burglar can overcome login to the client he will be able to access the smart meter as if he was the consumer.
+
+Alternatively the burglar can use malware to gain either the password to the smart meter or access to the client.
+This step is similar to the malware item in \cref{compromiseSM}.
+
+\begin{figure}
+\center
+\includegraphics[width=0.75\textwidth]{graphviz/CompromiseClient.pdf}
+\caption{Subtree for compromising a client of the consumer.}
+\label{attacktree:compromiseClient}
+\end{figure}
+
+
+
 
 \subsection{Expensive goods}
 The first step for the burglar, after gaining access to the system, is to determine if anything is of value in the house. 

@@ -13,9 +13,9 @@ breakIn [label="Break in"];
 compromiseClient[shape=OR]
 compromiseClient[label="Compromise client"];
 root -> compromiseClient;
-stealClient[label="Steal client"]
+gainRemoteAccessToClient[label="Use \nmalware"];
+stealClient[label="Steal client"];
 compromiseClient -> stealClient;
-gainRemoteAccessToClient[label="Gain remote \naccess to client"]
 compromiseClient -> gainRemoteAccessToClient;
 
 
