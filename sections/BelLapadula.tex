@@ -74,6 +74,27 @@ In order to ensure that data cannot be compromized the previous definitions of a
 \paragraph{Security condition}
 The security condition states that a \principal{} with a given clearance level is prevented from having read access to any object which is or can be a source of information with a classification level that is higher than the clearance level of the \principal{}.
 
+Formally this can be expressed as the following:
+\begin{definition}
+The access matrix contains entries of the form $(S,O,x)$.
+ Such entry satisfies the security condition relative to the classification and need-to-know vectors if and only if
+
+\begin{itemize}
+\item x is either the \emph{execute}, \emph{append} or \emph{control} access attribute, or
+\item x is the \emph{write} or the \emph{read} attribute and both $f_1(S) \ge f_2(O)$ and $f_3(S) \supseteq f_4(O)$
+\end{itemize}
+
+ $(S,O,x)$ is a state comprising a subject S, an object O and an access attribute.
+ The following access attributes are allowed: read, write, append, control and execute.
+
+ The used f functions are lookups in vectors that contain information about classifications and need-to-know of the system.
+ $F_1$ is the subject classification vector, $F_2$ is the object classification vector, $F_3$ is the subject category vector and finally $F_4$ is the object category function.
+
+A system is consisting of \emph{appearances} which consists of requests and desicisions that manipulate the access matrix.
+
+A system is a secure system if every appearance of the system is secure.
+\end{definition}
+
 \paragraph{*-property}
 The *-property states that if a \principal{} has write or append access to objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
 This property ensures that it is impossible to leak information to a lower classification level.
