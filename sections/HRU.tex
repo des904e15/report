@@ -148,16 +148,17 @@ A protection system leaks the right $r$ given an initial configuration $Q$ if th
 \end{definition}
 
 \subsubsection{Determine if a System Leaks}
-We can translate the latter two types of questions presented above into the first one.
-Because of this it is sufficient to provide an algorithm that will answer this type of questions.
-\Citet{HRU} provides proof that there is no generic algorithm which will answer this question.
+We can translate the latter two types of questions, presented above, into the first one.
+Because of this it is sufficient to provide an algorithm that will answer this type of question.
 
-This is the major result in the article.
-It is also described how such an algorithm exists for a very simple class of protection systems called mono-operational (a system with commands with only a single operation each).
+\begin{definition}
+  There exists no general purpose algorithm for determining if a protection system leaks a right $r$ from configuration $Q$. \Cite{HRU}
+\end{definition}
+
+This is the major result described by \citet{HRU}.
+There does however exist how such an algorithm for a very simple class of protection systems called mono-operational (a system of commands with only a single operation each).
 Thus an algorithm exists for very simple system and not for complex systems.
 
 In order to answer questions about specific protection systems, such as the ones above, custom algorithms must be defined.
 These algorithms must be built such that they can be applied to the protection systems being tested.
 The article does however not describe how to built such an algorithm.
-\mads{Formulate as Theorem \#40}
-\mikkelin{Hvad er det der skal formuleres som theorem?}
