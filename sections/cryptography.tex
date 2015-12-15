@@ -3,9 +3,11 @@
 This section will briefly introduce concepts from cryptography relevant to the project, and will be based on \cite{cryptoenginering}.
 
 \subsection{Encryption}
-\bruno{Vil vi have det her med? \#62}
+
 
 \subsection{Authentication}
+Authentication is a concept used for ensuring that the traffic between two parties are being tampered with.
+
 When Alice sends messages to Bob over some insecure channel it can be possible for Eve to change how Bob receives the messages.
 Eve can alter the sent message \emph{m} to \emph{m'} and send \emph{m'} to Bob without Bob knowing.
 Eve can also change the order of messages so a message comes much later than intended.
@@ -19,7 +21,7 @@ Eve can even create her own message and send it without Bob can know that this m
 	\label{crypto:noauth}
 \end{figure}
 
-The solution to these problems is authentication of messages \citet[p.~52]{cryptoenginering}.
+Part of the solution to these problems is authentication of messages \citet[p.~52]{cryptoenginering}.
 Alice and Bob have a shared secret key $K_a$ for authentication.
 When sending message \emph{m} Alice first computes a Message Authentication Code (MAC).
 This authentication code \emph{a} is calculated as $a := h(K_a,m)$, where $h()$ is the MAC function.
