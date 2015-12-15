@@ -36,7 +36,7 @@ The situation is outlined on \cref{crypto:authsetup}
 
 If Eve wants to modify the message \emph{m} to the different message \emph{m'} and simply replaces \emph{m} with \emph{m'}, Bob will be able to tell when computing the MAC of \emph{m'}.
 This is the case because of the design of the MAC function.
-A MAC function is designed such that two different messages \emph{m} and \emph{m'} will not result in the same MAC.
+A MAC function is designed such that two different messages \emph{m} and \emph{m'} are very unlikely to result in the same MAC.
 Bob will therefore discard message \emph{m} as an attacked message.
 
 Even with this countermeasure Eve will be able to record a message and MAC pair and send it to Bob at a later point in time.
