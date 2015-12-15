@@ -6,10 +6,20 @@ The partner is an actor with relation to the consumer, but unlike the other acto
 With this attack the partner wishes to monitor the consumer, possibly with following revenge, if monitoring leads to the conclusion that the consumer was cheating on the partner.
 What distinguishes the partner's attacks from the burglar or neighbour's is that the partner has increased access to the consumer's property, including the smart meter and related objects.
 
-The attack tree(s) can be seen in \cref{fig:attack_trees:partner:cheater_physical,fig:attack_trees:partner:cheater_ecm,fig:attack_trees:partner:cheater_sm,fig:attack_trees:partner:cheater_client}.
+The attack trees are separated into the four modes of access for the same reasons as the burglar (see \cref{attacktree:burglar}) was.
+The attack trees are listed below
+
+These are listed below:
+\begin{itemize}
+  \item \Cref{fig:attack_trees:partner:cheater_sm}: Compromising the security on the smart meter.
+  \item \Cref{fig:attack_trees:partner:cheater_client}: Compromising or extracting data from the device (the client) the consumer is using to communicate with the smart meter.
+  \item \Cref{fig:attack_trees:partner:cheater_ecm}: Installing an ECM and monitoring the consumer.
+  \item \Cref{fig:attack_trees:partner:cheater_physical}: Performing a \emph{``physical''} attack, involving no technology.
+\end{itemize}
+ can be seen in \cref{fig:attack_trees:partner:cheater_physical,fig:attack_trees:partner:cheater_ecm,fig:attack_trees:partner:cheater_sm,fig:attack_trees:partner:cheater_client}.
+
 Each tree represents the possible attacks and gains, depending on the kind of access acquired.
 There are two or three overall steps to the partner's attack plan: \textit{Gain access, Surveil, Get revenge}, which are repeated in the attack trees.
-For any other attack than physical, some kind of access to gain information is required.
 
 \begin{figure}[h]
   \centering
@@ -43,9 +53,20 @@ For any other attack than physical, some kind of access to gain information is r
 First of all the partner needs to gain access which can give the partner valuable insight into the doings of the consumer.
 In relation to power consumption, the partner has three ways of accessing the consumer's data, which could give the partner the details the partner need to determine whether the consumer is home or not.
 
+\subsubsection{Smart meter}
+The first way is to compromise the smart meter.
+This variation of the attack is identical to that of the burglar which was described in \cref{compromise:SM}.
+
+\subsubsection{Client}
+The other option is to gain access to the client that the consumer uses to control the smart meter.
+This variation is similiar to the attack of the burglar described ion \cref{compromise:client}, with the exception that the partner has easier access to the client device.
+A situation may arise where the partner has access to the client, and can then copy data from the device.
+
+\subsubsection{ECM}
 The partner could install an external consumption monitor\footnote{E.g. a TED (The Energy Detective) used in \cref {smart_meter_privacy}.} on the power grid in the house, giving the partner direct power consumption data.
-Assuming that the consumer is using a client, in the form of a tablet or other smart device, to monitor the power consumption, the partner could gain access to one of these devices.
-Finally, the partner could tamper directly with the smart meter, similar to the neighbour's or burglar's smart meter attacks.
+This attack is similar to the burglar using an ECM described in \cref{compromise:ecm}.
+Again the only variation is that the partner is closer to the consumer and therefore has more opportunities for installing the ECM.
+For instance the partner could install it directly on the smart meter if the smart meter is hidden in a cupboard in the basement.
 
 \subsection{Surveillance}
 The main goal of this attack is to surveil and through this surveillance expose the consumer's misdeeds.

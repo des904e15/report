@@ -1,3 +1,4 @@
+%!TEX root = ../master.tex
 \section{Information gatherer attacking the consumer}\label{informationGathererVsConsumer}
 This section describes the attack tree for people who want to obtain private information about the consumer and use the information to construct a profile of the consumer.
 Some of the possible actors that want to obtain information from the consumer are listed below:
@@ -25,18 +26,20 @@ The sub-tree describing how to profile a customer will be described in the follo
 \end{figure}
 
 \subsection{Obtain power consumption}
-In order to analyse the consumption data of the consumer the information gatherer must obtain the consumption first.
+In order to analyze the consumption data of the consumer the information gatherer must obtain the consumption first.
 
 \subsubsection{Compromise smart meter}
-One way of obtaining this information is to compromise the smart meter of the consumer, either by getting the password for logging into the smart meter or by exploiting a vulnerability in the smart meter implementation. \stefan{måske ville det være rart at kunne referere til buffer overflow her?}
+This subtree is similar to the subtree of the burglar getting access to the smart meter, which was discussed in \cref{compromise:SM}.
+The only difference is that \emph{shoulder surfing} is omitted because the information gatherer is further away from the consumer and does not have the opportunity to get close to the consumer.
 
 \subsubsection{Compromise client}
-Another route for gathering information is through the client connected to the smart meter.
+This subtree is similar to that of the burglar described in \cref{compromise:client}.
+The only difference is the omission of the \emph{Steal client} option, again because the information gatherer is not in the immediate vicinity of the consumer.
 
 \subsubsection{Buy power consumption}
 Another possibility is to buy the information either from someone who has gained access to it or directly from the consumer.
 When buying from the consumer social engineering can be used to convince the costumer to sell his data either cheap or against his will.
 
-\subsection{Analyse power consumption}
+\subsection{Analyze power consumption}
 After gaining access to the smart meter and the consumption data there are many things that can be revealed about the household and the consumers activities and appliances.
 See \cref{smart_meter_privacy} to see an example of how the consumption data could be used to reveal this information.

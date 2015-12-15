@@ -1,0 +1,12 @@
+digraph G {
+
+ graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+ node[ shape=rectangle]
+
+MonitorConsumption[shape=AND, label="Monitor consumption with ECM"];
+GainAccessToPowerCables[label="Gain access to power cables \noutside the household"]
+MonitorConsumption -> GainAccessToPowerCables;
+InstallECM[label="Install ECM"];
+MonitorConsumption -> InstallECM
+
+}

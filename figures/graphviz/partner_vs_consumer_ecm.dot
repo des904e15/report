@@ -4,9 +4,14 @@ digraph finite_state_machine {
 
   root[label = "Expose partner adultery (ECM access)",shape=AND];
 
-  Install_ecm[label="Install ECM"];
-  root->Install_ecm;
+  MonitorConsumption[label="Monitor consumption with ECM",shape=AND ];
+  root->MonitorConsumption;
    
+  GainAccessToPowerCables[label="Gain access to power cables"]
+  MonitorConsumption -> GainAccessToPowerCables;
+  InstallECM[label="Install ECM"];
+  MonitorConsumption -> InstallECM;
+
 
   surveil[label="Surveil partner",shape=OR];
   root->surveil;

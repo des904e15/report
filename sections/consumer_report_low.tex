@@ -26,6 +26,7 @@ The project group suggest two different approaches to achieving this goal:
   \item The user successfully alters pricing information as received from the electrical company.
   He will want to lower the price locally, such that when he examines his ``expected bill'' the total price will be lower than that billed by the electrical company.
   The attack requires that the consumer is able to modify the prices, e.g. by tampering incoming network packages -- as pictured, as they are received by his smart meter.
+  Network attacks will be described in \cref{attacks}.
 \end{enumerate}
 Both of the above require the user to claim wrong-doing on behalf of the electrical company.
 Any one individual might have a problem in assuring the validity of their claim.
@@ -39,18 +40,23 @@ As the attacker (the consumer) is interested in what is reported to his electric
 In the attack tree, there can be seen four overall methods of achieving this:
 \begin{enumerate}
   \item tampering data sent from/to the smart meter.
-  \item performing a side-channel attack, such as Differential Power Analysis.
+  \item Reverse engineering the firmware 
   \item modifying the firmware in order to change how the consumer's power consumption is stored.
   \item modifying the firmware in order to change how the consumer's power consumption is sent.
 \end{enumerate}
 
+\subsubsection{Tampering}
 For the first attack he would intercept the packages sent from the meter, modify them and then resend them.
 This approach will either require the data to be unencrypted, which does seem unlikely, or that the attacker has enough information about the system to decrypt and re-encrypt the packages.
 Alternatively the attacker might intercept packages at times where he knows his power consumption to be low and resend them at a later point in time where he knows them to be high.
 This is known as a replay attack (see \cref{replay_attack}).
 
+\subsubsection{Reverse engineering}
+By performing reverse engineering the firmware the consumer will possibly get information that enables him to falsify the information sent from the smart meter.
 By performing a side-channel attack the consumer could be able to acquire the key(s) which is used to ensure authentication and integrity of sent messages.
 This way the consumer could send packages which seem authentic.
+Side channel attacks will be discussed in \cref{attack:sidechannel}.
 
+\subsubsection{Modifying firmware}
 The final attack(s) we propose include tampering with the smart meter's firmware.
 If the consumer is able to change or replace the firmware on the smart meter, he could be able to modify the way that the smart meter either stores or sends power consumption data.

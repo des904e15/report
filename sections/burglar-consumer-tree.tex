@@ -1,5 +1,5 @@
 %!TEX root = ../master.tex
-\section{Burglar attacking the consumer}
+\section{Burglar attacking the consumer}\label{attacktree:burglar}
 This section provides an analysis of an attack in which a burglar wants to break in to the house of the consumer and steal his valuables.
 Several options to achieve this goal are explored.
 These are listed below:
@@ -59,7 +59,7 @@ The burglars final step in the attack is stealing the consumers valuables.
 In order to access information about the power consumption of the consumer, the burglar needs to gain access to either the smart meter, a consumer device that controls the smart meter or install an ECM unit (see \cref{ecm}).
 The following will discuss the subtrees concerning these access methods.
 
-\subsubsection{Compromising the smart meter}\label{compromiseSM}
+\subsubsection{Compromising the smart meter}\label{compromise:SM}
 There are two general ways of compromising the smart meter.
 The subtree can be seen on \cref{attacktree:compromiseSM}
 First of all, if you have the password for logging it is possible to access the same information as the consumer is.
@@ -71,14 +71,17 @@ There are a couple of methods for achieving this.
 	Shoulder surfing will be discussed in \cref{attack:shoulder}
 	\item [Malware] It is also possible to get the password by infecting a client device of the consumer with some malware. This piece of malware can either send the password back to the burglar og provide access to the system. Malware will be discussed in \cref{attack:malware}
 	\item [Crack password] If the other options do not amount to anything, the burglar can resort to cracking the password.
-	Password cracking will be discussed in \stefan{ref}
+	Password cracking will be discussed in \cref{password_cracking}.
 \end{description}
 
 Another option is to find some vulnerability in the smart meter firmware.
 Depending on the vulnerability the burglar can possibly perform actions that was not intended from the manufacturer.
-Other vulnerabilities will make it possible to access the same information as available to the consumer
+Other vulnerabilities will make it possible to access the same information as available to the consumer.
+An example of a vulnerability is a buffer overflow.
+Buffer overflows will be discussed in \cref{attack:bufferoverflow}.
+If a buffer overflow is found it may make it possible to run arbitrary code on the smart meter which can possibly open for everything.
 
-\begin{figure}
+\begin{figure}[H]
 \center
 \includegraphics[width=0.75\textwidth]{graphviz/CompromiseSM.pdf}
 \caption{Subtree for compromising the smart meter.}
@@ -86,7 +89,7 @@ Other vulnerabilities will make it possible to access the same information as av
 \end{figure}
 
 
-\subsubsection{Compromising the client}
+\subsubsection{Compromising the client}\label{compromise:client}
 An alternative point of attack is the client that the consumer uses to control the smart meter.
 The subtree for this case can be found on \cref{attacktree:compromiseClient}.
 The obvious possibility is to steal the client that the consumer uses.
@@ -96,14 +99,26 @@ Assuming the burglar can overcome login to the client he will be able to access 
 Alternatively the burglar can use malware to gain either the password to the smart meter or access to the client.
 This step is similar to the malware item in \cref{compromiseSM}.
 
-\begin{figure}
+\begin{figure}[H]
 \center
 \includegraphics[width=0.75\textwidth]{graphviz/CompromiseClient.pdf}
 \caption{Subtree for compromising a client of the consumer.}
 \label{attacktree:compromiseClient}
 \end{figure}
 
+\subsubsection{Installing an ECM} \label{compromise:ecm}
+If it is not possible for the burglar to either get access to the smart meter or the client from the outside or get hold of the client he has another option.
+An External Consumption Monitor (ECM) is a device that can monitor the consumption of a electricity cable (ECM will be discussed further in \cref{ecm}.
+If the burglar can find the incoming power cable and attach such a device he can get roughly the same data as the consumer gets through his smart meter and therefore he will be able to perform many of the same attacks as with access to the smart meter.
 
+The subtree depicting how to achieve this can be found on \cref{attacktree:ECM}.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.75\textwidth]{graphviz/ECM.pdf}
+\caption{Subtree for monitoring the consumer with an attached ECM.}
+\label{attacktree:ECM}
+\end{figure}
 
 
 \subsection{Expensive goods}

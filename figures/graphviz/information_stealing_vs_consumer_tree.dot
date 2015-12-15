@@ -46,7 +46,6 @@ digraph G{
 	buy_from_consumer[label="Buy\nfrom\nconsumer"];
 	
 	malware[label="Use\nMalware"];
-	physical[label="Steal\nclient"];
 	power_signatures[label="Obtain power signatures"];
 	power_compare[label="Compare with \nsignature database"];
 	
@@ -55,7 +54,7 @@ digraph G{
 	obtain_information -> compromise_sm, hack_client, buy_information;
 	analyse_power_consumption ->  residents, activity_residents, home, when_appl, what_appl;
 	buy_information -> buy_third_party, buy_from_consumer;
-	hack_client -> malware, physical;
+	hack_client -> malware;
 
 	what_appl -> power_signatures, power_compare;
 	

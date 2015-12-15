@@ -43,20 +43,20 @@ package -> intercept;
 package -> modify;
 package -> resend;
 
-DPA[label="Differential Power \nAnalysis(DPA)",shape=AND];
-falsify -> DPA;
-DPA -> obtainKey;
+reverseEngineer[label="Reverse engineer firmware",shape=AND];
+falsify -> reverseEngineer;
+reverseEngineer -> obtainKey;
 whenSend[label="Investigate when SM \nsends consumption data"];
-obtainKey[label="Obtain key used by \nSM for communication",shape=AND];
+obtainKey[label="Differential Power \nAnalysis(DPA)",shape=AND];
 obtainKey -> whenSend;
 performDPA[label="Run DPA"]
 obtainKey -> performDPA;
 findKeyInDPA[label="Find key in DPA"];
 obtainKey -> findKeyInDPA;
 createFalseConsumptionData[label="Create false \nconsumption data"];
-DPA -> createFalseConsumptionData;
+reverseEngineer -> createFalseConsumptionData;
 sendFalseData[label="Send false \ndata to distributor"]
-DPA -> sendFalseData;
+reverseEngineer -> sendFalseData;
 
 ModifyFWstore[label="Modify how firmware \nstores consumption"];
 falsify -> ModifyFWstore;
