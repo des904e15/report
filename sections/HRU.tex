@@ -1,3 +1,4 @@
+%!TEX root = ../tmp_master.tex
 \section{Protection in Operating Systems}
 As most protection systems have different approaches to how they manage rights and chains of trust they are hard to compare on equal terms.
 Additionally it is often not easy to express which rights are leaked under certain conditions, or to whom they are leaked.
@@ -11,10 +12,20 @@ In the following the model proposed by \citet{HRU} is presented.
 
 \subsection{A Protection System}
 A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
-Note that both these sets are finite and static for a given system.
+Both these sets are finite and static for a given system.
 Because of this a system cannot dynamically add or remove rights or commands, under this model.
+\footnote{It is possible to simulate adding/removing predefined rights and commands in a system.}
 
 \begin{definition}
+  A protection system is a finite set of rights $R$ and a finite set of commands $C$.
+\end{definition}
+
+The rights of a protection system have no inherent semantics except for those implied by their use in commands.
+Commands are used to modify the configuration of a protection system.
+A definition of such a configuration is given below.
+Note that $R$ and $C$ are not part of the configuration of a system, reflecting the definition of a protection system.
+
+\begin{definition}\label{protection:def:state}
 The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
 Finally $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$ (with $P[s, o] \subseteq R$).
 If no such rights exists we have that $P[s,o] = \emptyset$.
@@ -34,17 +45,14 @@ Joe & $\emptyset$ & $\emptyset$ & $\{\textbf{read}\}$ \\\cline{2-4}
 \label{protection:matrixsmall}
 \end{figure}
 
-Defining a protection system is the task of defining $R$ and $C$.
-Rights have no inherent semantics except for those implied by their use in commands.
+Transitioning from one configuration is done using commands.
+A command can, through a set of operations, modify each part of the configuration tuple.
+A command is defined a below:
 
 \begin{definition}
-A protection system is a finite set of rights $R$ and a finite set of commands $C$.
-A command is defined as in \cref{protection:command}. \stefan{\issue{89} jeg savner en kort uddybning af en kommando}
-The arguments for a command are \subjects{} and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
-These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
-\end{definition}
-
-\begin{algorithm}
+Let $X_i$ be \subjects{} and objects such that $X_i \in O \supseteq S$ and specifically $X_{s_i} \in S$ and $X_{o_i} \in O$.
+Then a command is defined as:
+\begin{algorithm}[H]
   \DontPrintSemicolon
   \SetKwFunction{cmda}{$\alpha$}
   \SetKw{cmd}{command}
@@ -53,8 +61,10 @@ These restrictions are a direct result of the definition of $P$ and are that $X_
     \If{$r_1 \in P[X_{s_1}, X_{o_1}] \wedge r_2 \in P[X_{s_2}, X_{o_2}] \wedge \dots r_m \in P[X_{s_m}, X_{o_m}]$}
     {$operation_1$\;$operation_2$\;\dots\;$operation_n$\;}
   }
-  \caption{Command form in \cite{HRU}\label{protection:command}}
 \end{algorithm}
+%The arguments for a command are \subjects{} and objects; $X_i \in O \supseteq S$, however the use of these within the command come with certain restrictions.
+%These restrictions are a direct result of the definition of $P$ and are that $X_{s_i} \in S$ and $X_{o_i} \in O$.
+\end{definition}
 
 \subsubsection{Operations}
 The model described by \citet{HRU} is set to be as simple as conceivably possible.
