@@ -15,7 +15,7 @@ These attacks will be described below, for more technical descriptions of the sp
   \label{report_power_attack_tree}
 \end{figure}
 
-\subsection{File false complaint against distributor}
+\subsection{File false complaint against electrical company}
 This attack involves the attacker attempting to prove that the electrical company is billing him for a too large power consumption.
 This despite the bill actually corresponding with correct usage and price information.
 
@@ -46,10 +46,16 @@ In the attack tree, there can be seen four overall methods of achieving this:
 \end{enumerate}
 
 \subsubsection{Tampering}
-For the first attack he would intercept the packages sent from the meter, modify them and then resend them.
-This approach will either require the data to be unencrypted, which does seem unlikely, or that the attacker has enough information about the system to decrypt and re-encrypt the packages.
+The goal of the first attack is to intercept the packages sent from the meter, modify them and resend them to the electrical company.
 Alternatively the attacker might intercept packages at times where he knows his power consumption to be low and resend them at a later point in time where he knows them to be high.
 This is known as a replay attack (see \cref{replay_attack}).
+
+Safeguards against this type of tampering is encryption and authentication. 
+These concepts will be discussed in \cref{cryptography}.
+Even though the communication between the smart meter and the distributor is both encrypted and authenticated, nothing is guaranteed to be secure.
+As discussed in \citet{cryptoenginering}, cryptography is very difficult, and protocols that are regarded as secure may contain a small error that is discovered after several years.
+Also the implementation of a cryptographic system determines how secure it is, as well as the surroundings of the system. \citep{cryptoenginering}
+If the surrounding system is leaking left and right, a correctly implemented encryption algorithms can not be blamed.
 
 \subsubsection{Reverse engineering}
 By performing reverse engineering the firmware the consumer will possibly get information that enables him to falsify the information sent from the smart meter.
