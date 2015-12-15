@@ -84,29 +84,48 @@ In the following a user requesting access to a file will be written as a \princi
 \subsection{Preventing security compromise}\label{bellap:properties}
 In order to ensure that data cannot be compromised the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
 
-\paragraph{Security condition}
+\subsubsection{Security condition}
 The security condition states that a \principal{} with a given clearance level is prevented from having read access to any object which is or can be a source of information with a classification level that is higher than the clearance level of the \principal{}.
 
 Formally this can be expressed as the following:
 \begin{definition}
-The access matrix contains entries of the form $(S,O,x)$.
- Such entry satisfies the security condition relative to the classification and need-to-know vectors if and only if
+The access matrix contains entries of the form $(s,o,x)$ where $s \in S, o \in O \text{ and } x \in A$.
+Such entry satisfies the security condition relative to the classification and need-to-know vectors if and only if
 
 \begin{itemize}
 \item x is either the \emph{execute}, \emph{append} or \emph{control} access attribute, or
-\item x is the \emph{write} or the \emph{read} attribute and both $f_1(S) \ge f_2(O)$ and $f_3(S) \supseteq f_4(O)$
+\item x is the \emph{write} or the \emph{read} attribute and both $f_1(s) \ge f_2(o)$ and $f_3(s) \supseteq f_4(o)$
 \end{itemize}
 
-$(S,O,x)$ is a state comprising a subject S, an object O and an access attribute.
-The following access attributes are allowed: read, write, append, control and execute.
+An \emph{access matrix} is secure if every access matrix entry satisfies the security condition.
 
-A system is consisting of \emph{appearances} which consists of requests and decisions that manipulate the access matrix.
+A system consists of \emph{appearances} which consists of requests and decisions that manipulate the access matrix.
 
-A system is a secure system if every appearance of the system is secure.
+A \emph{system} is a secure system if and only if every appearance of the system is secure.
 \end{definition}
 
-\paragraph{*-property}
+\subsubsection{*-property}
 The *-property states that if a \principal{} has write or append access to objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
 This property ensures that it is impossible to leak information to a lower classification level.
+
+The following definition expresses this formally:
+\begin{definition}
+Let $b(S:x,y, \dots, z)$ denote the set 
+
+$\{O: o \in O \text{ and } [(s,o,x) \in b, (s,o,y) \in b, \dots, (s,o,z) \in b]\}$.
+
+Here b is the set of access matrix entries of some access matrix.
+
+\paragraph{}
+\noindent{} 
+A state of an access matrix satisfies the *-property if an only if for each $s \in S$ the following proposition holds.
+
+$[b(s:w,a) \ne \emptyset \text{ and } b(s:r,w) \ne \emptyset] \implies [f_2(O_1) \ge f_2(O_2) \text{ and } f_4(O_1) \supseteq f_4(O_2) \text{ for all } O_1 \in b(s:w,a), O_2 \in b(s:r,w)]$
+
+\paragraph{}
+\noindent{} 
+A system is satisfying the *-property if and only if every appearance of the system satisfies the *-property.
+\end{definition}
+
 
 \mikkel{\issue{57} Gennemgående eksempel til BLP afsnittet}
