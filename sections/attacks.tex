@@ -87,3 +87,25 @@ In this context it is important to note that malware can provide access to a sma
 If the password to the smart meter is stored on some client, malware will be able to send this back to the attacker.
 A rootkit on a client will provide a possibility to control the smart meter through the client.
 
+\section{Password Cracking}\label{password_cracking}
+Passwords are the most used authentication method but not the safest.
+As users have to remember a lot of passwords, they typically tend to have a small collection of passwords which they use.
+Commonly users just remember the collection or write it down on a piece of paper.
+Another way is to try all passwords or to just reset the password.\cite{florencio2007large}\cite{bishop1995improving}\cite{dell2010password}
+
+The following is based on \citet{marechal2008advances}.
+Passwords are generally not stored in plain text.
+The most used method is to cryptographically hash the passwords.
+Typically a hashing function takes the plain text password as input and a salt.
+The salt is some \textit{random} data used as additional input in hash functions to for instance prevent a dictionary attack\footnote{A dictionary attack is when one has a list of possible passwords and tries them all.}.
+Password cracking is the process of retrieving these passwords from hashed passwords.
+This process can be viewed as three steps:
+\begin{enumerate}
+\item Choose a password that is likely used by the user
+\item Find the salt
+\item Hash the chosen password with the salt and see if it matches the original hash
+\end{enumerate}
+
+When one has cracked a password, this often gives access to other sites.
+Because, as mentioned earlier, users reuse the same password for different sites.
+
