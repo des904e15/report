@@ -79,7 +79,6 @@ Having this attribute a \principal{} can give the four attributes above to other
 \subsection{Requests and decisions}
 In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
 In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
-\bruno{Gennemgående eksempel \#57}
 
 \subsection{Preventing security compromise}\label{bellap:properties}
 In order to ensure that data cannot be compromised the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
@@ -104,6 +103,8 @@ A system consists of \emph{appearances} which consists of requests and decisions
 A \emph{system} is a secure system if and only if every appearance of the system is secure.
 \end{definition}
 
+Seen in context of the lattice in \cref{blp:lattice}, the security condition can be seen as the disallowance of any subject $s$ from reading any objects above its security level (\textbf{no read-up}).
+
 \subsubsection{*-property}
 The *-property states that if a \principal{} has write or append access to objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
 This property ensures that it is impossible to leak information to a lower classification level.
@@ -127,5 +128,4 @@ $[b(s:w,a) \ne \emptyset \text{ and } b(s:r,w) \ne \emptyset] \implies [f_2(O_1)
 A system is satisfying the *-property if and only if every appearance of the system satisfies the *-property.
 \end{definition}
 
-
-\mikkel{\issue{57} Gennemgående eksempel til BLP afsnittet}
+When seeing the *-property in the context of \cref{blp:lattice}, the *-property states that it is not allowed for any subject $s$ to read any object $o_1$ and write any of this information to an object $o_2$, if $o_2$ is not above, or at the same security level as, $o_1$ (\textbf{no write-down}).
