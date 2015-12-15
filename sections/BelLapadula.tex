@@ -8,17 +8,20 @@ The following description is based on \citet{lapadula1996secure}.
 \subsection{Security}
 Before we go into details about how the Bell-LaPadula (BLP) security model is applied to computer systems, we will first discuss some important concepts.
 
-In any system we will have \textit{objects} and \textit{\subjects{}}, where objects are entities that can somehow be manipulated by the system's users (\subjects{}).
-\Subjects{} can be users themselves, but can also be seen as representatives of a user or even groups of users.
+In any system we will have a set of objects $O$ and \subjects{} $S$.
+Objects are entities that can somehow be manipulated by \subjects{}.
+\Subjects{} are processes or programs in execution that represent a user or a group of users.
 
 \paragraph{Classification and Clearance}
 Attached to any object or \subject{} will be a classification or clearance respectively.
-This means that for any object $o$ with classification $x$, any \subject{} $s$ will need clearance $x$ or higher in order to access $o$.
-In a hierarchical security system, where classification $y$ is a child of $x$, then an object given clearance $x$ will also have access to any objects with classification $y$.
+We denote the set of all classifications/clearances $C = \{C_1, C_2,\dots,C_q\}$ where $\{C_1 > C_2 > \dots > C_q\}$ holds, giving a hierarchical sequence of classifications/clearances.
+This means that for any object $o \in O$ with \textit{classification} $C_i \in C$, where $C_i$ is arbitrary, any \subject{} $s \in S$ will need a \textit{clearance} $C_j \geq C_i$ in order to access $o$.
 
 \paragraph{Category and Need-to-know}
-In addition to classification, objects can belong to zero, one or more category, which can be seen as security groupings of certain objects (e.g. ``Cold War'').
-Similarly, \subjects{} can have zero, one or more need-to-know, which are the security groupings for \subjects{}.
+In addition to classification, objects can belong to one or more categories, which can be seen as security groupings of certain objects.
+Similarly, \subjects{} can have one or more need-to-know, which are the security groupings for \subjects{}.
+The security categories are a set $K = \{K_1, K_2, \dots, K_r\}$ and unlike classifications/clearances there is no hierarchy of categories.
+In order for \subject{} $s$ to access an object $o$ with \textit{category} $K_m$ and $K_n$, where $K_m$ and $K_n$ are arbitrary, $s$ must have both \textit{Need-to-know} categories $K_m$ and $K_n$.
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
