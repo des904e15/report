@@ -25,9 +25,13 @@ In order for \subject{} $s$ to access an object $o$ with \textit{category} $K_m$
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
-Each node represents an object, with a classification and possibly a category.
-In the figure a \subject{} with the clearance \emph{Top secret} is able to read all nodes with the classification \emph{Top Secret} as well as all lower classifications (\emph{Secret} and \emph{Unclassified}).
-On the contrary a \subject{} with the clearance \emph{Unclassified} can only read the one node with the \emph{Unclassified} label.
+Each node represents a \emph{security level} -- i.e. a combination of classification/clearance and a set of categories.
+\mikael{'security level' er noget jeg fandt på, hvordan skal vi håndtere det?}
+A \subject{} with the clearance \emph{Top Secret} is able to access any object with the security level \emph{Top Secret} as well as all those below (\emph{Secret} and \emph{Unclassified}).
+On the contrary, a \subject{} with clearance \emph{Unclassified} can only access objects with the security level \emph{Unclassified}.
+
+Similarly, the category(ies) of each node limit what objects a \subject{} can access.
+If we have a subject $s$ with clearance \emph{Top Secret} and category \emph{Crypto}, $s$ will have access to any objects with security level $(Top Secret, \{Crypto\})$ and those below.
 
 \begin{figure}
 \centering
