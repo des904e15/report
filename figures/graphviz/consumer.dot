@@ -4,7 +4,7 @@ digraph G {
 node[ shape=rectangle];
 
 root [label="Report a lower \npower consumption", shape=OR];
-complaint [label="File false complaint \nagainst distributor",shape=AND];
+complaint [label="File false complaint \nagainst electrical company",shape=AND];
 falsify [label="Falsify sent \nconsumption",shape=OR];
 
 
@@ -15,7 +15,7 @@ root -> complaint;
 forgeConsumptionData[shape=OR];
 forgeConsumptionData[label="Change the \nconsumption data"];
 complaint -> forgeConsumptionData
-fileComplaint[label="File complaint \nagainst distributor"]
+fileComplaint[label="File complaint \nagainst electrical company"]
 complaint -> fileComplaint
 
 app[label="Develop app that shows \nlower power consumption"];
