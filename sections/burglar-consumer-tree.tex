@@ -59,12 +59,25 @@ Using a model that joins the four trees will allow for a comparison of the valid
 \recalctypearea
 }
 
+
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
+
 \begin{figure}
 \center
 \includegraphics[width=\textwidth]{graphviz/burglarECM.pdf}
 \caption{A burglar attacking the consumer using an ECM.}
 \label{attacktree:burglar:ecm}
 \end{figure}
+
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
 
 \begin{figure}
 \center
