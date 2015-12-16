@@ -61,7 +61,9 @@ The relation $\sqsubseteq$ determines that a label is \textit{at least as restri
   For two labels $L_1$ and $L_2$, if we have $L_1 \sqsubseteq L_2$, $L_1$ is at least as restrictive as $L_2$.
   Then, in order to keep the restrictiveness of a combination of two labels, the resulting label for a derived \xvalue{} is the union of the two source labels.
   This gives us the following join rule:
-  $L_1 \sqcup L_2 = L_1 \cup L_2$
+  \begin{center}
+    $L_1 \sqcup L_2 = L_1 \cup L_2$
+  \end{center}
 \end{definition}
 
 The join rule will ensure that any joining of values will also result in a joining of labels, so that any combination of rules will be upheld.
@@ -87,11 +89,14 @@ This means that if a \principal{} is in the authority set this can be declassifi
 \paragraph{Relabeling by Restriction}
 When a \xvalue{} is read from a variable it has the same label as the variable.
 When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
-When doing assignment, e.g. if we have $a = 4$, and we want to assign the value of another variable, $b$, to $a$.
-First we read the \xvalue{} from $a$, this means the \xvalue{} of $a$, $4$, has the same label as $a$.
-Now we assign the copied \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$, replacing its own label.
-This means that the label that the \xvalue{} got from $a$ is forgotten.
-This process is what we call relabeling, and more specifically this kind of relabeling is called restriction.
+For example when doing an assignment:
+\begin{example}{Assignment}
+  Given $a = 4$, and we want to assign the value of another variable, $b$, to $a$.
+  First we read the \xvalue{} from $a$, this means the \xvalue{} of $a$, $4$, has the same label as $a$.
+  Now we assign the copied \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$, replacing its own label.
+  This means that the label that the \xvalue{} got from $a$ is forgotten.
+\end{example}
+This example shows the process of what we call relabeling, and more specifically this kind of relabeling is called restriction.
 
 To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
@@ -115,9 +120,14 @@ For instance $x \succeq y$ means $x$ acts for $y$.
 A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
 So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
 
-Given the acts-for relation and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
-Any security policies that apply to Bob will in effect also apply to Amy.
-Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group.
+Some examples:
+\begin{example}{Acts-for relation}
+  Given the acts-for relation and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
+  Any security policies that apply to Bob will in effect also apply to Amy.
+\end{example}
+\begin{example}{Acts-for relation groups}
+  Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group. 
+\end{example}
 \subsection{Channels}
 The model contains two channels, an input and an output channel.
 Information can be leaked through these channels, therefore they have a label associated to them.
