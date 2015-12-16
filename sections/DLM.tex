@@ -204,7 +204,7 @@ We can now give a formal definition.
 \end{definition}
 
 Below is an example where $\textbf{R}$ takes a label containing two policies as input.
-\begin{example}{Reader function}
+\begin{example}{Reader function}\label{example_reader_function}
   Given a label $L_1 = \{A:B; C:B,D\}$ where the principal hierarchy only contains $C \succeq A$.
   \begin{center}
     $\textbf{R}L_1 = \{A:B,A,C; C:B,D,C\}$
@@ -223,6 +223,21 @@ We can now give a formal definition.
     $\textbf{O}L = \{(o,r) | \forall (I \in L) \textbf{o}I \succeq r \in \textbf{r}I\}$
   \end{center}
 \end{definition}
+
+\begin{example}{Owner function}
+  If we have the label $\textbf{R}L_1$ from \cref{example_reader_function}:
+  \begin{center}
+    $\textbf{R}L_1 = \{A:B,A,C; C:B,D,C\}$
+  \end{center}
+  Now we take $\textbf{R}L_1$ as input to the owner function $\textbf{O}$ we get the following result represented as a label:
+  \begin{center}
+    $\textbf{OR}L_1 = \{A:B,C; C:B,D,C\}$
+  \end{center}
+  We can see that the $A$ is eliminated in the first policy.
+  This i because the $C$ does not allow $A$ as a reader and $C$ acts for $A$. 
+\end{example}
+
+
 \subsection{Extending the relabeling by restriction rule}
 
 
