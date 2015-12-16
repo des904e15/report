@@ -224,8 +224,8 @@ We can now give a formal definition.
   \end{center}
 \end{definition}
 
-\begin{example}{Owner function}
-  If we have the label $\textbf{R}L_1$ from \cref{example_reader_function}:
+\begin{example}{Owner function}\label{example_owner_function}
+  Given the label $\textbf{R}L_1$ from \cref{example_reader_function}:
   \begin{center}
     $\textbf{R}L_1 = \{A:B,A,C; C:B,D,C\}$
   \end{center}
@@ -236,6 +236,19 @@ We can now give a formal definition.
   We can see that the $A$ is eliminated in the first policy.
   This i because the $C$ does not allow $A$ as a reader and $C$ acts for $A$. 
 \end{example}
+
+\paragraph{Interpretation function}
+We can now finally define $\textbf{X}$.
+As mentioned earlier we want $\textbf{X}$ to be able to interpret a label taking the principal hierarchy into account.
+If we combine $\textbf{R}$ and $\textbf{O}$ we get the above.
+\begin{definition}
+  Combining $\textbf{R}$ and $\textbf{O}$ we get $\textbf{X}$.
+  \begin{center}
+    $\textbf{X}L = \textbf{OR}L$
+  \end{center}
+\end{definition}
+$\textbf{X}L$ obeys the reader and owner constraint as they are preserved by $\textbf{R}$ and $\textbf{O}$.
+For example of using $\textbf{X}$ sequentially combine \cref{example_reader_function} and \cref{example_owner_function}.
 
 
 \subsection{Extending the relabeling by restriction rule}
