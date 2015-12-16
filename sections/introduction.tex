@@ -9,18 +9,17 @@ As it is now, renewable sources are often shut down if they are producing more t
 On the other hand, during periods with little renewable power, more expensive and environmentally unsafe sources are used.
 Additionally, most suppliers only support very simple tariffs with one fixed price, or a single division of prices, throughout the day.
 
-The statements above have led to an increased focus on energy usage, with optimizations of the electrical grid as a high priority.
+The implications of the above statements have led to an increased focus on energy usage, with optimizations of the electrical grid as a high priority.
 This is why, by 2022 (80\% by 2020), all  electrical meters in EU member countries must be replaced by \emph{smart meters} \cite{smart_meter_survey, directive_2009_72_EC}.
 An expansion of the electrical grid, as it is extended to connect more EU member countries, along with the addition of smart meters -- enabling home owners to supply themselves and others, will form a \emph{smart grid}.
 
 The suddenness and size of this project has the potential to bring a lot of security and privacy-related issues with it.
-% noget om privacy issues for de mange millioner mennesker
-% noget om miljøpåvirkning hvis ikke vi bedre udnytter det globale el-net
-% noget om mulighed for onde parter at udnytte dårligt sikrede løsninger
+The millions of smart meters placed in private homes throughout Europe can lead to mass privacy breaches, as smart meter measurement data mining can reveal much about each individual household.
+Parties with malicious intent can use any ill-gained access to smart meters or other smart grid components to possibly shut down or in other ways control the electrical grid.
 
 This report will have a general focus about these issues and how to secure smart meter systems.
-Firstly, in \cref{context}, the context in which we operate will be elaborated, concluded by some assumptions about what kind of system will be implemented -- with a base in the Danish solution.
+Firstly, in \cref{context}, the context in which we operate, and possible issues, will be elaborated, concluded by some assumptions about what kind of system will be implemented -- with a base in the Danish solution.
 Then in \cref{security_models} several security models will be presented, which could have a potential interest in ensuring that smart meter solutions are secure.
 In order to get a better idea about what kind of attacks are possible in a smart meter system, possible attackers are identified and then used in forming attack trees -- which are used to further identify concrete attack techniques.
-These attack techniques are then elaborated in \cref{attack_techniques}, with a technical presentation about possible attack techniques in current security engineering practices.
+These attack techniques are then elaborated in \cref{attack_techniques}, with a technical presentation based on current security engineering.
 Finally, we conclude in \cref{conclusion} on the achievements of this report and what work from now on can be done to further the security in the coming smart meter systems.
