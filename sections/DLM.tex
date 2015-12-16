@@ -3,7 +3,7 @@
 \newcommand{\policy}[2]{\ensuremath{#1\!:\;#2}}
 
 \section{Decentralized Label Model}
-The Decentralized Label Model (DLM) is an information flow control model.
+The Decentralized Label Model (DLM) is an information flow control model.\cite{myers1999mostly}
 As the name suggests it revolves around labels (similar to previous security models), however, DLM is decentralized.
 This means that it can be applied to systems with no trusted third party, or even any trust throughout the system.
 By attaching security labels to objects in code it can be controlled how information should be shared throughout the code and at code-endpoints (input/output to/from other programs).
@@ -125,34 +125,108 @@ Any security policies that apply to Bob will in effect also apply to Amy.
 Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group.
 
 \subsection{Limitations}
-The rule of restriction is too strict as it is only possible to remove readers and add policies \stefan{hvorfor er dette tilfældet?} and therefore prevents valid relabelings.
-There are three possible valid relabelings which are not possible at the moment:
+The rule of restriction is too strict as it is only possible to remove readers and add policies and therefore prevents valid relabelings.
+These three possible valid relabelings which are not possible at the moment show why the rule of restriction is too strict:
 
 \begin{itemize}
-\item Adding readers - if we have $r' \succeq r$ and $r$ is a reader of some owner, $'r$ should be too.
-\item Replacing owners - if we have $o' \succeq o$ then it should be possible to replace $o$ with $o'$.
-\item Self-authorization - every \principal{} that \textit{acts for} (see below) an owner of a policy should be possible to add as a reader.
+\item \textbf{Adding readers}
+If we have reader $r' \succeq r$ and reader $r$ is a reader of some owner.
+It should be possible to add reader $'r$ as a reader because $r' \succeq r$.
+
+\item \textbf{Replacing owners}
+If we have owner $o' \succeq o$ then it should be possible to replace $o$ with $o'$ because $o' \succeq o$.
+
+\item \textbf{Self-authorisation}
+Given an owner of a policy it should be possible to add any readers which act for the owner.
+As mentioned earlier the owner is implicitly a reader of its own policy.
+Therefore the readers that act for the owner should be allowed too.
+
+As the owner of the policy always can be added explicitly, self-authorisation does not add anything significant to the label model.
 \end{itemize}
 
-\subsubsection{Extending the relabeling by restriction rule}
-We need to extend the rule in order to be able to do the things discussed above.
 
-To take the \principal{} hierarchy into account when interpreting a label an interpretation function $\textbf{X}$ is introduced.
-This function takes a label as argument.
+\paragraph{Extending the model}
+We need to extend the model in order to be able to add readers and replace owners.
+To be able to do this we introduce an interpretation function: $\textbf{X}$, which is used when interpreting a label.
+This function considers the \principal{} hierarchy and takes a label as an argument.
 
-The set of flows for a label need to satisfy two constraints for the given principal hierarchy.
-One for readers and one for owners.
-The following is the shows the reader constraint:
-If we have $(o,r)$ and $r' \succeq r$ then $(o,r)'$ must also be in the set of flows.
-Formally ($\rightarrow$ used for implication):
-\begin{center}
-  $r' \succeq r \ \wedge \ (o,r) \in \textbf{X}L \rightarrow (o,r') \in \textbf{X}L$
-\end{center}
-And the owner constraint:
-If we have $(o,r)$ and $o' \succeq o$ and relabel to $(o',r)$, so a owner gets replaced by an owner that acts for it.
-\begin{center}
-  $o' \succeq o \ \wedge \ (o',r) \notin \textbf{X}L \rightarrow (o,r) \notin \textbf{X}L$
-\end{center}
+Given a label as a set of flows we can see that a set of flows has to follow two constraints.
+The reader and owner constraint needs to be followed if a set of flow should make sense.
+The two constraints are defined below.
+
+\begin{definition}
+  Given a label as a set of flows, the set of flows has to follow the \textbf{reader constraint}.
+  If we have $(o,r)$ and $r' \succeq r$ then $(o,r')$ must also be in the set of flows.
+  Formally ($\rightarrow$ used for implication):
+  \begin{center}
+    $r' \succeq r \ \wedge \ (o,r) \in \textbf{X}L \rightarrow (o,r') \in \textbf{X}L$
+  \end{center}
+\end{definition}
+
+\begin{definition}
+  Given a label as a set of flows, the set of flows has to follow the \textbf{owner constraint}.
+  If we have $(o,r)$ and $o' \succeq o$ and relabel to $(o',r)$, so a owner gets replaced by an owner that acts for it.
+  Formally ($\rightarrow$ used for implication):
+  \begin{center}
+    $o' \succeq o \ \wedge \ (o',r) \notin \textbf{X}L \rightarrow (o,r) \notin \textbf{X}L$
+  \end{center}
+\end{definition}
+
+
+\subsection{Label functions}
+We now want to construct the label interpretation function $\textbf{X}$.
+To be able to do that we define two functions that establish the reader and owner constraint.
+
+\paragraph{Reader function}
+The reader function $\textbf{R}$ will now be defined.
+This function has to add the following readers to the set of readers in a policy.
+\begin{itemize}
+\item Readers that are implicitly allowed by the reader constraint
+\item The owner
+\item Any \principals{} that can act for the owner
+\end{itemize}
+We can now give a formal definition.
+
+\begin{definition}
+  The reader function $\textbf{R}$ takes a policy $I$ as input, written $\textbf{R}I$.
+  It outputs a policy with the same owner where the readers are expanded.
+  \begin{center}
+    $\textbf{R} = (\textbf{o}I : \{r' | r' \succeq \textbf{o}I \wedge \exists(r \in \textbf{r}I) r' \succeq r \})$
+  \end{center}
+  This can be shortened by introducing $\textbf{r}^+$ that takes a policy as input and outputs a set of readers containing the set of readers of the policy and its owner.\bruno{Kringlet for at sige noget meget simpelt -.-}
+  \begin{center}
+    $\textbf{r}^+I = \textbf{r}I \cup \{\textbf{o}I\}$
+  \end{center}
+  \begin{center}
+    $\textbf{R} = (\textbf{o}I : \{r | \exists(r' \in \textbf{r}^+I) r \succeq r' \})$
+  \end{center}
+  $\textbf{R}$ can also take a label as input because that is the same as applying $\textbf{R}$ to all policies in the label.
+\end{definition}
+
+Below is an example where $\textbf{R}$ takes a label containing two policies as input.
+\begin{example}{Reader function}
+  Given a label $L_1 = \{A:B; C:B,D\}$ where the principal hierarchy only contains $C \succeq A$.
+  \begin{center}
+    $\textbf{R}L_1 = \{A:B,A,C; C:B,D,C\}$
+  \end{center}
+\end{example}
+
+\paragraph{Owner function}
+The owner function $\textbf{O}$ will now be defined.
+The function takes a label as input and outputs a set of flows that are restricted in regard to the \principal{} hierarchy.
+$\textbf{O}$ removes flows that do not obey the owner constraint.
+$\textbf{O}$ also adds flows for \principals{} when no owner of any policy in the label acts for it.
+We can now give a formal definition.
+\begin{definition}
+  Given label $L$ the owner function $\textbf{O}$ takes it as input and outputs a set of flows.
+  \begin{center}
+    $\textbf{O}L = \{(o,r) | \forall (I \in L) \textbf{o}I \succeq r \in \textbf{r}I\}$
+  \end{center}
+\end{definition}
+\subsection{Extending the relabeling by restriction rule}
+
+
+
 
 The function \textbf{R} is essentially adds all readers that can be found by looking at the acts for relations.
 The \textbf{O} function converts a label into a set of flows and removes the ones that are not allowed.
