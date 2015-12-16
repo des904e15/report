@@ -1,3 +1,25 @@
-\section*{Introduction}
-\mikkel{Should we mention something about other resources (gas, heat, water etc.)? At least just to indicate that we are aware of other resources but have chosen to focus on electrical.}
-\bruno{General description of the smart grid and the different resources and possibilities.}
+%!TEX root=../master.tex
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+Energy consumption is ever increasing and our current electrical grid is outdated, as it is unable to handle the more dynamic production and consumption of power we have today.
+There is also an increasing generation of renewable energy (e.g. wind and solar), but optimal use of this is limited by our current electrical grid.
+As it is now, renewable sources are often shut down if they are producing more than can be consumed.
+On the other hand, during periods with little renewable power, more expensive and environmentally unsafe sources are used.
+Additionally, most suppliers only support very simple tariffs with one fixed price, or a single division of prices, throughout the day.
+
+The implications of the above statements have led to an increased focus on energy usage, with optimizations of the electrical grid as a high priority.
+This is why, by 2022 (80\% by 2020), all  electrical meters in EU member countries must be replaced by \emph{smart meters} \cite{smart_meter_survey, directive_2009_72_EC}.
+An expansion of the electrical grid, as it is extended to connect more EU member countries, along with the addition of smart meters -- enabling home owners to supply themselves and others, will form a \emph{smart grid}.
+
+The suddenness and size of this project has the potential to bring a lot of security and privacy-related issues with it.
+The millions of smart meters placed in private homes throughout Europe can lead to mass privacy breaches, as smart meter measurement data mining can reveal much about each individual household.
+Parties with malicious intent can use any ill-gained access to smart meters or other smart grid components to possibly shut down or in other ways control the electrical grid.
+
+This report will have a general focus about these issues and how to secure smart meter systems.
+Firstly, in \cref{context}, the context in which we operate, and possible issues, will be elaborated, concluded by some assumptions about what kind of system will be implemented -- with a base in the Danish solution.
+Then in \cref{security_models} several security models will be presented, which could have a potential interest in ensuring that smart meter solutions are secure.
+In order to get a better idea about what kind of attacks are possible in a smart meter system, possible attackers are identified and then used in forming attack trees -- which are used to further identify concrete attack techniques.
+These attack techniques are then elaborated in \cref{attack_techniques}, with a technical presentation based on current security engineering.
+Finally, we conclude in \cref{conclusion} on the achievements of this report and what work from now on can be done to further the security in the coming smart meter systems.
