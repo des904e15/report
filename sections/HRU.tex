@@ -26,13 +26,13 @@ A definition of such a configuration is given below.
 Note that $R$ and $C$ are not part of the configuration of a system, reflecting the definition of a protection system.
 
 \begin{definition}\label{protection:def:state}
-The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \subject{} has to each object.
-Finally $P[s, o]$ represents the cell in $P$ containing the set of rights that the \subject{} $s$ has to the object $o$ (with $P[s, o] \subseteq R$).
+The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \ssubject{} has to each object.
+Finally $P[s, o]$ represents the cell in $P$ containing the set of rights that the \ssubject{} $s$ has to the object $o$ (with $P[s, o] \subseteq R$).
 If no such rights exists we have that $P[s,o] = \emptyset$.
 \end{definition}
 
 We can represent a configuration $Q$ by annotating the access matrix with the associated \subjects{} and objects.
-\Cref{protection:matrixsmall} shows an example of this approach in which there is a row for each \subject{} and a column for each object.
+\Cref{protection:matrixsmall} shows an example of this approach in which there is a row for each \ssubject{} and a column for each object.
 
 \begin{figure}[h]
 \centering
@@ -81,8 +81,8 @@ Because of this they are not included here.
  \[\arraycolsep=14pt%\def\arraystretch{2.2}
  \begin{array}{l|l}
   \textbf{enter } r \textbf{ into } P[X_s, X_o] & \textbf{delete } r \textbf{ from } P[X_s, X_o]\\
-  \textbf{create \subject{} } X_s & \textbf{create object } X_o\\
-  \textbf{destroy \subject{} } X_s & \textbf{destroy object } X_o
+  \textbf{create \ssubject{} } X_s & \textbf{create object } X_o\\
+  \textbf{destroy \ssubject{} } X_s & \textbf{destroy object } X_o
  \end{array}
  \]
  \caption{The six primitive operations described by \cite{HRU}}
@@ -110,7 +110,7 @@ The invocation of a command (with a set of arguments) is described as $Q \vdash_
 
 Should we want to give \textit{Joe} write access (as above) we might do this through a command that will only allow the owner of the data to provide write access.
 An example of such a command is presented in \cref{protection:conferexample}.
-With such a command the \textit{write} right to an object can only be given to a \subject{} by the owner of the object.
+With such a command the \textit{write} right to an object can only be given to a \ssubject{} by the owner of the object.
 
 \begin{algorithm}
   \DontPrintSemicolon
@@ -123,7 +123,7 @@ With such a command the \textit{write} right to an object can only be given to a
     \If{$own \in P[owner, content]$}
     {\enter{$write$ \into{$P[user, content]$}}\;}
   }
-  \caption{Conferring write rights to another \subject{} \cite{HRU}\label{protection:conferexample}}
+  \caption{Conferring write rights to another \ssubject{} \cite{HRU}\label{protection:conferexample}}
 \end{algorithm}
 
 \subsection{Analysis of Protection Systems}
@@ -132,8 +132,8 @@ By defining a set of requirements we can ask the same questions about several pr
 These questions could be any of the below:
 \begin{itemize}
 \item Does the system leak the right $r$?
-\item Does the system leak the right $r$ to the \subject{} $s$?
-\item Does the system leak the right $r$ to anyone other than \subject{} $s_1$, $s_2$ or $s_3$?
+\item Does the system leak the right $r$ to the \ssubject{} $s$?
+\item Does the system leak the right $r$ to anyone other than \ssubject{} $s_1$, $s_2$ or $s_3$?
 \end{itemize}
 It should be noted that all these questions are answered on the basis of an initial configuration $Q$.
 In other words; we are not interested in whether or not a right is leaked from an unattainable configuration.
