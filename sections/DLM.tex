@@ -250,25 +250,16 @@ If we combine $\textbf{R}$ and $\textbf{O}$ we get the above.
 $\textbf{X}L$ obeys the reader and owner constraint as they are preserved by $\textbf{R}$ and $\textbf{O}$.
 For example of using $\textbf{X}$ sequentially combine \cref{example_reader_function} and \cref{example_owner_function}.
 
-
-\subsection{Extending the relabeling by restriction rule}
-
-
-
-
-The function \textbf{R} is essentially adds all readers that can be found by looking at the acts for relations.
-The \textbf{O} function converts a label into a set of flows and removes the ones that are not allowed.
-Definition of the interpretation function $\textbf{X}$:
+\paragraph{Relabeling}
+Given two labels, $L_1$ and $L_2$, and a principal hierarchy $P$, the relabeling from $L_1$ to $L_2$ is accepted if no new flows are added.
+So if $\textbf{X}(L_1, P)$ compared to $\textbf{X}(L_2, P)$ adds no flows the relabeling is safe to do.
+We call this the correctness condition given below.
 \begin{definition}
-  $\textbf{X}L \ = \ \textbf{OR}L \ = \ \{(o,r)|\forall (I \in L) \textbf{o}I \succeq o \rightarrow [r \succeq \textbf{o}I \vee \exists (r' \in \textbf{r}I) r \succeq r'] \}$
+  \begin{center}
+    $\frac{\textbf{X}(L_1, P)\subseteq \textbf{X}(L_2,P)}{\text{Relabeling from } L_1 \text{ to } L_2 \text{ is safe in } P }$
+  \end{center}
 \end{definition}
-
-By using \textbf{X} we can verify a relabeling by applying the following correctness check.
-\begin{definition}
-  $\frac{\textbf{X}(L_1, P)\subseteq \textbf{X}(L_2,P)}{\text{Relabeling from } L_1 \text{ to } L_2 \text{ is safe in } P }$
-\end{definition}
-\mikkelin{Jeg synes alle definitionerne i ovenstående er for lidt forklarende.
-Det er for lidt information man får når der kun er en ligning/et udtryk. \#69}
+\bruno{Example}
 
 \subsection{Channels}
 The model contains two channels, an input and an output channel.
