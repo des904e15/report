@@ -13,15 +13,15 @@ Objects are entities that can somehow be manipulated by \subjects{}.
 \Subjects{} are processes or programs in execution that represent a user or a group of users.
 
 \paragraph{Classification and Clearance}
-Attached to any object or \subject{} will be a classification or clearance respectively.
+Attached to any object or \ssubject{} will be a classification or clearance respectively.
 We denote the set of all classifications/clearances $C = \{C_1, C_2,\dots,C_q\}$ where $\{C_1 > C_2 > \dots > C_q\}$ holds, giving a hierarchical sequence of classifications/clearances.
-This means that for any object $o \in O$ with \textit{classification} $C_i \in C$, where $C_i$ is arbitrary, any \subject{} $s \in S$ will need a \textit{clearance} $C_j \geq C_i$ in order to access $o$.
+This means that for any object $o \in O$ with \textit{classification} $C_i \in C$, where $C_i$ is arbitrary, any \ssubject{} $s \in S$ will need a \textit{clearance} $C_j \geq C_i$ in order to access $o$.
 
 \paragraph{Category and Need-to-know}
 In addition to classification, objects can belong to one or more categories, which can be seen as security groupings of certain objects.
 Similarly, \subjects{} can have one or more need-to-know, which are the security groupings for \subjects{}.
 The security categories are a set $K = \{K_1, K_2, \dots, K_r\}$ and unlike classifications/clearances there is no hierarchy of categories.
-In order for \subject{} $s$ to access an object $o$ with \textit{category} $K_m$ and $K_n$, where $K_m$ and $K_n$ are arbitrary, $s$ must have both \textit{Need-to-know} categories $K_m$ and $K_n$.
+In order for \ssubject{} $s$ to access an object $o$ with \textit{category} $K_m$ and $K_n$, where $K_m$ and $K_n$ are arbitrary, $s$ must have both \textit{Need-to-know} categories $K_m$ and $K_n$.
 
 \paragraph{Classification and category vectors}
  In the model classifications and categories are stored in vectors.
@@ -32,10 +32,10 @@ In order for \subject{} $s$ to access an object $o$ with \textit{category} $K_m$
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
 Each node represents a \emph{security level} -- i.e. a combination of classification/clearance and a set of categories.
 \mikael{'security level' er noget jeg fandt på, hvordan skal vi håndtere det?}
-A \subject{} with the clearance \emph{Top Secret} is able to access any object with the security level \emph{Top Secret} as well as all those below (\emph{Secret} and \emph{Unclassified}).
-On the contrary, a \subject{} with clearance \emph{Unclassified} can only access objects with the security level \emph{Unclassified}.
+A \ssubject{} with the clearance \emph{Top Secret} is able to access any object with the security level \emph{Top Secret} as well as all those below (\emph{Secret} and \emph{Unclassified}).
+On the contrary, a \ssubject{} with clearance \emph{Unclassified} can only access objects with the security level \emph{Unclassified}.
 
-Similarly, the category(ies) of each node limit what objects a \subject{} can access.
+Similarly, the category(ies) of each node limit what objects a \ssubject{} can access.
 If we have a subject $s$ with clearance \emph{Top Secret} and category \emph{Crypto}, $s$ will have access to any objects with security level $(Top Secret, \{Crypto\})$ and those below.
 
 \begin{figure}

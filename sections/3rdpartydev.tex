@@ -9,10 +9,22 @@ As the app has direct access to the smart meter data, it is easy for the develop
 He can then choose to analyze the data and create a profile (this was discussed in \cref{informationGathererVsConsumer}).
 At last he can sell the profile (or even just the raw data) to some information gatherer.
 
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
+
 \begin{figure}
   \begin{center}
-    \includegraphics[angle=90, height=\textheight]{graphviz/3rd_party_vs_consumer.pdf}
+    \includegraphics[width=\textwidth]{graphviz/3rd_party_vs_consumer.pdf}
   \end{center}
   \caption{A 3rd party app developer attacking the consumer through their app.}
   \label{3rdpartyTree}
 \end{figure}
+
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+

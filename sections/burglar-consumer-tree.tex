@@ -21,19 +21,50 @@ This representation is to used to build a model of the possible threat to the co
 As this representation fails to fully represent attacks that employ multiple strategies, special care should be taken when modeling the trees.
 Using a model that joins the four trees will allow for a comparison of the validity of the each device as an entry point for an attack.
 
+
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
+
 \begin{figure}
 \center
-\includegraphics[width=\textheight, angle=90]{graphviz/burglarSM.pdf}
+\includegraphics[width=\textwidth]{graphviz/burglarSM.pdf}
 \caption{A burglar attacking the consumer using the smart meter.}
 \label{attacktree:burglar:sm}
 \end{figure}
 
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
+
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
+
 \begin{figure}
 \center
-\includegraphics[width=\textwidth, angle=90]{graphviz/burglarClient.pdf}
+\includegraphics[width=\textwidth]{graphviz/burglarClient.pdf}
 \caption{A burglar attacking the consumer using the consumers client.}
 \label{attacktree:burglar:client}
 \end{figure}
+
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
+
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
 
 \begin{figure}
 \center
@@ -41,6 +72,12 @@ Using a model that joins the four trees will allow for a comparison of the valid
 \caption{A burglar attacking the consumer using an ECM.}
 \label{attacktree:burglar:ecm}
 \end{figure}
+
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
 
 \begin{figure}
 \center
@@ -83,7 +120,7 @@ If a buffer overflow is found it may make it possible to run arbitrary code on t
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.75\textwidth]{graphviz/CompromiseSM.pdf}
+\includegraphics[width=\textwidth]{graphviz/CompromiseSM.pdf}
 \caption{Subtree for compromising the smart meter.}
 \label{attacktree:compromiseSM}
 \end{figure}
@@ -101,7 +138,7 @@ This step is similar to the malware item in \cref{compromiseSM}.
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.75\textwidth]{graphviz/CompromiseClient.pdf}
+\includegraphics[width=0.35\textwidth]{graphviz/CompromiseClient.pdf}
 \caption{Subtree for compromising a client of the consumer.}
 \label{attacktree:compromiseClient}
 \end{figure}
@@ -115,7 +152,7 @@ The subtree depicting how to achieve this can be found on \cref{attacktree:ECM}.
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.75\textwidth]{graphviz/ECM.pdf}
+\includegraphics[width=0.6\textwidth]{graphviz/ECM.pdf}
 \caption{Subtree for monitoring the consumer with an attached ECM.}
 \label{attacktree:ECM}
 \end{figure}
