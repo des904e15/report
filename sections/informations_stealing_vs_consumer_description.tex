@@ -16,6 +16,11 @@ This could be other actors from the list mentioned above, like Facebook or Googl
 The introduction of the smart meter into the home of consumers provide a new way of collecting this information.
 The sub-tree describing how to profile a customer will be described in the following sections.
 
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
 
 \begin{figure}
   \begin{center}
@@ -24,6 +29,12 @@ The sub-tree describing how to profile a customer will be described in the follo
   \caption{A information gatherer attacking the consumer by stealing his data.}
   \label{information_stealing_tree}
 \end{figure}
+
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
 
 \subsection{Obtain power consumption}
 In order to analyze the consumption data of the consumer the information gatherer must obtain the consumption first.

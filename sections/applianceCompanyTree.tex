@@ -8,6 +8,12 @@ The third party app develop has direct access to the data and the potential of s
 An appliance company needs to obtain the data through the firmware on the appliance and send it through either a network connection on the appliance or through the smart meter.
 Although possible these means are less likely than those described in \cref{3rdpartyattacktree}
 
+\afterpage{% Insert after the current page
+\clearpage
+\thispagestyle{plain}
+\KOMAoptions{paper=A3,paper=landscape}
+\recalctypearea
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{graphviz/appliancecompany_vs_consumer.pdf}
@@ -15,3 +21,9 @@ Although possible these means are less likely than those described in \cref{3rdp
   \caption{An appliance company attacking the consumer through their appliance.}
   \label{applianceCompanyTree}
 \end{figure}
+
+\clearpage
+\KOMAoptions{paper=A4,pagesize}
+\recalctypearea
+}
+
