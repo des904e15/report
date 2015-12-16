@@ -48,8 +48,8 @@ Since the policy of $o_3$ is to allow everyone to read it introduces no restrict
 Therefore we say that the effective reader set of the two labels are equal.
 \end{example}
 
-When we want to perform relabelling (see later in this section), we need to ensure that the information flow remains unchanged, as a relabelling is only allowed if this is the case.
-In order to ensure this we first need a way to interpret each label as a set of flows, so that we can determine whether a relabelling would change the information flow.
+When we want to perform relabeling (see later in this section), we need to ensure that the information flow remains unchanged, as a relabeling is only allowed if this is the case.
+In order to ensure this we first need a way to interpret each label as a set of flows, so that we can determine whether a relabeling would change the information flow.
 A flow $(o,r)$ is a flow of information from owner $o$ to reader $r$.
 If a label contains this flow it means that the owner allows the reader to read the \xvalue{}.
 If we have three \principals{} $A$, $B$, $C$ and a label: $\{\policy{A}{B}; \ \policy{C}{}\}$.
@@ -151,7 +151,7 @@ To be able to do this we introduce an interpretation function: $\textbf{X}$, whi
 This function considers the \principal{} hierarchy and takes a label as an argument.
 
 Given a label as a set of flows we can see that a set of flows has to follow two constraints.
-The reader and owner constraint needs to be followed if a set of flow should make sense.
+The reader and owner constraint needs to be followed if a set of flow should be viable.
 The two constraints are defined below.
 
 \begin{definition}
