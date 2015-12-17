@@ -136,7 +136,7 @@ If a \xvalue{} is written to an output channel it can only be done if the label 
 
 \subsection{Smart Meter System Example}\label{dlm-example}
 In order to give some idea about how the DLM could be used, we provide an example of a smart meter system while displaying the different principals (actors) and labelled objects.
-This is similar to the provided motivating examples presented in \cite{myers1997decentralized}.
+This is similar to the provided motivating examples presented in \citet{myers1997decentralized}.
 
 \begin{figure}[h]
 \centering
@@ -151,6 +151,7 @@ There are two overall components to this system: the Data Hub and the Smart Mete
 The rectangles used for these components signify only a grouping of objects.
 
 Initially, consumers own the data contained in their smart meter, most importantly the raw consumption data.
+$PE$ extracts the consumption data and transforms it into a granularity that does not reveal information about the consumer.
 In order for the distributor and electrical company to carry out their tasks, balancing the electrical grid and correctly billing, they have access to the transformed power consumption data.
 Inside the data hub, the distributor receives ownership of all consumption data\footnote{This is actually unclear, but not important to discuss at this point}, but for the power consumption data for each individual consumer $C_i$ the only allowed additional reader is the current electrical company of $C_i$: $EC_j$.
 In case $C_i$ changes to a new electrical company $EC_k$, the read access must be removed from $EC_i$ and given to $EC_k$.
