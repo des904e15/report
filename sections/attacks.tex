@@ -38,10 +38,13 @@ There are means for protecting against this type of attacks, but it is hard to e
 
 \subsubsection{Differential Power Analysis}\label{attack:dpa}
 One particular side channel attack is differential power analysis described in \citet{DPA}.
-The article attacks a device encrypted with DES by recording power traces of the device performing encryption operations.
+Here an attack is carried out on a device that is encrypted using DES.
+Power traces of the device are recorded when it is performing its encryption operations.
 Because of the way semiconductors work, different operations will have a discernible signature on the power trace.
-By recording enough traces information about the key can be derived from properties of the trace, and with enough traces the key can be derived.
+By recording enough traces, information about the key can be derived from properties of the trace.
+As the amount of information increases through this method the key can eventually be derived.
 \stefan{nok om DPA?}
+\mikkelin{Jeg synes ikke vi behøver mere om selve metoden - men måske lidt kontekst, som Mikaels forslag nedenfor.}
 
 \section{Buffer Overflow}\label{attack:bufferoverflow}
 \input{sections/buffer_overflow.tex}
