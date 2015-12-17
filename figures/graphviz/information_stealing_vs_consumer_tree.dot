@@ -16,11 +16,14 @@ digraph G{
 	analyse_power_consumption[label="Analyze power consumption",shape=OR];
 
 	compromise_sm[label="Compromise SM",shape=OR];
+	obtainPassword[label="Obtain password",shape=OR];
+	bribe[label="Bribe SM-manufacturer"];
+    compromise_sm ->bribe;
 	compromise_sm -> obtainPassword;
 	exploitVulnerability[label="Vulnerabilities"];
 		compromise_sm -> exploitVulnerability;
 
-		obtainPassword[label="Obtain password",shape=OR];
+		
 		phishing[label="Use\nphishing"];
 		obtainPassword -> phishing;
 		malware2[label="Use\nmalware"];

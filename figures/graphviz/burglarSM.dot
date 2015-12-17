@@ -13,6 +13,8 @@ root -> compromiseSM;
 
 obtainPassword[label="Obtain SM password", shape=OR];
 compromiseSM[shape=OR];
+bribe[label="Bribe SM-manufacturer"];
+compromiseSM ->bribe;
 compromiseSM -> obtainPassword;
 phishing[label="Use\nphishing"];
 malware[label="Use\nmalware"];

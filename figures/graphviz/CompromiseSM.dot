@@ -9,6 +9,8 @@ compromiseSM[label="Compromise SM"];
 
 obtainPassword[label="Obtain SM password", shape=OR];
 compromiseSM[shape=OR];
+bribe[label="Bribe SM-manufacturer"];
+compromiseSM ->bribe;
 compromiseSM -> obtainPassword;
 obtainPassword -> phishing;
 obtainPassword -> malware;

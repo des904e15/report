@@ -9,6 +9,9 @@ digraph finite_state_machine {
 
     obtainPassword[label="Obtain password", shape=OR];
     compromise_sm[shape=OR];
+    bribe[label="Bribe SM-manufacturer"];
+    compromise_sm ->bribe;
+
     compromise_sm -> obtainPassword;
     phishing[label="Phishing"];
     malware[label="Malware"];
