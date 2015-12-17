@@ -3,11 +3,34 @@ digraph G{
 
 	root[label="Power, political influence or money",shape=AND];	
 
-	access[label="Compromise SM"]
+	
+
+	compromise_sm[label="Compromise SM",shape=OR];
+	obtainPassword[label="Obtain password",shape=OR];
+	bribe[label="Bribe SM-manufacturer"];
+    compromise_sm ->bribe;
+	compromise_sm -> obtainPassword;
+	exploitVulnerability[label="Vulnerabilities"];
+	compromise_sm -> exploitVulnerability;
+
+		
+		phishing[label="Use\nphishing"];
+		obtainPassword -> phishing;
+		malware2[label="Use\nmalware"];
+		obtainPassword -> malware2;
+		crackPassword[label="Crack\npassword"];
+		obtainPassword -> crackPassword;
+
+		exploitVulnerability[shape=AND];
+		findVuln[label="Find\nVulnerability"];
+		exploitVulnerability -> findVuln;
+		exploitVuln[label="Exploit\nVulnerability"];
+		exploitVulnerability -> exploitVuln;
+
 	off_switch[label="Turn off power"];
 	power[label="Abuse influence"]
 
-	root -> access;
+	root -> compromise_sm;
 	root -> off_switch;
 	root -> power;		
 	}
