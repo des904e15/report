@@ -26,17 +26,17 @@ In order for \ssubject{} $s$ to access an object $o$ with \textit{category} $K_m
 \paragraph{Classification and category vectors}
  In the model classifications and categories are stored in vectors.
  Four functions are used for lookup in these vectors.
- $F_1$ performs a lookup in the subject classification vector, $F_2$ in the object classification vector, $F_3$ in the subject category vector and finally $F_4$ performs a lookup in the object category function.
+ $F_1$ performs a lookup in the \ssubject{} classification vector, $F_2$ in the object classification vector, $F_3$ in the \ssubject{} category vector and finally $F_4$ performs a lookup in the object category function.
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
-Each node represents a \emph{security level} -- i.e. a combination of classification/clearance and a set of categories.
-\mikael{'security level' er noget jeg fandt på, hvordan skal vi håndtere det?}
-A \ssubject{} with the clearance \emph{Top Secret} is able to access any object with the security level \emph{Top Secret} as well as all those below (\emph{Secret} and \emph{Unclassified}).
+Each node represents a \emph{security level} which we define as a combination of classification/clearance and a set of categories.
+
+A \ssubject{} with the clearance \emph{Top Secret} is able to access any object with the security level \emph{Top Secret} and all those below (\emph{Secret} and \emph{Unclassified}).
 On the contrary, a \ssubject{} with clearance \emph{Unclassified} can only access objects with the security level \emph{Unclassified}.
 
 Similarly, the category(ies) of each node limit what objects a \ssubject{} can access.
-If we have a subject $s$ with clearance \emph{Top Secret} and category \emph{Crypto}, $s$ will have access to any objects with security level $(Top Secret, \{Crypto\})$ and those below.
+If we have a \ssubject{} $s$ with clearance \emph{Top Secret} and category \emph{Crypto}, $s$ will have access to any objects with security level $(Top Secret, \{Crypto\})$ and those below.
 
 \begin{figure}
 \centering
@@ -46,9 +46,9 @@ If we have a subject $s$ with clearance \emph{Top Secret} and category \emph{Cry
 \end{figure}
 
 \subsection{Access attributes}
-The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{append}, \emph{execute} and \emph{read/write}.
+The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{read/write}, \emph{execute} and \emph{append}.
 In addition \emph{control access} is used to give attributes to other users.
-Formally, the access attributes are defined as a set $A = \{ \underline{r}, \underline{w}, \underline{e}, \underline{a}, \underline{c} \}$, each member corresponding to the aforementioned attributes.
+Formally, the access attributes are defined as a set $A = \{ r, w, e, a, c \}$, each member corresponding to the aforementioned attributes.
 
 \paragraph{Read-only}
 This attribute makes it possible to read the object but not alter it.
@@ -79,7 +79,7 @@ Having this attribute a \principal{} can give the four attributes above to other
 \subsection{Requests and decisions}
 In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
 In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
-
+\bruno{Write about access matrix and requests and decisions. \#96}
 \subsection{Preventing security compromise}\label{bellap:properties}
 In order to ensure that data cannot be compromised the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
 
@@ -103,10 +103,11 @@ A system consists of \emph{appearances} which consists of requests and decisions
 A \emph{system} is a secure system if and only if every appearance of the system is secure.
 \end{definition}
 
-Seen in context of the lattice in \cref{blp:lattice}, the security condition can be seen as the disallowance of any subject $s$ from reading any objects above its security level (\textbf{no read-up}).
+Seen in context of the lattice in \cref{blp:lattice}, the security condition can be seen as the disallowance of any \ssubject{} $s$ from reading any objects above its security level (\textbf{no read-up}).
 
 \subsubsection{*-property}
-The *-property states that if a \principal{} has write or append access to objects and read or read/write access to some objects, then the objects which he has write or append access to must exceed or equal the objects which he has read or write access to.
+The *-property ensures that given a \principal{} and a set of objects, $o_1$, which he has write or append access to and a set of objects, $o_2$, which he has read or read/write access to.
+$o_1$ is the super set of $o_2$ and $o_1$ must exceed or equal $o_2$.
 This property ensures that it is impossible to leak information to a lower classification level.
 
 The following definition expresses this formally:
@@ -121,11 +122,11 @@ Here b is the set of access matrix entries of some access matrix.
 \noindent{} 
 A state of an access matrix satisfies the *-property if an only if for each $s \in S$ the following proposition holds.
 
-$[b(s:w,a) \ne \emptyset \text{ and } b(s:r,w) \ne \emptyset] \implies [f_2(O_1) \ge f_2(O_2) \text{ and } f_4(O_1) \supseteq f_4(O_2) \text{ for all } O_1 \in b(s:w,a), O_2 \in b(s:r,w)]$
+$[b(s:w,a) \ne \emptyset \text{ and } b(s:r,w) \ne \emptyset] \implies [f_2(o_1) \ge f_2(o_2) \text{ and } f_4(o_1) \supseteq f_4(o_2) \text{ for all } o_1 \in b(s:w,a), o_2 \in b(s:r,w)]$
 
 \paragraph{}
 \noindent{} 
 A system is satisfying the *-property if and only if every appearance of the system satisfies the *-property.
 \end{definition}
 
-When seeing the *-property in the context of \cref{blp:lattice}, the *-property states that it is not allowed for any subject $s$ to read any object $o_1$ and write any of this information to an object $o_2$, if $o_2$ is not above, or at the same security level as, $o_1$ (\textbf{no write-down}).
+When seeing the *-property in the context of \cref{blp:lattice}, the *-property states that it is not allowed for any \ssubject{} $s$ to read any object $o_1$ and write any of this information to an object $o_2$, if $o_2$ is not above, or at the same security level as, $o_1$ (\textbf{no write-down}).
