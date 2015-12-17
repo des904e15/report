@@ -97,10 +97,10 @@ In order to access information about the power consumption of the consumer, the 
 The following will discuss the subtrees concerning these access methods.
 
 \subsubsection{Compromising the smart meter}\label{compromise:SM}
-There are two general ways of compromising the smart meter.
+There are three general ways of compromising the smart meter.
 The subtree can be seen on \cref{attacktree:compromiseSM}
 First of all, if you have the password for logging it is possible to access the same information as the consumer is.
-There are a couple of methods for achieving this. 
+There are a couple of methods for achieving this password. 
 \begin{description}
 	\item[Phishing] The burglar can attempt to get the password directly from the consumer by posing as the electrical company or similar. Phishing will be discussed in \cref{attack:phishing}
 	\item [Shoulder surfing] If the burglar has the possibility of watching the consumer in a context where he enters his password, he can retrieve the password or hints about the password by shoulder surfing. 
@@ -110,6 +110,10 @@ There are a couple of methods for achieving this.
 	\item [Crack password] If the other options do not amount to anything, the burglar can resort to cracking the password.
 	Password cracking will be discussed in \cref{password_cracking}.
 \end{description}
+
+The second option is to bribe the smart meter company to make some changes to the firmware that help achieve the goal.
+This could be adding a backdoor to the firmware, or to change how the firmware handles consumption data.
+This is an effective way of achieving something on a lot of smart meters because the smart meter manufacturer will push the firmware to a lot of customers .
 
 Another option is to find some vulnerability in the smart meter firmware.
 Depending on the vulnerability the burglar can possibly perform actions that was not intended from the manufacturer.
