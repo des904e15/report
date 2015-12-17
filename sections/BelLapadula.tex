@@ -45,7 +45,7 @@ If we have a \ssubject{} $s$ with clearance \emph{Top Secret} and category \emph
 \label{blp:lattice}
 \end{figure}
 
-\subsection{Access attributes}
+\subsection{Access attributes}\label{blp:access_attributes}
 The model considers four attributes for access in a complex computer system: \emph{read-only}, \emph{read/write}, \emph{execute} and \emph{append}.
 In addition \emph{control access} is used to give attributes to other users.
 Formally, the access attributes are defined as a set $A = \{ r, w, e, a, c \}$, each member corresponding to the aforementioned attributes.
@@ -73,13 +73,41 @@ This attribute signifies that read and write access are both allowed.
 This attribute is what is traditionally used when editing text files.
 
 \paragraph{Control access}
-The control access attribute models the notion of a \principal{} having control over a file.
-Having this attribute a \principal{} can give the four attributes above to other \principals{} in the system.
+The control access attribute models the notion of a \ssubject{} having control over a file.
+Having this attribute a \ssubject{} can give the four attributes above to other \ssubjects{} in the system.
 
 \subsection{Requests and decisions}
-In a computer system the \principals{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \principal{}.
-In the following a user requesting access to a file will be written as a \principal{} requesting access and the response to this request a decision
-\bruno{Write about access matrix and requests and decisions. \#96}
+In a computer system the \ssubjects{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \ssubject{}.
+In the following a user requesting access to a file will be written as a \ssubjects{} requesting access and the response to this request a decision.
+
+In order to handle access rights we have matrix $M$ of size $|O| \times |S|$ so that we have an entry for each object-\ssubject{} combination -- containing the current access rights.
+For any \ssubject{} $S_i$ and object $O_j$ we have at entry $M_{i,j}$ the access rights $S_i$ currently has for $O_j$, of the possible values described in \cref{blp:access_attributes}.
+
+\paragraph{Requests}
+There are 4 possible requests that can be made by any \ssubject{}:
+\begin{enumerate}
+  \item be granted access to an \ssubject{} in a particular mode.
+  \item another \ssubject{} should be granted access to an \object{} in a particular mode.
+  \item create an object in the system.
+  \item delete an object in the system.
+\end{enumerate}
+
+In order to carry out the second request, the \ssubject{} needs control access of the object that is being requested access for, as well as the particular mode.
+So that for a \ssubject{} $S_i$ requesting read access $\underline{r}$ for \ssubject{} $S_k$ for object $O_j$, $S_i$ must have both $\underline{r}$ as well as control access $\underline{c}$ for $O_j$ itself.
+Unlike the other attributes, control access cannot be given by any \ssubject{} to another \ssubject{}.
+
+When a new object is created, it is initially inactive.
+In addition to the 4 requests above, in regards to creating objects, we also have the following 2 additional requests:
+\begin{enumerate}
+  \item alter classification and category assignment of an unused object.
+  \item activate an unused object.
+\end{enumerate}
+
+For the 4th request, deletion, the object deemed for deletion is inactivated and all current and future privileges are revoked.
+
+\paragraph{Decisions}
+Any request made will be met with a response of values $\underline{yes}$, $\underline{no}$, $\underline{?}$, or $\underline{error}$.
+ 
 \subsection{Preventing security compromise}\label{bellap:properties}
 In order to ensure that data cannot be compromised the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
 
