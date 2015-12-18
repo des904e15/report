@@ -107,6 +107,9 @@ For the 4th request, deletion, the object deemed for deletion is inactivated and
 
 \paragraph{Decisions}
 Any request made will be met with a response of values $yes$, $no$, $?$, or $error$.
+$yes$ and $no$ responses are given when the request is recognized and a check can be performed, thus giving a response of $yes$ if granted and $no$ if not.
+$error$ is given in case the request is recognized, but cannot be given a proper responsed due to more than a single rule can be applied.
+$?$ is given in cases where the request was not recognized.
  
 \subsection{Preventing security compromise}\label{bellap:properties}
 In order to ensure that data cannot be compromised the previous definitions of access attributes and requests can be utilized to formalize properties that ensure that compromise cannot occur.
