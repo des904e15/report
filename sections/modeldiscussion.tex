@@ -1,10 +1,11 @@
+%!TEX root = ../master.tex
 \section{Applicability in a smart meter context}
-Now that the four security models have been described we will discuss how they can be applied to our project if possible.
-Each of the models have different limitations and we will attempt to find the models that fit best.
+Having described the four security models a brief discussion of their applicability, to the smart meter context model, follows below.
+The limitations of each model will be described and a possible \emph{best fit} model will be indicated.
 
-Privacy is an important factor in choosing the right model.
-It is necessary that it is possible to model how data is permitted to be sent between actors.
-
+Given the context described in \cref{context} privacy is an important factor when evaluating the models.
+In order to apply a model to the context it must thus be possible to describe which data can be sent between the various actors.
+This to such a degree that each actor is able to read \textbf{only} the granularity of data that they are permitted.
 
 \subsection{The Bell LaPadula Security Model}
 The Bell LaPadula security model works with classifications and categories because it is made for a system with multiple tiers.
