@@ -10,9 +10,19 @@ This allows for much more dynamic power supply and consumption, as suppliers wil
 
 The outline of a smart grid can be seen in \cref{fig:background:smartgrid}.
 This consists of three main actors:
-Power suppliers such as Windmills, solar panels, traditional power plants and external suppliers.
-A net supplier such as a Datahub \footnote{Danish term from \cite{LOV_nr_575_af_18-06-2012}} and smart meters.
-End consumers such as smart homes/buildings.
+
+\begin{itemize}
+	\item Power suppliers such as Windmills, solar panels, traditional power plants and external suppliers.
+	\item A net supplier such as a Datahub \footnote{Danish term from \cite{LOV_nr_575_af_18-06-2012}} and smart meters.
+	\item End consumers such as smart homes/buildings.
+\end{itemize}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{figures/SmartGrid_Ueberblick_ohneLegende.jpg}
+	\caption{Smart grid outline\protect\footnotemark}
+	\label{fig:background:smartgrid}
+\end{figure}
+\footnotetext{\url{https://www.telekom.com/medien/bild-ton-und-infografiken/infografiken/155030}}
 
 A smart grid serves several purposes, such as allowing for/enabling \cite{smartgrid_gov, directive_2009_72_EC}:
 \begin{itemize}
@@ -25,13 +35,8 @@ A smart grid serves several purposes, such as allowing for/enabling \cite{smartg
 	\item consumers to also be suppliers to the smart grid (windmills, solar panels, etc.).
 	\item use of smart appliances (see \cref{background:smart_appliances}).
 \end{itemize}
+\stefan{note to self; rodet, kan forbedres ved at blive omdannet til ren tekst.}
 
-\begin{figure}
-	\includegraphics[width=\textwidth]{figures/SmartGrid_Ueberblick_ohneLegende.jpg}
-	\caption{Smart grid outline\protect\footnotemark}
-	\label{fig:background:smartgrid}
-\end{figure}
-\footnotetext{\url{https://www.telekom.com/medien/bild-ton-und-infografiken/infografiken/155030}}
 
 \subsection{Smart appliances}
 \label{background:smart_appliances}
@@ -65,7 +70,7 @@ It also makes sense to have more readings, as tariffs will vary more \cite{direc
 
 This possibility of finer granularity meter readings can be exploited in several ways and by different actors.
 The supplier would like this information in order to better tailor prices for a certain customer, thus limiting competition as their competitors do not possess this information.
-If the power usage data was obtained by an electronics vendor, they could use it to target certain advertisements, based on what devices they detect (or don't detect) through the power usage.
+If the power usage data was obtained by an electronics vendor, they could use it to target certain advertisements, based on what devices they detect (or do not detect) through the power usage.
 Anyone with malicious intent could use the power data to determine who, if anyone, is home (e.g. burglars).
 Finally, the government could use this data to surveil the public.
 
@@ -76,6 +81,7 @@ Some important issues with smart meters and their measurements are therefore:
 	\item With which granularity should supplier/government/user be able to access the data?
 	\item How do we ensure that only the correct people have access to the smart meter and its data?
 \end{itemize}
+\stefan{bør vi følge op på denne liste?}
 
 \subsubsection{Conflict of interest}
 The various actors involved with smart grids have different interests and potential gains.
@@ -98,6 +104,7 @@ The above relations spark several conflicts of interest:
 	\end{itemize}
 	\item How, and by whom, should smart appliances be managed?
 \end{itemize}
+\stefan{disse spørgsmål kan muligvis bindes bedre sammen med resten af kapitlet/rapporten}
 
 \subsubsection{Vulnerabilities}
 In the current system consumeres are already tampering  with their mechanical electrical meters.
