@@ -26,12 +26,12 @@ In order for \ssubject{} $s$ to access an object $o$ with \textit{category} $K_m
 \paragraph{Classification and category vectors}
  In the model classifications and categories are stored in vectors.
  Four functions are used for lookup in these vectors.
- $F_1$ performs a lookup in the \ssubject{} classification vector, $F_2$ in the object classification vector, $F_3$ in the \ssubject{} category vector and finally $F_4$ performs a lookup in the object category function.
+ $F_1$ performs a lookup in the \ssubject{} clearance vector, $F_2$ in the object classification vector, $F_3$ in the \ssubject{} need-to-know vector and finally $F_4$ performs a lookup in the object category function.
 \stefan{skal vi gøre notationen mere elegant og letlæselig, eller skal vi holde os til rapportens originale weidor?}
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
-Each node represents a \emph{security level} which we define as a combination of classification/clearance and a set of categories.
+Each node represents a \emph{security level}, which we define as a combination of classification/clearance and a set of categories.
 
 A \ssubject{} with the clearance \emph{Top Secret} is able to access any object with the security level \emph{Top Secret} and all those below (\emph{Secret} and \emph{Unclassified}).
 On the contrary, a \ssubject{} with clearance \emph{Unclassified} can only access objects with the security level \emph{Unclassified}.
@@ -79,7 +79,7 @@ Having this attribute a \ssubject{} can give the four attributes above to other 
 
 \subsection{Requests and decisions}
 In a computer system the \subjects{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \ssubject{}.
-In the following a user requesting access to a file will be written as a \ssubject{} requesting access and the response to this request a decision.
+In the following, a user \emph{requesting} access to a file will be written as a \ssubject{} requesting access and the response to this request a \emph{decision}.
 
 In order to handle access rights we have matrix $M$ of size $|O| \times |S|$ so that we have an entry for each object-\ssubject{} combination -- containing the current access rights.
 For any \ssubject{} $S_i$ and object $O_j$ we have at entry $M_{i,j}$ the access rights $S_i$ currently has for $O_j$, of the possible values described in \cref{blp:access_attributes}.
@@ -110,7 +110,7 @@ For the 4th request, deletion, the object deemed for deletion is inactivated and
 \paragraph{Decisions}
 Any request made will be met with a response of values $yes$, $no$, $?$, or $error$.
 $yes$ and $no$ responses are given when the request is recognized and a check can be performed, thus giving a response of $yes$ if granted and $no$ if not.
-$error$ is given in case the request is recognized, but cannot be given a proper responsed due to more than a single rule can be applied.
+$error$ is given in case the request is recognized, but there cannot be given a proper response due to more than a single rule can be applied.
 $?$ is given in cases where the request was not recognized.
  
 \subsection{Preventing security compromise}\label{bellap:properties}
@@ -139,8 +139,7 @@ A \emph{system} is a secure system if and only if every appearance of the system
 Seen in context of the lattice in \cref{blp:lattice}, the security condition can be seen as the disallowance of any \ssubject{} $s$ from reading any objects above its security level (\textbf{no read-up}).
 
 \subsubsection{*-property}
-The *-property ensures that given a \principal{} and a set of objects, $o_1$, which he has write or append access to and a set of objects, $o_2$, which he has read or read/write access to.
-$o_1$ is the super set of $o_2$ and $o_1$ must exceed or equal $o_2$.
+The *-property ensures that given a \principal{} and a set of objects, $o_1$, which he has write or append access to and a set of objects, $o_2$, which he has read or read/write access to, that $o_1$ is the super set of $o_2$ and $o_1$ must exceed or equal $o_2$.
 This property ensures that it is impossible to leak information to a lower classification level.
 
 The following definition expresses this formally:
