@@ -1,28 +1,49 @@
 \section{Discussion}
-This section contains takes this chapter and boils it down to a list of topics that describe security issues.
+This section takes this chapter and boils it down to a list of topics that describe the security issues found.
 This list is meant as a summary and tries to combine the attack trees in order to show which topics are exposed.
-These topics are supposed to show an overview of attacks that obtain the same goal and in that way may have the same or alike solution.
-
 
 
 
 
 \subsection{Privacy issues}
-When an attacker is able to obtain the consumers power consumption they are able to obtain private information, see \cref{}.
+When an attacker is able to obtain the consumers power consumption they are able to obtain private information, see \cref{smart_meter_privacy}.
+An attacker has the following options to obtain the power consumption:
+\begin{itemize}
+\item Get remote access to the smart meter(see ``Compromise SM'' \cref{})
+\item Get access to a validated client(see ``Compromise client'' \cref{})
+\item Have access to the consumers power cables(see ``Monitor consumption with ECM'' \cref{})
+\end{itemize}
+
+To completely solve the privacy issues the listed items above have to be solved.
+To obtain prioritised list one could add costs to the attack trees with the listed sub trees above.
+
+
+\subsection{Price manipulation}
+When an attacker is able to obtain access to the prices being send from the Electrical Company to the SM the attacker has the option to modify these prices.
+This can be done on a big scale or just against individual consumers.
+To obtain access to connections sending the  price information an attacker has the following options:
+\begin{itemize}
+\item Get remote access to the smart meter(see ``Compromise SM'' \cref{})
+\item Get access to a validated client(see ``Compromise client'' \cref{})
+\end{itemize}
+
+To completely solve the privacy issues the listed items above have to be solved.
+To obtain prioritised list one could add costs to the attack trees with the listed sub trees above.
+
+\subsection{Consumption data manipulation}
+\bruno{Same as above?}
+
+\subsection{Obtaining access to home network}
+In the following we assume that the SM is connected to the consumers home automation network or just home network.
+An attacker has the possibility to infiltrate the consumers home network.
 
 
 
-Price manipulation
+\subsection{Control home appliances}
+The attacker can
 
 
-Consumption data manipulation
+\subsection{Switch off the SM}
+If the attacker can get access to the SM in a way so that he can control it he has the possibility to switch the electricity by the consumer off, see \cref{off_switch}.
 
-
-Obtaining access to home network
-
-
-Control home appliances
-
-
-Control the SM
-- off switch
+This could be a major distributed attack.
