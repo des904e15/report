@@ -12,7 +12,6 @@ The final major point of DLM is that it is formalized and even though no impleme
 
 \newcommand{\xvalue}{value}
 \newcommand{\xvalues}{values}
-This section describes DLM with small examples.
 
 \subsection{Labels}
 A \xvalue{} is associated with a label.
@@ -25,7 +24,7 @@ The syntax is: $\policy{\text{<\emph{owner}>}}{\text{<\emph{reader}>}}$.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
-If we want a \principal{} $p$ that should not allow any other readers we use the following syntax: $\policy{p}{}$.
+If we want a \principal{} $p$ that should not allow any other readers we provide an empty reader list: $\policy{p}{}$.
 
 If we have policy $K$ and label $L$, we have following notation:
 \begin{itemize}
@@ -56,7 +55,7 @@ This section contains the rules that need to be followed when manipulating label
 The modification of labels is what makes it possible to define how data flows through a system.
 
 \paragraph{Label join}
-When deriving a \xvalue{} from two \xvalues{}, the derived \xvalue{}s' label must reflect its sources, so it has to be at least as restrictive.
+When deriving a \xvalue{} from two \xvalues{}, the label of the derived \xvalue{} must reflect its sources, so it has to be at least as restrictive.
 The relation $\sqsubseteq$ determines that a label is \textit{at least as restrictive}.
 \begin{definition}
   For two labels $L_1$ and $L_2$, if we have $L_1 \sqsubseteq L_2$, $L_1$ is at least as restrictive as $L_2$.
