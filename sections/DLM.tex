@@ -103,12 +103,13 @@ To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
 
 \begin{definition}
-  So a restriction is when the new label guarantees to enforce all of the policies from the old label.
+  A restriction is when the new label guarantees to enforce all of the policies from the old label.
   If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $r(K)$ is a subset of $r(J)$.
   \begin{center}
     \[\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(o(K) = o(J) \ \wedge \ r(K) \subseteq r(J))}{L_1 \sqsubseteq L_2}\]    
   \end{center}
 \end{definition}
+\stefan{burde det ikke introduceres tidligere? $\sqsubseteq$ bliver brugt mange gange før }
 
 \subsection{Acts-for relation}
 A \principal{} in DLM can represent a user in the system, a group of users or roles.
