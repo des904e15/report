@@ -131,7 +131,7 @@ Some examples:
   Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group. 
 \end{example}
 \subsection{Channels}
-The model contains two channels, an input and an output channel.
+The model contains two types of channels, input and an output channels.
 Information can be leaked through these channels, therefore they have a label associated to them.
 When a \xvalue{} enters the system through an input channel, the \xvalue{} gets the label of the input channel.
 If a \xvalue{} is written to an output channel it can only be done if the label of the output channel is at least as restrictive as the label of the \xvalue{}.
