@@ -27,6 +27,7 @@ In order for \ssubject{} $s$ to access an object $o$ with \textit{category} $K_m
  In the model classifications and categories are stored in vectors.
  Four functions are used for lookup in these vectors.
  $F_1$ performs a lookup in the \ssubject{} classification vector, $F_2$ in the object classification vector, $F_3$ in the \ssubject{} category vector and finally $F_4$ performs a lookup in the object category function.
+\stefan{skal vi gøre notationen mere elegant og letlæselig, eller skal vi holde os til rapportens originale weidor?}
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
@@ -162,3 +163,4 @@ A system is satisfying the *-property if and only if every appearance of the sys
 \end{definition}
 
 When seeing the *-property in the context of \cref{blp:lattice}, the *-property states that it is not allowed for any \ssubject{} $s$ to read any object $o_1$ and write any of this information to an object $o_2$, if $o_2$ is not above, or at the same security level as, $o_1$ (\textbf{no write-down}).
+stefan{No read-up og no writedown, er det nogle begreber vi ikke har introduceret? Paranteserne virker som om de refererer til noget}
