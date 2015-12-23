@@ -66,8 +66,8 @@ Safeguards against this type of tampering is encryption and authentication.
 These concepts will be discussed in \cref{cryptography}.
 Even though the communication between the smart meter and the distributor is both encrypted and authenticated, nothing is guaranteed to be secure.
 As discussed in \citet{cryptoenginering}, cryptography is very difficult, and protocols that are regarded as secure may contain a small error that is discovered after several years.
-Also the implementation of a cryptographic system determines how secure it is, as well as the surroundings of the system. \citep{cryptoenginering}
-If the surrounding system is leaking left and right, a correctly implemented encryption algorithms can not be blamed.
+Also the implementation of a cryptographic system determines how secure it is, as well as the surroundings of the system \citep{cryptoenginering}. 
+If the surrounding system is leaking left and right, a correctly implemented encryption algorithm can not be blamed.
 
 \subsubsection{Reverse engineering}
 By performing reverse engineering the firmware the consumer will possibly get information that enables him to falsify the information sent from the smart meter.
@@ -78,3 +78,4 @@ Side channel attacks will be discussed in \cref{attack:sidechannel}.
 \subsubsection{Modifying firmware}
 The final attack(s) we propose include tampering with the smart meter's firmware.
 If the consumer is able to change or replace the firmware on the smart meter, he could be able to modify the way that the smart meter either stores or sends power consumption data.
+\stefan{ret udetaljeret}
