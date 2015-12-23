@@ -90,17 +90,25 @@ In the following the various attacks on the system are described.
 As the attacks are similar in structure they are described in terms of their difference.
 The structure consists of an initial step where the burglar gains access to information.
 Then a step to determine which valuable items the consumer has and a step to determine if the consumer is home.
-The burglars final step in the attack is stealing the consumers valuables.
+The final step in the attack is stealing the consumers valuables.
 
 \subsection{Gaining access}
 In order to access information about the power consumption of the consumer, the burglar needs to gain access to either the smart meter, a consumer device that controls the smart meter or install an ECM unit (see \cref{ecm}).
 The following will discuss the subtrees concerning these access methods.
 
 \subsubsection{Compromising the smart meter}\label{compromise:SM}
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{graphviz/CompromiseSM.pdf}
+\caption{Subtree for compromising the smart meter.}
+\label{attacktree:compromiseSM}
+\end{figure}
+
 There are three general ways of compromising the smart meter.
-The subtree can be seen on \cref{attacktree:compromiseSM}
+The subtree can be seen on \cref{attacktree:compromiseSM}.
 First of all, if you have the password for logging it is possible to access the same information as the consumer is.
-There are a couple of methods for achieving this password. 
+There are a couple of methods for gettings one's hands on this password. 
 \begin{description}
 	\item[Phishing] The burglar can attempt to get the password directly from the consumer by posing as the electrical company or similar. Phishing will be discussed in \cref{attack:phishing}
 	\item [Shoulder surfing] If the burglar has the possibility of watching the consumer in a context where he enters his password, he can retrieve the password or hints about the password by shoulder surfing. 
@@ -122,15 +130,16 @@ An example of a vulnerability is a buffer overflow.
 Buffer overflows will be discussed in \cref{attack:bufferoverflow}.
 If a buffer overflow is found it may make it possible to run arbitrary code on the smart meter which can possibly open for everything.
 
-\begin{figure}[H]
-\center
-\includegraphics[width=\textwidth]{graphviz/CompromiseSM.pdf}
-\caption{Subtree for compromising the smart meter.}
-\label{attacktree:compromiseSM}
-\end{figure}
-
 
 \subsubsection{Compromising the client}\label{compromise:client}
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.35\textwidth]{graphviz/CompromiseClient.pdf}
+\caption{Subtree for compromising a client of the consumer.}
+\label{attacktree:compromiseClient}
+\end{figure}
+
 An alternative point of attack is the client that the consumer uses to control the smart meter.
 The subtree for this case can be found on \cref{attacktree:compromiseClient}.
 The obvious possibility is to steal the client that the consumer uses.
@@ -140,19 +149,9 @@ Assuming the burglar can overcome login to the client he will be able to access 
 Alternatively the burglar can use malware to gain either the password to the smart meter or access to the client.
 This step is similar to the malware item in \cref{compromise:SM}.
 
-\begin{figure}[H]
-\center
-\includegraphics[width=0.35\textwidth]{graphviz/CompromiseClient.pdf}
-\caption{Subtree for compromising a client of the consumer.}
-\label{attacktree:compromiseClient}
-\end{figure}
+
 
 \subsubsection{Installing an ECM} \label{compromise:ecm}
-If it is not possible for the burglar to either get access to the smart meter or the client from the outside or get hold of the client he has another option.
-An External Consumption Monitor (ECM) is a device that can monitor the consumption of a electricity cable (ECM will be discussed further in \cref{ecm}.
-If the burglar can find the incoming power cable and attach such a device he can get roughly the same data as the consumer gets through his smart meter and therefore he will be able to perform many of the same attacks as with access to the smart meter.
-
-The subtree depicting how to achieve this can be found on \cref{attacktree:ECM}.
 
 \begin{figure}[H]
 \center
@@ -160,6 +159,12 @@ The subtree depicting how to achieve this can be found on \cref{attacktree:ECM}.
 \caption{Subtree for monitoring the consumer with an attached ECM.}
 \label{attacktree:ECM}
 \end{figure}
+
+If it is not possible for the burglar to either get access to the smart meter or the client from the outside or get hold of the client he has another option.
+An External Consumption Monitor (ECM) is a device that can monitor the consumption of a electricity cable (ECM will be discussed further in \cref{ecm}.
+If the burglar can find the incoming power cable and attach such a device he can get roughly the same data as the consumer gets through his smart meter and therefore he will be able to perform many of the same attacks as with access to the smart meter.
+
+The subtree depicting how to achieve this can be found on \cref{attacktree:ECM}.
 
 
 \subsection{Expensive goods}
