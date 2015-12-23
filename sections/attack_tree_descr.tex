@@ -13,7 +13,7 @@ An arrow pointing from actor $A$ to actor $B$ indicates a possible attack by $A$
 \end{figure}
 
 From this representation of the attacks it is evident that the consumer is threatened by the largest number of attackers.
-Meanwhile he only has a single actor to perform an attack on.
+Meanwhile he only has a single actor to perform an attack on, namely the electrical company.
 This attack is described in \cref{attacks:consumer_vs_electrical}.
 
 The consumer is not found to have an attack on the power distributor (or vice-versa) as the price of transporting electricity is governmentally regulated.
@@ -27,6 +27,7 @@ Thus a node represented by an AND gate would require all its child-nodes to be c
 
 To describe an attack tree, for instance how feasible it is, nodes can have different values corresponding to different variables(Boolean and continuous).
 For instance a variable could be \textit{cost} and the values assigned to it could be in dollars.
+\stefan{Skal vi stadig have dette afsnit, når vi ikke bruger værdier?}
 Attack trees can show you which attacks are possible for which attackers.
 For instance an attacker with a lot of money has the possibility to do all the expensive attacks where a poor attacker has not.
 Also if one builds a system where the data that is getting protected is not very important, it might only be important to defend against cheap attacks.
