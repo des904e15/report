@@ -20,7 +20,7 @@ Bob needs to deal with this properly so Eve cannot abuse replays to her advantag
 Abusing replays is known as a replay attack.
 
 \subsection{Packet injection}\label{attack:packet}
-This description is inspired by \cite{packetinjection}.
+This description is inspired by \citet{packetinjection}.
 If Eve can intercept communication between Alice and Bob she can inject packages into the stream of messages without either party knowing.
 A packet is injected by constructing a packet with the source address as one of the endpoints, Alice or Bob.
 In this way it looks like Alice or Bob originated the packet, and it seems like part of the communication.
@@ -34,7 +34,7 @@ This description of side channel attacks is based on \citet[p.~132]{cryptoengine
 Side channel attacks is the class of attacks that take advantage of a alternate channels of information.
 This could be how much time an operation takes, the power consumption during the operation or magnetic fields.
 
-There are means for protecting against this type of attacks, but it is hard to eliminate information leakage from all possible channels.
+There are means for protecting against this type of attacks, but it is hard to eliminate information leakage from all possible channels \citep[p.~132]{cryptoenginering}.
 
 \subsubsection{Differential Power Analysis}\label{attack:dpa}
 One particular side channel attack is differential power analysis described in \citet{DPA}.
@@ -58,9 +58,9 @@ It could also simply be revealing too much information by using a personal devic
 
 The following is based on \citet{security_engineering_ross_anderson,dhamija2006phishing}.
 Phishing is the process of tricking a user to give up sensitive information, such as user names or passwords, by posing as a trusted party.
-This is typically done by using a malicious website, posing as a legit website that the user would normally use.
+This is typically done by using a malicious website, posing as a legitimate website that the user would normally use.
 This could for example happen by inserting a fake link in an email and send it to the user.
-The tricky part about phishing is to convince the user that the email with the link, and possibly the link itself, is legit.
+The tricky part about phishing is to convince the user that the email with the link, and possibly the link itself, is legitimate.
 
 An example could be a fake email to get a user's credentials for PayPal.
 The email would contain the logo from PayPal and would tell the user to update his account information.
