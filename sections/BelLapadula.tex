@@ -27,7 +27,6 @@ In order for \ssubject{} $s$ to access an object $o$ with \textit{category} $K_m
  In the model classifications and categories are stored in vectors.
  Four functions are used for lookup in these vectors.
  $F_1$ performs a lookup in the \ssubject{} clearance vector, $F_2$ in the object classification vector, $F_3$ in the \ssubject{} need-to-know vector and finally $F_4$ performs a lookup in the object category function.
-\stefan{skal vi gøre notationen mere elegant og letlæselig, eller skal vi holde os til rapportens originale weidor?}
 
 \paragraph{Visualization}
 This kind of security system can be seen as a \textit{lattice}, see \cref{blp:lattice}.
@@ -96,7 +95,7 @@ There are 4 possible requests that can be made by any \ssubject{}:
 In order to carry out the second request, the \ssubject{} needs control access of the object that is being requested access for, as well as the particular mode.
 So that for a \ssubject{} $S_i$ requesting read access $r$ for \ssubject{} $S_k$ for object $O_j$, $S_i$ must have both $r$ as well as control access $c$ for $O_j$ itself.
 Control access is only given to a certain object when the object is created.
-Unlike the other attributes, control access cannot be given by any \ssubject{} to another \ssubject{}.\bruno{Jeg forstår ikke hvorfor man ikke kan/må det?}
+Unlike the other attributes, control access cannot be given by any \ssubject{} to another \ssubject{}.
 
 When a new object is created, it is initially inactive.
 In addition to the 4 requests above, in regards to creating objects, we also have the following 2 additional requests:
