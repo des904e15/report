@@ -91,13 +91,12 @@ This means that if a \principal{} is in the authority set this can be declassifi
 When a \xvalue{} is read from a variable it has the same label as the variable.
 When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
 \begin{example}{Assignment}
-  Given $a = 4$, and we want to assign the value of another variable, $b$, to $a$.
+  Given $a = 4$, and we want to assign the value of $a$ to another variable, $b$.
   First we read the \xvalue{} from $a$, this means the \xvalue{} of $a$, $4$, has the same label as $a$.
   Now we assign the copied \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$, replacing its own label.
   This means that the label that the \xvalue{} got from $a$ is forgotten.
 \end{example}
 This example shows the process of what we call relabeling, and more specifically this kind of relabeling is called restriction.
-\stefan{ikke forstået. Hvad er resultatet? Hvad er a bagefter? Hvor bliver 4 af? (Væk i assume, men 4's label bliver ændret undervejs)}
 
 To avoid leakage the label of the variable must be at least as restrictive.
 For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
