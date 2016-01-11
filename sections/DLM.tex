@@ -3,12 +3,12 @@
 \newcommand{\policy}[2]{\ensuremath{#1\!:\;#2}}
 
 \section{Decentralized Label Model}
-The Decentralized Label Model (DLM) is a modern information flow control model devised in 1999.\cite{myers1999mostly}
-As the name suggests it revolves around labels (similar to previous security models), however, DLM is decentralized.
+The Decentralized Label Model (DLM) is a modern information flow control model devised in 1999 \cite{myers1999mostly}.
+As the name suggests, it revolves around labels (similar to previous security models), however, DLM is decentralized.
 This means that it can be applied to systems with no trusted third party, or even any trust throughout the system.
-By attaching security labels to objects in code it can be controlled how information should be shared throughout the code and at code-endpoints (input/output to/from other programs).
+By attaching security labels to objects in code, it can be controlled how information should be shared throughout the code and at code-endpoints (input/output to/from other programs).
 It is possible to do both static and run-time checking of labels.
-The final major point of DLM is that it is formalized and even though no implementation is supplied, it should be applicable to other existing programming languages.
+The final major point of DLM is that it is formalized and even though no implementation is supplied, it should be applicable to existing programming languages.
 
 \newcommand{\xvalue}{value}
 \newcommand{\xvalues}{values}
@@ -22,15 +22,16 @@ This means that the effective set of \principals{} able to read the \xvalue{} is
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
 The syntax is: $\policy{\text{<\emph{owner}>}}{\text{<\emph{reader}>}}$.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
+\mikael{Forstår ikke dennne sætning.}
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any other readers we provide an empty reader list: $\policy{p}{}$.
 
 If we have policy $K$ and label $L$, we have following notation:
 \begin{itemize}
-\item $K \in L$, policy $K$ is a part of label $L$
-\item $\textbf{o}(K)$, the owner of policy $K$
-\item $\textbf{r}(K)$, the set of readers of policy $K$
+\item $K \in L$ -- policy $K$ is a part of label $L$
+\item $\textbf{o}(K)$ -- the owner of policy $K$
+\item $\textbf{r}(K)$ -- the set of readers of policy $K$
 \end{itemize}
 
 Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
@@ -91,7 +92,7 @@ This means that if a \principal{} is in the authority set this can be declassifi
 When a \xvalue{} is read from a variable it has the same label as the variable.
 When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
 \begin{example}{Assignment}
-  Given $a = 4$, and we want to assign the value of $a$ to another variable, $b$.
+  Given $a = 4$, we want to assign the value of $a$ to another variable, $b$.
   First we read the \xvalue{} from $a$, this means the \xvalue{} of $a$, $4$, has the same label as $a$.
   Now we assign the copied \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$, replacing its own label.
   This means that the label that the \xvalue{} got from $a$ is forgotten.
@@ -111,13 +112,13 @@ For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means
 \stefan{burde det ikke introduceres tidligere? $\sqsubseteq$ bliver brugt mange gange før }
 
 \subsection{Acts-for relation}
-A \principal{} in DLM can represent a user in the system, a group of users or roles.
+A \principal{} in DLM can represent a user in the system, a group of users, or roles.
 As labels on slots are immutable, in order to have more dynamic security policies we have that \principals{} are able to \textit{act for} other \principals{}.
 This means that a given \principal{} in effect has every right that the \principal{} that it acts for has.
 
 This is also called a \principal{} hierarchy.
-Formally we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.}
-For instance $x \succeq y$ means $x$ acts for $y$.
+Formally, we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.}
+For instance, $x \succeq y$ means $x$ acts for $y$.
 A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
 So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
 
