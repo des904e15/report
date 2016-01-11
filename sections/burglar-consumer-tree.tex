@@ -5,21 +5,21 @@ Several options to achieve this goal are explored.
 These are listed below:
 \begin{itemize}
   \item \Cref{attacktree:burglar:sm}: Compromising the security on the smart meter.
-  \item \Cref{attacktree:burglar:client}: Compromising the device (the client) the consumer is using to communicate with the smart meter.
+  \item \Cref{attacktree:burglar:client}: Compromising the device (the client) that the consumer is using to communicate with the smart meter.
   \item \Cref{attacktree:burglar:ecm}: Installing an ECM (see \cref{ecm}) and monitoring the consumer.
   \item \Cref{attacktree:burglar:physical}: Performing a \emph{``physical''} attack, involving no technology.
 \end{itemize}
 
 Representing the attacks as four separate attacks might be somewhat misleading.
-For instance the burglar might choose a physical means of determining if the consumer is at home even though he initially compromised the smart meter.
-Thus the four attack trees might be combined to properly describe the full spectrum of the burglars attack strategies.
+For instance, the burglar might choose a physical means of determining if the consumer is at home, even though he initially compromised the smart meter.
+Thus, the four attack trees might be combined to properly describe the full spectrum of the burglar's attack strategies.
 
 The trees are represented as four trees here to show the correlation between how the burglar gains access to the system and the possible attacks this makes available.
 The separated trees provide a clear visualization of this relation.
 
 This representation is used to build a model of the possible threat to the consumer.
-As this representation fails to fully represent attacks that employ multiple strategies, special care should be taken when modeling the trees.
-Using a model that joins the four trees will allow for a comparison of the validity of the each device as an entry point for an attack.
+As this representation fails to fully represent attacks that employ multiple strategies, special care should be taken when modelling the trees.
+Using a model that joins the four trees will allow for a comparison of the validity of each device, as an entry point for an attack.
 
 
 \afterpage{% Insert after the current page
@@ -86,14 +86,14 @@ Using a model that joins the four trees will allow for a comparison of the valid
 \label{attacktree:burglar:physical}
 \end{figure}
 
-In the following the various attacks on the system are described.
+In the following, the various attacks on the system are described.
 As the attacks are similar in structure they are described in terms of their difference.
 The structure consists of an initial step where the burglar gains access to information.
 Then a step to determine which valuable items the consumer has and a step to determine if the consumer is home.
-The final step in the attack is stealing the consumers valuables.
+The final step in the attack is stealing the consumer's valuables.
 
 \subsection{Gaining access}
-In order to access information about the power consumption of the consumer, the burglar needs to gain access to either the smart meter, a consumer device that controls the smart meter or install an ECM unit (see \cref{ecm}).
+In order to access information about the power consumption of the consumer, the burglar needs to gain access to either the smart meter, a consumer device that controls the smart meter, or install an ECM unit (see \cref{ecm}).
 The following will discuss the subtrees concerning these access methods.
 
 \subsubsection{Compromising the smart meter}\label{compromise:SM}
@@ -106,25 +106,27 @@ The following will discuss the subtrees concerning these access methods.
 \end{figure}
 
 There are three general ways of compromising the smart meter.
-The subtree can be seen on \cref{attacktree:compromiseSM}.
+The subtree can be seen in \cref{attacktree:compromiseSM}.
 First of all, if you have the password for logging it is possible to access the same information as the consumer is.
 There are a couple of methods for gettings one's hands on this password. 
 \begin{description}
 	\item[Phishing] The burglar can attempt to get the password directly from the consumer by posing as the electrical company or similar. Phishing will be discussed in \cref{attack:phishing}
-	\item [Shoulder surfing] If the burglar has the possibility of watching the consumer in a context where he enters his password, he can retrieve the password or hints about the password by shoulder surfing. 
-	Shoulder surfing can also lead to information about the consumer or the smart meter that will help the consumer carrying out one of the other option, such as finding the brand of smart meter for constructing a phishing email.
+	\item [Shoulder surfing] If the burglar has the possibility of watching the consumer in a context where he enters his password, he can retrieve the password, or hints about the password, by shoulder surfing. 
+	Shoulder surfing can also lead to information about the consumer, or the smart meter, that will help the consumer carrying out one of the other option, such as finding the brand of smart meter for constructing a phishing email.
 	Shoulder surfing will be discussed in \cref{attack:shoulder}
-	\item [Malware] It is also possible to get the password by infecting a client device of the consumer with some malware. This piece of malware can either send the password back to the burglar og provide access to the system. Malware will be discussed in \cref{attack:malware}
+	\item [Malware] It is also possible to get the password by infecting a client device of the consumer with some malware.
+  This piece of malware can either send the password back to the burglar or provide access to the system.
+  Malware will be discussed in \cref{attack:malware}
 	\item [Crack password] If the other options do not amount to anything, the burglar can resort to cracking the password.
 	Password cracking will be discussed in \cref{password_cracking}.
 \end{description}
 
 The second option is to bribe the smart meter company to make some changes to the firmware that help achieve the goal.
 This could be adding a backdoor to the firmware, or to change how the firmware handles consumption data.
-This is an effective way of achieving something on a lot of smart meters because the smart meter manufacturer will push the firmware to a lot of customers .
+This is an effective way of achieving something on a lot of smart meters, as the smart meter manufacturer will push the firmware to a lot of customers.
 
 Another option is to find some vulnerability in the smart meter firmware.
-Depending on the vulnerability the burglar can possibly perform actions that was not intended from the manufacturer.
+Depending on the vulnerability, the burglar can possibly perform actions that was not intended by the manufacturer.
 Other vulnerabilities will make it possible to access the same information as available to the consumer.
 An example of a vulnerability is a buffer overflow.
 Buffer overflows will be discussed in \cref{attack:bufferoverflow}.
@@ -141,13 +143,13 @@ If a buffer overflow is found it may make it possible to run arbitrary code on t
 \end{figure}
 
 An alternative point of attack is the client that the consumer uses to control the smart meter.
-The subtree for this case can be found on \cref{attacktree:compromiseClient}.
+The subtree for this case can be found in \cref{attacktree:compromiseClient}.
 The obvious possibility is to steal the client that the consumer uses.
-If the consumer uses a tablet for controlling the smart meter this can be done when the consumer is at out of the house or at work by ``conventional'' mischievous methods.
-Assuming the burglar can overcome login to the client he will be able to access the smart meter as if he was the consumer.
+If the consumer uses a tablet for controlling the smart meter, this can be done when the consumer is at out of the house or at work by ``conventional'' mischievous methods.
+Assuming the burglar can overcome the login to the client, he will be able to access the smart meter as if he was the consumer.
 
-Alternatively the burglar can use malware to gain either the password to the smart meter or access to the client.
-This step is similar to the malware item in \cref{compromise:SM}.
+Alternatively, the burglar can use malware to gain either the password to the smart meter or access to the client.
+This step is similar to the malware item earlier in this section.
 
 
 
@@ -160,11 +162,11 @@ This step is similar to the malware item in \cref{compromise:SM}.
 \label{attacktree:ECM}
 \end{figure}
 
-If it is not possible for the burglar to either get access to the smart meter or the client from the outside or get hold of the client he has another option.
-An External Consumption Monitor (ECM) is a device that can monitor the consumption of a electricity cable (ECM will be discussed further in \cref{ecm}.
-If the burglar can find the incoming power cable and attach such a device he can get roughly the same data as the consumer gets through his smart meter and therefore he will be able to perform many of the same attacks as with access to the smart meter.
+If it is not possible for the burglar to get access to the smart meter, or the client, from the outside, he has another option.
+An External Consumption Monitor (ECM) is a device that can monitor the consumption of a electricity cable (ECM will be discussed further in \cref{ecm}).
+If the burglar can find the incoming power cable and attach such a device, he can get roughly the same data as the consumer gets through his smart meter and therefore he will be able to perform many of the same attacks as with access to the smart meter.
 
-The subtree depicting how to achieve this can be found on \cref{attacktree:ECM}.
+The subtree depicting how to achieve this can be seen in \cref{attacktree:ECM}.
 
 
 \subsection{Expensive goods}
@@ -180,13 +182,14 @@ Is is also rather inaccurate -- it may be possible to see a TV, but is it the ne
 \paragraph{Compromised smart meter or router}
 If the burglar has compromised either the smart meter, or the internet router of the consumer, he will be able to find out what products are in the home. 
 This is possible either through some smart meter database that shows what can be controlled, or through network traffic which can indicate what products are being communicated with.
+\mikael{The Smart Meter Database?}
 
 \paragraph{Power consumption}
 If the burglar has access to the power consumption (either smart meter or the ECM), it will be possible to detect product signatures in this data, see \cref{smart_meter_privacy}.
 This is difficult and possibly ambiguous, but it may provide pointers on what he can expect to find.
 
 \subsection{Is the consumer at home?}
-When the burglar decides on a home to be his target he needs to plan when to break in.
+When the burglar decides on a home to be his target, he needs to plan when to break in.
 Before doing that he needs information about when the consumer is home.
 
 \paragraph{Physical means}
@@ -200,7 +203,7 @@ This could be small signs on the mailbox, a can behind the tire of a car, or a k
 The purpose of these subtle indicators is to find out if the home is empty for a longer period of time.
 If the consumer is home it is likely that he will erect the bike and/or remove the mark from the mailbox.
 If all indicators are left untouched it is likely that the consumer is not at home.
-This technique is very fast to apply to a consumers home and can thus easily be applied to multiple homes.
+This technique is very fast to apply to a consumer's home and can thus easily be applied to multiple homes.
 
 \paragraph{Compromised smart meter}
 Having access to the smart meter may gain access to schedule information which can be an indicator of when the consumer is at home.
@@ -222,11 +225,11 @@ From the power consumption it is possible to determine which devices are current
 If the TV is turned on and off in irregular intervals (timers exist that can turn devices on and off at predetermined intervals), it is an indicator that the consumer is home.
 
 \subsection{Break in}
-When the burglar feels confident that he wants to break in to the house he can use the smart meter for some additional help.
+When the burglar feels confident that he wants to break in to the house, he can use the smart meter for some additional help.
 The smart meter can provide information about the security status of the house.
 
-If there is a security alarm or camera, this will be visible on the smart meter by the same techniques mentioned in the ``Expensive goods'' sub-tree -- either in the consumption data, network data, or smart meter database.
+If there is a security alarm or camera, this will be visible on the smart meter by the same techniques mentioned in the ``Expensive goods'' subtree -- either in the consumption data, network data, or smart meter database.
 If the consumer has some security devices installed, the burglar can turn them off entirely and make the break in easier before he even enters the property.
 
 The last step is to steal all the expensive goods in the house of the consumer.
-The smart meter (as well as surveillance) might provide the burglar with information that lets him know when the consumer is usually home, and he therefore know when to be out in order to not get caught.
+The smart meter (as well as surveillance) might provide the burglar with information that lets him know when the consumer is usually home, and he therefore knows when to be out in order to not get caught.

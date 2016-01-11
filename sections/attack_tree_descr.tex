@@ -13,21 +13,21 @@ An arrow pointing from actor $A$ to actor $B$ indicates a possible attack by $A$
 \end{figure}
 
 From this representation of the attacks it is evident that the consumer is threatened by the largest number of attackers.
-Meanwhile he only has a single actor to perform an attack on, namely the electrical company.
+Meanwhile, he only has a single actor to perform an attack on, namely, the electrical company.
 This attack is described in \cref{attacks:consumer_vs_electrical}.
 
 The consumer is not found to have an attack on the power distributor (or vice-versa) as the price of transporting electricity is governmentally regulated.
-Additionally it is worth mentioning that there are no attacks that do not involve the consumer.
+Additionally, it is worth mentioning that there are no attacks that do not involve the consumer.
 
 \paragraph{Definition of an attack tree}
 Attack trees consist of a set of nodes representing steps in a possible attack.
 The root node being the goal and leaf nodes being different ways to achieve this goal.
-Inner nodes are represented as logic gates such that they do not represent a possible attack themselves but rather a rule describing how their children should be aggregated.
-Thus a node represented by an AND gate would require all its child-nodes to be carried out successfully for it to be carried out successfully.
+Inner nodes are represented as logic gates such that they do not represent a possible attack themselves, but rather a rule describing how their children should be aggregated.
+Thus, a node represented by an AND gate would require all its child-nodes to be carried out successfully for the node itself to be carried out successfully.
 
 To describe an attack tree, for instance how feasible it is, nodes can have different values corresponding to different variables (Boolean and continuous).
-For instance a variable could be \textit{cost} and the values assigned to it could be in dollars.
+For instance, a variable could be \textit{cost} and the values assigned to it could be in dollars.
 Attack trees can show you which attacks are possible for which attackers.
-For instance an attacker with a lot of money has the possibility to do all the expensive attacks where a poor attacker has not.
-Also if one builds a system where the data that is getting protected is not very important, it might only be important to defend against cheap attacks.
-Making attack trees takes a lot of time and effort as one has to study the security measures in place, the possible attacks and the possible attackers and outline this information in one or more attack tree(s).\cite{schneier_attack_trees}
+For instance, an attacker with a lot of money has the possibility to do all the expensive attacks where a poor attacker has not.
+Also, if one builds a system, where the data that is getting protected is not very important, it might only be important to defend against cheap attacks.
+Making attack trees takes a lot of time and effort as one has to study the security measures in place, the possible attacks, and the possible attackers and outline this information in one or more attack tree(s).\cite{schneier_attack_trees}
