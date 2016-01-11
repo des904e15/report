@@ -47,14 +47,14 @@ When an analyst chooses to work with information about a company, he is not able
 
 
 \subsection*{The Chinese Wall Model}
-As exemplified in \cref{chinese:example} a Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by the a user of the system.
+As exemplified in \cref{chinese:example}, a Chinese wall is defined as the separation between what can be accessed and what cannot be accessed by a user of the system.
 Information is stored in a hierarchy with three levels. 
 This hierarchy is depicted in \cref{china:hierarchy}.
 
 \begin{itemize}
 	\item The lowest level contains individual items of information, stored in objects.
 	\item The middle level contains company datasets that group all information that concern one company. 
-	\item The highest level contains conflict of interest classes which group companies that are in competition.
+	\item The highest level contains conflict of interest classes, which group companies that are in competition.
 \end{itemize}
 
 \begin{figure}[h]
@@ -65,16 +65,16 @@ This hierarchy is depicted in \cref{china:hierarchy}.
 \end{figure}
 
 \subsection{The Security Policy}
-The concept of the Chinese wall security policy is that a \principal{} that has access to information about company $A$ which resides in a conflict of interest class $C$ cannot access information about company $B$ if $B$ is also in conflict of interest class $C$.
+The concept of the Chinese wall security policy is that a \principal{}, that has access to information about company $A$ -- which resides in a conflict of interest class $C$, cannot access information about company $B$, if $B$ is also in conflict of interest class $C$.
 
-In \cref{china:hierarchy} one conflict of interest class is \emph{Oil companies}.
+In \cref{china:hierarchy}, one conflict of interest class is \emph{Oil companies}.
 This conflict class contains \emph{Statoil} and \emph{Shell}. 
 \emph{Shell} contains objects of information that could compromise the company if \emph{Statoil} would obtain the information.
 An analyst concerned with \emph{Shell} should not be able to read any information about \emph{Statoil} in order to uphold confidentiality, as was also described in the \cref{chinese:example}.
 
 \subsection{Chinese wall properties}
 This policy is being upheld by two properties.
-These correspond to the two identical properties defined in Bell Lapadula described in \cref{bellap:properties}.
+These correspond to the two identical properties defined by Bell-LaPadula, described in \cref{bellap:properties}.
 
 \paragraph{Simple Security}
 

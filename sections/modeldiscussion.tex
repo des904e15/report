@@ -1,19 +1,19 @@
 %!TEX root = ../master.tex
 \section{Applicability in a smart meter context}
-Having described the four security models a brief discussion of their applicability, to the smart meter context model, follows below.
+Having described the four security models, a brief discussion of their applicability to the smart meter context model follows below.
 The limitations of each model will be described and a possible \emph{best fit} model will be indicated.
 
-Given the context described in \cref{context} privacy is an important factor when evaluating the models.
-In order to apply a model to the context it must thus be possible to describe which data can be sent between the various actors.
+Given the context described in \cref{context}, privacy is an important factor when evaluating the models.
+In order to apply a model to the context, it must thus be possible to describe which data can be sent between the various actors.
 This to such a degree that each actor is able to read \textbf{only} the granularity of data that they are permitted.
 
 \subsection{The Bell LaPadula Security Model}
-The Bell LaPadula security model works with classifications and categories because it is made for multiple tier systems.
-Our system can be described by classifications of different granularities; the consumer is cleared to view data of a fine granularity while the electrical company can only view a coarser granularity that just makes it possible for them to compute a bill.
-The distributor will retrieve a fine-grained granularity but as an aggregate of the power consumption in an larger area.
+The Bell LaPadula security model works with classifications and categories because it is made for multiple-tier systems.
+Our system can be described by classifications of different granularities; the consumer is cleared to view data of a fine granularity, while the electrical company can only view a coarser granularity -- that just makes it possible for them to compute a bill.
+The distributor will retrieve a fine-grained granularity, but as an aggregate of the power consumption in an larger area.
 This information is required in order to understand the power distribution in the network.
 
-The smart meter handles different types of data, consumption, control of appliances and connected devices.
+The smart meter handles different types of data, consumption, control of appliances, and connected devices.
 These could each be described by a category that determines if the data concerns outside parties.
 
 \subsection{Protection in Operating Systems}
@@ -23,9 +23,9 @@ It can thus be a tool for verifying that security model does not leak any data t
 When a smart meter system is to be designed, using either of the security models described here, the designs can be described using the model described by \citet{HRU}.
 This will allow multiple ideas to be represented using the same model and go through the same type of testing for leakage.
 
-It should however be noted that when the system has been modeled an algorithm to compare the system must still be developed.
-This might not be possible, but is dependent on the systems modeled.
-In turn this could lead to the inverse dependency such that the model is designed in a way that a developed algorithm applies.
+It should however be noted that when the system has been modelled an algorithm to compare the system must still be developed.
+This might not be possible, but is dependent on the systems modelled.
+In turn, this could lead to the inverse dependency such that the model is designed in a way that a developed algorithm applies.
 
 \subsection{The Chinese Wall Security Policy}
 The Chinese Wall Security Policy contrasts the Bell LaPadula model by putting data in conflict classes.
@@ -33,15 +33,15 @@ Security is achieved by placing a ``wall'' separating actors who access some dat
 
 As the model provides a \emph{free} choice of data in a conflict class, it will not allow us to model certain data as being available to specific actors only.
 Our problem is concerned with protecting data of a certain granularity from actors who do not need that particular granularity.
-Modeling our system in this way then seems illogical because we cannot set up conflict classes that represent the access restrictions we require.
+Modelling our system in this way then seems illogical, because we cannot set up conflict classes that represent the access restrictions we require.
 
 Because of this the Chinese Wall Security Policy will be regarded unfit for our purposes.
 
 \subsection{Decentralized Label Model}
-The Decentralized Label Model describes a way to control how data flows through a system by attaching labels to data.
+The Decentralized Label Model describes a way to control how data flows through a system, by attaching labels to data.
 This method for handling data access fits our problem very well.
 Data can travel from the consumer to a Data Hub and from there on to a multitude of actors from the Data Hub.
 
 Being able to describe how data flows with varying granularity makes this model very attractive for our purposes.
-An example presenting an attempt at modeling the system was presented in \cref{dlm-example}.
-Note however that this approach requires that the model covers the implementation of both smart meters and the Data Hub.
+An example presenting an attempt at modelling the system was presented in \cref{dlm-example}.
+Note, however, that this approach requires that the model covers the implementation of both smart meters and the Data Hub.
