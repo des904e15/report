@@ -41,13 +41,13 @@ This has been used as a starting point for a brainstorm that maps the potential 
 
 \paragraph{Actors}\label{contextActors}
 Below is the list of the actors represented in the full system and context.
-The list below will brifly describe the actors, their objective and how they can abuse a smart meter to achive it.
+The list below will briefly describe the actors, their objective, and how they can abuse a smart meter to achieve it.
 \begin{itemize}
 \item \textbf{Consumer}\\
 The resident of the depicted home and the one whose power consumption is monitored.
-The smart meter is installed in the consumers home.
+The smart meter is installed in the consumer's home.
 The consumer may want to attack his own smart meter in order to reduce his power bill.
-\item \textbf{Burglar}\\ A burglar can use the smart meter to find out when the consumer is home in order to break in as well as find out what products the consumer owns in order to assess him as a target.
+\item \textbf{Burglar}\\ A burglar can use the smart meter to find out when the consumer is home, in order to break in, as well as find out what products the consumer owns, in order to assess him as a target.
 \item \textbf{Neighbour}\\
 The next door neighbour to the consumer.
 We assume that the neighbour will perform attacks on the consumer in order to remove annoyances, such as loud appliances or music.
@@ -55,15 +55,15 @@ In case of neighbourly disputes, messing with the SM and connected appliances co
 \item \textbf{Partner}\\
 The consumer's partner.
 In this context there is no distinction between a partner that is living with the consumer and one that is not.
-The partner would like to surveil or get revenge over the consumer in case of misdoings on the consumer's part, such as adultery.
+The partner would like to surveil, or get revenge over, the consumer, in case of misdoings on the consumer's part, such as adultery.
 
 \item \textbf{Electrical Company}\\
 The company billing the consumer for his power consumption.
 The electrical company may want to increase the bill of the consumer.
 \item \textbf{Distribution Company}\\
 Manages the part of the grid closest to the consumer and provides him with electricity.
-Installs the smart meters in the consumers home.
-Intermediary between the electrical company and the consumer.
+Installs the smart meters in the consumer's home.
+Government-controlled intermediary between the electrical company and the consumer.
 The distribution company therefore has no gain from abusing the smart meter.
 \item \textbf{External}
 \begin{itemize}
@@ -71,27 +71,28 @@ The distribution company therefore has no gain from abusing the smart meter.
 Some companies depend on information of consumers and can use the information provided by the smart meter to profile consumers.
 \item \textbf{Developers of third party apps}\\
 The developer of apps that the consumer will use for monitoring his electrical consumption. 
-Can be both mobile, desktop and web applications.
-Can abuse this position collect data about the consumer and sell it.
+Can be both mobile, desktop, and web applications.
+Can abuse this position in order to collect data about the consumer and possibly sell it.
 \item \textbf{Appliance company}\\ The provider of home appliances that can connect with the smart meter.
-Can collect data through appliances and sell it.
+Can collect data through appliances and possibly sell it.
 \item \textbf{Government}\\
 The government officials (including counties and municipalities).
 \item \textbf{States}\\ In countries with tension between them, one country could have an interest in abusing smart meters to attack citizens of the opposing country.
 \item \textbf{A terrorist organisation}\\ Terrorists can abuse the smart meter for terrorist acts, like shutting off power in a city or region.
 \item \textbf{Environmental activists}\\ Activists can abuse the smart meter as a means of demonstrating environmental politics.
-\item \textbf{Blackmailer}\\ A criminal who switches off all or some smart meters from an electrical company and demands money for switching them on again.
+\item \textbf{Blackmailer}\\ A criminal who switches off all, or some, smart meters from an electrical company and demands money for switching them on again.
 \end{itemize}
 \end{itemize}
 
 \paragraph{Objects}
 \begin{itemize}
-\item \textbf{Smart meter}\\ Controls home appliances and also records consumption for each.
-\item \textbf{Appliance}\\ Has an option to be controlled from the smart meter. For instance a washing machine can be started and stopped when scheduled.
+\item \textbf{Smart meter}\\ Controls and records power consumption for home appliances.
+\item \textbf{Appliance}\\ Optionally controlled from the smart meter.
+For instance a washing machine can be started and stopped when scheduled.
 \end{itemize}
 
 \subparagraph{Smart Meter}
-The following describes the conceptual smart meter we have used in our considerations, based on \cref{smart_grid_smart_meter}, \citet{tdlm} and \citet{smart_meter_survey}.
+The following describes the conceptual smart meter we have used in our considerations, based on \cref{smart_grid_smart_meter}, \citet{tdlm}, and \citet{smart_meter_survey}.
 The smart meter is installed in the household of the consumer, in this case a house.
 Home appliances are connected to the SM and can be managed from it.
 The SM can be accessed through an API.
@@ -99,5 +100,5 @@ The consumer can access and manage his home appliances connected to the smart me
 The smart meter manufacturer has the ability to update software.
 The electrical companies have the ability to switch off the smart meter and get billing information from the smart meter.
 The home appliance company can update the firmware of their appliances through the SM.
-The smart meter sends its consumption data to the datahub.
+The smart meter sends its consumption data to the data hub.
 Home production of electricity, for instance a windmill, is also connected to the smart meter.

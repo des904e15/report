@@ -1,3 +1,4 @@
+%!TEX root=../master.tex
 \subsection{Smart meter privacy concerns}\label{smart_meter_privacy}
 The consumption data can be collected in various granularities.
 Sensitive knowledge about the consumer can be obtained from this data if it is fine-grained enough.
@@ -10,19 +11,19 @@ The setting, in which is collected sixty days of power consumption data from thr
 \item SheevaPlug
 \end{itemize}
 The energy monitor is connected to the two incoming electricity phases, A and B.\cite{TED_installation_guide}
-The SheevaPlug is connected to the router, and the energy monitor, and is used to access the data remotely.
-The energy monitor returns a tuple $(t,p)$ where $t$ is the time and $p$ is the power-usage since last measurement.
-The power is measured every second, so we have a tuple for every second with the power used the past second.
+The SheevaPlug is connected to the router and the energy monitor, and is used to access the data remotely.
+The energy monitor returns a tuple $(t,p)$, where $t$ is the time and $p$ is the power-usage since last measurement.
+The power is measured every second, so we have a tuple for every second with the power used this past second.
 Finally, the three households are to make a ``power activity''-journal for a minimum of three days.
-In this journal they write down when they turn on and off any electric devices.
+In this journal, the individuals of the household log whenever they turn on and off any electric devices.
 
 When the data is collected it is analysed in four steps:
-\begin{itemize}
+\begin{enumerate}
 \item Pre-process data
 \item Tag power events
 \item Filter out automated appliances
 \item Map consumption events to real life events
-\end{itemize}
+\end{enumerate}
 
 \paragraph{Pre-process data}
 The data is pre-processed using DBSCAN, which is a density-based clustering algorithm.
@@ -30,7 +31,7 @@ This helps group power tuples into power segments, where a power segment is a co
 Each power segment then gets tagged with a label, start time, average power usage, duration, beginning power step, and a shape label.
 
 \paragraph{Tag power events}
-In \cref{consumption_one_day} we are able to see the consumption data for one household after the second step of the analysis.
+In \cref{consumption_one_day} we are able to see the consumption data for one household after step 2 of the analysis.
 On the x-axis we have time in hours, for an entire 24-hour period, and on the y-axis we have power usage in kWh.
 Already at this stage of the analysis we are able to say something about when there is activity in the household.
 We can also see how there are some automated appliances that are on all the time or at certain intervals.
@@ -40,7 +41,7 @@ We can determine this by assuming there is almost no activity in the night, and 
   \begin{center}
     \includegraphics[width=\textwidth]{consumption_one_day.png}
   \end{center}
-  \caption{A day of consumption data after the second step of analysis, labelled with real life events -- taken from the power activity journal.}
+  \caption{A day of consumption data after step 2 of analysis, labelled with real life events -- taken from the power activity journal}
   \label{consumption_one_day}
 \end{figure}
 
@@ -52,7 +53,7 @@ If, for instance, the distinct usage also occurs at night, it is probably an aut
 \paragraph{Map consumption events to real life events}
 In \cref{detailed_consumption} we can see how the consumption for a small time period looks like after all four steps of the analysis.
 At this point it is pretty easy to say something about what kind of activities are going on.
-The time period is for a typical morning where we can see the household uses the stove, coffee maker, toaster, and some computer screens.
+The time period is for a typical morning, where we can see the household uses the stove, coffee maker, toaster, and some computer screens.
 
 \begin{figure}
   \begin{center}
@@ -78,7 +79,7 @@ This means that over time it is possible to determine \textit{who} is home, wher
 It is also possible to say a lot about household activities, even with a small amount of consumption data.
 For instance, we can begin to reason about if a household had a good nights sleep, or if the household was eating hot or cold breakfast, and even if the household was watching a specific sport event last night.
 \paragraph{Information about appliances}
-By extending the analysis one could look for specific appliance signatures in the power trace and from this say some more about the household.
+By extending the analysis, one could look for specific appliance signatures in the power trace and from this say some more about the household.
 
 
 \input{sections/power_signatures.tex}
