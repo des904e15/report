@@ -1,7 +1,7 @@
-%!TEX root = ../tmp_master.tex
+%!TEX root = ../master.tex
 \section{Protection in Operating Systems}
 As most protection systems have different approaches to how they manage rights and chains of trust they are hard to compare on equal terms.
-Additionally it is often not easy to express which rights are leaked under certain conditions, or to whom they are leaked.
+Additionally, it is often not easy to express which rights are leaked under certain conditions, or to whom they are leaked.
 Oftentimes such leaks are only described informally by examining key features of a given system.
 
 The model described in \citet{HRU} from 1976 can be used to solve these problems.
@@ -13,7 +13,7 @@ In the following the model proposed by \citet{HRU} is presented.
 \subsection{A Protection System}
 A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
 Both these sets are finite and static for a given system.
-Because of this a system cannot dynamically add or remove rights or commands, under this model.
+Because of this, a system cannot dynamically add or remove rights or commands, under this model.
 \footnote{It is possible to simulate adding/removing predefined rights and commands in a system.}
 
 \begin{definition}
@@ -91,7 +91,7 @@ Because of this they are not included here.
 
 The application of an operation is written as $Q \Rightarrow_{op} Q'$ and thus $Q \Rightarrow_{op^*} Q'$ represents a sequence of operations.
 An operation is executed by applying its changes to an access matrix resulting in a new access matrix.
-If for instance we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described in \cref{protection:matrixsmall} we would have a new configuration reflecting the entered right.
+If, for instance, we apply the \textbf{enter \textit{write} into $P[Joe, Data]$} operation to the access matrix described in \cref{protection:matrixsmall} we would have a new configuration reflecting the entered right.
 The result of that operation can be seen in \cref{protection:matrixwithwrite}.
 
 \begin{figure}[H]
@@ -133,11 +133,11 @@ These questions could be any of the below:
 \begin{itemize}
 \item Does the system leak the right $r$?
 \item Does the system leak the right $r$ to the \ssubject{} $s$?
-\item Does the system leak the right $r$ to anyone other than \ssubject{} $s_1$, $s_2$ or $s_3$?
+\item Does the system leak the right $r$ to anyone other than \ssubject{} $s_1$, $s_2$, or $s_3$?
 \end{itemize}
 It should be noted that all these questions are answered on the basis of an initial configuration $Q$.
 In other words; we are not interested in whether or not a right is leaked from an unattainable configuration.
-Additionally we might be interested in determining if a right can be leaked given a specific configuration, effectively deciding what effects a specific right will introduce in the system.
+Additionally, we might be interested in determining if a right can be leaked given a specific configuration, effectively deciding what effects a specific right will introduce in the system.
 
 It should be noted that a leak (given in the definition below) is not necessarily a negative.
 Certain rights we will want the system to leak in a specific way.
@@ -157,7 +157,7 @@ Because of this it is sufficient to provide an algorithm that will answer this t
 \end{definition}
 
 This is the major result described by \citet{HRU}.
-There does however exist how such an algorithm for a very simple class of protection systems called mono-operational (a system of commands with only a single operation each).
+There does, however, exist how such an algorithm for a very simple class of protection systems called mono-operational (a system of commands with only a single operation each).
 Thus an algorithm exists for very simple system and not for complex systems.
 
 In order to answer questions about specific protection systems, such as those in this chapter, custom algorithms must be defined.
