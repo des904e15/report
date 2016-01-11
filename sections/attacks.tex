@@ -10,21 +10,21 @@ Eve can perform a replay attack if she is able to record a message from the comm
 She can then send the message to Bob at a later point in time. 
 
 A related concept is retries.
-During the run of a protocol Alice does not receive a response from Bob.
+During the run of a protocol, Alice does not receive a response from Bob.
 This could be because Bob did not receive Alice's request or a similar network problem.
 To solve this Alice sends her message again.
 This message is known as a retry.
 
 Now Bob can receive both a replay from Eve and a retry from Alice.
-Bob needs to deal with this properly so Eve cannot abuse replays to her advantage.
+Bob needs to deal with this properly, so that Eve cannot abuse replays to her advantage.
 Abusing replays is known as a replay attack.
 
 \subsection{Packet injection}\label{attack:packet}
 This description is inspired by \citet{packetinjection}.
-If Eve can intercept communication between Alice and Bob she can inject packages into the stream of messages without either party knowing.
-A packet is injected by constructing a packet with the source address as one of the endpoints, Alice or Bob.
+If Eve can intercept communication between Alice and Bob, she can inject packages into the stream of messages without either party knowing.
+A packet is injected by constructing a packet with the source address as one of the endpoints -- Alice or Bob.
 In this way it looks like Alice or Bob originated the packet, and it seems like part of the communication.
-By abusing this it can be possible to affect the communication of Alice and Bob.
+By abusing this, it can be possible to affect the communication of Alice and Bob.
 Eve could be sending packets that simulate a protocol error, in order to disrupt the communication between Alice and Bob.
 Or, by injecting new packets, Eve can alter the course of the communication, which can be dangerous if the communication involves sensitive information.
 
