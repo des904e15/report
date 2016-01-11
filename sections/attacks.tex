@@ -10,41 +10,41 @@ Eve can perform a replay attack if she is able to record a message from the comm
 She can then send the message to Bob at a later point in time. 
 
 A related concept is retries.
-During the run of a protocol Alice does not receive a response from Bob.
+During the run of a protocol, Alice does not receive a response from Bob.
 This could be because Bob did not receive Alice's request or a similar network problem.
 To solve this Alice sends her message again.
 This message is known as a retry.
 
 Now Bob can receive both a replay from Eve and a retry from Alice.
-Bob needs to deal with this properly so Eve cannot abuse replays to her advantage.
+Bob needs to deal with this properly, so that Eve cannot abuse replays to her advantage.
 Abusing replays is known as a replay attack.
 
 \subsection{Packet injection}\label{attack:packet}
 This description is inspired by \citet{packetinjection}.
-If Eve can intercept communication between Alice and Bob she can inject packages into the stream of messages without either party knowing.
-A packet is injected by constructing a packet with the source address as one of the endpoints, Alice or Bob.
+If Eve can intercept communication between Alice and Bob, she can inject packages into the stream of messages without either party knowing.
+A packet is injected by constructing a packet with the source address as one of the endpoints -- Alice or Bob.
 In this way it looks like Alice or Bob originated the packet, and it seems like part of the communication.
-By abusing this it can be possible to affect the communication of Alice and Bob.
+By abusing this, it can be possible to affect the communication of Alice and Bob.
 Eve could be sending packets that simulate a protocol error, in order to disrupt the communication between Alice and Bob.
 Or, by injecting new packets, Eve can alter the course of the communication, which can be dangerous if the communication involves sensitive information.
 
 \section{Side channel attacks}\label{attack:sidechannel}
 This description of side channel attacks is based on \citet[p.~132]{cryptoenginering}.
 
-Side channel attacks is the class of attacks that take advantage of a alternate channels of information.
-This could be how much time an operation takes, the power consumption during the operation or magnetic fields.
+Side channel attacks is the class of attacks that take advantage of an alternate channel of information.
+This could be how much time an operation takes, the power consumption during the operation, or magnetic fields.
 
 There are means for protecting against this type of attacks, but it is hard to eliminate information leakage from all possible channels \citep[p.~132]{cryptoenginering}.
 In the case of a lot of devices, smart meters included, the device is in the hand of the attacker.
 Physical access to a security device is almost impossible to protect against \citep[p.~132]{cryptoenginering}.
 
 \subsubsection{Differential Power Analysis}\label{attack:dpa}
-One particular side channel attack is differential power analysis described in \citet{DPA}.
-Here an attack is carried out on a device that is encrypted using DES.
+One particular side channel attack is differential power analysis, described in \citet{DPA}.
+Here, an attack is carried out on a device that is encrypted using DES.
 Power traces of the device are recorded when it is performing its encryption operations.
 Because of the way semiconductors work, different operations will have a discernible signature on the power trace.
 By recording enough traces, information about the key can be derived from properties of the trace.
-As the amount of information increases through this method the key can eventually be derived.
+As the amount of information increases through this method, the key can eventually be derived.
 
 
 
@@ -54,7 +54,7 @@ As the amount of information increases through this method the key can eventuall
 \section{Social engineering}
 This section will contain attacks that abuses the over-trusting, or even gullible, nature of some individuals.
 This individual could be providing sensitive information directly to a seemingly trustworthy, but actually malicious, party.
-It could also simply be revealing too much information by using a personal device in a public setting, such as looking on your phone while sitting on a bench in an airport.
+It could also simply be revealing too much information, by using a personal device in a public setting, such as looking on your phone while sitting on a bench in an airport.
 
 \subsection{Phishing}\label{attack:phishing}
 
@@ -62,46 +62,46 @@ The following is based on \citet{security_engineering_ross_anderson,dhamija2006p
 Phishing is the process of tricking a user to give up sensitive information, such as user names or passwords, by posing as a trusted party.
 This is typically done by using a malicious website, posing as a legitimate website that the user would normally use.
 This could for example happen by inserting a fake link in an email and send it to the user.
-The tricky part about phishing is to convince the user that the email with the link, and possibly the link itself, is legitimate.
+The tricky part about phishing is to convince the user, that the email with the link, and possibly the link itself, is legitimate.
 
 An example could be a fake email to get a user's credentials for PayPal.
 The email would contain the logo from PayPal and would tell the user to update his account information.
 If the user then uses the link from the email he will get transferred to a malicious site.
-When the user then enters his user name and password and submits it to the site the attackers will have his credentials.
-To make it even worse for the user the attacker will redirect the user to real PayPal website and the user will have even less of a chance to know what happened.
+When the user then enters his user name and password, and submits it to the site, the attackers will have his credentials.
+To make it even worse for the user, the attacker will redirect the user to real PayPal website and the user will have even less of a chance to know what happened.
 
 \subsection{Shoulder surfing}\label{attack:shoulder}
-Another technique for gaining information is to observe a user entering the information on a client device, as described in \citet{notechhack}.
+Another technique for gaining information, is to observe a user entering the information on a client device, as described in \citet{notechhack}.
 This could be observing a PIN being entered at an ATM or observing the password being entered on a tablet device.
-Other than passwords and PINs shoulder surfing can also reveal other information about the user.
-A bookmark in the browser could for instance reveal the brand of the smart meter which could be an advantage for an attacker.
+Other than passwords and PINs, shoulder surfing can also reveal other information about the user.
+A bookmark in the browser could for instance reveal the manufacturer of the smart meter, which could be an advantage for an attacker.
 
 Shoulder surfing in combination with bad security practices can end up circumventing even the most advanced security system.
 For instance if you publicly display your password, a lot of security measures are already bypassed if someone intercepts it.
 
 \section{Malware}\label{attack:malware}
 The following is based on \citet[p.~644]{security_engineering_ross_anderson}.
-Malware is collective name for malicious code. 
-This includes \emph{trojans}, \emph{viruses}, \emph{worms} and \emph{rootkits}.
-Common for these are that they infect a computer of a unsuspecting person and tries to achieve something harmful to either the person or his data.
-For example a rootkit can provide control over the computer for the attacker while a virus can encrypt some crucial files on the hard drive and demand ransom.
+Malware is a collective name for malicious code. 
+This includes \emph{trojans}, \emph{viruses}, \emph{worms}, and \emph{rootkits}.
+Common for these are that they infect a computer of a unsuspecting person and try to achieve something harmful to either the person or his data.
+For example, a rootkit can provide control over the computer for the attacker, while a virus can encrypt some crucial files on the hard drive and demand ransom.
 A piece of malware could also install a backdoor in another piece of software, bypassing the intended security features.
 
-In this context it is important to note that malware can provide access to a smart meter in a number of different ways.
-If the password to the smart meter is stored on some client, malware will be able to send this back to the attacker.
+In this context, it is important to note that malware can provide access to a smart meter in a number of different ways.
+If the password to the smart meter is stored on some client, the malware will be able to send this back to the attacker.
 A rootkit on a client will provide a possibility to control the smart meter through the client.
 
 \section{Password Cracking}\label{password_cracking}
-Passwords are the most used authentication method but not the safest.
-As users have to remember a lot of passwords, they typically tend to have a small collection of passwords which they use.
-Commonly users just remember the collection or write it down on a piece of paper.
-If the user can not remember a password he will try all passwords or just reset the password.\cite{florencio2007large,bishop1995improving,dell2010password}
+Passwords are the most used authentication method, but not the safest.
+As users have to remember a lot of passwords, they tend to have a small collection of passwords which they use.
+Commonly, users just remember the collection or write it down on a piece of paper.
+If the user cannot remember a password, he will try all passwords, or just reset the password.\cite{florencio2007large,bishop1995improving,dell2010password}
 
 The following is based on \citet{marechal2008advances}.
 Passwords are generally not stored in plain text.
 The most used method is to cryptographically hash the passwords.
-Typically a hashing function takes the plain text password as input and a salt.
-The salt is some \textit{random} data used as additional input in hash functions to for instance prevent a dictionary attack\footnote{A dictionary attack is when one has a list of possible passwords and tries them all.}.
+Typically, a hashing function takes the plain text password as input and a \emph{salt}.
+The salt is some \textit{random} data used as additional input in hash functions to, for instance, prevent a dictionary attack\footnote{A dictionary attack is when one has a list of possible passwords and tries them all.}.
 Password cracking is the process of retrieving these passwords from hashed passwords.
 This process can be viewed as three steps:
 \begin{enumerate}
