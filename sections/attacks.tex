@@ -92,16 +92,16 @@ If the password to the smart meter is stored on some client, the malware will be
 A rootkit on a client will provide a possibility to control the smart meter through the client.
 
 \section{Password Cracking}\label{password_cracking}
-Passwords are the most used authentication method but not the safest.
-As users have to remember a lot of passwords, they typically tend to have a small collection of passwords which they use.
-Commonly users just remember the collection or write it down on a piece of paper.
-If the user can not remember a password he will try all passwords or just reset the password.\cite{florencio2007large,bishop1995improving,dell2010password}
+Passwords are the most used authentication method, but not the safest.
+As users have to remember a lot of passwords, they tend to have a small collection of passwords which they use.
+Commonly, users just remember the collection or write it down on a piece of paper.
+If the user cannot remember a password, he will try all passwords, or just reset the password.\cite{florencio2007large,bishop1995improving,dell2010password}
 
 The following is based on \citet{marechal2008advances}.
 Passwords are generally not stored in plain text.
 The most used method is to cryptographically hash the passwords.
-Typically a hashing function takes the plain text password as input and a salt.
-The salt is some \textit{random} data used as additional input in hash functions to for instance prevent a dictionary attack\footnote{A dictionary attack is when one has a list of possible passwords and tries them all.}.
+Typically, a hashing function takes the plain text password as input and a \emph{salt}.
+The salt is some \textit{random} data used as additional input in hash functions to, for instance, prevent a dictionary attack\footnote{A dictionary attack is when one has a list of possible passwords and tries them all.}.
 Password cracking is the process of retrieving these passwords from hashed passwords.
 This process can be viewed as three steps:
 \begin{enumerate}
