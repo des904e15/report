@@ -5,7 +5,7 @@ Sensitive knowledge about the consumer can be obtained from this data if it is f
 The following describes how one can obtain and use this knowledge, which is based on \citet{privacy_memoir}.
 
 \subsubsection{Experiment}
-The setting, in which is collected sixty days of power consumption data from three households, consists of the following physical components:
+The setting, in which sixty days of power consumption data from three households was collected, consists of the following physical components:
 \begin{itemize}
 \item TED energy monitor
 \item SheevaPlug
@@ -33,7 +33,7 @@ Each power segment then gets tagged with a label, start time, average power usag
 \paragraph{Tag power events}
 In \cref{consumption_one_day} we are able to see the consumption data for one household after step 2 of the analysis.
 On the x-axis we have time in hours, for an entire 24-hour period, and on the y-axis we have power usage in kWh.
-Already at this stage of the analysis we are able to say something about when there is activity in the household.
+Already at this stage of the analysis, we are able to say something about when there is activity in the household.
 We can also see how there are some automated appliances that are on all the time or at certain intervals.
 We can determine this by assuming there is almost no activity in the night, and by collecting data over several days.
 
@@ -51,11 +51,11 @@ This is done by looking at the consumption data and reason about whether the pow
 If, for instance, the distinct usage also occurs at night, it is probably an automated appliance and by looking at a lot of data one can be rather certain.
 
 \paragraph{Map consumption events to real life events}
-In \cref{detailed_consumption} we can see how the consumption for a small time period looks like after all four steps of the analysis.
+In \cref{detailed_consumption} we can see what the consumption for a small time period looks like after all four steps of the analysis.
 At this point it is pretty easy to say something about what kind of activities are going on.
 The time period is for a typical morning, where we can see the household uses the stove, coffee maker, toaster, and some computer screens.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=\textwidth]{detailed.png}
   \end{center}
@@ -63,23 +63,25 @@ The time period is for a typical morning, where we can see the household uses th
   \label{detailed_consumption}
 \end{figure}
 
-As we can see by this example, when collecting only a small amount of consumption data and doing trivial analysis, it is possible to say a lot about a household.
+As we can see from this example, when collecting only a small amount of consumption data and doing trivial analysis, it is possible to say a lot about a household.
 Utilities companies or similar, that have access to much more data, can learn even more by using their combined knowledge.
 
 \subsubsection{Privacy issues}\label{privacy_concerns}
 As it can be seen in the previous section, it is possible to determine a lot about a household, simply based on power consumption.
-This can lead to privacy issues, where some of these issues are now described.
+This can lead to privacy issues. 
+Some of these issues will be described in the following.
 
 \paragraph{Amount of people home}
-When having a lot of consumption data one can determine the amount of people who are home and begin to see patterns in the power usage and map that to people.
-This means that over time it is possible to determine \textit{who} is home, where \textit{who} can be seen as a power usage pattern for a person in the household.
+When having a lot of consumption data one can determine the amount of people who are home.
+One can thereafter begin to identify patterns in the power usage and map that to individual people from the household.
+This means that over time it is possible to determine \textit{who} is home.
 
 \paragraph{Household activities}
   
 It is also possible to say a lot about household activities, even with a small amount of consumption data.
-For instance, we can begin to reason about if a household had a good nights sleep, or if the household was eating hot or cold breakfast, and even if the household was watching a specific sport event last night.
+For instance, we can begin to reason about if a household had a good night's sleep, or if the household was eating hot or cold breakfast, and even if the household was watching a specific sport event last night.
 \paragraph{Information about appliances}
-By extending the analysis, one could look for specific appliance signatures in the power trace and from this say some more about the household.
+By extending the analysis, one could look for specific appliance signatures in the power trace, and from this say even more about the household.
 
 
 \input{sections/power_signatures.tex}
