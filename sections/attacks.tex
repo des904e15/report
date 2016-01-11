@@ -31,20 +31,20 @@ Or, by injecting new packets, Eve can alter the course of the communication, whi
 \section{Side channel attacks}\label{attack:sidechannel}
 This description of side channel attacks is based on \citet[p.~132]{cryptoenginering}.
 
-Side channel attacks is the class of attacks that take advantage of a alternate channels of information.
-This could be how much time an operation takes, the power consumption during the operation or magnetic fields.
+Side channel attacks is the class of attacks that take advantage of an alternate channel of information.
+This could be how much time an operation takes, the power consumption during the operation, or magnetic fields.
 
 There are means for protecting against this type of attacks, but it is hard to eliminate information leakage from all possible channels \citep[p.~132]{cryptoenginering}.
 In the case of a lot of devices, smart meters included, the device is in the hand of the attacker.
 Physical access to a security device is almost impossible to protect against \citep[p.~132]{cryptoenginering}.
 
 \subsubsection{Differential Power Analysis}\label{attack:dpa}
-One particular side channel attack is differential power analysis described in \citet{DPA}.
-Here an attack is carried out on a device that is encrypted using DES.
+One particular side channel attack is differential power analysis, described in \citet{DPA}.
+Here, an attack is carried out on a device that is encrypted using DES.
 Power traces of the device are recorded when it is performing its encryption operations.
 Because of the way semiconductors work, different operations will have a discernible signature on the power trace.
 By recording enough traces, information about the key can be derived from properties of the trace.
-As the amount of information increases through this method the key can eventually be derived.
+As the amount of information increases through this method, the key can eventually be derived.
 
 
 
