@@ -23,6 +23,7 @@ A privacy policy is represented as an owner of some \xvalue{} and a set of reade
 The syntax is: $\policy{\text{<\emph{owner}>}}{\text{<\emph{reader}>}}$.
 The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
 \mikael{Forstår ikke dennne sætning.}
+\mikkelin{Nej, jeg mangler også en forklaring for evt at kunne skrive den om.}
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any other readers we provide an empty reader list: $\policy{p}{}$.
@@ -51,20 +52,32 @@ Therefore we say that the effective reader set of the two labels are equal.
 A label can contain several privacy policies for the same \principal{}.
 These are enforced just as other policies.
 
+When examining labels, it is interesting to know if one label is at least as restrictive as another label.
+A label has this property if it enforces all the policies/restrictions of the other label.
+Formally this can be defined as:
+
+\begin{definition}\label{dlm:def:restrict}
+  Let $L_1$ and $L_2$ be labels.
+  Then if
+  $$\forall j \in L_1 : \exists k \in L_2 : o(k) = o(j) \wedge r(k) \subseteq r(j)$$
+  $L_2$ is at least as restrictive as $L_1$, and we write $L_1 \sqsubseteq L_2$.
+  \mikkelin{Copied this definition from below. Shouldn't it be $r(j) \subseteq r(k)$?}
+\end{definition}
+
+This relation is applied throughout the following.
+
 \subsection{Rules}
-This section contains the rules that need to be followed when manipulating labels to avoid information leakage.
+This section specifies a set of rules that apply when manipulating labels to avoid information leakage.
 The modification of labels is what makes it possible to define how data flows through a system.
 
 \paragraph{Label join}
-When deriving a \xvalue{} from two \xvalues{}, the label of the derived \xvalue{} must reflect its sources, so it has to be at least as restrictive.
-The relation $\sqsubseteq$ determines that a label is \textit{at least as restrictive}.
+When deriving a \xvalue{} from two \xvalues{}, the label $L_{12}$ of the derived \xvalue{} must reflect the labels $L_1$ and $L_2$ of its sources, being at least as restrictive as both of them.
+This is achieved by taking the union of the two labels.
+
 \begin{definition}
-  For two labels $L_1$ and $L_2$, if we have $L_1 \sqsubseteq L_2$, $L_1$ is at least as restrictive as $L_2$.
-  Then, in order to keep the restrictiveness of a combination of two labels, the resulting label for a derived \xvalue{} is the union of the two source labels.
-  This gives us the following join rule:
-  \begin{center}
-    $L_1 \sqcup L_2 = L_1 \cup L_2$
-  \end{center}
+  The join of two labels $L_1$ and $L_2$, denoted as $L_{12} = L_1 \sqcup L_2$, is defined as
+  $$L_1 \sqcup L_2 = L_1 \cup L_2$$
+  Note that, since $L_1 \subseteq L_{12}$ and $L_2 \subseteq L_{12}$, we have that $L_1 \sqsubseteq L_{12}$ and $L_2 \sqsubseteq L_{12}$.
 \end{definition}
 
 The join rule will ensure that any joining of values will also result in a joining of labels, so that any combination of rules will be upheld.
@@ -79,37 +92,32 @@ If a process has the authority of a \principal{}, the actions of the process are
 This means that if a \principal{} is in the authority set this can be declassified.
 
 \begin{definition}
-  A label $L_1$ can be relabeled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ where $L_A$ is the authority.
-  The authority is a label $L_A$ of the form $\{p: \ \}$ for every \principal{} in the current authority.
-  $L_1$ can be relabelled to $L_2$ if $L_1 \sqsubseteq L_2 \sqcup L_A$ is true.
-  \begin{center}
-    \[\frac{L_1 \sqsubseteq L_2 \sqcup L_A}{L_1 \text{ may be declassified to } L_2}\]    
-  \end{center}
+  Let $L_A = \{\policy{p_0}{}, \policy{p_1}{}, \cdots, \policy{p_n}{}\}$ be the authority label with \principals{} $p_0, p_1, \cdots, p_n$.
+  Let $L_1$ and $L_2$ be labels.
+  Then if $$L_1 \sqsubseteq (L_2 \sqcup L_A)$$
+  $L_1$ may be declassified to $L_2$.
 \end{definition}
-\stefan{Jeg synes desclassification er rodet. Hvor kommer authority fra, og hvordan indikerer man det? Definition 2.9 ser ud til at sige det samme flere gange (noget med  $L_1 \sqsubseteq L_2 \sqcup L_A$, men jeg er ikke sikker på om det er forskellige pointer)}
+\stefan{Jeg synes desclassification er rodet. Hvor kommer authority fra, og hvordan indikerer man det? Definition 2.10 ser ud til at sige det samme flere gange (noget med  $L_1 \sqsubseteq L_2 \sqcup L_A$, men jeg er ikke sikker på om det er forskellige pointer)}
+\mikkelin{Jeg har skrevet det om, så det ikke står dobbelt.
+Authority er beskrevet over definitionen - skal vi have det mere med?}
 
 \paragraph{Relabeling by Restriction}
 When a \xvalue{} is read from a variable it has the same label as the variable.
 When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
+
+To illustrate the process of relabeling, the following example describes a simple assignment from one variable to another.
+
 \begin{example}{Assignment}
-  Given $a = 4$, we want to assign the value of $a$ to another variable, $b$.
-  First we read the \xvalue{} from $a$, this means the \xvalue{} of $a$, $4$, has the same label as $a$.
-  Now we assign the copied \xvalue{}, $4$, to $b$, this means the \xvalue{} gets the label of the variable $b$, replacing its own label.
-  This means that the label that the \xvalue{} got from $a$ is forgotten.
+  This example describes two variables $a = 4$ and $b = ...$.
+  We will disregard the current value of $b$ and focus on the relabeling that takes place when processing $$b = a$$
+
+  First we read the \xvalue{} of $a$ and assign to it the label of $a$.
+  Afterwards the \xvalue{} is copied to $b$.
+  This copy is assigned the label of $b$.
 \end{example}
-This example shows the process of what we call relabeling, and more specifically this kind of relabeling is called restriction.
 
-To avoid leakage the label of the variable must be at least as restrictive.
-For instance if we have two labels, $L_1$ and $L_2$, $L_1 \sqsubseteq L_2$ means that $L_2$ is more restricted than $L_1$.
-
-\begin{definition}
-  A restriction is when the new label guarantees to enforce all of the policies from the old label.
-  If we have policy $J$ in $L_1$ it is guranteed by another policy $K$ if they have the same owner and $r(K)$ is a subset of $r(J)$.
-  \begin{center}
-    \[\frac{\forall (J \ \in \ L_1) \exists (K \ \in \ L_2)(o(K) = o(J) \ \wedge \ r(K) \subseteq r(J))}{L_1 \sqsubseteq L_2}\]    
-  \end{center}
-\end{definition}
-\stefan{burde det ikke introduceres tidligere? $\sqsubseteq$ bliver brugt mange gange før }
+To avoid leakage the label of the variable must be at least as restrictive as the \xvalue{} being assigned to it.
+This means that in the example above $b$ is required to be at least as restrictive as $a$.
 
 \subsection{Acts-for relation}
 A \principal{} in DLM can represent a user in the system, a group of users, or roles.
@@ -117,27 +125,34 @@ As labels on slots are immutable, in order to have more dynamic security policie
 This means that a given \principal{} in effect has every right that the \principal{} that it acts for has.
 
 This is also called a \principal{} hierarchy.
-Formally, we use the $\succeq$-operator when representing acts for.\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.}
-For instance, $x \succeq y$ means $x$ acts for $y$.
+Formally, we use the $\succeq$-operator when representing acts for\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.} such that $x \succeq y$ declares that $x$ acts for $y$.
 A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
 So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
+\mikkelin{Jeg ved ikke hvad det sidste her betyder.
+Er det bare en mængde med alle acts-for relationerne?}
 
-Some examples:
+Below are a couple of examples of acts-for relations:
 \begin{example}{Acts-for relation}
-  Given the acts-for relation and \principals{} $Amy$ and $Bob$, $Amy \succeq Bob$ means that Amy \textit{acts for} Bob.
-  Any security policies that apply to Bob will in effect also apply to Amy.
+  Bob can have Amy act on his behalf by providing the acts for relation: $Amy \succeq Bob$.
+  This implies that Amy can \textit{act for} Bob and that any security policies that apply to Bob will in effect also apply to Amy.
 \end{example}
-\begin{example}{Acts-for relation groups}
-  Groups or roles are no different than any other principal -- given a new \principal{} $Admin$ we can have that $Amy \succeq Admin$, signifying that Amy is an administrator and therefore can act for on behalf of the administrator group. 
+
+\begin{example}{Acts-for relation in groups}
+  Given a \principal{} $Admin$ that have certain system access we can represent roles/group members using the acts-for relation.
+  The relation $Amy \succeq Admin$, signifies that Amy is an administrator and therefore can act on behalf of the administrator group. 
 \end{example}
+
 \subsection{Channels}
-The model contains two types of channels, input and an output channels.
-Information can be leaked through these channels, therefore they have a label associated to them.
+The model contains two types of channels; input and an output channels.
+These channels provide the means of communication with outside systems.
+
+As information can be leaked through these channels, therefore they have a label associated to them.
 When a \xvalue{} enters the system through an input channel, the \xvalue{} gets the label of the input channel.
 If a \xvalue{} is written to an output channel it can only be done if the label of the output channel is at least as restrictive as the label of the \xvalue{}.
 
 \subsection{Smart Meter System Example}\label{dlm-example}
-In order to give some idea about how the DLM could be used, we provide an example of a smart meter system while displaying the different principals (actors) and labelled objects.
+To demonstrate how the DLM could be used in a smart meter context, we provide an example below.
+The example describes a smart meter system while identifying the various \principals{} (actors) and labeled objects.
 This is similar to the provided motivating examples presented in \citet{myers1997decentralized}.
 
 \begin{figure}[h]
