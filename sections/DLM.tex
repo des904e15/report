@@ -33,11 +33,11 @@ If we have policy $K$ and label $L$, we have following notation:
 \item $\textbf{r}(K)$ -- the set of readers of policy $K$
 \end{itemize}
 
-Labeled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
+Labelled \xvalues{} are only released by the consensus of all the owners and can only be read by the readers.
 If one or several privacy policies are added to a label it restricts the access to the \xvalue{}.
 A label with no policies  means that all readers are allowed.
 
-If a \principal{} is not among the owners of a label, it is the same as if it was added as a privacy policy with all posible readers, implicitly indicating that this owner has no preference of who reads the \xvalue{}.
+If a \principal{} is not among the owners of a label, it is the same as if it was added as a privacy policy with all possible readers, implicitly indicating that this owner has no preference of who reads the \xvalue{}.
 
 \begin{example}{Redundant owner}
 In a system with owners $o_1, o_2, o_3$ and readers $r_1, r_2, r_3$, the following labels are defined:
@@ -54,7 +54,7 @@ When examining labels, it is interesting to know if one label is at least as res
 A label has this property if it enforces all the policies/restrictions of the other label.
 Formally this can be defined as:
 
-\begin{definition}\label{dlm:def:restrict}
+\begin{definition}{Label restrictiveness}\label{dlm:def:restrict}
   Let $L_1$ and $L_2$ be labels.
   Then if
   $$\forall j \in L_1 : \exists k \in L_2 : o(j) = o(k) \wedge r(j) \supseteq r(k)$$
@@ -71,7 +71,7 @@ The modification of labels is what makes it possible to define how data flows th
 When deriving a \xvalue{} from two \xvalues{}, the label $L_{12}$ of the derived \xvalue{} must reflect the labels $L_1$ and $L_2$ of its sources, being at least as restrictive as both of them.
 This is achieved by taking the union of the two labels.
 
-\begin{definition}
+\begin{definition}{Label join}
   The join of two labels $L_1$ and $L_2$, denoted as $L_{12} = L_1 \sqcup L_2$, is defined as
   $$L_1 \sqcup L_2 = L_1 \cup L_2$$
   Note that, since $L_1 \subseteq L_{12}$ and $L_2 \subseteq L_{12}$, we have that $L_1 \sqsubseteq L_{12}$ and $L_2 \sqsubseteq L_{12}$.
@@ -79,7 +79,7 @@ This is achieved by taking the union of the two labels.
 
 The join rule will ensure that any joining of values will also result in a joining of labels, so that any combination of rules will be upheld.
 
-\paragraph{Relabeling by declassification}
+\paragraph{Relabelling by declassification}
 The owners of the labels control their data, but sometimes policies are overly restrictive and one wants to relax them.
 This can be used to sanitize \xvalues{} whose security policies, in respect to one ore more owners, have changed throughout the run of a program.
 This works in opposition to restricting rules, which is used to ensure information is not leaked, whereas this is enabling intended leaking (of sanitized information).
@@ -88,22 +88,22 @@ The authority is a set of \principals{} which is the authority of the process of
 If a process has the authority of a \principal{}, the actions of the process are permitted.
 This means that if a \principal{} is in the authority set this can be declassified.
 
-\begin{definition}
+\begin{definition}{Relabelling by declassification}
   Let $L_A = \{\policy{p_0}{}, \policy{p_1}{}, \cdots, \policy{p_n}{}\}$ be the authority label with \principals{} $p_0, p_1, \cdots, p_n$.
   Let $L_1$ and $L_2$ be labels.
   Then if $$L_1 \sqsubseteq (L_2 \sqcup L_A)$$
   $L_1$ may be declassified to $L_2$.
 \end{definition}
 
-\paragraph{Relabeling by Restriction}
+\paragraph{Relabelling by Restriction}
 When a \xvalue{} is read from a variable it has the same label as the variable.
 When a \xvalue{} is stored in a variable the label of the \xvalue{} is forgotten.
 
-To illustrate the process of relabeling, the following example describes a simple assignment from one variable to another.
+To illustrate the process of relabelling, the following example describes a simple assignment from one variable to another.
 
 \begin{example}{Assignment}
   This example describes two variables $a = 4$ and $b = ...$.
-  We will disregard the current value of $b$ and focus on the relabeling that takes place when processing $$b = a$$
+  We will disregard the current value of $b$ and focus on the relabelling that takes place when processing $$b = a$$
 
   First we read the \xvalue{} of $a$ and assign to it the label of $a$.
   Afterwards the \xvalue{} is copied to $b$.
@@ -144,7 +144,7 @@ If a \xvalue{} is written to an output channel it can only be done if the label 
 
 \subsection{Smart meter system example}\label{dlm-example}
 To demonstrate how the DLM could be used in a smart meter context, we provide an example below.
-The example describes a smart meter system while identifying the various \principals{} (actors) and labeled objects.
+The example describes a smart meter system while identifying the various \principals{} (actors) and labelled objects.
 This is similar to the provided motivating examples presented in \citet{myers1997decentralized}.
 
 \begin{figure}[h]

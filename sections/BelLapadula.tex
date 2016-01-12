@@ -81,7 +81,7 @@ Having this attribute a \ssubject{} can give the four attributes above to other 
 In a computer system the \subjects{} are not directly accessing objects in the system, it is processes in the system that act on behalf of the \ssubject{}.
 In the following, a user \emph{requesting} access to a file will be written as a \ssubject{} requesting access and the response to this request a \emph{decision}.
 
-\begin{definition}\label{blp:def:accessmatrix}
+\begin{definition}{Access matrix}\label{blp:def:accessmatrix}
   Let $S$ and $O$ be the \subjects{} and objects (respectively) in a system.
   Then $M$ is an $|O| \times |S|$ matrix representing the current access attributes, and entries $M_{i,j} \subseteq A$ (see \cref{blp:access_attributes}) represent the access attribute that $S_i$ currently has for $O_j$.
 \end{definition}
@@ -122,7 +122,7 @@ In order to ensure that data cannot be compromised, the previous definitions of 
 The security condition states that a \principal{} with a given clearance level is prevented from having read access to any object, which is, or can be, a source of information with a classification level that is higher than the clearance level of the \principal{}.
 
 Formally, this can be expressed as the following:
-\begin{definition}
+\begin{definition}{Security condition -- entry}
 Let $M_{i,j}$ represent an arbitrary entry in an access matrix, as defined by \cref{blp:def:accessmatrix}.
 Then, if and only if
 \begin{itemize}
@@ -132,7 +132,7 @@ Then, if and only if
 the entry satisfies the security condition.
 
 \end{definition}
-\begin{definition}
+\begin{definition}{Security condition -- matrix}
 An access matrix $M$ satisfies the security condition if
 $$\forall S_i \in S: \forall O_j \in O: M_{i,j} \text{ satisfies the security condition}$$
 
@@ -147,7 +147,8 @@ To simplify the description of the *-property we wish to examine which objects a
 That is, given a set of attributes $a_1, a_2, \cdots, a_n$, we are interested in the objects that a given \principal{} has either of these access attributes to.
 This can be expressed formally as:
 
-\begin{definition}
+\mikael{Not sure about this definition title.}
+\begin{definition}{Matrix extract}
   Let $S$ represent a \principal{} and $x,y,z \in A$ a set of attributes.
   Then $$b(S:x, y, \cdots, z) = \{o:o\in O \wedge [x \in M_{S,o} \vee y \in M_{S,o} \vee \dots \vee z \in M_{S,o}]\}$$
   represents all the objects to which $S$ has any of the $x, y, \cdots, z$ access attributes.
@@ -157,7 +158,7 @@ The *-property ensures that \principals{} can only write information to an objec
 This property must apply to all objects that the principal has access to.
 
 The following definition expresses this formally:
-\begin{definition}
+\begin{definition}{*-property}
 Let $S$ be a \principal{}.
 Then $O_{write} = b(S: w, a)$ is the set of objects to which $S$ can write information and $O_{read} = b(S: r,w)$ the set from which it can read.
 Using these sets we can define the *-property for $S$ as:

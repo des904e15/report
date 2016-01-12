@@ -10,13 +10,13 @@ Using this approach two possible solutions (protection systems) to a problem can
 
 In the following the model proposed by \citet{HRU} is presented.
 
-\subsection{Aprotection system}
+\subsection{A protection system}
 A protection system can be described in terms of a set of rights $R$ and a set of commands $C$.
 Both these sets are finite and static for a given system.
 Because of this, a system cannot dynamically add or remove rights or commands, under this model.
 \footnote{It is possible to simulate adding/removing predefined rights and commands in a system.}
 
-\begin{definition}
+\begin{definition}{Protection system}
   A protection system is a finite set of rights $R$ and a finite set of commands $C$.
 \end{definition}
 
@@ -25,7 +25,7 @@ Commands are used to modify the configuration of a protection system.
 A definition of such a configuration is given below.
 Note that $R$ and $C$ are not part of the configuration of a system, reflecting the definition of a protection system.
 
-\begin{definition}\label{protection:def:state}
+\begin{definition}{State}\label{protection:def:state}
 The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \ssubject{} has to each object.
 Finally $P[s, o]$ represents the cell in $P$ containing the set of rights that the \ssubject{} $s$ has to the object $o$ (with $P[s, o] \subseteq R$).
 If no such rights exists we have that $P[s,o] = \emptyset$.
@@ -49,7 +49,7 @@ Transitioning from one configuration is done using commands.
 A command can, through a set of operations, modify each part of the configuration tuple.
 A command is defined as below:
 
-\begin{definition}
+\begin{definition}{Command}
 A command takes a simple form, allowing for a name (here represented as $\alpha$), a condition, and a list of sequentially executed operations.
 Let $X_i$ be \subjects{} and objects such that $X_i \in O \supseteq S$ and specifically $X_{s_i} \in S$ and $X_{o_i} \in O$.
 Then a command is defined as:
@@ -143,7 +143,7 @@ It should be noted that a leak (given in the definition below) is not necessaril
 Certain rights we will want the system to leak in a specific way.
 We are both interested in ensuring that certain rights are not leaked and that certain other rights are.
 
-\begin{definition}
+\begin{definition}{Rights leakage}
 A command $\alpha$ leaks the right $r$ from configuration $Q$ if, after running $\alpha$ on $Q$, $r$ is entered into a cell in the access matrix where it did not exist before running $\alpha$.
 A protection system leaks the right $r$ given an initial configuration $Q$ if there exists a command in the system that leaks $r$ from $Q$, or there exists a configuration $Q'$ which is reachable from the initial configuration such that there exists a command in the system that leaks $r$ from $Q'$.
 \end{definition}
@@ -152,7 +152,7 @@ A protection system leaks the right $r$ given an initial configuration $Q$ if th
 We can translate the latter two types of questions, presented above, into the first one.
 Because of this it is sufficient to provide an algorithm that will answer this type of question.
 
-\begin{definition}
+\begin{definition}{No general purpose algorithm}
   There exists no general purpose algorithm for determining if a protection system leaks a right $r$ from configuration $Q$. \Cite{HRU}
 \end{definition}
 
