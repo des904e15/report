@@ -119,10 +119,8 @@ This means that a given \principal{} in effect has every right that the \princip
 
 This is also called a \principal{} hierarchy.
 Formally, we use the $\succeq$-operator when representing acts for\footnote{$\succeq$ is reflexive and transitive and not anti-symmetric.} such that $x \succeq y$ declares that $x$ acts for $y$.
-A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{}.
-So if we have $P \vdash x \succeq y$ it means that $(x,y) \in P$.
-\mikkelin{Jeg ved ikke hvad det sidste her betyder.
-Er det bare en mængde med alle acts-for relationerne?}
+A \principal{} hierarchy $P$ is a set of ordered pairs of \principals{} $\{(x_1, y_1), (x_2, y_2), \cdots, (x_n, y_n)\}$.
+This describes relations where $x_1 \succeq y_1, x_2 \succeq y_2, \cdots, x_n \succeq y_n$.
 
 Below are a couple of examples of acts-for relations:
 \begin{example}{Acts-for relation}
