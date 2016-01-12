@@ -123,21 +123,20 @@ The security condition states that a \principal{} with a given clearance level i
 
 Formally, this can be expressed as the following:
 \begin{definition}
-The access matrix contains entries of the form $(s,o,x)$ where $s \in S, o \in O \text{ and } x \in A$.
-Such entry satisfies the security condition relative to the classification and need-to-know vectors, if and only if
-\mikkelin{This representation of an access matrix seems to differ from the previous one.
-Or maybe it's too loosely defined.}
-
+Let $M_{i,j}$ represent an arbitrary entry in an access matrix, as defined by \cref{blp:def:accessmatrix}.
+Then, if and only if
 \begin{itemize}
-\item x is either the \emph{execute}, \emph{append}, or \emph{control} access attribute, or that
-\item x is the \emph{write} or the \emph{read} attribute and both $f_1(s) \ge f_2(o)$ and $f_3(s) \supseteq f_4(o)$
+  \item $M_{i,j} \cap \{execute, append, control\} \neq \emptyset$, or
+  \item $M_{i,j} \cap \{read, write\} \neq \emptyset \wedge f_1(s) \ge f_2(o) \wedge f_3(s) \supseteq f_4(o)$
 \end{itemize}
+the entry satisfies the security condition.
 
-An \emph{access matrix} is secure if every access matrix entry satisfies the security condition.
+\end{definition}
+\begin{definition}
+An access matrix $M$ satisfies the security condition if
+$$\forall S_i \in S: \forall O_j \in O: M_{i,j} \text{ satisfies the security condition}$$
 
-A system consists of \emph{appearances}, which consists of requests and decisions that manipulate the access matrix.
-
-A \emph{system} is a secure system if and only if every appearance of the system is secure.
+We say that a system is secure if its access matrix satisfies the security condition for all its states.
 \end{definition}
 
 Seen in context of the lattice in \cref{blp:lattice}, the security condition can be seen as the disallowance of any \ssubject{} $s$ from reading any objects above its security level.
