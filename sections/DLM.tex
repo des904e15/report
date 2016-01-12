@@ -17,7 +17,8 @@ The final major point of DLM is that it is formalized and even though no impleme
 A \xvalue{} is associated with a label.
 The label is a set of privacy policies.
 When the \xvalue{} flows through the system, all the policies need to be obeyed.
-This means that the effective set of \principals{} able to read the \xvalue{} is the intersection of all policies in a label.
+This means that the set of \principals{} that are able to read the \xvalue{} is the intersection of all policies in a label.
+This is known as the effective reader set.
 
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
 The syntax is: $\policy{\text{<\emph{owner}>}}{\text{<\emph{reader}>}}$.
