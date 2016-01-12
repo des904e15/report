@@ -1,0 +1,33 @@
+In this report, we gave a short overview of the coming smart grid and smart meter system and possible security pitfalls related to it.
+Firstly, we gave an overview of the context and the problems we found the most interesting.
+We then investigated existing security models and evaluated how they could assist in solving any of the problems we found in the context.
+
+Afterwards we analyzed a constructed model of a conceptual smart meter system.
+The result of this analysis was a number of attack trees which discuss how each actor in the context can attempt to exploit system.
+The details of these attacks were then briefly elaborated.
+
+The following summarizes our findings and gives suggestions on how to proceed.
+
+\section{Privacy}
+As was discovered in \cref{smart_meter_privacy}, relatively small amounts of consumption data can reveal a lot about the consumer and his activities.
+Most of our actors have some interest in obtaining this information.
+For instance, the burglar can use information about what devices the consumer owns to decide if breaking in is worthwhile, while the electrical company wants to abuse the information in order to get a competitive edge.
+
+In our model, all data is sent to the Data Hub, which means that a solution to this problem necessarily needs to include the handling of what data is sent from the smart meter to the data hub.
+
+The granularity of the data decides how much can be learned when analyzing the data.
+Investigating how to protect the data may be a necessary path in order to solve this problem.
+
+\section{Protocols}
+The model presented in \cref{sec:smartmetercontext} includes a lot of communication between a lot of actors.
+In order to secure all this communication the Smart Meter architecture needs to be designed with secure protocols that fit the limited resources of a smart meter.
+
+If compromised, an intruder could get access to functionality on the smart meter.
+A burglar could watch the security camera feed and turn off the security alarm, while a terrorist organization could turn of the power in a multitude of facilities.
+
+\section{Data Manipulation}
+The integrity of the data sent between the smart meter and the data stored on the smart meter is important for the whole system to be effective.
+If the integrity of data cannot be relied on, the whole system loses its purpose.
+
+The consumer and the electrical company may possibly have an interest in attacking each other by manipulating the consumption data -- either the stored data on, or the data sent from, the smart meter.
+
