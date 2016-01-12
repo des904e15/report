@@ -21,9 +21,6 @@ This means that the effective set of \principals{} able to read the \xvalue{} is
 
 A privacy policy is represented as an owner of some \xvalue{} and a set of readers.
 The syntax is: $\policy{\text{<\emph{owner}>}}{\text{<\emph{reader}>}}$.
-The owner is the \principal{} who owns the \xvalue{} that was used for constructing the \xvalue{}.
-\mikael{Forstår ikke dennne sætning.}
-\mikkelin{Nej, jeg mangler også en forklaring for evt at kunne skrive den om.}
 The readers are the \principals{} allowed by the owner.
 The owner is implicitly allowed to read his own data.
 If we want a \principal{} $p$ that should not allow any other readers we provide an empty reader list: $\policy{p}{}$.
