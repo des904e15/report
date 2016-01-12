@@ -132,7 +132,7 @@ Then, if and only if
 the entry satisfies the security condition.
 
 \end{definition}
-\begin{definition}{Security condition -- matrix}
+\begin{definition}{Security condition -- system}
 An access matrix $M$ satisfies the security condition if
 $$\forall S_i \in S: \forall O_j \in O: M_{i,j} \text{ satisfies the security condition}$$
 
@@ -147,8 +147,7 @@ To simplify the description of the *-property we wish to examine which objects a
 That is, given a set of attributes $a_1, a_2, \cdots, a_n$, we are interested in the objects that a given \principal{} has either of these access attributes to.
 This can be expressed formally as:
 
-\mikael{Not sure about this definition title.}
-\begin{definition}{Matrix extract}
+\begin{definition}{Matrix extraction}
   Let $S$ represent a \principal{} and $x,y,z \in A$ a set of attributes.
   Then $$b(S:x, y, \cdots, z) = \{o:o\in O \wedge [x \in M_{S,o} \vee y \in M_{S,o} \vee \dots \vee z \in M_{S,o}]\}$$
   represents all the objects to which $S$ has any of the $x, y, \cdots, z$ access attributes.

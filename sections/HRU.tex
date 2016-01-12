@@ -25,7 +25,7 @@ Commands are used to modify the configuration of a protection system.
 A definition of such a configuration is given below.
 Note that $R$ and $C$ are not part of the configuration of a system, reflecting the definition of a protection system.
 
-\begin{definition}{State}\label{protection:def:state}
+\begin{definition}{State of a protection system}\label{protection:def:state}
 The state, or configuration, of a protection system is a triple $Q = (S, O, P)$, where $S$ is the set of \subjects{} in the configuration, $O$ is the set of objects in the configuration (with $S \subseteq O$) and $P$ is an access matrix describing the rights each \ssubject{} has to each object.
 Finally $P[s, o]$ represents the cell in $P$ containing the set of rights that the \ssubject{} $s$ has to the object $o$ (with $P[s, o] \subseteq R$).
 If no such rights exists we have that $P[s,o] = \emptyset$.
@@ -49,7 +49,7 @@ Transitioning from one configuration is done using commands.
 A command can, through a set of operations, modify each part of the configuration tuple.
 A command is defined as below:
 
-\begin{definition}{Command}
+\begin{definition}{Protection system commands}
 A command takes a simple form, allowing for a name (here represented as $\alpha$), a condition, and a list of sequentially executed operations.
 Let $X_i$ be \subjects{} and objects such that $X_i \in O \supseteq S$ and specifically $X_{s_i} \in S$ and $X_{o_i} \in O$.
 Then a command is defined as:
