@@ -140,30 +140,36 @@ We say that a system is secure if its access matrix satisfies the security condi
 \end{definition}
 
 Seen in context of the lattice in \cref{blp:lattice}, the security condition can be seen as the disallowance of any \ssubject{} $s$ from reading any objects above its security level.
-This is often mentioned in other litterature as \emph{no read-up}.
+This is often mentioned in other literature as \emph{no read-up}.
 
 \subsubsection{*-property}
-The *-property ensures that given a \principal{} and a set of objects, $o_1$ -- which he has write or append access to and a set of objects, $o_2$ -- which he has read or read/write access to, that $o_1$ is the superset of $o_2$ and $o_1$ must exceed or equal $o_2$.
-This property ensures that it is impossible to leak information to a lower classification level.
+To simplify the description of the *-property we wish to examine which objects a \principal{} has a specific access to.
+That is, given a set of attributes $a_1, a_2, \cdots, a_n$, we are interested in the objects that a given \principal{} has either of these access attributes to.
+This can be expressed formally as:
+
+\begin{definition}
+  Let $S$ represent a \principal{} and $x,y,z \in A$ a set of attributes.
+  Then $$b(S:x, y, \cdots, z) = \{o:o\in O \wedge [x \in M_{S,o} \vee y \in M_{S,o} \vee \dots \vee z \in M_{S,o}]\}$$
+  represents all the objects to which $S$ has any of the $x, y, \cdots, z$ access attributes.
+\end{definition}
+
+The *-property ensures that \principals{} can only write information to an object $o_1$ if that information is read from an object $o_2$ which is at the same or a lower \emph{security level}.
+This property must apply to all objects that the principal has access to.
 
 The following definition expresses this formally:
 \begin{definition}
-\mikkelin{Unsure what this definition is actually defining. It seems that it might be split in two definitions?}
-Let $b(S:x,y, \dots, z)$ denote the set 
+Let $S$ be a \principal{}.
+Then $O_{write} = b(S: w, a)$ is the set of objects to which $S$ can write information and $O_{read} = b(S: r,w)$ the set from which it can read.
+Using these sets we can define the *-property for $S$ as:
+\begin{align*}
+  &\textbf{T} \quad \text{if }O_{write} = \emptyset \vee O_{read} = \emptyset \text{ , otherwise }\\
+  &\forall o_w \in O_{write}: \forall o_r \in O_{read}: f_2(o_w) \geq f_2(o_r) \wedge f_4(o_w) \supseteq f_4(o_r)
+\end{align*}
 
-$\{O: o \in O \text{ and } [(s,o,x) \in b, (s,o,y) \in b, \dots, (s,o,z) \in b]\}$.
-
-Here b is the set of access matrix entries of some access matrix.
-
-\paragraph{}
-\noindent{} 
-A state of an access matrix satisfies the *-property if an only if for each $s \in S$ the following proposition holds.
-
-$[b(s:w,a) \ne \emptyset \text{ and } b(s:r,w) \ne \emptyset] \implies [f_2(o_1) \ge f_2(o_2) \text{ and } f_4(o_1) \supseteq f_4(o_2) \text{ for all } o_1 \in b(s:w,a), o_2 \in b(s:r,w)]$
-
-\paragraph{}
-\noindent{} 
-A system is satisfying the *-property if and only if every appearance of the system satisfies the *-property.
+\begin{itemize}
+  \item A state of an access matrix satisfies the *-property if an only if for each $s \in S$ the following proposition holds.
+  \item We say that a system satisfies the *-property if its access matrix satisfies the *-property condition for all its states.
+\end{itemize}
 \end{definition}
 
 When seeing the *-property in the context of \cref{blp:lattice}, the *-property states that it is not allowed for any \ssubject{} $s$ to read any object $o_1$ and write any of this information to an object $o_2$, if $o_2$ is not above, or at the same security level as, $o_1$.
