@@ -56,9 +56,8 @@ Formally this can be defined as:
 \begin{definition}\label{dlm:def:restrict}
   Let $L_1$ and $L_2$ be labels.
   Then if
-  $$\forall j \in L_1 : \exists k \in L_2 : o(k) = o(j) \wedge r(k) \subseteq r(j)$$
+  $$\forall j \in L_1 : \exists k \in L_2 : o(j) = o(k) \wedge r(j) \supseteq r(k)$$
   $L_2$ is at least as restrictive as $L_1$, and we write $L_1 \sqsubseteq L_2$.
-  \mikkelin{Copied this definition from below. Shouldn't it be $r(j) \subseteq r(k)$?}
 \end{definition}
 
 This relation is applied throughout the following.
