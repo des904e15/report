@@ -1,12 +1,16 @@
 digraph G{
 
-graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
-node[ shape=rectangle];
+graph[ center=true, margin=0.2, nodesep=0.8, ranksep=0.3];
+node[shape=rectangle];
 
-	root[label="$$$",shape=OR];	
-
-	root -> moreMoney;
-	root -> dollars;
-	
-	
+	root[label="Exploit consumer",shape=OR];
+  n1[label="Steal consumption data"];
+  n2[label="Monitor household"];
+  #n3[label="        "];
+  #n4[label="        "];
+  
+	root -> n1;
+	root -> n2;
+  #n1 -> n3;
+  #n1 -> n4;
 	}
