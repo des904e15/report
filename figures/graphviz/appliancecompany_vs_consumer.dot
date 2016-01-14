@@ -1,5 +1,7 @@
-digraph G{
-	node [style=filled fillcolor=white]
+digraph G {
+
+graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+node[ shape=rectangle];
 
 	root[label="Obtain consumer profile",shape=AND];	
 

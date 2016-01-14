@@ -1,4 +1,8 @@
 digraph G {
+
+graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+node[ shape=rectangle];
+
 	root[label="Earn more money", shape=AND];
 	compromise_sm[label="Compromise SM", shape=OR];
 	alter_data[label="Alter the SM data", shape=OR];

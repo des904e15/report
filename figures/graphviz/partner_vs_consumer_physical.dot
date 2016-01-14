@@ -1,6 +1,7 @@
-digraph finite_state_machine {
-  node [shape = rectangle];
-  graph [splines=ortho];
+digraph G {
+
+graph[ center=true, margin=0.2, nodesep=0.1, ranksep=0.3]
+node[ shape=rectangle];
 
   root[label = "Expose partner adultery (Physical access)",shape=AND];
 
